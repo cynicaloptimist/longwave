@@ -30,9 +30,7 @@ export function Lobby(props: { players: PlayersTeams; startGame: () => void }) {
         type="button"
         value="Start Game"
         onClick={() => {
-          if (leftTeam.length > 1 && rightTeam.length > 1) {
-            props.startGame();
-          }
+          props.startGame();
         }}
       />
     </div>
