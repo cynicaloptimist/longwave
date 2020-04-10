@@ -54,7 +54,9 @@ export function GameRoom() {
           }}
         />
       )}
-      {roundPhase == RoundPhase.ViewScore && "View Score"}
+      {roundPhase == RoundPhase.ViewScore && (
+        <ViewScore spectrumTarget={spectrumTarget} guess={guess} />
+      )}
     </div>
   );
 }
@@ -130,4 +132,23 @@ function MakeGuess(props: {
       </div>
     </div>
   );
+}
+
+function ViewScore(props: { spectrumTarget: number; guess: number }) {
+  const score = getScore(props.spectrumTarget, props.guess);
+  return (
+    <div>
+      <div>Target: {props.spectrumTarget}</div>
+      <div>Guess: {props.guess}</div>
+      <div>Score: {score} points!</div>
+    </div>
+  );
+}
+
+function getScore(target: number, guess: number) {
+  const difference = Math.abs(target - guess);
+  if (difference > 20) {
+    return 0;
+  }
+  return 4 - Math.floor(difference / 5);
 }
