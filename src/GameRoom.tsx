@@ -55,7 +55,15 @@ export function GameRoom() {
         />
       )}
       {roundPhase == RoundPhase.ViewScore && (
-        <ViewScore spectrumTarget={spectrumTarget} guess={guess} />
+        <ViewScore
+          spectrumTarget={spectrumTarget}
+          guess={guess}
+          nextRound={() => {
+            setSpectrumCard(RandomSpectrumCard());
+            setSpectrumTarget(RandomSpectrumTarget());
+            setRoundPhase(RoundPhase.GiveClue);
+          }}
+        />
       )}
     </div>
   );
@@ -134,13 +142,20 @@ function MakeGuess(props: {
   );
 }
 
-function ViewScore(props: { spectrumTarget: number; guess: number }) {
+function ViewScore(props: {
+  spectrumTarget: number;
+  guess: number;
+  nextRound: () => void;
+}) {
   const score = getScore(props.spectrumTarget, props.guess);
   return (
     <div>
       <div>Target: {props.spectrumTarget}</div>
       <div>Guess: {props.guess}</div>
       <div>Score: {score} points!</div>
+      <div>
+        <input type="button" value="Next Round" onClick={props.nextRound} />
+      </div>
     </div>
   );
 }
