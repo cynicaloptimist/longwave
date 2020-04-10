@@ -28,15 +28,16 @@ export function useNetworkBackedGameState(
   useEffect(() => {
     dbRef.on("value", (appState) => {
       const networkGameState: GameState = appState.val();
+      const completeGameState = {
+        ...InitialGameState(),
+        ...networkGameState,
+      };
       if (networkGameState.roundPhase === undefined) {
-        dbRef.set({
-          ...InitialGameState(),
-          ...networkGameState,
-        });
+        dbRef.set(completeGameState);
         return;
       }
 
-      setGameState(networkGameState);
+      setGameState(completeGameState);
     });
     return () => dbRef.off();
   }, [dbRef]);
