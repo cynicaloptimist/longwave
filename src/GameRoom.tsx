@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-import { RoundPhase } from "./AppState";
+import { RoundPhase, GameState } from "./AppState";
 import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
@@ -47,11 +47,7 @@ export function GameRoom() {
       {gameState.roundPhase === RoundPhase.SetupGame && (
         <Lobby
           {...gameState}
-          startGame={() => {
-            setGameState({
-              roundPhase: RoundPhase.GiveClue,
-            });
-          }}
+          startGame={() => setGameState(newRound(gameState))}
         />
       )}
       {gameState.roundPhase === RoundPhase.GiveClue && (
@@ -82,15 +78,25 @@ export function GameRoom() {
         <ViewScore
           spectrumTarget={gameState.spectrumTarget}
           guess={gameState.guess}
-          nextRound={() =>
-            setGameState({
-              roundPhase: RoundPhase.GiveClue,
-              spectrumCard: RandomSpectrumCard(),
-              spectrumTarget: RandomSpectrumTarget(),
-            })
-          }
+          nextRound={() => setGameState(newRound(gameState))}
         />
       )}
     </div>
   );
+}
+
+function newRound(gameState: GameState): Partial<GameState> {
+  return {
+    clueGiver: nextPlayer(gameState),
+    roundPhase: RoundPhase.GiveClue,
+    spectrumCard: RandomSpectrumCard(),
+    spectrumTarget: RandomSpectrumTarget(),
+  };
+}
+
+function nextPlayer(gameState: GameState): string {
+  if (gameState.leftTeam?.[gameState.clueGiver]) {
+    return Object.keys(gameState.rightTeam || {})[0];
+  }
+  return Object.keys(gameState.leftTeam || {})[0];
 }
