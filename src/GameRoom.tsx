@@ -12,6 +12,51 @@ export function GameRoom() {
     throw new Error("RoomId missing");
   }
 
+  const [gameState, setGameState] = useNetworkBackedGameState(roomId);
+
+  return (
+    <div>
+      <h1>{roomId || "Room Id missing"}</h1>
+      {gameState.roundPhase === RoundPhase.GiveClue && (
+        <GiveClue
+          spectrumCard={gameState.spectrumCard}
+          spectrumTarget={gameState.spectrumTarget}
+          submitClue={(clue) => {
+            setGameState({
+              ...gameState,
+              clue,
+              roundPhase: RoundPhase.MakeGuess,
+            });
+          }}
+        />
+      )}
+      {gameState.roundPhase === RoundPhase.MakeGuess && (
+        <MakeGuess
+          clue={gameState.clue}
+          spectrumCard={gameState.spectrumCard}
+          submitGuess={(guess) => {
+            setGameState({
+              ...gameState,
+              guess,
+              roundPhase: RoundPhase.ViewScore,
+            });
+          }}
+        />
+      )}
+      {gameState.roundPhase === RoundPhase.ViewScore && (
+        <ViewScore
+          spectrumTarget={gameState.spectrumTarget}
+          guess={gameState.guess}
+          nextRound={() => setGameState(InitialGameState())}
+        />
+      )}
+    </div>
+  );
+}
+
+function useNetworkBackedGameState(
+  roomId: string
+): [GameState, (newState: GameState) => void] {
   const [gameState, setGameState] = useState<GameState>(InitialGameState());
 
   useEffect(() => {
@@ -25,48 +70,12 @@ export function GameRoom() {
     return () => dbRef.off();
   }, [roomId]);
 
-  return (
-    <div>
-      <h1>{roomId || "Room Id missing"}</h1>
-      {gameState.roundPhase === RoundPhase.GiveClue && (
-        <GiveClue
-          spectrumCard={gameState.spectrumCard}
-          spectrumTarget={gameState.spectrumTarget}
-          submitClue={(clue) => {
-            writeGameState(roomId, {
-              ...gameState,
-              clue,
-              roundPhase: RoundPhase.MakeGuess,
-            });
-          }}
-        />
-      )}
-      {gameState.roundPhase === RoundPhase.MakeGuess && (
-        <MakeGuess
-          clue={gameState.clue}
-          spectrumCard={gameState.spectrumCard}
-          submitGuess={(guess) => {
-            writeGameState(roomId, {
-              ...gameState,
-              guess,
-              roundPhase: RoundPhase.ViewScore,
-            });
-          }}
-        />
-      )}
-      {gameState.roundPhase === RoundPhase.ViewScore && (
-        <ViewScore
-          spectrumTarget={gameState.spectrumTarget}
-          guess={gameState.guess}
-          nextRound={() => writeGameState(roomId, InitialGameState())}
-        />
-      )}
-    </div>
-  );
-}
-
-function writeGameState(roomId: string, gameState: GameState) {
-  database()
-    .ref("rooms/" + roomId)
-    .set(gameState);
+  return [
+    gameState,
+    (newState: GameState) => {
+      database()
+        .ref("rooms/" + roomId)
+        .set(newState);
+    },
+  ];
 }
