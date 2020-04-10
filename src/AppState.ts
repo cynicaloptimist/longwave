@@ -5,6 +5,12 @@ export interface AppState {
   roomId: string;
 }
 
+export enum RoundPhase {
+  GiveClue,
+  MakeGuess,
+  ViewScore
+}
+
 export interface GameState {
   roundPhase: RoundPhase;
   spectrumCard: [string, string];
@@ -21,10 +27,4 @@ export function InitialGameState(): GameState {
     clue: "",
     guess: 0
   }
-}
-
-export enum RoundPhase {
-  GiveClue,
-  MakeGuess,
-  ViewScore
 }
