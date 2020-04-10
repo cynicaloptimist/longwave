@@ -18,7 +18,7 @@ export function useNetworkBackedGameState(
     dbRef.child("players/" + playerName).set({
       team: "none",
     });
-  }, [playerName]);
+  }, [roomId, playerName]);
 
   useEffect(() => {
     const dbRef = database().ref("rooms/" + roomId);
@@ -36,7 +36,7 @@ export function useNetworkBackedGameState(
       setGameState(completeGameState);
     });
     return () => dbRef.off();
-  }, []);
+  }, [roomId]);
 
   const dbRef = database().ref("rooms/" + roomId);
 
