@@ -1,15 +1,18 @@
 import React, { useRef } from "react";
+import { PlayersTeams } from "./AppState";
 export function GiveClue(props: {
+  players: PlayersTeams;
   spectrumCard: [string, string];
   spectrumTarget: number;
   clueGiver: string;
-  playerName: string;
+  playerId: string;
   submitClue: (clue: string) => void;
 }) {
   const inputElement = useRef<HTMLInputElement>(null);
 
-  if (props.playerName !== props.clueGiver) {
-    return <div>Waiting for {props.clueGiver} to provide a clue...</div>;
+  if (props.playerId !== props.clueGiver) {
+    const clueGiverName = props.players[props.clueGiver].name;
+    return <div>Waiting for {clueGiverName} to provide a clue...</div>;
   }
   return (
     <div>

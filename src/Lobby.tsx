@@ -4,10 +4,10 @@ import { PlayersTeams } from "./AppState";
 
 export function Lobby(props: { players: PlayersTeams; startGame: () => void }) {
   const leftTeam = Object.keys(props.players).filter(
-    (playerName) => props.players[playerName].team === "left"
+    (playerId) => props.players[playerId].team === "left"
   );
   const rightTeam = Object.keys(props.players).filter(
-    (playerName) => props.players[playerName].team === "right"
+    (playerId) => props.players[playerId].team === "right"
   );
 
   return (
@@ -15,14 +15,14 @@ export function Lobby(props: { players: PlayersTeams; startGame: () => void }) {
       <Row>
         <Column>
           <div>LEFT BRAIN</div>
-          {leftTeam.map((playerName) => (
-            <div>{playerName}</div>
+          {leftTeam.map((playerId) => (
+            <div>{props.players[playerId].name}</div>
           ))}
         </Column>
         <Column>
           <div>RIGHT BRAIN</div>
-          {rightTeam.map((playerName) => (
-            <div>{playerName}</div>
+          {rightTeam.map((playerId) => (
+            <div>{props.players[playerId].name}</div>
           ))}
         </Column>
       </Row>

@@ -12,6 +12,7 @@ import { RandomSpectrumCard } from "./SpectrumCards";
 import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
 import { Lobby } from "./Lobby";
 import { getScore } from "./getScore";
+import { randomFourCharacterString } from "./randomFourCharacterString";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -20,20 +21,22 @@ export function GameRoom() {
   }
 
   const [playerName, setPlayerName] = useStorageBackedState("", "name");
-  const [gameState, setGameState] = useNetworkBackedGameState(
-    roomId,
-    playerName
+  const [playerId] = useStorageBackedState(
+    randomFourCharacterString(),
+    "playerId"
   );
+
+  const [gameState, setGameState] = useNetworkBackedGameState(roomId, playerId, playerName);
 
   if (playerName.length === 0) {
     return <InputName setName={setPlayerName} />;
   }
 
-  if (!gameState?.players?.[playerName]) {
+  if (!gameState?.players?.[playerId]) {
     return null;
   }
 
-  if (gameState.players[playerName].team === "none") {
+  if (gameState.players[playerId].team === "none") {
     return (
       <JoinTeam
         {...gameState}
@@ -41,7 +44,8 @@ export function GameRoom() {
           setGameState({
             players: {
               ...gameState.players,
-              [playerName]: {
+              [playerId]: {
+                name: playerName,
                 team,
               },
             },
@@ -57,13 +61,13 @@ export function GameRoom() {
       {gameState.roundPhase === RoundPhase.SetupGame && (
         <Lobby
           {...gameState}
-          startGame={() => setGameState(newRound(playerName))}
+          startGame={() => setGameState(newRound(playerId))}
         />
       )}
       {gameState.roundPhase === RoundPhase.GiveClue && (
         <GiveClue
           {...gameState}
-          playerName={playerName}
+          playerId={playerId}
           submitClue={(clue) => {
             setGameState({
               clue,
@@ -75,13 +79,13 @@ export function GameRoom() {
       {gameState.roundPhase === RoundPhase.MakeGuess && (
         <MakeGuess
           {...gameState}
-          playerName={playerName}
+          playerId={playerId}
           submitGuess={(guess) => {
             const pointsScored = getScore(gameState.spectrumTarget, guess);
             setGameState({
               guess,
               roundPhase: RoundPhase.ViewScore,
-              ...scoreForPlayerTeam(gameState, playerName, pointsScored),
+              ...scoreForPlayerTeam(gameState, playerId, pointsScored),
             });
           }}
         />
@@ -89,16 +93,16 @@ export function GameRoom() {
       {gameState.roundPhase === RoundPhase.ViewScore && (
         <ViewScore
           {...gameState}
-          nextRound={() => setGameState(newRound(playerName))}
+          nextRound={() => setGameState(newRound(playerId))}
         />
       )}
     </div>
   );
 }
 
-function newRound(playerName: string): Partial<GameState> {
+function newRound(playerId: string): Partial<GameState> {
   return {
-    clueGiver: playerName,
+    clueGiver: playerId,
     roundPhase: RoundPhase.GiveClue,
     spectrumCard: RandomSpectrumCard(),
     spectrumTarget: RandomSpectrumTarget(),
@@ -107,16 +111,16 @@ function newRound(playerName: string): Partial<GameState> {
 
 function scoreForPlayerTeam(
   gameState: GameState,
-  playerName: string,
+  playerId: string,
   pointsScored: number
 ): Partial<GameState> {
-  if (gameState.players[playerName].team === "left") {
+  if (gameState.players[playerId].team === "left") {
     return {
       leftScore: gameState.leftScore + pointsScored,
     };
   }
 
-  if (gameState.players[playerName].team === "right") {
+  if (gameState.players[playerId].team === "right") {
     return {
       leftScore: gameState.rightScore + pointsScored,
     };

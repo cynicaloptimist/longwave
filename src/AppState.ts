@@ -13,7 +13,8 @@ export enum RoundPhase {
 }
 
 export type PlayersTeams = {
-  [playerName: string]: {
+  [playerId: string]: {
+    name: string,
     team: "left" | "right" | "none"
   }
 }

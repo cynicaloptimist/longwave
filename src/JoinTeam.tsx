@@ -7,10 +7,10 @@ export function JoinTeam(props: {
   joinTeam: (team: "left" | "right") => void;
 }) {
   const leftTeam = Object.keys(props.players).filter(
-    (playerName) => props.players[playerName].team === "left"
+    (playerId) => props.players[playerId].team === "left"
   );
   const rightTeam = Object.keys(props.players).filter(
-    (playerName) => props.players[playerName].team === "right"
+    (playerId) => props.players[playerId].team === "right"
   );
 
   return (
@@ -19,8 +19,8 @@ export function JoinTeam(props: {
       <Row>
         <Column>
           <div>LEFT BRAIN</div>
-          {leftTeam.map((playerName) => (
-            <div>{playerName}</div>
+          {leftTeam.map((playerId) => (
+            <div>{props.players[playerId].name}</div>
           ))}
           <div>
             <input
@@ -32,8 +32,8 @@ export function JoinTeam(props: {
         </Column>
         <Column>
           <div>RIGHT BRAIN</div>
-          {rightTeam.map((playerName) => (
-            <div>{playerName}</div>
+          {rightTeam.map((playerId) => (
+            <div>{props.players[playerId].name}</div>
           ))}
           <div>
             <input

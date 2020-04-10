@@ -5,7 +5,7 @@ export function MakeGuess(props: {
   clueGiver: string;
   spectrumCard: [string, string];
   clue: string;
-  playerName: string;
+  playerId: string;
   submitGuess: (guess: number) => void;
 }) {
   const inputElement = useRef<HTMLInputElement>(null);
@@ -19,9 +19,9 @@ export function MakeGuess(props: {
   );
 
   const notMyTurn =
-    props.playerName === props.clueGiver ||
+    props.playerId === props.clueGiver ||
     props.players[props.clueGiver].team !==
-      props.players[props.playerName].team;
+      props.players[props.playerId].team;
   if (notMyTurn) {
     return (
       <div>

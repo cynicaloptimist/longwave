@@ -4,6 +4,7 @@ import { GameState, InitialGameState } from "./AppState";
 
 export function useNetworkBackedGameState(
   roomId: string,
+  playerId: string,
   playerName: string
 ): [GameState, (newState: Partial<GameState>) => void] {
   const [gameState, setGameState] = useState<GameState>(InitialGameState());
@@ -12,7 +13,7 @@ export function useNetworkBackedGameState(
     const dbRef = database().ref("rooms/" + roomId);
 
     dbRef
-      .child("players/" + playerName)
+      .child("players/" + playerId)
       .onDisconnect()
       .remove();
 
@@ -28,8 +29,9 @@ export function useNetworkBackedGameState(
         return;
       }
 
-      if (completeGameState.players[playerName] === undefined) {
-        completeGameState.players[playerName] = {
+      if (completeGameState.players[playerId] === undefined) {
+        completeGameState.players[playerId] = {
+          name: playerName,
           team: "none",
         };
         dbRef.set(completeGameState);
@@ -39,7 +41,7 @@ export function useNetworkBackedGameState(
       setGameState(completeGameState);
     });
     return () => dbRef.off();
-  }, [playerName, roomId]);
+  }, [playerId, playerName, roomId]);
 
   const dbRef = database().ref("rooms/" + roomId);
 
