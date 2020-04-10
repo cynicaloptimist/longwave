@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { database } from "firebase";
 import { GameState } from "./AppState";
+import { RandomScaleCard } from "./ScaleCards";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -12,6 +13,7 @@ export function GameRoom() {
   const [gameState, setGameState] = useState<GameState>({
     increment: 0,
   });
+  const [scaleCard, setScaleCard] = useState(RandomScaleCard());
 
   useEffect(() => {
     const dbRef = database().ref("rooms/" + roomId);
@@ -37,6 +39,9 @@ export function GameRoom() {
         Increment:{" "}
       </div>
       {gameState.increment}
+      <div>
+        {scaleCard[0]} | {scaleCard[1]}
+      </div>
     </div>
   );
 }
