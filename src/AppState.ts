@@ -13,7 +13,7 @@ export enum RoundPhase {
 
 export type PlayerList = {
   [playerName: string]: true
-}
+} | undefined
 
 export interface GameState {
   roundPhase: RoundPhase;
