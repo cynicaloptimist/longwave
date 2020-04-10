@@ -6,7 +6,7 @@ export function GiveClue(props: {
 }) {
   const inputElement = useRef<HTMLInputElement>(null);
   return (<div>
-    <div>Target: {props.spectrumTarget}</div>
+    <div>Target: {props.spectrumTarget} / 100</div>
     <div>
       Spectrum: {props.spectrumCard[0]} | {props.spectrumCard[1]}
     </div>
