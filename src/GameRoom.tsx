@@ -74,6 +74,7 @@ export function GameRoom() {
       {gameState.roundPhase === RoundPhase.MakeGuess && (
         <MakeGuess
           {...gameState}
+          playerName={playerName}
           submitGuess={(guess) => {
             setGameState({
               guess,
