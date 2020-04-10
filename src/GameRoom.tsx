@@ -18,6 +18,7 @@ export function GameRoom() {
   const [spectrumCard, setSpectrumCard] = useState(RandomSpectrumCard());
   const [spectrumTarget, setSpectrumTarget] = useState(RandomSpectrumTarget());
   const [clue, setClue] = useState("");
+  const [guess, setGuess] = useState(0);
 
   useEffect(() => {
     const dbRef = database().ref("rooms/" + roomId);
@@ -43,7 +44,17 @@ export function GameRoom() {
           }}
         />
       )}
-      {roundPhase == RoundPhase.MakeGuess && "Guessing time!"}
+      {roundPhase == RoundPhase.MakeGuess && (
+        <MakeGuess
+          clue={clue}
+          spectrumCard={spectrumCard}
+          submitGuess={(guess) => {
+            setGuess(guess);
+            setRoundPhase(RoundPhase.ViewScore);
+          }}
+        />
+      )}
+      {roundPhase == RoundPhase.ViewScore && "View Score"}
     </div>
   );
 }
@@ -66,21 +77,57 @@ function GiveClue(props: {
       <div>
         Spectrum: {props.spectrumCard[0]} | {props.spectrumCard[1]}
       </div>
-      <input type="text" placeholder="Clue..." ref={inputElement} />
-      <input
-        type="button"
-        value="Submit Clue"
-        onClick={() => {
-          if (!inputElement.current) {
-            return false;
-          }
-          props.submitClue(inputElement.current.value);
-        }}
-      />
+      <div>
+        <input type="text" placeholder="Clue..." ref={inputElement} />
+      </div>
+      <div>
+        <input
+          type="button"
+          value="Submit Clue"
+          onClick={() => {
+            if (!inputElement.current) {
+              return false;
+            }
+            props.submitClue(inputElement.current.value);
+          }}
+        />
+      </div>
     </div>
   );
 }
 
 function RandomSpectrumTarget() {
   return Math.ceil(Math.random() * 100);
+}
+
+function MakeGuess(props: {
+  spectrumCard: [string, string];
+  clue: string;
+  submitGuess: (guess: number) => void;
+}) {
+  const inputElement = useRef<HTMLInputElement>(null);
+  return (
+    <div>
+      <div>
+        Spectrum: {props.spectrumCard[0]} | {props.spectrumCard[1]}
+      </div>
+      <div>Clue: {props.clue}</div>
+      <div>
+        <input type="number" placeholder="Guess..." ref={inputElement} />
+      </div>
+      <div>
+        <input
+          type="button"
+          value="Submit Guess"
+          onClick={() => {
+            if (!inputElement.current) {
+              return false;
+            }
+            const guess = parseInt(inputElement.current.value);
+            props.submitGuess(guess);
+          }}
+        />
+      </div>
+    </div>
+  );
 }
