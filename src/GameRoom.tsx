@@ -62,6 +62,7 @@ export function GameRoom() {
       {gameState.roundPhase === RoundPhase.GiveClue && (
         <GiveClue
           {...gameState}
+          playerName={playerName}
           submitClue={(clue) => {
             setGameState({
               clue,
