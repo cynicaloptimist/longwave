@@ -10,6 +10,7 @@ import { InputName } from "./InputName";
 import { JoinTeam } from "./JoinTeam";
 import { RandomSpectrumCard } from "./SpectrumCards";
 import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
+import { Lobby } from "./Lobby";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -43,6 +44,16 @@ export function GameRoom() {
   return (
     <div>
       <h1>{roomId}</h1>
+      {gameState.roundPhase === RoundPhase.SetupGame && (
+        <Lobby
+          {...gameState}
+          startGame={() => {
+            setGameState({
+              roundPhase: RoundPhase.GiveClue,
+            });
+          }}
+        />
+      )}
       {gameState.roundPhase === RoundPhase.GiveClue && (
         <GiveClue
           spectrumCard={gameState.spectrumCard}
