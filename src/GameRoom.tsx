@@ -14,19 +14,13 @@ export function GameRoom() {
     throw new Error("RoomId missing");
   }
 
-  const [gameState, setGameState] = useNetworkBackedGameState(roomId);
   const [name, setName] = useStorageBackedState("", "name");
+  const [gameState, setGameState] = useNetworkBackedGameState(roomId, name);
+
   if (name.length === 0) {
     return <InputName setName={setName} />;
   }
-
-  if (!gameState.players.includes(name)) {
-    setGameState({
-      ...gameState,
-      players: [...gameState.players, name],
-    });
-  }
-
+  
   return (
     <div>
       <h1>{roomId}</h1>

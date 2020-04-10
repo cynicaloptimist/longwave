@@ -11,15 +11,19 @@ export enum RoundPhase {
   ViewScore
 }
 
+type PlayerList = {
+  [playerName: string]: true
+}
+
 export interface GameState {
   roundPhase: RoundPhase;
   spectrumCard: [string, string];
   spectrumTarget: number;
   clue: string;
   guess: number;
-  players: string[];
-  leftTeam: string[];
-  rightTeam: string[];
+  players: PlayerList;
+  leftTeam: PlayerList;
+  rightTeam: PlayerList;
   clueGiver: string;
 }
 
@@ -30,9 +34,9 @@ export function InitialGameState(): GameState {
     spectrumTarget: RandomSpectrumTarget(),
     clue: "",
     guess: 0,
-    players: [],
-    leftTeam: [],
-    rightTeam: [],
+    players: {},
+    leftTeam: {},
+    rightTeam: {},
     clueGiver: ""
   }
 }
