@@ -34,7 +34,7 @@ export function GameRoom() {
   return (
     <div>
       <h1>{roomId || "Room Id missing"}</h1>
-      {roundPhase == RoundPhase.GiveClue && (
+      {roundPhase === RoundPhase.GiveClue && (
         <GiveClue
           spectrumCard={spectrumCard}
           spectrumTarget={spectrumTarget}
@@ -44,7 +44,7 @@ export function GameRoom() {
           }}
         />
       )}
-      {roundPhase == RoundPhase.MakeGuess && (
+      {roundPhase === RoundPhase.MakeGuess && (
         <MakeGuess
           clue={clue}
           spectrumCard={spectrumCard}
@@ -54,7 +54,7 @@ export function GameRoom() {
           }}
         />
       )}
-      {roundPhase == RoundPhase.ViewScore && (
+      {roundPhase === RoundPhase.ViewScore && (
         <ViewScore
           spectrumTarget={spectrumTarget}
           guess={guess}
