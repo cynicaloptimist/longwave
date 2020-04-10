@@ -20,15 +20,18 @@ export function useNetworkBackedGameState(
       const networkGameState: GameState = appState.val();
       const completeGameState = {
         ...InitialGameState(),
-        players: {
-          ...networkGameState.players,
-          [playerName]: {
-            team: "none",
-          },
-        },
         ...networkGameState,
       };
+
       if (networkGameState?.roundPhase === undefined) {
+        dbRef.set(completeGameState);
+        return;
+      }
+
+      if (completeGameState.players[playerName] === undefined) {
+        completeGameState.players[playerName] = {
+          team: "none",
+        };
         dbRef.set(completeGameState);
         return;
       }
