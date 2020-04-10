@@ -26,6 +26,8 @@ export interface GameState {
   guess: number;
   players: PlayersTeams;
   clueGiver: string;
+  leftScore: number;
+  rightScore: number;
 }
 
 export function InitialGameState(): GameState {
@@ -36,6 +38,8 @@ export function InitialGameState(): GameState {
     clue: "",
     guess: 0,
     players: {},
-    clueGiver: ""
+    clueGiver: "",
+    leftScore: 0,
+    rightScore: 0
   }
 }

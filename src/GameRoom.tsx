@@ -11,6 +11,7 @@ import { JoinTeam } from "./JoinTeam";
 import { RandomSpectrumCard } from "./SpectrumCards";
 import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
 import { Lobby } from "./Lobby";
+import { getScore } from "./getScore";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -76,9 +77,11 @@ export function GameRoom() {
           {...gameState}
           playerName={playerName}
           submitGuess={(guess) => {
+            const pointsScored = getScore(gameState.spectrumTarget, guess);
             setGameState({
               guess,
               roundPhase: RoundPhase.ViewScore,
+              ...scoreForPlayerTeam(gameState, playerName, pointsScored),
             });
           }}
         />
@@ -93,13 +96,31 @@ export function GameRoom() {
   );
 }
 
-function newRound(
-  playerName: string
-): Partial<GameState> {
+function newRound(playerName: string): Partial<GameState> {
   return {
     clueGiver: playerName,
     roundPhase: RoundPhase.GiveClue,
     spectrumCard: RandomSpectrumCard(),
     spectrumTarget: RandomSpectrumTarget(),
   };
+}
+
+function scoreForPlayerTeam(
+  gameState: GameState,
+  playerName: string,
+  pointsScored: number
+): Partial<GameState> {
+  if (gameState.players[playerName].team === "left") {
+    return {
+      leftScore: gameState.leftScore + pointsScored,
+    };
+  }
+
+  if (gameState.players[playerName].team === "right") {
+    return {
+      leftScore: gameState.rightScore + pointsScored,
+    };
+  }
+
+  return {};
 }

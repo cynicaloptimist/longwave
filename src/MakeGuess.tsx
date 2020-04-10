@@ -37,10 +37,6 @@ export function MakeGuess(props: {
     <div>
       {spectrumAndClue}
       <div>
-        Spectrum: {props.spectrumCard[0]} | {props.spectrumCard[1]}
-      </div>
-      <div>Clue: {props.clue}</div>
-      <div>
         <input type="number" placeholder="Guess..." ref={inputElement} />
       </div>
       <div>

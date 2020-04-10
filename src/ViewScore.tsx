@@ -1,4 +1,5 @@
 import React from "react";
+import { getScore } from "./getScore";
 
 export function ViewScore(props: {
   spectrumTarget: number;
@@ -14,12 +15,4 @@ export function ViewScore(props: {
       <input type="button" value="Next Round" onClick={props.nextRound} />
     </div>
   </div>);
-}
-
-function getScore(target: number, guess: number) {
-  const difference = Math.abs(target - guess);
-  if (difference > 20) {
-    return 0;
-  }
-  return 4 - Math.floor(difference / 5);
 }
