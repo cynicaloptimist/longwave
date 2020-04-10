@@ -16,7 +16,7 @@ export function GameRoom() {
 
   return (
     <div>
-      <h1>{roomId || "Room Id missing"}</h1>
+      <h1>{roomId}</h1>
       {gameState.roundPhase === RoundPhase.GiveClue && (
         <GiveClue
           spectrumCard={gameState.spectrumCard}
