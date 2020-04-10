@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-import { RoundPhase, InitialGameState } from "./AppState";
+import { RoundPhase } from "./AppState";
 import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
@@ -8,6 +8,8 @@ import { useStorageBackedState } from "./useStorageBackedState";
 import { useNetworkBackedGameState } from "./useNetworkBackedGameState";
 import { InputName } from "./InputName";
 import { JoinTeam } from "./JoinTeam";
+import { RandomSpectrumCard } from "./SpectrumCards";
+import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -17,7 +19,7 @@ export function GameRoom() {
 
   const [name, setName] = useStorageBackedState("", "name");
   const [gameState, setGameState] = useNetworkBackedGameState(roomId, name);
-  
+
   if (name.length === 0) {
     return <InputName setName={setName} />;
   }
@@ -72,7 +74,14 @@ export function GameRoom() {
         <ViewScore
           spectrumTarget={gameState.spectrumTarget}
           guess={gameState.guess}
-          nextRound={() => setGameState(InitialGameState())}
+          nextRound={() =>
+            setGameState({
+              ...gameState,
+              roundPhase: RoundPhase.GiveClue,
+              spectrumCard: RandomSpectrumCard(),
+              spectrumTarget: RandomSpectrumTarget(),
+            })
+          }
         />
       )}
     </div>
