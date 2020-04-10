@@ -30,7 +30,7 @@ export interface GameState {
 
 export function InitialGameState(): GameState {
   return {
-    roundPhase: RoundPhase.GiveClue,
+    roundPhase: RoundPhase.SetupGame,
     spectrumCard: RandomSpectrumCard(),
     spectrumTarget: RandomSpectrumTarget(),
     clue: "",
