@@ -19,6 +19,9 @@ export function MakeGuess(props: {
           return false;
         }
         const guess = parseInt(inputElement.current.value);
+        if (isNaN(guess)) {
+          return false;
+        }
         props.submitGuess(guess);
       }} />
     </div>
