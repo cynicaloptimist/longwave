@@ -5,6 +5,7 @@ import { GameState, RoundPhase, InitialGameState } from "./AppState";
 import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
+import { useRef } from "react";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -13,6 +14,10 @@ export function GameRoom() {
   }
 
   const [gameState, setGameState] = useNetworkBackedGameState(roomId);
+  const [name, setName] = useStorageBackedState("", "name");
+  if (name.length === 0) {
+    return <InputName setName={setName} />;
+  }
 
   return (
     <div>
@@ -54,6 +59,27 @@ export function GameRoom() {
   );
 }
 
+function useStorageBackedState<T>(
+  initialValue: T,
+  key: string
+): [T, (value: T) => void] {
+  const [value, setValue] = useState(initialValue);
+  const storedItem = localStorage.getItem(key);
+  if (storedItem !== null) {
+    const storedValue = JSON.parse(storedItem);
+    if (value !== storedValue) {
+      setValue(storedValue);
+    }
+  }
+  return [
+    value,
+    (newValue: T) => {
+      localStorage.setItem(key, JSON.stringify(newValue));
+      setValue(newValue);
+    },
+  ];
+}
+
 function useNetworkBackedGameState(
   roomId: string
 ): [GameState, (newState: GameState) => void] {
@@ -78,4 +104,28 @@ function useNetworkBackedGameState(
         .set(newState);
     },
   ];
+}
+
+function InputName(props: { setName: (name: string) => void }) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  return (
+    <div>
+      <div>Enter your name:</div>
+      <div>
+        <input
+          type="text"
+          ref={inputRef}
+          onKeyDown={(event) => {
+            if (!inputRef.current) {
+              return false;
+            }
+            if (event.key !== "Enter") {
+              return true;
+            }
+            props.setName(inputRef.current.value);
+          }}
+        />
+      </div>
+    </div>
+  );
 }
