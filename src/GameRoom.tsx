@@ -1,11 +1,7 @@
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { database } from "firebase";
-
-interface GameState {
-  roomId: string;
-  increment: number;
-}
+import { GameState } from "./AppState";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -14,7 +10,6 @@ export function GameRoom() {
   }
 
   const [gameState, setGameState] = useState<GameState>({
-    roomId,
     increment: 0,
   });
 
@@ -31,11 +26,10 @@ export function GameRoom() {
 
   return (
     <div>
-      {gameState.roomId || "Room Id missing"}
+      {roomId || "Room Id missing"}
       <div
         onClick={() =>
-          writeGameState({
-            roomId,
+          writeGameState(roomId, {
             increment: gameState.increment + 1,
           })
         }
@@ -47,8 +41,8 @@ export function GameRoom() {
   );
 }
 
-function writeGameState(gameState: GameState) {
+function writeGameState(roomId: string, gameState: GameState) {
   database()
-    .ref("rooms/" + gameState.roomId)
+    .ref("rooms/" + roomId)
     .set(gameState);
 }
