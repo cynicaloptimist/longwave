@@ -1,5 +1,6 @@
 import React from "react";
 import { useRef } from "react";
+
 export function InputName(props: {
   setName: (name: string) => void;
 }) {
