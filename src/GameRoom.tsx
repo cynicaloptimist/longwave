@@ -17,13 +17,26 @@ export function GameRoom() {
 
   const [name, setName] = useStorageBackedState("", "name");
   const [gameState, setGameState] = useNetworkBackedGameState(roomId, name);
-
+  
   if (name.length === 0) {
     return <InputName setName={setName} />;
   }
 
-  if (!gameState.leftTeam[name] && !gameState.rightTeam[name]) {
-    return <JoinTeam {...gameState} />;
+  if (!gameState.leftTeam?.[name] && !gameState.rightTeam?.[name]) {
+    return (
+      <JoinTeam
+        {...gameState}
+        joinTeam={(team) => {
+          setGameState({
+            ...gameState,
+            [team]: {
+              ...gameState[team],
+              [name]: true,
+            },
+          });
+        }}
+      />
+    );
   }
 
   return (
