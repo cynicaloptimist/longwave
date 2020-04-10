@@ -6,6 +6,14 @@ import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
 
+const style: React.CSSProperties = {
+  maxWidth: 500,
+  height: "100%",
+  margin: "4px auto",
+  padding: 4,
+  border: "1px solid black"
+}
+
 export function GameRoom() {
   const { roomId } = useParams();
   if (roomId === undefined) {
@@ -15,7 +23,7 @@ export function GameRoom() {
   const [gameState, setGameState] = useNetworkBackedGameState(roomId);
 
   return (
-    <div>
+    <div style={style}>
       <h1>{roomId}</h1>
       {gameState.roundPhase === RoundPhase.GiveClue && (
         <GiveClue
