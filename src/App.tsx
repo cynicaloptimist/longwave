@@ -1,36 +1,46 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import { GameRoom } from "./GameRoom";
+import { randomFourCharacterString } from "./randomFourCharacterString";
+
+const style: React.CSSProperties = {
+  maxWidth: 500,
+  height: "100%",
+  margin: "4px auto",
+  padding: 4,
+  border: "1px solid black",
+};
 
 function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/:roomId">
-          <GameRoom />
-        </Route>
-        <Route path="/">
-          <div className="App">
-            <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                Edit <code>src/App.tsx</code> and save to reload.
-              </p>
-              <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Learn React
-              </a>
-            </header>
-          </div>
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <div style={style}>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/:roomId">
+            <GameRoom />
+          </Route>
+          <Route path="/">
+            <LandingPage />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+function LandingPage() {
+  const history = useHistory();
+  return (
+    <div>
+      <input
+        type="button"
+        value="Start Game"
+        onClick={() => {
+          history.push("/" + randomFourCharacterString());
+        }}
+      />
+    </div>
   );
 }
 
