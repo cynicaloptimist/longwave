@@ -1,12 +1,10 @@
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { database } from "firebase";
-import { GameState, RoundPhase } from "./AppState";
-import { RandomSpectrumCard } from "./SpectrumCards";
+import { GameState, RoundPhase, InitialGameState } from "./AppState";
 import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
-import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -14,15 +12,7 @@ export function GameRoom() {
     throw new Error("RoomId missing");
   }
 
-  const [gameState, setGameState] = useState<GameState>({
-    increment: 0,
-  });
-
-  const [roundPhase, setRoundPhase] = useState(RoundPhase.GiveClue);
-  const [spectrumCard, setSpectrumCard] = useState(RandomSpectrumCard());
-  const [spectrumTarget, setSpectrumTarget] = useState(RandomSpectrumTarget());
-  const [clue, setClue] = useState("");
-  const [guess, setGuess] = useState(0);
+  const [gameState, setGameState] = useState<GameState>(InitialGameState());
 
   useEffect(() => {
     const dbRef = database().ref("rooms/" + roomId);
@@ -38,35 +28,37 @@ export function GameRoom() {
   return (
     <div>
       <h1>{roomId || "Room Id missing"}</h1>
-      {roundPhase === RoundPhase.GiveClue && (
+      {gameState.roundPhase === RoundPhase.GiveClue && (
         <GiveClue
-          spectrumCard={spectrumCard}
-          spectrumTarget={spectrumTarget}
+          spectrumCard={gameState.spectrumCard}
+          spectrumTarget={gameState.spectrumTarget}
           submitClue={(clue) => {
-            setClue(clue);
-            setRoundPhase(RoundPhase.MakeGuess);
+            writeGameState(roomId, {
+              ...gameState,
+              clue,
+              roundPhase: RoundPhase.MakeGuess,
+            });
           }}
         />
       )}
-      {roundPhase === RoundPhase.MakeGuess && (
+      {gameState.roundPhase === RoundPhase.MakeGuess && (
         <MakeGuess
-          clue={clue}
-          spectrumCard={spectrumCard}
+          clue={gameState.clue}
+          spectrumCard={gameState.spectrumCard}
           submitGuess={(guess) => {
-            setGuess(guess);
-            setRoundPhase(RoundPhase.ViewScore);
+            writeGameState(roomId, {
+              ...gameState,
+              guess,
+              roundPhase: RoundPhase.ViewScore,
+            });
           }}
         />
       )}
-      {roundPhase === RoundPhase.ViewScore && (
+      {gameState.roundPhase === RoundPhase.ViewScore && (
         <ViewScore
-          spectrumTarget={spectrumTarget}
-          guess={guess}
-          nextRound={() => {
-            setSpectrumCard(RandomSpectrumCard());
-            setSpectrumTarget(RandomSpectrumTarget());
-            setRoundPhase(RoundPhase.GiveClue);
-          }}
+          spectrumTarget={gameState.spectrumTarget}
+          guess={gameState.guess}
+          nextRound={() => writeGameState(roomId, InitialGameState())}
         />
       )}
     </div>

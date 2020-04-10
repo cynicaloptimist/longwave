@@ -1,9 +1,26 @@
+import { RandomSpectrumCard } from "./SpectrumCards";
+import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
+
 export interface AppState {
   roomId: string;
 }
 
 export interface GameState {
-  increment: number;
+  roundPhase: RoundPhase;
+  spectrumCard: [string, string];
+  spectrumTarget: number;
+  clue: string;
+  guess: number;
+}
+
+export function InitialGameState(): GameState {
+  return {
+    roundPhase: RoundPhase.GiveClue,
+    spectrumCard: RandomSpectrumCard(),
+    spectrumTarget: RandomSpectrumTarget(),
+    clue: "",
+    guess: 0
+  }
 }
 
 export enum RoundPhase {
