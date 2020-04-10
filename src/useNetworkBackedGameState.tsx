@@ -39,7 +39,7 @@ export function useNetworkBackedGameState(
       setGameState(networkGameState);
     });
     return () => dbRef.off();
-  }, [dbRef, gameState, playerName]);
+  }, [dbRef]);
 
   return [
     gameState,
