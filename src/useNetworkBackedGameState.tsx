@@ -10,22 +10,22 @@ export function useNetworkBackedGameState(
 
   useEffect(() => {
     const dbRef = database().ref("rooms/" + roomId);
+
     dbRef
       .child("players/" + playerName)
       .onDisconnect()
       .remove();
 
-    dbRef.child("players/" + playerName).set({
-      team: "none",
-    });
-  }, [roomId, playerName]);
-
-  useEffect(() => {
-    const dbRef = database().ref("rooms/" + roomId);
     dbRef.on("value", (appState) => {
       const networkGameState: GameState = appState.val();
       const completeGameState = {
         ...InitialGameState(),
+        players: {
+          ...networkGameState.players,
+          [playerName]: {
+            team: "none",
+          },
+        },
         ...networkGameState,
       };
       if (networkGameState?.roundPhase === undefined) {
@@ -36,7 +36,7 @@ export function useNetworkBackedGameState(
       setGameState(completeGameState);
     });
     return () => dbRef.off();
-  }, [roomId]);
+  }, [playerName, roomId]);
 
   const dbRef = database().ref("rooms/" + roomId);
 
