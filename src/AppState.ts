@@ -11,7 +11,7 @@ export enum RoundPhase {
   ViewScore
 }
 
-type PlayerList = {
+export type PlayerList = {
   [playerName: string]: true
 }
 

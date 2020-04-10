@@ -7,6 +7,7 @@ import { ViewScore } from "./ViewScore";
 import { useStorageBackedState } from "./useStorageBackedState";
 import { useNetworkBackedGameState } from "./useNetworkBackedGameState";
 import { InputName } from "./InputName";
+import { JoinTeam } from "./JoinTeam";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -20,7 +21,11 @@ export function GameRoom() {
   if (name.length === 0) {
     return <InputName setName={setName} />;
   }
-  
+
+  if (!gameState.leftTeam[name] && !gameState.rightTeam[name]) {
+    return <JoinTeam {...gameState} />;
+  }
+
   return (
     <div>
       <h1>{roomId}</h1>
