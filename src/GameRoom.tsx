@@ -18,22 +18,31 @@ export function GameRoom() {
     throw new Error("RoomId missing");
   }
 
-  const [name, setName] = useStorageBackedState("", "name");
-  const [gameState, setGameState] = useNetworkBackedGameState(roomId, name);
+  const [playerName, setPlayerName] = useStorageBackedState("", "name");
+  const [gameState, setGameState] = useNetworkBackedGameState(
+    roomId,
+    playerName
+  );
 
-  if (name.length === 0) {
-    return <InputName setName={setName} />;
+  if (playerName.length === 0) {
+    return <InputName setName={setPlayerName} />;
   }
 
-  if (!gameState.leftTeam?.[name] && !gameState.rightTeam?.[name]) {
+  if (!gameState?.players?.[playerName]) {
+    return null;
+  }
+
+  if (gameState.players[playerName].team === "none") {
     return (
       <JoinTeam
         {...gameState}
         joinTeam={(team) => {
           setGameState({
-            [team]: {
-              ...gameState[team],
-              [name]: true,
+            players: {
+              ...gameState.players,
+              [playerName]: {
+                team,
+              },
             },
           });
         }}
@@ -47,7 +56,7 @@ export function GameRoom() {
       {gameState.roundPhase === RoundPhase.SetupGame && (
         <Lobby
           {...gameState}
-          startGame={() => setGameState(newRound(gameState))}
+          startGame={() => setGameState(newRound(gameState, playerName))}
         />
       )}
       {gameState.roundPhase === RoundPhase.GiveClue && (
@@ -78,25 +87,21 @@ export function GameRoom() {
         <ViewScore
           spectrumTarget={gameState.spectrumTarget}
           guess={gameState.guess}
-          nextRound={() => setGameState(newRound(gameState))}
+          nextRound={() => setGameState(newRound(gameState, playerName))}
         />
       )}
     </div>
   );
 }
 
-function newRound(gameState: GameState): Partial<GameState> {
+function newRound(
+  gameState: GameState,
+  playerName: string
+): Partial<GameState> {
   return {
-    clueGiver: nextPlayer(gameState),
+    clueGiver: playerName,
     roundPhase: RoundPhase.GiveClue,
     spectrumCard: RandomSpectrumCard(),
     spectrumTarget: RandomSpectrumTarget(),
   };
-}
-
-function nextPlayer(gameState: GameState): string {
-  if (gameState.leftTeam?.[gameState.clueGiver]) {
-    return Object.keys(gameState.rightTeam || {})[0];
-  }
-  return Object.keys(gameState.leftTeam || {})[0];
 }

@@ -7,32 +7,28 @@ export function useNetworkBackedGameState(
   playerName: string
 ): [GameState, (newState: Partial<GameState>) => void] {
   const [gameState, setGameState] = useState<GameState>(InitialGameState());
-  const dbRef = database().ref("rooms/" + roomId);
 
   useEffect(() => {
+    const dbRef = database().ref("rooms/" + roomId);
     dbRef
       .child("players/" + playerName)
       .onDisconnect()
       .remove();
-    dbRef
-      .child("leftTeam/" + playerName)
-      .onDisconnect()
-      .remove();
-    dbRef
-      .child("rightTeam/" + playerName)
-      .onDisconnect()
-      .remove();
-    dbRef.child("players/" + playerName).set(true);
-  }, [dbRef, playerName]);
+
+    dbRef.child("players/" + playerName).set({
+      team: "none",
+    });
+  }, [playerName]);
 
   useEffect(() => {
+    const dbRef = database().ref("rooms/" + roomId);
     dbRef.on("value", (appState) => {
       const networkGameState: GameState = appState.val();
       const completeGameState = {
         ...InitialGameState(),
         ...networkGameState,
       };
-      if (networkGameState.roundPhase === undefined) {
+      if (networkGameState?.roundPhase === undefined) {
         dbRef.set(completeGameState);
         return;
       }
@@ -40,14 +36,16 @@ export function useNetworkBackedGameState(
       setGameState(completeGameState);
     });
     return () => dbRef.off();
-  }, [dbRef]);
+  }, []);
+
+  const dbRef = database().ref("rooms/" + roomId);
 
   return [
     gameState,
     (newState: Partial<GameState>) => {
       dbRef.set({
         ...gameState,
-        ...newState
+        ...newState,
       });
     },
   ];

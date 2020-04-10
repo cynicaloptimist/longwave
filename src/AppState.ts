@@ -12,9 +12,11 @@ export enum RoundPhase {
   ViewScore
 }
 
-export type PlayerList = {
-  [playerName: string]: true
-} | undefined
+export type PlayersTeams = {
+  [playerName: string]: {
+    team: "left" | "right" | "none"
+  }
+}
 
 export interface GameState {
   roundPhase: RoundPhase;
@@ -22,9 +24,7 @@ export interface GameState {
   spectrumTarget: number;
   clue: string;
   guess: number;
-  players: PlayerList;
-  leftTeam: PlayerList;
-  rightTeam: PlayerList;
+  players: PlayersTeams;
   clueGiver: string;
 }
 
@@ -36,8 +36,6 @@ export function InitialGameState(): GameState {
     clue: "",
     guess: 0,
     players: {},
-    leftTeam: {},
-    rightTeam: {},
     clueGiver: ""
   }
 }

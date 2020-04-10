@@ -1,14 +1,14 @@
 import React from "react";
-import { PlayerList } from "./AppState";
 import { Row, Column } from "./LayoutElements";
+import { PlayersTeams } from "./AppState";
 
-export function Lobby(props: {
-  leftTeam: PlayerList;
-  rightTeam: PlayerList;
-  startGame: () => void;
-}) {
-  const leftTeam = Object.keys(props.leftTeam || {});
-  const rightTeam = Object.keys(props.rightTeam || {});
+export function Lobby(props: { players: PlayersTeams; startGame: () => void }) {
+  const leftTeam = Object.keys(props.players).filter(
+    (playerName) => props.players[playerName].team === "left"
+  );
+  const rightTeam = Object.keys(props.players).filter(
+    (playerName) => props.players[playerName].team === "right"
+  );
 
   return (
     <div>

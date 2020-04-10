@@ -1,39 +1,45 @@
 import React from "react";
-import { PlayerList } from "./AppState";
 import { Row, Column } from "./LayoutElements";
+import { PlayersTeams } from "./AppState";
 
 export function JoinTeam(props: {
-  leftTeam: PlayerList;
-  rightTeam: PlayerList;
-  joinTeam: (team: "leftTeam" | "rightTeam") => void;
+  players: PlayersTeams;
+  joinTeam: (team: "left" | "right") => void;
 }) {
+  const leftTeam = Object.keys(props.players).filter(
+    (playerName) => props.players[playerName].team === "left"
+  );
+  const rightTeam = Object.keys(props.players).filter(
+    (playerName) => props.players[playerName].team === "right"
+  );
+
   return (
     <div>
       <div>Join Team:</div>
       <Row>
         <Column>
           <div>LEFT BRAIN</div>
-          {Object.keys(props.leftTeam || {}).map((playerName) => (
+          {leftTeam.map((playerName) => (
             <div>{playerName}</div>
           ))}
           <div>
             <input
               type="button"
               value="Join"
-              onClick={() => props.joinTeam("leftTeam")}
+              onClick={() => props.joinTeam("left")}
             />
           </div>
         </Column>
         <Column>
           <div>RIGHT BRAIN</div>
-          {Object.keys(props.rightTeam || {}).map((playerName) => (
+          {rightTeam.map((playerName) => (
             <div>{playerName}</div>
           ))}
           <div>
             <input
               type="button"
               value="Join"
-              onClick={() => props.joinTeam("rightTeam")}
+              onClick={() => props.joinTeam("right")}
             />
           </div>
         </Column>
