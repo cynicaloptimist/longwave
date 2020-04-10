@@ -17,6 +17,10 @@ export interface GameState {
   spectrumTarget: number;
   clue: string;
   guess: number;
+  players: string[];
+  leftTeam: string[];
+  rightTeam: string[];
+  clueGiver: string;
 }
 
 export function InitialGameState(): GameState {
@@ -25,6 +29,10 @@ export function InitialGameState(): GameState {
     spectrumCard: RandomSpectrumCard(),
     spectrumTarget: RandomSpectrumTarget(),
     clue: "",
-    guess: 0
+    guess: 0,
+    players: [],
+    leftTeam: [],
+    rightTeam: [],
+    clueGiver: ""
   }
 }

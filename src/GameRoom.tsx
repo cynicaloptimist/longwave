@@ -20,6 +20,13 @@ export function GameRoom() {
     return <InputName setName={setName} />;
   }
 
+  if (!gameState.players.includes(name)) {
+    setGameState({
+      ...gameState,
+      players: [...gameState.players, name],
+    });
+  }
+
   return (
     <div>
       <h1>{roomId}</h1>
