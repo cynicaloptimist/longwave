@@ -61,8 +61,7 @@ export function GameRoom() {
       )}
       {gameState.roundPhase === RoundPhase.GiveClue && (
         <GiveClue
-          spectrumCard={gameState.spectrumCard}
-          spectrumTarget={gameState.spectrumTarget}
+          {...gameState}
           submitClue={(clue) => {
             setGameState({
               clue,
@@ -73,8 +72,7 @@ export function GameRoom() {
       )}
       {gameState.roundPhase === RoundPhase.MakeGuess && (
         <MakeGuess
-          clue={gameState.clue}
-          spectrumCard={gameState.spectrumCard}
+          {...gameState}
           submitGuess={(guess) => {
             setGameState({
               guess,
@@ -85,8 +83,7 @@ export function GameRoom() {
       )}
       {gameState.roundPhase === RoundPhase.ViewScore && (
         <ViewScore
-          spectrumTarget={gameState.spectrumTarget}
-          guess={gameState.guess}
+          {...gameState}
           nextRound={() => setGameState(newRound(gameState, playerName))}
         />
       )}
