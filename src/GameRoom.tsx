@@ -30,7 +30,6 @@ export function GameRoom() {
         {...gameState}
         joinTeam={(team) => {
           setGameState({
-            ...gameState,
             [team]: {
               ...gameState[team],
               [name]: true,
@@ -50,7 +49,6 @@ export function GameRoom() {
           spectrumTarget={gameState.spectrumTarget}
           submitClue={(clue) => {
             setGameState({
-              ...gameState,
               clue,
               roundPhase: RoundPhase.MakeGuess,
             });
@@ -63,7 +61,6 @@ export function GameRoom() {
           spectrumCard={gameState.spectrumCard}
           submitGuess={(guess) => {
             setGameState({
-              ...gameState,
               guess,
               roundPhase: RoundPhase.ViewScore,
             });
@@ -76,7 +73,6 @@ export function GameRoom() {
           guess={gameState.guess}
           nextRound={() =>
             setGameState({
-              ...gameState,
               roundPhase: RoundPhase.GiveClue,
               spectrumCard: RandomSpectrumCard(),
               spectrumTarget: RandomSpectrumTarget(),

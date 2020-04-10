@@ -5,7 +5,7 @@ import { GameState, InitialGameState } from "./AppState";
 export function useNetworkBackedGameState(
   roomId: string,
   playerName: string
-): [GameState, (newState: GameState) => void] {
+): [GameState, (newState: Partial<GameState>) => void] {
   const [gameState, setGameState] = useState<GameState>(InitialGameState());
   const dbRef = database().ref("rooms/" + roomId);
 
@@ -43,8 +43,11 @@ export function useNetworkBackedGameState(
 
   return [
     gameState,
-    (newState: GameState) => {
-      dbRef.set(newState);
+    (newState: Partial<GameState>) => {
+      dbRef.set({
+        ...gameState,
+        ...newState
+      });
     },
   ];
 }
