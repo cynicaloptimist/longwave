@@ -56,7 +56,7 @@ export function GameRoom() {
       {gameState.roundPhase === RoundPhase.SetupGame && (
         <Lobby
           {...gameState}
-          startGame={() => setGameState(newRound(gameState, playerName))}
+          startGame={() => setGameState(newRound(playerName))}
         />
       )}
       {gameState.roundPhase === RoundPhase.GiveClue && (
@@ -85,7 +85,7 @@ export function GameRoom() {
       {gameState.roundPhase === RoundPhase.ViewScore && (
         <ViewScore
           {...gameState}
-          nextRound={() => setGameState(newRound(gameState, playerName))}
+          nextRound={() => setGameState(newRound(playerName))}
         />
       )}
     </div>
@@ -93,7 +93,6 @@ export function GameRoom() {
 }
 
 function newRound(
-  gameState: GameState,
   playerName: string
 ): Partial<GameState> {
   return {
