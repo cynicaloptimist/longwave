@@ -16,7 +16,11 @@ export function JoinTeam(props: {
   return (
     <div>
       <div>Join Team:</div>
-      <Row>
+      <Row
+        style={{
+          alignItems: "flex-start",
+        }}
+      >
         <Column>
           <div>LEFT BRAIN</div>
           {leftTeam.map((playerId) => (

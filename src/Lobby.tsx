@@ -12,7 +12,11 @@ export function Lobby(props: { players: PlayersTeams; startGame: () => void }) {
 
   return (
     <div>
-      <Row>
+      <Row
+        style={{
+          alignItems: "flex-start",
+        }}
+      >
         <Column>
           <div>LEFT BRAIN</div>
           {leftTeam.map((playerId) => (

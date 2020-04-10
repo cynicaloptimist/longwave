@@ -4,15 +4,19 @@ const baseFlexStyles: React.CSSProperties = {
   display: "flex",
   flexFlow: "row",
   justifyContent: "space-evenly",
-  alignItems: "center"
+  alignItems: "center",
 };
 
-export function Row(props: { children: React.ReactNode }) {
+export function Row(props: {
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+}) {
   return (
     <div
       style={{
         ...baseFlexStyles,
         flexFlow: "row",
+        ...props.style,
       }}
     >
       {props.children}
@@ -20,12 +24,16 @@ export function Row(props: { children: React.ReactNode }) {
   );
 }
 
-export function Column(props: { children: React.ReactNode }) {
+export function Column(props: {
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+}) {
   return (
     <div
       style={{
         ...baseFlexStyles,
         flexFlow: "column",
+        ...props.style,
       }}
     >
       {props.children}
