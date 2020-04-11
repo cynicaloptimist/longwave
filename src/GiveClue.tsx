@@ -1,5 +1,8 @@
 import React, { useRef } from "react";
+import Slider from "rc-slider";
+
 import { PlayersTeams } from "./AppState";
+
 export function GiveClue(props: {
   players: PlayersTeams;
   spectrumCard: [string, string];
@@ -14,9 +17,10 @@ export function GiveClue(props: {
     const clueGiverName = props.players[props.clueGiver].name;
     return <div>Waiting for {clueGiverName} to provide a clue...</div>;
   }
+
   return (
     <div>
-      <div>Target: {props.spectrumTarget} / 21</div>
+      <Slider min={1} max={21} value={props.spectrumTarget} />
       <div>
         Spectrum: {props.spectrumCard[0]} | {props.spectrumCard[1]}
       </div>
