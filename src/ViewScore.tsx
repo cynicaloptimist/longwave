@@ -20,8 +20,6 @@ export function ViewScore(props: {
         targetValue={props.spectrumTarget}
       />
       <Column>
-        <div>Target: {props.spectrumTarget}</div>
-        <div>Guess: {props.guess}</div>
         <div>Score: {score} points!</div>
         <Row style={{ alignSelf: "stretch" }}>
           <div>Left Brain: {props.leftScore}</div>
