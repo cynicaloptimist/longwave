@@ -3,6 +3,8 @@ import "./App.css";
 import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import { GameRoom } from "./GameRoom";
 import { randomFourCharacterString } from "./randomFourCharacterString";
+import { Column } from "./LayoutElements";
+import { Button } from "./Button";
 
 const style: React.CSSProperties = {
   maxWidth: 500,
@@ -32,15 +34,14 @@ function App() {
 function LandingPage() {
   const history = useHistory();
   return (
-    <div>
-      <input
-        type="button"
-        value="Start Game"
+    <Column>
+      <Button
+        text="Start Game"
         onClick={() => {
           history.push("/" + randomFourCharacterString());
         }}
       />
-    </div>
+    </Column>
   );
 }
 
