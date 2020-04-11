@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { PlayersTeams } from "./AppState";
 import { Spectrum } from "./Spectrum";
+import { Column } from "./LayoutElements";
 export function MakeGuess(props: {
   players: PlayersTeams;
   clueGiver: string;
@@ -18,9 +19,12 @@ export function MakeGuess(props: {
     return (
       <div>
         <Spectrum spectrumCard={props.spectrumCard} />
-        <div>
-          Waiting for {props.players[props.clueGiver].team} team to guess...
-        </div>
+        <Column>
+          <div>Clue: {props.clue}</div>
+          <div>
+            Waiting for {props.players[props.clueGiver].team} team to guess...
+          </div>
+        </Column>
       </div>
     );
   }
@@ -32,15 +36,18 @@ export function MakeGuess(props: {
         handleValue={handleValue}
         onChange={setHandleValue}
       />
-      <div>
-        <input
-          type="button"
-          value="Submit Guess"
-          onClick={() => {
-            props.submitGuess(handleValue);
-          }}
-        />
-      </div>
+      <Column>
+        <div>Clue: {props.clue}</div>
+        <div>
+          <input
+            type="button"
+            value="Submit Guess"
+            onClick={() => {
+              props.submitGuess(handleValue);
+            }}
+          />
+        </div>
+      </Column>
     </div>
   );
 }
