@@ -14,6 +14,7 @@ import { randomFourCharacterString } from "./randomFourCharacterString";
 import { Row } from "./LayoutElements";
 import { newRound } from "./newRound";
 import { scoreForPlayerTeam } from "./scoreForPlayerTeam";
+import { Scoreboard } from "./Scoreboard";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -117,6 +118,7 @@ export function GameRoom() {
           nextRound={() => setGameState(newRound(playerId))}
         />
       )}
+      <Scoreboard {...gameState} />
     </>
   );
 }
