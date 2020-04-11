@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-import { RoundPhase, GameState } from "./AppState";
+import { RoundPhase } from "./AppState";
 import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
@@ -8,12 +8,12 @@ import { useStorageBackedState } from "./useStorageBackedState";
 import { useNetworkBackedGameState } from "./useNetworkBackedGameState";
 import { InputName } from "./InputName";
 import { JoinTeam } from "./JoinTeam";
-import { RandomSpectrumCard } from "./SpectrumCards";
-import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
 import { Lobby } from "./Lobby";
 import { getScore } from "./getScore";
 import { randomFourCharacterString } from "./randomFourCharacterString";
 import { Row } from "./LayoutElements";
+import { newRound } from "./newRound";
+import { scoreForPlayerTeam } from "./scoreForPlayerTeam";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -119,33 +119,4 @@ export function GameRoom() {
       )}
     </>
   );
-}
-
-function newRound(playerId: string): Partial<GameState> {
-  return {
-    clueGiver: playerId,
-    roundPhase: RoundPhase.GiveClue,
-    spectrumCard: RandomSpectrumCard(),
-    spectrumTarget: RandomSpectrumTarget(),
-  };
-}
-
-function scoreForPlayerTeam(
-  gameState: GameState,
-  playerId: string,
-  pointsScored: number
-): Partial<GameState> {
-  if (gameState.players[playerId].team === "left") {
-    return {
-      leftScore: gameState.leftScore + pointsScored,
-    };
-  }
-
-  if (gameState.players[playerId].team === "right") {
-    return {
-      leftScore: gameState.rightScore + pointsScored,
-    };
-  }
-
-  return {};
 }
