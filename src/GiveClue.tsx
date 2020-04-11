@@ -10,9 +10,15 @@ export function GiveClue(props: {
   spectrumTarget: number;
   clueGiver: string;
   playerId: string;
+  updateClueGiver: (playerId: string) => void;
   submitClue: (clue: string) => void;
 }) {
   const inputElement = useRef<HTMLInputElement>(null);
+
+  if (!props.players[props.clueGiver]) {
+    props.updateClueGiver(props.playerId);
+    return null;
+  }
 
   if (props.playerId !== props.clueGiver) {
     const clueGiverName = props.players[props.clueGiver].name;

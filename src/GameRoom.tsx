@@ -75,28 +75,26 @@ export function GameRoom() {
     );
   }
 
-  if (!gameState.players[gameState.clueGiver]) {
-    setGameState({
-      clueGiver: playerId,
-    });
-    return null;
-  }
-
   return (
     <>
       {roomIdLabel}
       {gameState.roundPhase === RoundPhase.SetupGame && (
         <CenteredColumn>
-        <Button
-          text="Start Game"
-          onClick={() => setGameState(newRound(playerId))}
-        />
+          <Button
+            text="Start Game"
+            onClick={() => setGameState(newRound(playerId))}
+          />
         </CenteredColumn>
       )}
       {gameState.roundPhase === RoundPhase.GiveClue && (
         <GiveClue
           {...gameState}
           playerId={playerId}
+          updateClueGiver={(playerId: string) => {
+            setGameState({
+              clueGiver: playerId
+            })
+          }}
           submitClue={(clue) => {
             setGameState({
               clue,
