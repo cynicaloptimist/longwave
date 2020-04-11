@@ -55,7 +55,7 @@ export function Spectrum(props: {
   }
 
   return (
-    <div style={{ padding: 4 }}>
+    <div style={{ padding: 8 }}>
       <Column style={{ alignItems: "stretch" }}>
         <Row style={{ justifyContent: "space-between" }}>
           <div style={{ ...cardBackStyle, backgroundColor: "#" + primary }}>
