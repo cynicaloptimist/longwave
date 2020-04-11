@@ -21,25 +21,6 @@ export function Spectrum(props: {
   return (
     <div style={{ padding: 4 }}>
       <Column style={{ alignItems: "stretch" }}>
-        <Slider
-          min={1}
-          max={21}
-          value={props.target}
-          trackStyle={{
-            backgroundColor: "transparent",
-          }}
-          railStyle={{
-            background: `linear-gradient(90deg, #${primary} 0%, #${secondary} 100%)`,
-            height: 8,
-          }}
-          handleStyle={{
-            height: 18,
-            width: 18,
-            cursor: "auto",
-            backgroundColor: "white",
-            borderColor: "black",
-          }}
-        />
         <Row style={{ justifyContent: "space-between" }}>
           <div style={{ ...cardBackStyle, backgroundColor: "#" + primary }}>
             {props.spectrumCard[0]}
@@ -48,6 +29,27 @@ export function Spectrum(props: {
             {props.spectrumCard[1]}
           </div>
         </Row>
+        <div style={{ padding: 16 }}>
+          <Slider
+            min={1}
+            max={21}
+            value={props.target}
+            trackStyle={{
+              backgroundColor: "transparent",
+            }}
+            railStyle={{
+              background: `linear-gradient(90deg, #${primary} 0%, #${secondary} 100%)`,
+              height: 8,
+            }}
+            handleStyle={{
+              height: 18,
+              width: 18,
+              cursor: "auto",
+              backgroundColor: "white",
+              borderColor: "black",
+            }}
+          />
+        </div>
       </Column>
     </div>
   );
