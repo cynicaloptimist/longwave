@@ -55,6 +55,13 @@ export function GameRoom() {
     );
   }
 
+  if (!gameState.players[gameState.clueGiver]) {
+    setGameState({
+      clueGiver: playerId
+    });
+    return null;
+  }
+
   return (
     <div>
       <h1>{roomId}</h1>
