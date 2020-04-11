@@ -2,6 +2,7 @@ import React from "react";
 import { getScore } from "./getScore";
 import { Column } from "./LayoutElements";
 import { Spectrum } from "./Spectrum";
+import { Button } from "./Button";
 
 export function ViewScore(props: {
   spectrumCard: [string, string];
@@ -20,9 +21,7 @@ export function ViewScore(props: {
       <Column>
         <div>Score: {score} points!</div>
         <div>
-          <input
-            type="button"
-            value="Draw next Spectrum Card"
+          <Button text="Draw next Spectrum Card"
             onClick={props.nextRound}
           />
         </div>

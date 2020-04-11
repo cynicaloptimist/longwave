@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { PlayersTeams } from "./AppState";
 import { Spectrum } from "./Spectrum";
 import { Column } from "./LayoutElements";
+import { Button } from "./Button";
 export function MakeGuess(props: {
   players: PlayersTeams;
   clueGiver: string;
@@ -39,9 +40,7 @@ export function MakeGuess(props: {
       <Column>
         <div>Clue: {props.clue}</div>
         <div>
-          <input
-            type="button"
-            value="Submit Guess"
+          <Button text="Submit Guess"
             onClick={() => {
               props.submitGuess(handleValue);
             }}

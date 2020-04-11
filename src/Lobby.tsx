@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Column } from "./LayoutElements";
 import { PlayersTeams } from "./AppState";
+import { Button } from "./Button";
 
 export function Lobby(props: { players: PlayersTeams; startGame: () => void }) {
   const leftTeam = Object.keys(props.players).filter(
@@ -30,9 +31,7 @@ export function Lobby(props: { players: PlayersTeams; startGame: () => void }) {
           ))}
         </Column>
       </Row>
-      <input
-        type="button"
-        value="Start Game"
+      <Button text="Start Game"
         onClick={() => {
           props.startGame();
         }}

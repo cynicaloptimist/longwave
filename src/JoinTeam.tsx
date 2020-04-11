@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Column } from "./LayoutElements";
 import { PlayersTeams } from "./AppState";
+import { Button } from "./Button";
 
 export function JoinTeam(props: {
   players: PlayersTeams;
@@ -27,11 +28,7 @@ export function JoinTeam(props: {
             <div>{props.players[playerId].name}</div>
           ))}
           <div>
-            <input
-              type="button"
-              value="Join"
-              onClick={() => props.joinTeam("left")}
-            />
+            <Button text="Join" onClick={() => props.joinTeam("left")} />
           </div>
         </Column>
         <Column>
@@ -40,11 +37,7 @@ export function JoinTeam(props: {
             <div>{props.players[playerId].name}</div>
           ))}
           <div>
-            <input
-              type="button"
-              value="Join"
-              onClick={() => props.joinTeam("right")}
-            />
+            <Button text="Join" onClick={() => props.joinTeam("right")} />
           </div>
         </Column>
       </Row>
