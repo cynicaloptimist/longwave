@@ -7,6 +7,7 @@ export function Spectrum(props: {
   spectrumCard: [string, string];
   handleValue?: number;
   targetValue?: number;
+  guessingValue?: number;
   onChange?: (newValue: number) => void;
 }) {
   const scheme = new ColorScheme();
@@ -51,6 +52,13 @@ export function Spectrum(props: {
     marks[props.targetValue] = {
       style: { fontWeight: "bold", color: "black", cursor: "auto" },
       label: "Target",
+    };
+  }
+
+  if (props.guessingValue !== undefined) {
+    marks[props.guessingValue] = {
+      style: { fontWeight: "bold", color: "black", cursor: "auto" },
+      label: "Guessing...",
     };
   }
 

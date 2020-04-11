@@ -19,7 +19,10 @@ export function MakeGuess(props: {
   if (notMyTurn) {
     return (
       <div>
-        <Spectrum spectrumCard={props.spectrumCard} />
+        <Spectrum
+          spectrumCard={props.spectrumCard}
+          guessingValue={props.guess}
+        />
         <CenteredColumn>
           <div>Clue: {props.clue}</div>
           <div>
@@ -40,7 +43,8 @@ export function MakeGuess(props: {
       <CenteredColumn>
         <div>Clue: {props.clue}</div>
         <div>
-          <Button text="Submit Guess"
+          <Button
+            text="Submit Guess"
             onClick={() => {
               props.submitGuess();
             }}
