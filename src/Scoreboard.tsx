@@ -32,7 +32,7 @@ export function Scoreboard(props: {
         ))}
       </CenteredColumn>
       <CenteredColumn>
-        <div>RIGHT BRAIN {props.rightScore} POINTS</div>
+        <div>RIGHT BRAIN: {props.rightScore} POINTS</div>
         {rightTeam.map((playerId) => (
           <div>{props.players[playerId].name}</div>
         ))}
