@@ -16,7 +16,7 @@ export function GiveClue(props: {
   }
   return (
     <div>
-      <div>Target: {props.spectrumTarget} / 100</div>
+      <div>Target: {props.spectrumTarget} / 21</div>
       <div>
         Spectrum: {props.spectrumCard[0]} | {props.spectrumCard[1]}
       </div>
