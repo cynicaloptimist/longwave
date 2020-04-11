@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import { PlayersTeams } from "./AppState";
+import { Spectrum } from "./Spectrum";
 export function MakeGuess(props: {
   players: PlayersTeams;
   clueGiver: string;
@@ -8,24 +9,15 @@ export function MakeGuess(props: {
   playerId: string;
   submitGuess: (guess: number) => void;
 }) {
-  const inputElement = useRef<HTMLInputElement>(null);
-  const spectrumAndClue = (
-    <>
-      <div>
-        Spectrum: {props.spectrumCard[0]} | {props.spectrumCard[1]}
-      </div>
-      <div>Clue: {props.clue}</div>
-    </>
-  );
+  const [handleValue, setHandleValue] = useState(0);
 
   const notMyTurn =
     props.playerId === props.clueGiver ||
-    props.players[props.clueGiver].team !==
-      props.players[props.playerId].team;
+    props.players[props.clueGiver].team !== props.players[props.playerId].team;
   if (notMyTurn) {
     return (
       <div>
-        {spectrumAndClue}
+        <Spectrum spectrumCard={props.spectrumCard} />
         <div>
           Waiting for {props.players[props.clueGiver].team} team to guess...
         </div>
@@ -35,23 +27,17 @@ export function MakeGuess(props: {
 
   return (
     <div>
-      {spectrumAndClue}
-      <div>
-        <input type="number" placeholder="Guess..." ref={inputElement} />
-      </div>
+      <Spectrum
+        spectrumCard={props.spectrumCard}
+        handleValue={handleValue}
+        onChange={setHandleValue}
+      />
       <div>
         <input
           type="button"
           value="Submit Guess"
           onClick={() => {
-            if (!inputElement.current) {
-              return false;
-            }
-            const guess = parseInt(inputElement.current.value);
-            if (isNaN(guess)) {
-              return false;
-            }
-            props.submitGuess(guess);
+            props.submitGuess(handleValue);
           }}
         />
       </div>

@@ -4,8 +4,9 @@ import { Column, Row } from "./LayoutElements";
 const ColorScheme: any = require("color-scheme");
 
 export function Spectrum(props: {
-  handleValue: number;
   spectrumCard: [string, string];
+  handleValue?: number;
+  onChange?: (newValue: number) => void;
 }) {
   const scheme = new ColorScheme();
   scheme
@@ -18,10 +19,21 @@ export function Spectrum(props: {
     fontWeight: "bold",
   };
 
-  const inactiveHandleStyle: React.CSSProperties = {
-    cursor: "auto",
-    boxShadow: "none",
+  let handleStyle: React.CSSProperties = {
+    height: 18,
+    width: 18,
+    backgroundColor: "rgba(255,255,255,0.8)",
+    borderColor: "black",
   };
+
+  if (!props.onChange) {
+    handleStyle.cursor = "auto";
+    handleStyle.boxShadow = "none";
+  }
+
+  if (props.handleValue === undefined) {
+    handleStyle.display = "none";
+  }
 
   return (
     <div style={{ padding: 4 }}>
@@ -46,13 +58,8 @@ export function Spectrum(props: {
               background: `linear-gradient(90deg, #${primary} 0%, #${secondary} 100%)`,
               height: 8,
             }}
-            handleStyle={{
-              height: 18,
-              width: 18,
-              backgroundColor: "rgba(255,255,255,0.8)",
-              borderColor: "black",
-              ...inactiveHandleStyle,
-            }}
+            handleStyle={handleStyle}
+            onChange={props.onChange}
           />
         </div>
       </Column>
