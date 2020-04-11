@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 import { PlayersTeams } from "./AppState";
 import { Spectrum } from "./Spectrum";
-import { Column } from "./LayoutElements";
+import { CenteredColumn } from "./LayoutElements";
 
 export function GiveClue(props: {
   players: PlayersTeams;
@@ -19,9 +19,9 @@ export function GiveClue(props: {
     return (
       <div>
         <Spectrum spectrumCard={props.spectrumCard} />
-        <Column>
+        <CenteredColumn>
           <div>Waiting for {clueGiverName} to provide a clue...</div>
-        </Column>
+        </CenteredColumn>
       </div>
     );
   }
@@ -32,7 +32,7 @@ export function GiveClue(props: {
         targetValue={props.spectrumTarget}
         spectrumCard={props.spectrumCard}
       />
-      <Column>
+      <CenteredColumn>
         <input
           type="text"
           placeholder="Clue..."
@@ -47,7 +47,7 @@ export function GiveClue(props: {
             props.submitClue(inputElement.current.value);
           }}
         />
-      </Column>
+      </CenteredColumn>
     </div>
   );
 }

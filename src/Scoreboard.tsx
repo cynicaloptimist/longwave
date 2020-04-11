@@ -1,6 +1,6 @@
 import React from "react";
 import { PlayersTeams } from "./AppState";
-import { Row, Column } from "./LayoutElements";
+import { CenteredRow, CenteredColumn } from "./LayoutElements";
 
 export function Scoreboard(props: {
   leftScore: number;
@@ -14,9 +14,9 @@ export function Scoreboard(props: {
   const rightTeam = Object.keys(props.players).filter(
     (playerId) => props.players[playerId].team === "right"
   );
-  
+
   return (
-    <Row
+    <CenteredRow
       style={{
         alignSelf: "stretch",
         alignItems: "flex-start",
@@ -25,18 +25,18 @@ export function Scoreboard(props: {
         paddingTop: 16,
       }}
     >
-      <Column>
+      <CenteredColumn>
         <div>LEFT BRAIN: {props.leftScore} POINTS</div>
         {leftTeam.map((playerId) => (
           <div>{props.players[playerId].name}</div>
         ))}
-      </Column>
-      <Column>
+      </CenteredColumn>
+      <CenteredColumn>
         <div>RIGHT BRAIN {props.rightScore} POINTS</div>
         {rightTeam.map((playerId) => (
           <div>{props.players[playerId].name}</div>
         ))}
-      </Column>
-    </Row>
+      </CenteredColumn>
+    </CenteredRow>
   );
 }

@@ -7,7 +7,7 @@ const baseFlexStyles: React.CSSProperties = {
   alignItems: "center",
 };
 
-export function Row(props: {
+export function CenteredRow(props: {
   children: React.ReactNode;
   style?: React.CSSProperties;
 }) {
@@ -24,7 +24,7 @@ export function Row(props: {
   );
 }
 
-export function Column(props: {
+export function CenteredColumn(props: {
   children: React.ReactNode;
   style?: React.CSSProperties;
 }) {

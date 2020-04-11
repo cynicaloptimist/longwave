@@ -11,7 +11,7 @@ import { JoinTeam } from "./JoinTeam";
 import { Lobby } from "./Lobby";
 import { getScore } from "./getScore";
 import { randomFourCharacterString } from "./randomFourCharacterString";
-import { Row } from "./LayoutElements";
+import { CenteredRow, CenteredColumn } from "./LayoutElements";
 import { newRound } from "./newRound";
 import { scoreForPlayerTeam } from "./scoreForPlayerTeam";
 import { Scoreboard } from "./Scoreboard";
@@ -43,14 +43,19 @@ export function GameRoom() {
   }
 
   const roomIdLabel = (
-    <Row style={{ justifyContent: "flex-end", color: "gray" }}>
+    <CenteredRow
+      style={{
+        justifyContent: "flex-end",
+        color: "gray",
+      }}
+    >
       Room ID: {roomId}
-    </Row>
+    </CenteredRow>
   );
 
   if (gameState.players[playerId].team === "none") {
     return (
-      <>
+      <CenteredColumn style={{ alignItems: "stretch" }}>
         {roomIdLabel}
         <JoinTeam
           {...gameState}
@@ -66,7 +71,7 @@ export function GameRoom() {
             });
           }}
         />
-      </>
+      </CenteredColumn>
     );
   }
 

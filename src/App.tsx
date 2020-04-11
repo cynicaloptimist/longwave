@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import { GameRoom } from "./GameRoom";
 import { randomFourCharacterString } from "./randomFourCharacterString";
-import { Column } from "./LayoutElements";
+import { CenteredColumn } from "./LayoutElements";
 import { Button } from "./Button";
 
 const style: React.CSSProperties = {
@@ -49,14 +49,14 @@ function App() {
 function LandingPage() {
   const history = useHistory();
   return (
-    <Column>
+    <CenteredColumn>
       <Button
         text="Start Game"
         onClick={() => {
           history.push("/" + randomFourCharacterString());
         }}
       />
-    </Column>
+    </CenteredColumn>
   );
 }
 

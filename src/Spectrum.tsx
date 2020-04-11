@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "rc-slider";
-import { Column, Row } from "./LayoutElements";
+import { CenteredColumn, CenteredRow } from "./LayoutElements";
 const ColorScheme: any = require("color-scheme");
 
 export function Spectrum(props: {
@@ -56,15 +56,15 @@ export function Spectrum(props: {
 
   return (
     <div style={{ padding: 8 }}>
-      <Column style={{ alignItems: "stretch" }}>
-        <Row style={{ justifyContent: "space-between" }}>
+      <CenteredColumn style={{ alignItems: "stretch" }}>
+        <CenteredRow style={{ justifyContent: "space-between" }}>
           <div style={{ ...cardBackStyle, backgroundColor: "#" + primary }}>
             {props.spectrumCard[0]}
           </div>
           <div style={{ ...cardBackStyle, backgroundColor: "#" + secondary }}>
             {props.spectrumCard[1]}
           </div>
-        </Row>
+        </CenteredRow>
         <div style={{ padding: 16 }}>
           <Slider
             min={1}
@@ -83,7 +83,7 @@ export function Spectrum(props: {
             dotStyle={dotStyle}
           />
         </div>
-      </Column>
+      </CenteredColumn>
     </div>
   );
 }

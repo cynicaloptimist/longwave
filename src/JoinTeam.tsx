@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Column } from "./LayoutElements";
+import { CenteredRow, CenteredColumn } from "./LayoutElements";
 import { PlayersTeams } from "./AppState";
 import { Button } from "./Button";
 
@@ -17,12 +17,12 @@ export function JoinTeam(props: {
   return (
     <div>
       <div>Join Team:</div>
-      <Row
+      <CenteredRow
         style={{
           alignItems: "flex-start",
         }}
       >
-        <Column>
+        <CenteredColumn>
           <div>LEFT BRAIN</div>
           {leftTeam.map((playerId) => (
             <div>{props.players[playerId].name}</div>
@@ -30,8 +30,8 @@ export function JoinTeam(props: {
           <div>
             <Button text="Join" onClick={() => props.joinTeam("left")} />
           </div>
-        </Column>
-        <Column>
+        </CenteredColumn>
+        <CenteredColumn>
           <div>RIGHT BRAIN</div>
           {rightTeam.map((playerId) => (
             <div>{props.players[playerId].name}</div>
@@ -39,8 +39,8 @@ export function JoinTeam(props: {
           <div>
             <Button text="Join" onClick={() => props.joinTeam("right")} />
           </div>
-        </Column>
-      </Row>
+        </CenteredColumn>
+      </CenteredRow>
     </div>
   );
 }

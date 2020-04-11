@@ -1,6 +1,6 @@
 import React from "react";
 import { getScore } from "./getScore";
-import { Column } from "./LayoutElements";
+import { CenteredColumn } from "./LayoutElements";
 import { Spectrum } from "./Spectrum";
 import { Button } from "./Button";
 
@@ -18,14 +18,14 @@ export function ViewScore(props: {
         handleValue={props.guess}
         targetValue={props.spectrumTarget}
       />
-      <Column>
+      <CenteredColumn>
         <div>Score: {score} points!</div>
         <div>
           <Button text="Draw next Spectrum Card"
             onClick={props.nextRound}
           />
         </div>
-      </Column>
+      </CenteredColumn>
     </div>
   );
 }
