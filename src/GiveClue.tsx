@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
-import Slider from "rc-slider";
 
 import { PlayersTeams } from "./AppState";
+import { Spectrum } from "./Spectrum";
 
 export function GiveClue(props: {
   players: PlayersTeams;
@@ -20,7 +20,7 @@ export function GiveClue(props: {
 
   return (
     <div>
-      <Slider min={1} max={21} value={props.spectrumTarget} />
+      <Spectrum target={props.spectrumTarget} />
       <div>
         Spectrum: {props.spectrumCard[0]} | {props.spectrumCard[1]}
       </div>
