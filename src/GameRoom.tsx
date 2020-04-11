@@ -81,7 +81,7 @@ export function GameRoom() {
       {gameState.roundPhase === RoundPhase.SetupGame && (
         <CenteredColumn>
           <Button
-            text="Start Game"
+            text="Begin Game"
             onClick={() => setGameState(newRound(playerId))}
           />
         </CenteredColumn>

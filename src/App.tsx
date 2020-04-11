@@ -51,7 +51,7 @@ function LandingPage() {
   return (
     <CenteredColumn>
       <Button
-        text="Start Game"
+        text="Create Room"
         onClick={() => {
           history.push("/" + randomFourCharacterString());
         }}
