@@ -107,10 +107,17 @@ export function GameRoom() {
         <MakeGuess
           {...gameState}
           playerId={playerId}
-          submitGuess={(guess) => {
-            const pointsScored = getScore(gameState.spectrumTarget, guess);
+          setGuess={(guess: number) => {
             setGameState({
               guess,
+            });
+          }}
+          submitGuess={() => {
+            const pointsScored = getScore(
+              gameState.spectrumTarget,
+              gameState.guess
+            );
+            setGameState({
               roundPhase: RoundPhase.ViewScore,
               ...scoreForPlayerTeam(gameState, playerId, pointsScored),
             });

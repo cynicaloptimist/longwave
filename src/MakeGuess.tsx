@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { PlayersTeams } from "./AppState";
 import { Spectrum } from "./Spectrum";
 import { CenteredColumn } from "./LayoutElements";
@@ -9,10 +9,10 @@ export function MakeGuess(props: {
   spectrumCard: [string, string];
   clue: string;
   playerId: string;
-  submitGuess: (guess: number) => void;
+  guess: number;
+  setGuess: (guess: number) => void;
+  submitGuess: () => void;
 }) {
-  const [handleValue, setHandleValue] = useState(0);
-
   const notMyTurn =
     props.playerId === props.clueGiver ||
     props.players[props.clueGiver].team !== props.players[props.playerId].team;
@@ -34,15 +34,15 @@ export function MakeGuess(props: {
     <div>
       <Spectrum
         spectrumCard={props.spectrumCard}
-        handleValue={handleValue}
-        onChange={setHandleValue}
+        handleValue={props.guess}
+        onChange={props.setGuess}
       />
       <CenteredColumn>
         <div>Clue: {props.clue}</div>
         <div>
           <Button text="Submit Guess"
             onClick={() => {
-              props.submitGuess(handleValue);
+              props.submitGuess();
             }}
           />
         </div>
