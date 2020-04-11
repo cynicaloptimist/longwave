@@ -33,13 +33,16 @@ export function GiveClue(props: {
         spectrumCard={props.spectrumCard}
       />
       <Column>
-        <input type="text" placeholder="Clue..." ref={inputElement} />
         <input
-          type="button"
-          value="Share Clue"
-          onClick={() => {
+          type="text"
+          placeholder="Clue..."
+          ref={inputElement}
+          onKeyDown={(event) => {
             if (!inputElement.current) {
               return false;
+            }
+            if (event.key !== "Enter") {
+              return true;
             }
             props.submitClue(inputElement.current.value);
           }}
