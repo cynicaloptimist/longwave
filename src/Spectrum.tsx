@@ -18,6 +18,11 @@ export function Spectrum(props: {
     fontWeight: "bold",
   };
 
+  const inactiveHandleStyle: React.CSSProperties = {
+    cursor: "auto",
+    boxShadow: "none",
+  };
+
   return (
     <div style={{ padding: 4 }}>
       <Column style={{ alignItems: "stretch" }}>
@@ -44,9 +49,9 @@ export function Spectrum(props: {
             handleStyle={{
               height: 18,
               width: 18,
-              cursor: "auto",
               backgroundColor: "rgba(255,255,255,0.8)",
               borderColor: "black",
+              ...inactiveHandleStyle,
             }}
           />
         </div>
