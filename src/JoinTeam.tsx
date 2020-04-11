@@ -16,7 +16,7 @@ export function JoinTeam(props: {
 
   return (
     <div>
-      <div>Join Team:</div>
+      <CenteredColumn>Join Team:</CenteredColumn>
       <CenteredRow
         style={{
           alignItems: "flex-start",
