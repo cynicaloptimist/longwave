@@ -4,7 +4,7 @@ import { Column, Row } from "./LayoutElements";
 const ColorScheme: any = require("color-scheme");
 
 export function Spectrum(props: {
-  target: number;
+  handleValue: number;
   spectrumCard: [string, string];
 }) {
   const scheme = new ColorScheme();
@@ -38,7 +38,7 @@ export function Spectrum(props: {
           <Slider
             min={1}
             max={21}
-            value={props.target}
+            value={props.handleValue}
             trackStyle={{
               backgroundColor: "transparent",
             }}
