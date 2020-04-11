@@ -92,8 +92,8 @@ export function GameRoom() {
           playerId={playerId}
           updateClueGiver={(playerId: string) => {
             setGameState({
-              clueGiver: playerId
-            })
+              clueGiver: playerId,
+            });
           }}
           submitClue={(clue) => {
             setGameState({
@@ -123,7 +123,13 @@ export function GameRoom() {
           nextRound={() => setGameState(newRound(playerId))}
         />
       )}
-      <Scoreboard {...gameState} />
+      <Scoreboard
+        {...gameState}
+        removePlayer={(playerId) => {
+          delete gameState.players[playerId];
+          setGameState(gameState);
+        }}
+      />
     </>
   );
 }

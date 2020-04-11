@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { PlayersTeams } from "./AppState";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
 
@@ -6,13 +6,20 @@ export function Scoreboard(props: {
   leftScore: number;
   rightScore: number;
   players: PlayersTeams;
+  removePlayer: (playerId: string) => void;
 }) {
-
   const leftTeam = Object.keys(props.players).filter(
     (playerId) => props.players[playerId].team === "left"
   );
   const rightTeam = Object.keys(props.players).filter(
     (playerId) => props.players[playerId].team === "right"
+  );
+
+  const toPlayerRow = (playerId: string) => (
+    <PlayerRow
+      playerName={props.players[playerId].name}
+      onRemove={() => props.removePlayer(playerId)}
+    />
   );
 
   return (
@@ -25,18 +32,32 @@ export function Scoreboard(props: {
         paddingTop: 16,
       }}
     >
-      <CenteredColumn>
+      <CenteredColumn style={{ alignItems: "flex-start" }}>
         <div>LEFT BRAIN: {props.leftScore} POINTS</div>
-        {leftTeam.map((playerId) => (
-          <div>{props.players[playerId].name}</div>
-        ))}
+        {leftTeam.map(toPlayerRow)}
       </CenteredColumn>
-      <CenteredColumn>
+      <CenteredColumn style={{ alignItems: "flex-start" }}>
         <div>RIGHT BRAIN: {props.rightScore} POINTS</div>
-        {rightTeam.map((playerId) => (
-          <div>{props.players[playerId].name}</div>
-        ))}
+        {rightTeam.map(toPlayerRow)}
       </CenteredColumn>
     </CenteredRow>
+  );
+}
+
+function PlayerRow(props: { playerName: string; onRemove: () => void }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div
+      style={{ marginLeft: 16 }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {props.playerName}
+      {hovered && (
+        <span style={{ marginLeft: 4 }} onClick={props.onRemove}>
+          [X]
+        </span>
+      )}
+    </div>
   );
 }
