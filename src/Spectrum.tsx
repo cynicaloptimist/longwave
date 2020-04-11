@@ -45,7 +45,7 @@ export function Spectrum(props: {
               height: 18,
               width: 18,
               cursor: "auto",
-              backgroundColor: "white",
+              backgroundColor: "rgba(255,255,255,0.8)",
               borderColor: "black",
             }}
           />
