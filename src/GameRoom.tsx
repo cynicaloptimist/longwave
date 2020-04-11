@@ -8,13 +8,13 @@ import { useStorageBackedState } from "./useStorageBackedState";
 import { useNetworkBackedGameState } from "./useNetworkBackedGameState";
 import { InputName } from "./InputName";
 import { JoinTeam } from "./JoinTeam";
-import { Lobby } from "./Lobby";
 import { getScore } from "./getScore";
 import { randomFourCharacterString } from "./randomFourCharacterString";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
 import { newRound } from "./newRound";
 import { scoreForPlayerTeam } from "./scoreForPlayerTeam";
 import { Scoreboard } from "./Scoreboard";
+import { Button } from "./Button";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -86,9 +86,9 @@ export function GameRoom() {
     <>
       {roomIdLabel}
       {gameState.roundPhase === RoundPhase.SetupGame && (
-        <Lobby
-          {...gameState}
-          startGame={() => setGameState(newRound(playerId))}
+        <Button
+          text="Start Game"
+          onClick={() => setGameState(newRound(playerId))}
         />
       )}
       {gameState.roundPhase === RoundPhase.GiveClue && (
