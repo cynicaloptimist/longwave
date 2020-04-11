@@ -22,7 +22,7 @@ export function ViewScore(props: {
         <div>
           <input
             type="button"
-            value="Draw a Spectrum Card"
+            value="Draw next Spectrum Card"
             onClick={props.nextRound}
           />
         </div>
