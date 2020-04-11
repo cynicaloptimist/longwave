@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 
 import { PlayersTeams } from "./AppState";
 import { Spectrum } from "./Spectrum";
+import { Column } from "./LayoutElements";
 
 export function GiveClue(props: {
   players: PlayersTeams;
@@ -15,7 +16,14 @@ export function GiveClue(props: {
 
   if (props.playerId !== props.clueGiver) {
     const clueGiverName = props.players[props.clueGiver].name;
-    return <div>Waiting for {clueGiverName} to provide a clue...</div>;
+    return (
+      <div>
+        <Spectrum spectrumCard={props.spectrumCard} />
+        <Column>
+          <div>Waiting for {clueGiverName} to provide a clue...</div>
+        </Column>
+      </div>
+    );
   }
 
   return (
@@ -24,13 +32,11 @@ export function GiveClue(props: {
         handleValue={props.spectrumTarget}
         spectrumCard={props.spectrumCard}
       />
-      <div>
+      <Column>
         <input type="text" placeholder="Clue..." ref={inputElement} />
-      </div>
-      <div>
         <input
           type="button"
-          value="Submit Clue"
+          value="Share Clue"
           onClick={() => {
             if (!inputElement.current) {
               return false;
@@ -38,7 +44,7 @@ export function GiveClue(props: {
             props.submitClue(inputElement.current.value);
           }}
         />
-      </div>
+      </Column>
     </div>
   );
 }
