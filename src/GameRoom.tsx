@@ -86,10 +86,12 @@ export function GameRoom() {
     <>
       {roomIdLabel}
       {gameState.roundPhase === RoundPhase.SetupGame && (
+        <CenteredColumn>
         <Button
           text="Start Game"
           onClick={() => setGameState(newRound(playerId))}
         />
+        </CenteredColumn>
       )}
       {gameState.roundPhase === RoundPhase.GiveClue && (
         <GiveClue
