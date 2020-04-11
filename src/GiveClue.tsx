@@ -29,7 +29,7 @@ export function GiveClue(props: {
   return (
     <div>
       <Spectrum
-        handleValue={props.spectrumTarget}
+        targetValue={props.spectrumTarget}
         spectrumCard={props.spectrumCard}
       />
       <Column>

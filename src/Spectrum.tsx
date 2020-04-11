@@ -6,6 +6,7 @@ const ColorScheme: any = require("color-scheme");
 export function Spectrum(props: {
   spectrumCard: [string, string];
   handleValue?: number;
+  targetValue?: number;
   onChange?: (newValue: number) => void;
 }) {
   const scheme = new ColorScheme();
@@ -26,6 +27,13 @@ export function Spectrum(props: {
     borderColor: "black",
   };
 
+  const dotStyle = {
+    ...handleStyle,
+    cursor: "auto",
+    bottom: -9,
+    borderWidth: 4,
+  };
+
   if (!props.onChange) {
     handleStyle.cursor = "auto";
     handleStyle.boxShadow = "none";
@@ -33,6 +41,17 @@ export function Spectrum(props: {
 
   if (props.handleValue === undefined) {
     handleStyle.display = "none";
+  }
+
+  let marks: {
+    [n: number]: { style: React.CSSProperties; label: string };
+  } = {};
+
+  if (props.targetValue !== undefined) {
+    marks[props.targetValue] = {
+      style: { fontWeight: "bold", color: "black", cursor: "auto" },
+      label: "Target",
+    };
   }
 
   return (
@@ -60,6 +79,8 @@ export function Spectrum(props: {
             }}
             handleStyle={handleStyle}
             onChange={props.onChange}
+            marks={marks}
+            dotStyle={dotStyle}
           />
         </div>
       </Column>
