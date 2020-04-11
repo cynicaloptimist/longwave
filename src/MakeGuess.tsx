@@ -24,7 +24,9 @@ export function MakeGuess(props: {
           guessingValue={props.guess}
         />
         <CenteredColumn>
-          <div>Clue: {props.clue}</div>
+          <div>
+            Clue: <strong>{props.clue}</strong>
+          </div>
           <div>
             Waiting for {props.players[props.clueGiver].team} team to guess...
           </div>
@@ -41,7 +43,9 @@ export function MakeGuess(props: {
         onChange={props.setGuess}
       />
       <CenteredColumn>
-        <div>Clue: {props.clue}</div>
+        <div>
+          Clue: <strong>{props.clue}</strong>
+        </div>
         <div>
           <Button
             text="Submit Guess"
