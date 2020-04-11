@@ -13,6 +13,7 @@ import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
 import { Lobby } from "./Lobby";
 import { getScore } from "./getScore";
 import { randomFourCharacterString } from "./randomFourCharacterString";
+import { Row } from "./LayoutElements";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -26,7 +27,11 @@ export function GameRoom() {
     "playerId"
   );
 
-  const [gameState, setGameState] = useNetworkBackedGameState(roomId, playerId, playerName);
+  const [gameState, setGameState] = useNetworkBackedGameState(
+    roomId,
+    playerId,
+    playerName
+  );
 
   if (playerName.length === 0) {
     return <InputName setName={setPlayerName} />;
@@ -36,35 +41,44 @@ export function GameRoom() {
     return null;
   }
 
+  const roomIdLabel = (
+    <Row style={{ justifyContent: "flex-end", color: "gray" }}>
+      Room ID: {roomId}
+    </Row>
+  );
+
   if (gameState.players[playerId].team === "none") {
     return (
-      <JoinTeam
-        {...gameState}
-        joinTeam={(team) => {
-          setGameState({
-            players: {
-              ...gameState.players,
-              [playerId]: {
-                name: playerName,
-                team,
+      <>
+        {roomIdLabel}
+        <JoinTeam
+          {...gameState}
+          joinTeam={(team) => {
+            setGameState({
+              players: {
+                ...gameState.players,
+                [playerId]: {
+                  name: playerName,
+                  team,
+                },
               },
-            },
-          });
-        }}
-      />
+            });
+          }}
+        />
+      </>
     );
   }
 
   if (!gameState.players[gameState.clueGiver]) {
     setGameState({
-      clueGiver: playerId
+      clueGiver: playerId,
     });
     return null;
   }
 
   return (
-    <div>
-      <h1>{roomId}</h1>
+    <>
+      {roomIdLabel}
       {gameState.roundPhase === RoundPhase.SetupGame && (
         <Lobby
           {...gameState}
@@ -103,7 +117,7 @@ export function GameRoom() {
           nextRound={() => setGameState(newRound(playerId))}
         />
       )}
-    </div>
+    </>
   );
 }
 
