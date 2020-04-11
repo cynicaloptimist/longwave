@@ -32,10 +32,14 @@ function App() {
             paddingTop: 8,
             borderTop: "1px solid black",
             color: "gray",
-            fontSize: "small"
+            fontSize: "small",
           }}
         >
-          <a href="https://www.wavelength.zone/" target="_blank">
+          <a
+            href="https://www.wavelength.zone/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Wavelength
           </a>{" "}
           is designed by Wolfgang Warsch, Alex Hague, and Justin Vickers.
