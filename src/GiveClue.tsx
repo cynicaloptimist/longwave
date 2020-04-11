@@ -20,10 +20,10 @@ export function GiveClue(props: {
 
   return (
     <div>
-      <Spectrum target={props.spectrumTarget} />
-      <div>
-        Spectrum: {props.spectrumCard[0]} | {props.spectrumCard[1]}
-      </div>
+      <Spectrum
+        target={props.spectrumTarget}
+        spectrumCard={props.spectrumCard}
+      />
       <div>
         <input type="text" placeholder="Clue..." ref={inputElement} />
       </div>
