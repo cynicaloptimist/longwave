@@ -1,6 +1,6 @@
 import React from "react";
 import { getScore } from "./getScore";
-import { Row } from "./LayoutElements";
+import { Row, Column } from "./LayoutElements";
 
 export function ViewScore(props: {
   spectrumTarget: number;
@@ -11,17 +11,21 @@ export function ViewScore(props: {
 }) {
   const score = getScore(props.spectrumTarget, props.guess);
   return (
-    <div>
+    <Column>
       <div>Target: {props.spectrumTarget}</div>
       <div>Guess: {props.guess}</div>
       <div>Score: {score} points!</div>
-      <Row>
+      <Row style={{ alignSelf: "stretch" }}>
         <div>Left Brain: {props.leftScore}</div>
         <div>Right Brain: {props.rightScore}</div>
       </Row>
       <div>
-        <input type="button" value="Next Round" onClick={props.nextRound} />
+        <input
+          type="button"
+          value="Draw a Spectrum Card"
+          onClick={props.nextRound}
+        />
       </div>
-    </div>
+    </Column>
   );
 }
