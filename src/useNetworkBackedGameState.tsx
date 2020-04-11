@@ -12,11 +12,6 @@ export function useNetworkBackedGameState(
   useEffect(() => {
     const dbRef = database().ref("rooms/" + roomId);
 
-    dbRef
-      .child("players/" + playerId)
-      .onDisconnect()
-      .remove();
-
     dbRef.on("value", (appState) => {
       const networkGameState: GameState = appState.val();
       const completeGameState = {
