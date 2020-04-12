@@ -1,8 +1,17 @@
 import React from "react";
 import { GetContrastingColors } from "./GetContrastingColors";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export function Title() {
-  const [primary, secondary] = GetContrastingColors(Math.random() * 360);
+  const [hue, setHue] = useState(0);
+  const [primary, secondary] = GetContrastingColors(hue);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHue((hue) => (hue + 1) % 360);
+    }, 5);
+    return () => clearInterval(interval);
+  });
   return (
     <h1
       style={{
