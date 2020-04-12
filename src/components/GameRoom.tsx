@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-import { RoundPhase } from "../state/AppState";
+import { RoundPhase, GameType } from "../state/AppState";
 import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
@@ -76,12 +76,14 @@ export function GameRoom() {
         />
       )}
       {gameState.roundPhase === RoundPhase.SetupGame && (
-        <CenteredColumn>
-          <Button
-            text="Begin Game"
-            onClick={() => setGameState(NewRound(playerId))}
-          />
-        </CenteredColumn>
+        <SetupGame
+          startGame={(gameType) =>
+            setGameState({
+              ...NewRound(playerId),
+              gameType,
+            })
+          }
+        />
       )}
       {gameState.roundPhase === RoundPhase.GiveClue && (
         <GiveClue
@@ -144,5 +146,16 @@ export function GameRoom() {
         />
       )}
     </>
+  );
+}
+
+function SetupGame(props: { startGame: (gameType: GameType) => void }) {
+  return (
+    <CenteredColumn>
+      <Button
+        text="Begin Game"
+        onClick={() => props.startGame(GameType.Teams)}
+      />
+    </CenteredColumn>
   );
 }
