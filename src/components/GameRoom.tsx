@@ -44,21 +44,22 @@ export function GameRoom() {
     return null;
   }
 
-  const roomIdLabel = (
-    <CenteredRow
-      style={{
-        justifyContent: "flex-end",
-        color: "gray",
-      }}
-    >
-      Room ID: {roomId}
-    </CenteredRow>
-  );
+  const playerTeam = gameState.players[playerId].team;
 
-  if (gameState.players[playerId].team === "none") {
-    return (
-      <CenteredColumn style={{ alignItems: "stretch" }}>
-        {roomIdLabel}
+  const scoreboardVisible =
+    gameState.roundPhase !== RoundPhase.SetupGame && playerTeam !== "none";
+
+  return (
+    <>
+      <CenteredRow
+        style={{
+          justifyContent: "flex-end",
+          color: "gray",
+        }}
+      >
+        Room ID: {roomId}
+      </CenteredRow>
+      {playerTeam !== "none" && (
         <JoinTeam
           {...gameState}
           joinTeam={(team) => {
@@ -73,13 +74,7 @@ export function GameRoom() {
             });
           }}
         />
-      </CenteredColumn>
-    );
-  }
-
-  return (
-    <>
-      {roomIdLabel}
+      )}
       {gameState.roundPhase === RoundPhase.SetupGame && (
         <CenteredColumn>
           <Button
@@ -139,13 +134,15 @@ export function GameRoom() {
           nextRound={() => setGameState(NewRound(playerId))}
         />
       )}
-      <Scoreboard
-        {...gameState}
-        removePlayer={(playerId) => {
-          delete gameState.players[playerId];
-          setGameState(gameState);
-        }}
-      />
+      {scoreboardVisible && (
+        <Scoreboard
+          {...gameState}
+          removePlayer={(playerId) => {
+            delete gameState.players[playerId];
+            setGameState(gameState);
+          }}
+        />
+      )}
     </>
   );
 }
