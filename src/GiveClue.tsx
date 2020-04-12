@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 import { PlayersTeams } from "./AppState";
 import { Spectrum } from "./Spectrum";
-import { CenteredColumn, CenteredRow } from "./LayoutElements";
+import { CenteredColumn } from "./LayoutElements";
 import { Button } from "./Button";
 
 export function GiveClue(props: {
