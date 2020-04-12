@@ -17,6 +17,7 @@ import { Button } from "./Button";
 import { RandomSpectrumCard } from "../state/SpectrumCards";
 import { RandomSpectrumTarget } from "../state/RandomSpectrumTarget";
 import { RandomFourCharacterString } from "../state/RandomFourCharacterString";
+import { Title } from "./Title";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -152,6 +153,7 @@ export function GameRoom() {
 function SetupGame(props: { startGame: (gameType: GameType) => void }) {
   return (
     <CenteredColumn>
+      <Title />
       <Button
         text="Begin Game"
         onClick={() => props.startGame(GameType.Teams)}
