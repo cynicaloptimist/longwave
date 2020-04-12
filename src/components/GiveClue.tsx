@@ -6,7 +6,6 @@ import { CenteredColumn } from "./LayoutElements";
 import { Button } from "./Button";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useLayoutEffect } from "react";
 
 export function GiveClue(props: {
   players: PlayersTeams;
