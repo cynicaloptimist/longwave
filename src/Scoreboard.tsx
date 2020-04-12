@@ -17,6 +17,7 @@ export function Scoreboard(props: {
 
   const toPlayerRow = (playerId: string) => (
     <PlayerRow
+      key={playerId}
       playerName={props.players[playerId].name}
       onRemove={() => props.removePlayer(playerId)}
     />
