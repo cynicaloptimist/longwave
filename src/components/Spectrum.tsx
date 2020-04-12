@@ -10,7 +10,9 @@ export function Spectrum(props: {
   guessingValue?: number;
   onChange?: (newValue: number) => void;
 }) {
-  const [primary, secondary] = GetContrastingColors(getStringHash(props.spectrumCard[0]))
+  const [primary, secondary] = GetContrastingColors(
+    getStringHash(props.spectrumCard[0])
+  );
   const cardBackStyle: React.CSSProperties = {
     padding: 8,
     fontWeight: "bold",
@@ -28,6 +30,7 @@ export function Spectrum(props: {
     cursor: "auto",
     bottom: -9,
     borderWidth: 4,
+    transform: "translateX(-5px)",
   };
 
   if (!props.onChange) {
