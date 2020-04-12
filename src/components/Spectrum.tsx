@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "rc-slider";
 import { CenteredColumn, CenteredRow } from "./LayoutElements";
-const ColorScheme: any = require("color-scheme");
+import { GetContrastingColors } from "./GetContrastingColors";
 
 export function Spectrum(props: {
   spectrumCard: [string, string];
@@ -10,12 +10,7 @@ export function Spectrum(props: {
   guessingValue?: number;
   onChange?: (newValue: number) => void;
 }) {
-  const scheme = new ColorScheme();
-  scheme
-    .from_hue(getStringHash(props.spectrumCard[0]))
-    .scheme("contrast")
-    .variation("soft");
-  const [primary, , , , secondary]: string[] = scheme.colors();
+  const [primary, secondary] = GetContrastingColors(getStringHash(props.spectrumCard[0]))
   const cardBackStyle: React.CSSProperties = {
     padding: 8,
     fontWeight: "bold",
@@ -66,10 +61,10 @@ export function Spectrum(props: {
     <div style={{ padding: 8 }}>
       <CenteredColumn style={{ alignItems: "stretch" }}>
         <CenteredRow style={{ justifyContent: "space-between" }}>
-          <div style={{ ...cardBackStyle, backgroundColor: "#" + primary }}>
+          <div style={{ ...cardBackStyle, backgroundColor: primary }}>
             {props.spectrumCard[0]}
           </div>
-          <div style={{ ...cardBackStyle, backgroundColor: "#" + secondary }}>
+          <div style={{ ...cardBackStyle, backgroundColor: secondary }}>
             {props.spectrumCard[1]}
           </div>
         </CenteredRow>
@@ -82,7 +77,7 @@ export function Spectrum(props: {
               backgroundColor: "transparent",
             }}
             railStyle={{
-              background: `linear-gradient(90deg, #${primary} 0%, #${secondary} 100%)`,
+              background: `linear-gradient(90deg, ${primary} 0%, ${secondary} 100%)`,
               height: 8,
             }}
             handleStyle={handleStyle}
