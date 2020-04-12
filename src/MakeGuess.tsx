@@ -16,6 +16,12 @@ export function MakeGuess(props: {
   const notMyTurn =
     props.playerId === props.clueGiver ||
     props.players[props.clueGiver].team !== props.players[props.playerId].team;
+  const clueGiverName = props.players[props.clueGiver].name;
+  const clueGiverTeam =
+    props.players[props.clueGiver].team == "left"
+      ? "LEFT BRAIN"
+      : "RIGHT BRAIN";
+
   if (notMyTurn) {
     return (
       <div>
@@ -25,11 +31,9 @@ export function MakeGuess(props: {
         />
         <CenteredColumn>
           <div>
-            Clue: <strong>{props.clue}</strong>
+            {clueGiverName}'s clue: <strong>{props.clue}</strong>
           </div>
-          <div>
-            Waiting for {props.players[props.clueGiver].team} team to guess...
-          </div>
+          <div>Waiting for {clueGiverTeam} to guess...</div>
         </CenteredColumn>
       </div>
     );
@@ -44,7 +48,7 @@ export function MakeGuess(props: {
       />
       <CenteredColumn>
         <div>
-          Clue: <strong>{props.clue}</strong>
+          {clueGiverName}'s clue: <strong>{props.clue}</strong>
         </div>
         <div>
           <Button
