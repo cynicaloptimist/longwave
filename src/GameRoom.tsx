@@ -15,6 +15,8 @@ import { newRound } from "./newRound";
 import { scoreForPlayerTeam } from "./scoreForPlayerTeam";
 import { Scoreboard } from "./Scoreboard";
 import { Button } from "./Button";
+import { RandomSpectrumCard } from "./SpectrumCards";
+import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -95,9 +97,16 @@ export function GameRoom() {
               clueGiver: playerId,
             });
           }}
+          redrawCard={() => {
+            setGameState({
+              spectrumCard: RandomSpectrumCard(),
+              spectrumTarget: RandomSpectrumTarget()
+            })
+          }}
           submitClue={(clue) => {
             setGameState({
               clue,
+              guess: 0,
               roundPhase: RoundPhase.MakeGuess,
             });
           }}

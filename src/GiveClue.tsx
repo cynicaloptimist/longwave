@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import { PlayersTeams } from "./AppState";
 import { Spectrum } from "./Spectrum";
 import { CenteredColumn } from "./LayoutElements";
+import { Button } from "./Button";
 
 export function GiveClue(props: {
   players: PlayersTeams;
@@ -11,6 +12,7 @@ export function GiveClue(props: {
   clueGiver: string;
   playerId: string;
   updateClueGiver: (playerId: string) => void;
+  redrawCard: () => void;
   submitClue: (clue: string) => void;
 }) {
   const inputElement = useRef<HTMLInputElement>(null);
@@ -53,6 +55,7 @@ export function GiveClue(props: {
             props.submitClue(inputElement.current.value);
           }}
         />
+        <Button text="Draw a different card" onClick={props.redrawCard} />
       </CenteredColumn>
     </div>
   );
