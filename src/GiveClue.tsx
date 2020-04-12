@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 import { PlayersTeams } from "./AppState";
 import { Spectrum } from "./Spectrum";
-import { CenteredColumn } from "./LayoutElements";
+import { CenteredColumn, CenteredRow } from "./LayoutElements";
 import { Button } from "./Button";
 
 export function GiveClue(props: {
@@ -34,9 +34,18 @@ export function GiveClue(props: {
     );
   }
 
+  const submit = () => {
+    if (!inputElement.current) {
+      return false;
+    }
+    props.submitClue(inputElement.current.value);
+  };
+
   return (
     <div>
-      <Button text="Draw a different card" onClick={props.redrawCard} />
+      <CenteredColumn style={{ alignItems: "flex-end" }}>
+        <Button text="Draw a different card" onClick={props.redrawCard} />
+      </CenteredColumn>
       <Spectrum
         targetValue={props.spectrumTarget}
         spectrumCard={props.spectrumCard}
@@ -47,15 +56,13 @@ export function GiveClue(props: {
           placeholder="Clue..."
           ref={inputElement}
           onKeyDown={(event) => {
-            if (!inputElement.current) {
-              return false;
-            }
             if (event.key !== "Enter") {
               return true;
             }
-            props.submitClue(inputElement.current.value);
+            submit();
           }}
         />
+        <Button text="Submit Clue" onClick={submit} />
       </CenteredColumn>
     </div>
   );
