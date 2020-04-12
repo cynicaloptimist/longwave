@@ -7,7 +7,7 @@ export function scoreForPlayerTeam(gameState: GameState, playerId: string, point
   }
   if (gameState.players[playerId].team === "right") {
     return {
-      leftScore: gameState.rightScore + pointsScored,
+      rightScore: gameState.rightScore + pointsScored,
     };
   }
   return {};
