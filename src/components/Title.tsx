@@ -6,7 +6,7 @@ export function Title() {
   return (
     <h1
       style={{
-        background: `linear-gradient(90deg, ${primary} 10%, ${secondary} 90%)`,
+        backgroundImage: `linear-gradient(90deg, ${primary} 10%, ${secondary} 90%)`,
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",
       }}
