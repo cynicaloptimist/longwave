@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { GameRoom } from "./GameRoom";
-import { randomFourCharacterString } from "./randomFourCharacterString";
 import { CenteredColumn } from "./LayoutElements";
-import { Button } from "./Button";
+import { CommonFooter } from "./CommonFooter";
+import { LandingPage } from "./LandingPage";
 
 const style: React.CSSProperties = {
   maxWidth: 500,
@@ -29,44 +29,6 @@ function App() {
           <CommonFooter />
         </BrowserRouter>
       </div>
-    </CenteredColumn>
-  );
-}
-
-function CommonFooter() {
-  return (
-    <div
-      style={{
-        margin: 8,
-        paddingTop: 8,
-        borderTop: "1px solid black",
-        color: "gray",
-        fontSize: "small",
-      }}
-    >
-      <a
-        href="https://www.wavelength.zone/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Wavelength
-      </a>{" "}
-      is designed by Wolfgang Warsch, Alex Hague, and Justin Vickers. Adapted
-      for web by Evan Bailey and Margarethe Schoen.
-    </div>
-  );
-}
-
-function LandingPage() {
-  const history = useHistory();
-  return (
-    <CenteredColumn>
-      <Button
-        text="Create Room"
-        onClick={() => {
-          history.push("/" + randomFourCharacterString());
-        }}
-      />
     </CenteredColumn>
   );
 }
