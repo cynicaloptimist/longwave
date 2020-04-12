@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+.reveal {
+  overflow: hidden;
+  position: relative;
+}
+
+.reveal::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 2;
+  transition: all 1s linear;
+}
+
+.reveal.show::after {
+  transform: translateX(100%);
+}

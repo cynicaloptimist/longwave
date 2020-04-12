@@ -4,6 +4,9 @@ import { PlayersTeams } from "../state/AppState";
 import { Spectrum } from "./Spectrum";
 import { CenteredColumn } from "./LayoutElements";
 import { Button } from "./Button";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useLayoutEffect } from "react";
 
 export function GiveClue(props: {
   players: PlayersTeams;
@@ -26,7 +29,9 @@ export function GiveClue(props: {
     const clueGiverName = props.players[props.clueGiver].name;
     return (
       <div>
-        <Spectrum spectrumCard={props.spectrumCard} />
+        <Reveal>
+          <Spectrum spectrumCard={props.spectrumCard} />
+        </Reveal>
         <CenteredColumn>
           <div>Waiting for {clueGiverName} to provide a clue...</div>
         </CenteredColumn>
@@ -46,10 +51,12 @@ export function GiveClue(props: {
       <CenteredColumn style={{ alignItems: "flex-end" }}>
         <Button text="Draw a different card" onClick={props.redrawCard} />
       </CenteredColumn>
-      <Spectrum
-        targetValue={props.spectrumTarget}
-        spectrumCard={props.spectrumCard}
-      />
+      <Reveal>
+        <Spectrum
+          targetValue={props.spectrumTarget}
+          spectrumCard={props.spectrumCard}
+        />
+      </Reveal>
       <CenteredColumn>
         <input
           type="text"
@@ -66,4 +73,14 @@ export function GiveClue(props: {
       </CenteredColumn>
     </div>
   );
+}
+
+function Reveal(props: { children: React.ReactNode }) {
+  const [className, setClassName] = useState("reveal");
+  useEffect(() => {
+    setTimeout(() => {
+      return setClassName("reveal show");
+    });
+  });
+  return <div className={className}>{props.children}</div>;
 }
