@@ -36,6 +36,7 @@ export function GiveClue(props: {
 
   return (
     <div>
+      <Button text="Draw a different card" onClick={props.redrawCard} />
       <Spectrum
         targetValue={props.spectrumTarget}
         spectrumCard={props.spectrumCard}
@@ -55,7 +56,6 @@ export function GiveClue(props: {
             props.submitClue(inputElement.current.value);
           }}
         />
-        <Button text="Draw a different card" onClick={props.redrawCard} />
       </CenteredColumn>
     </div>
   );
