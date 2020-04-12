@@ -2,6 +2,7 @@ import React from "react";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
 import { PlayersTeams } from "../state/AppState";
 import { Button } from "./Button";
+import { Title } from "./Title";
 
 export function JoinTeam(props: {
   players: PlayersTeams;
@@ -15,11 +16,13 @@ export function JoinTeam(props: {
   );
 
   return (
-    <div>
-      <CenteredColumn>Join Team:</CenteredColumn>
+    <CenteredColumn>
+      <Title />
+      <div>Join Team:</div>
       <CenteredRow
         style={{
           alignItems: "flex-start",
+          alignSelf: "stretch"
         }}
       >
         <CenteredColumn>
@@ -41,6 +44,6 @@ export function JoinTeam(props: {
           </div>
         </CenteredColumn>
       </CenteredRow>
-    </div>
+    </CenteredColumn>
   );
 }
