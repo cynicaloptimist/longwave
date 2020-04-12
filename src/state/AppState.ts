@@ -12,6 +12,12 @@ export enum RoundPhase {
   ViewScore
 }
 
+export enum GameType {
+  Teams,
+  Cooperative,
+  Freeplay
+}
+
 export type PlayersTeams = {
   [playerId: string]: {
     name: string,
@@ -20,6 +26,7 @@ export type PlayersTeams = {
 }
 
 export interface GameState {
+  gameType: GameType;
   roundPhase: RoundPhase;
   spectrumCard: [string, string];
   spectrumTarget: number;
@@ -33,6 +40,7 @@ export interface GameState {
 
 export function InitialGameState(): GameState {
   return {
+    gameType: GameType.Teams,
     roundPhase: RoundPhase.SetupGame,
     spectrumCard: RandomSpectrumCard(),
     spectrumTarget: RandomSpectrumTarget(),
