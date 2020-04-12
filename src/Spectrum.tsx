@@ -75,8 +75,8 @@ export function Spectrum(props: {
         </CenteredRow>
         <div style={{ padding: 16 }}>
           <Slider
-            min={1}
-            max={21}
+            min={0}
+            max={20}
             value={props.handleValue}
             trackStyle={{
               backgroundColor: "transparent",

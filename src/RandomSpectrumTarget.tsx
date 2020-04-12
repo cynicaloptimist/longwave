@@ -1,3 +1,3 @@
 export function RandomSpectrumTarget() {
-  return Math.ceil(Math.random() * 21);
+  return Math.floor(Math.random() * 21);
 }
