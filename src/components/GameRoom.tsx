@@ -154,10 +154,20 @@ function SetupGame(props: { startGame: (gameType: GameType) => void }) {
   return (
     <CenteredColumn>
       <Title />
-      <Button
-        text="Begin Game"
-        onClick={() => props.startGame(GameType.Teams)}
-      />
+      <CenteredRow>
+        <Button
+          text="Standard (Teams)"
+          onClick={() => props.startGame(GameType.Teams)}
+        />
+        <Button
+          text="Cooperative"
+          onClick={() => props.startGame(GameType.Cooperative)}
+        />
+        <Button
+          text="Free Play"
+          onClick={() => props.startGame(GameType.Freeplay)}
+        />
+      </CenteredRow>
     </CenteredColumn>
   );
 }
