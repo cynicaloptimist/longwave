@@ -18,7 +18,7 @@ export function MakeGuess(props: {
     props.players[props.clueGiver].team !== props.players[props.playerId].team;
   const clueGiverName = props.players[props.clueGiver].name;
   const clueGiverTeam =
-    props.players[props.clueGiver].team == "left"
+    props.players[props.clueGiver].team === "left"
       ? "LEFT BRAIN"
       : "RIGHT BRAIN";
 
