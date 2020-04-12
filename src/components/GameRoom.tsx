@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-import { RoundPhase } from "./AppState";
+import { RoundPhase } from "../state/AppState";
 import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
@@ -8,15 +8,15 @@ import { useStorageBackedState } from "./useStorageBackedState";
 import { useNetworkBackedGameState } from "./useNetworkBackedGameState";
 import { InputName } from "./InputName";
 import { JoinTeam } from "./JoinTeam";
-import { getScore } from "./getScore";
-import { randomFourCharacterString } from "./randomFourCharacterString";
+import { GetScore } from "../state/GetScore";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
-import { newRound } from "./newRound";
-import { scoreForPlayerTeam } from "./scoreForPlayerTeam";
+import { NewRound } from "../state/NewRound";
+import { ScoreForPlayerTeam } from "../state/ScoreForPlayerTeam";
 import { Scoreboard } from "./Scoreboard";
 import { Button } from "./Button";
-import { RandomSpectrumCard } from "./SpectrumCards";
-import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
+import { RandomSpectrumCard } from "../state/SpectrumCards";
+import { RandomSpectrumTarget } from "../state/RandomSpectrumTarget";
+import { RandomFourCharacterString } from "../state/RandomFourCharacterString";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -26,7 +26,7 @@ export function GameRoom() {
 
   const [playerName, setPlayerName] = useStorageBackedState("", "name");
   const [playerId] = useStorageBackedState(
-    randomFourCharacterString(),
+    RandomFourCharacterString(),
     "playerId"
   );
 
@@ -84,7 +84,7 @@ export function GameRoom() {
         <CenteredColumn>
           <Button
             text="Begin Game"
-            onClick={() => setGameState(newRound(playerId))}
+            onClick={() => setGameState(NewRound(playerId))}
           />
         </CenteredColumn>
       )}
@@ -100,8 +100,8 @@ export function GameRoom() {
           redrawCard={() => {
             setGameState({
               spectrumCard: RandomSpectrumCard(),
-              spectrumTarget: RandomSpectrumTarget()
-            })
+              spectrumTarget: RandomSpectrumTarget(),
+            });
           }}
           submitClue={(clue) => {
             setGameState({
@@ -122,13 +122,13 @@ export function GameRoom() {
             });
           }}
           submitGuess={() => {
-            const pointsScored = getScore(
+            const pointsScored = GetScore(
               gameState.spectrumTarget,
               gameState.guess
             );
             setGameState({
               roundPhase: RoundPhase.ViewScore,
-              ...scoreForPlayerTeam(gameState, playerId, pointsScored),
+              ...ScoreForPlayerTeam(gameState, playerId, pointsScored),
             });
           }}
         />
@@ -136,7 +136,7 @@ export function GameRoom() {
       {gameState.roundPhase === RoundPhase.ViewScore && (
         <ViewScore
           {...gameState}
-          nextRound={() => setGameState(newRound(playerId))}
+          nextRound={() => setGameState(NewRound(playerId))}
         />
       )}
       <Scoreboard

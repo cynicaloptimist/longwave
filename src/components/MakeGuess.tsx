@@ -1,5 +1,5 @@
 import React from "react";
-import { PlayersTeams } from "./AppState";
+import { PlayersTeams } from "../state/AppState";
 import { Spectrum } from "./Spectrum";
 import { CenteredColumn } from "./LayoutElements";
 import { Button } from "./Button";

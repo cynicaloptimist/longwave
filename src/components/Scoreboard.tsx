@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PlayersTeams } from "./AppState";
+import { PlayersTeams } from "../state/AppState";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
 
 export function Scoreboard(props: {

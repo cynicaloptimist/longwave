@@ -1,6 +1,6 @@
 import React from "react";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
-import { PlayersTeams } from "./AppState";
+import { PlayersTeams } from "../state/AppState";
 import { Button } from "./Button";
 
 export function JoinTeam(props: {

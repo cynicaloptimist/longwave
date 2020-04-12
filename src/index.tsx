@@ -4,7 +4,7 @@ import "rc-slider/assets/index.css";
 import React from "react";
 import ReactDOM from "react-dom";
 
-import App from "./App";
+import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import { initializeApp } from "firebase";
 import { firebaseConfig } from "./firebaseConfig";

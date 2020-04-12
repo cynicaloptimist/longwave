@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { randomFourCharacterString } from "./randomFourCharacterString";
+import { RandomFourCharacterString } from "../state/RandomFourCharacterString";
 import { CenteredColumn } from "./LayoutElements";
 import { Button } from "./Button";
 
@@ -11,7 +11,7 @@ export function LandingPage() {
       <Button
         text="Create Room"
         onClick={() => {
-          history.push("/" + randomFourCharacterString());
+          history.push("/" + RandomFourCharacterString());
         }}
       />
     </CenteredColumn>

@@ -1,5 +1,5 @@
 import React from "react";
-import { getScore } from "./getScore";
+import { GetScore } from "../state/GetScore";
 import { CenteredColumn } from "./LayoutElements";
 import { Spectrum } from "./Spectrum";
 import { Button } from "./Button";
@@ -10,7 +10,7 @@ export function ViewScore(props: {
   guess: number;
   nextRound: () => void;
 }) {
-  const score = getScore(props.spectrumTarget, props.guess);
+  const score = GetScore(props.spectrumTarget, props.guess);
   return (
     <div>
       <Spectrum

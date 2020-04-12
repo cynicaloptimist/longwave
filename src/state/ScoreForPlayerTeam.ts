@@ -1,6 +1,6 @@
 import { GameState } from "./AppState";
 
-export function scoreForPlayerTeam(
+export function ScoreForPlayerTeam(
   gameState: GameState,
   playerId: string,
   pointsScored: number

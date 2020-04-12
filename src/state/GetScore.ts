@@ -1,4 +1,4 @@
-export function getScore(target: number, guess: number) {
+export function GetScore(target: number, guess: number) {
   const difference = Math.abs(target - guess);
   if (difference > 2) {
     return 0;
