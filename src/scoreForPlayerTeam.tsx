@@ -1,5 +1,10 @@
 import { GameState } from "./AppState";
-export function scoreForPlayerTeam(gameState: GameState, playerId: string, pointsScored: number): Partial<GameState> {
+
+export function scoreForPlayerTeam(
+  gameState: GameState,
+  playerId: string,
+  pointsScored: number
+): Partial<GameState> {
   if (gameState.players[playerId].team === "left") {
     return {
       leftScore: gameState.leftScore + pointsScored,
