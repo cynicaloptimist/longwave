@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-import { RoundPhase } from "../state/AppState";
+import { RoundPhase, GameType } from "../state/AppState";
 import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
@@ -45,7 +45,20 @@ export function GameRoom() {
 
   const playerTeam = gameState.players[playerId].team;
 
-  if (playerTeam === "none") {
+  if (gameState.roundPhase === RoundPhase.SetupGame) {
+    return (
+      <SetupGame
+        startGame={(gameType) =>
+          setGameState({
+            ...NewRound(playerId),
+            gameType,
+          })
+        }
+      />
+    );
+  }
+
+  if (playerTeam === "none" && gameState.gameType === GameType.Teams) {
     return (
       <JoinTeam
         {...gameState}
@@ -60,19 +73,6 @@ export function GameRoom() {
             },
           });
         }}
-      />
-    );
-  }
-
-  if (gameState.roundPhase === RoundPhase.SetupGame) {
-    return (
-      <SetupGame
-        startGame={(gameType) =>
-          setGameState({
-            ...NewRound(playerId),
-            gameType,
-          })
-        }
       />
     );
   }
