@@ -10,6 +10,7 @@ export enum RoundPhase {
   PickTeams,
   GiveClue,
   MakeGuess,
+  CounterGuess,
   ViewScore
 }
 

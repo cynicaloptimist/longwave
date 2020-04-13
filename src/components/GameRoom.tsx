@@ -8,15 +8,15 @@ import { useStorageBackedState } from "./useStorageBackedState";
 import { useNetworkBackedGameState } from "./useNetworkBackedGameState";
 import { InputName } from "./InputName";
 import { JoinTeam } from "./JoinTeam";
-import { GetScore } from "../state/GetScore";
 import { NewRound } from "../state/NewRound";
-import { ScoreForPlayerTeam } from "../state/ScoreForPlayerTeam";
+import { ScoreRound } from "../state/ScoreForPlayerTeam";
 import { Scoreboard } from "./Scoreboard";
 import { RandomSpectrumCard } from "../state/SpectrumCards";
 import { RandomSpectrumTarget } from "../state/RandomSpectrumTarget";
 import { RandomFourCharacterString } from "../state/RandomFourCharacterString";
 import { SetupGame } from "./SetupGame";
 import { NewTeamGame } from "../state/NewGame";
+import { CounterGuess } from "./CounterGuess";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -126,14 +126,27 @@ export function GameRoom() {
             });
           }}
           submitGuess={() => {
-            const pointsScored = GetScore(
-              gameState.spectrumTarget,
-              gameState.guess
-            );
-            setGameState({
-              roundPhase: RoundPhase.ViewScore,
-              ...ScoreForPlayerTeam(gameState, playerId, pointsScored),
-            });
+            if (gameState.gameType === GameType.Teams) {
+              setGameState({
+                roundPhase: RoundPhase.CounterGuess,
+              });
+            } else {
+              setGameState({
+                roundPhase: RoundPhase.ViewScore,
+              });
+            }
+          }}
+        />
+      )}
+      {gameState.roundPhase === RoundPhase.CounterGuess && (
+        <CounterGuess
+          {...gameState}
+          playerId={playerId}
+          guessLeft={() => {
+            setGameState(ScoreRound(gameState, playerId, "left"));
+          }}
+          guessRight={() => {
+            setGameState(ScoreRound(gameState, playerId, "right"));
           }}
         />
       )}
