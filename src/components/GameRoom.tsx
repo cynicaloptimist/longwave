@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-import { RoundPhase, GameType } from "../state/AppState";
+import { RoundPhase } from "../state/AppState";
 import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
@@ -9,15 +9,13 @@ import { useNetworkBackedGameState } from "./useNetworkBackedGameState";
 import { InputName } from "./InputName";
 import { JoinTeam } from "./JoinTeam";
 import { GetScore } from "../state/GetScore";
-import { CenteredRow, CenteredColumn } from "./LayoutElements";
 import { NewRound } from "../state/NewRound";
 import { ScoreForPlayerTeam } from "../state/ScoreForPlayerTeam";
 import { Scoreboard } from "./Scoreboard";
-import { Button } from "./Button";
 import { RandomSpectrumCard } from "../state/SpectrumCards";
 import { RandomSpectrumTarget } from "../state/RandomSpectrumTarget";
 import { RandomFourCharacterString } from "../state/RandomFourCharacterString";
-import { Title } from "./Title";
+import { SetupGame } from "./SetupGame";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -47,37 +45,40 @@ export function GameRoom() {
 
   const playerTeam = gameState.players[playerId].team;
 
-  const scoreboardVisible =
-    gameState.roundPhase !== RoundPhase.SetupGame && playerTeam !== "none";
+  if (playerTeam === "none") {
+    return (
+      <JoinTeam
+        {...gameState}
+        joinTeam={(team) => {
+          setGameState({
+            players: {
+              ...gameState.players,
+              [playerId]: {
+                name: playerName,
+                team,
+              },
+            },
+          });
+        }}
+      />
+    );
+  }
+
+  if (gameState.roundPhase === RoundPhase.SetupGame) {
+    return (
+      <SetupGame
+        startGame={(gameType) =>
+          setGameState({
+            ...NewRound(playerId),
+            gameType,
+          })
+        }
+      />
+    );
+  }
 
   return (
     <>
-      {playerTeam !== "none" && (
-        <JoinTeam
-          {...gameState}
-          joinTeam={(team) => {
-            setGameState({
-              players: {
-                ...gameState.players,
-                [playerId]: {
-                  name: playerName,
-                  team,
-                },
-              },
-            });
-          }}
-        />
-      )}
-      {gameState.roundPhase === RoundPhase.SetupGame && (
-        <SetupGame
-          startGame={(gameType) =>
-            setGameState({
-              ...NewRound(playerId),
-              gameType,
-            })
-          }
-        />
-      )}
       {gameState.roundPhase === RoundPhase.GiveClue && (
         <GiveClue
           {...gameState}
@@ -129,37 +130,13 @@ export function GameRoom() {
           nextRound={() => setGameState(NewRound(playerId))}
         />
       )}
-      {scoreboardVisible && (
-        <Scoreboard
-          {...gameState}
-          removePlayer={(playerId) => {
-            delete gameState.players[playerId];
-            setGameState(gameState);
-          }}
-        />
-      )}
+      <Scoreboard
+        {...gameState}
+        removePlayer={(playerId) => {
+          delete gameState.players[playerId];
+          setGameState(gameState);
+        }}
+      />
     </>
-  );
-}
-
-function SetupGame(props: { startGame: (gameType: GameType) => void }) {
-  return (
-    <CenteredColumn>
-      <Title />
-      <CenteredRow>
-        <Button
-          text="Standard (Teams)"
-          onClick={() => props.startGame(GameType.Teams)}
-        />
-        <Button
-          text="Cooperative"
-          onClick={() => props.startGame(GameType.Cooperative)}
-        />
-        <Button
-          text="Free Play"
-          onClick={() => props.startGame(GameType.Freeplay)}
-        />
-      </CenteredRow>
-    </CenteredColumn>
   );
 }
