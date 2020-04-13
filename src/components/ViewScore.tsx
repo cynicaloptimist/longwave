@@ -16,7 +16,7 @@ export function ViewScore(props: {
   const scoringTeamString = scoringTeam === "left" ? "LEFT TEAM" : "RIGHT TEAM";
   let bonusTurn = false;
 
-  const nextTeam = () => {
+  const nextTeam = (() => {
     if (gameState.gameType !== GameType.Teams) {
       return "none";
     }
@@ -39,9 +39,9 @@ export function ViewScore(props: {
     }
 
     return scoringTeam === "left" ? "right" : "left";
-  };
+  })();
 
-  const eligibleToDraw = () => {
+  const eligibleToDraw = (() => {
     if (gameState.clueGiver === props.playerId) {
       return false;
     }
@@ -50,8 +50,8 @@ export function ViewScore(props: {
       return true;
     }
 
-    return gameState.players[props.playerId].team === nextTeam();
-  };
+    return gameState.players[props.playerId].team === nextTeam;
+  })();
 
   return (
     <div>
@@ -65,7 +65,7 @@ export function ViewScore(props: {
         {bonusTurn && (
           <div>Catchup activated: {scoringTeamString} takes a bonus turn!</div>
         )}
-        {eligibleToDraw() && (
+        {eligibleToDraw && (
           <Button text="Draw next Spectrum Card" onClick={props.nextRound} />
         )}
       </CenteredColumn>
