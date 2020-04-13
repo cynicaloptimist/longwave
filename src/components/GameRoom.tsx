@@ -52,14 +52,6 @@ export function GameRoom() {
 
   return (
     <>
-      <CenteredRow
-        style={{
-          justifyContent: "flex-end",
-          color: "gray",
-        }}
-      >
-        Room ID: {roomId}
-      </CenteredRow>
       {playerTeam !== "none" && (
         <JoinTeam
           {...gameState}

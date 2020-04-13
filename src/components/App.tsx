@@ -5,6 +5,7 @@ import { GameRoom } from "./GameRoom";
 import { CenteredColumn } from "./LayoutElements";
 import { CommonFooter } from "./CommonFooter";
 import { LandingPage } from "./LandingPage";
+import { RoomIdHeader } from "./RoomIdHeader";
 
 const style: React.CSSProperties = {
   maxWidth: 500,
@@ -20,6 +21,7 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route path="/:roomId">
+              <RoomIdHeader />
               <GameRoom />
             </Route>
             <Route path="/">
