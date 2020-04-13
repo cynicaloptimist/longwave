@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-import { RoundPhase, GameType } from "../state/AppState";
+import { RoundPhase, GameType, GameState } from "../state/AppState";
 import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
@@ -16,6 +16,7 @@ import { RandomSpectrumCard } from "../state/SpectrumCards";
 import { RandomSpectrumTarget } from "../state/RandomSpectrumTarget";
 import { RandomFourCharacterString } from "../state/RandomFourCharacterString";
 import { SetupGame } from "./SetupGame";
+import { NewGame } from "../state/NewGame";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -48,12 +49,9 @@ export function GameRoom() {
   if (gameState.roundPhase === RoundPhase.SetupGame) {
     return (
       <SetupGame
-        startGame={(gameType) =>
-          setGameState({
-            ...NewRound(playerId),
-            gameType,
-          })
-        }
+        startGame={(gameType) => {
+          setGameState(NewGame(gameType, gameState.players, playerId));
+        }}
       />
     );
   }
