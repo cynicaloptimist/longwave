@@ -1,12 +1,14 @@
 import React from "react";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
-import { PlayersTeams } from "../state/AppState";
+import { PlayersTeams, RoundPhase } from "../state/AppState";
 import { Button } from "./Button";
 import { Title } from "./Title";
 
 export function JoinTeam(props: {
   players: PlayersTeams;
+  roundPhase: RoundPhase;
   joinTeam: (team: "left" | "right") => void;
+  startGame: () => void;
 }) {
   const leftTeam = Object.keys(props.players).filter(
     (playerId) => props.players[playerId].team === "left"
@@ -22,7 +24,7 @@ export function JoinTeam(props: {
       <CenteredRow
         style={{
           alignItems: "flex-start",
-          alignSelf: "stretch"
+          alignSelf: "stretch",
         }}
       >
         <CenteredColumn>
@@ -44,6 +46,9 @@ export function JoinTeam(props: {
           </div>
         </CenteredColumn>
       </CenteredRow>
+      {props.roundPhase === RoundPhase.PickTeams && (
+        <Button text="Start Game" onClick={props.startGame} />
+      )}
     </CenteredColumn>
   );
 }

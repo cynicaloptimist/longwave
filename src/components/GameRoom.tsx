@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-import { RoundPhase, GameType, GameState } from "../state/AppState";
+import { RoundPhase, GameType } from "../state/AppState";
 import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
@@ -16,7 +16,7 @@ import { RandomSpectrumCard } from "../state/SpectrumCards";
 import { RandomSpectrumTarget } from "../state/RandomSpectrumTarget";
 import { RandomFourCharacterString } from "../state/RandomFourCharacterString";
 import { SetupGame } from "./SetupGame";
-import { NewGame } from "../state/NewGame";
+import { NewTeamGame } from "../state/NewGame";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -50,13 +50,25 @@ export function GameRoom() {
     return (
       <SetupGame
         startGame={(gameType) => {
-          setGameState(NewGame(gameType, gameState.players, playerId));
+          if (gameType === GameType.Teams) {
+            setGameState({
+              roundPhase: RoundPhase.PickTeams,
+              gameType,
+            });
+          }
+          setGameState({
+            ...NewRound(playerId),
+            gameType,
+          });
         }}
       />
     );
   }
 
-  if (playerTeam === "none" && gameState.gameType === GameType.Teams) {
+  if (
+    gameState.gameType === GameType.Teams &&
+    (gameState.roundPhase === RoundPhase.PickTeams || playerTeam === "none")
+  ) {
     return (
       <JoinTeam
         {...gameState}
@@ -70,6 +82,9 @@ export function GameRoom() {
               },
             },
           });
+        }}
+        startGame={() => {
+          setGameState(NewTeamGame(gameState.players, playerId));
         }}
       />
     );

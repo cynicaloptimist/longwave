@@ -1,8 +1,7 @@
 import { GameType, PlayersTeams, GameState } from "./AppState";
 import { NewRound } from "./NewRound";
 
-export function NewGame(
-  gameType: GameType,
+export function NewTeamGame(
   players: PlayersTeams,
   startPlayer: string
 ): Partial<GameState> {
@@ -11,18 +10,16 @@ export function NewGame(
     rightScore: 0,
   };
 
-  if (gameType === GameType.Teams) {
-    const playerTeam = players[startPlayer].team;
-    if (playerTeam === "left") {
-      initialScores.rightScore = 1;
-    } else {
-      initialScores.leftScore = 1;
-    }
+  const playerTeam = players[startPlayer].team;
+  if (playerTeam === "left") {
+    initialScores.rightScore = 1;
+  } else {
+    initialScores.leftScore = 1;
   }
 
   return {
     ...NewRound(startPlayer),
     ...initialScores,
-    gameType,
+    gameType: GameType.Teams,
   };
 }

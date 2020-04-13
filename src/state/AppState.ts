@@ -7,6 +7,7 @@ export interface AppState {
 
 export enum RoundPhase {
   SetupGame,
+  PickTeams,
   GiveClue,
   MakeGuess,
   ViewScore
