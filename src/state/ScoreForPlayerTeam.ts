@@ -8,8 +8,8 @@ export function ScoreRound(
 ): Partial<GameState> {
   const pointsScored = GetScore(gameState.spectrumTarget, gameState.guess);
   const correctCounterGuess =
-    (counterGuess === "left" && gameState.guess < gameState.spectrumTarget) ||
-    (counterGuess === "right" && gameState.guess > gameState.spectrumTarget);
+    (counterGuess === "left" && gameState.spectrumTarget < gameState.guess) ||
+    (counterGuess === "right" && gameState.spectrumTarget > gameState.guess);
 
   let finalState: Partial<GameState> = {
     roundPhase: RoundPhase.ViewScore,

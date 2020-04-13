@@ -48,8 +48,8 @@ export function CounterGuess(props: {
         </div>
       </CenteredColumn>
       <CenteredRow>
-        <Button text="Left" onClick={props.guessLeft} />
-        <Button text="Right" onClick={props.guessRight} />
+        <Button text="Target is to the Left" onClick={props.guessLeft} />
+        <Button text="Target is to the Right" onClick={props.guessRight} />
       </CenteredRow>
     </div>
   );
