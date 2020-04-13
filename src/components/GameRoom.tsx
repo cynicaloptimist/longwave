@@ -126,7 +126,8 @@ export function GameRoom() {
       )}
       {gameState.roundPhase === RoundPhase.ViewScore && (
         <ViewScore
-          {...gameState}
+          gameState={gameState}
+          playerId={playerId}
           nextRound={() => setGameState(NewRound(playerId))}
         />
       )}
