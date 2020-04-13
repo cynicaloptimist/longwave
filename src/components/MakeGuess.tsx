@@ -1,9 +1,10 @@
 import React from "react";
-import { PlayersTeams } from "../state/AppState";
+import { PlayersTeams, GameType } from "../state/AppState";
 import { Spectrum } from "./Spectrum";
 import { CenteredColumn } from "./LayoutElements";
 import { Button } from "./Button";
 export function MakeGuess(props: {
+  gameType: GameType;
   players: PlayersTeams;
   clueGiver: string;
   spectrumCard: [string, string];
@@ -13,14 +14,18 @@ export function MakeGuess(props: {
   setGuess: (guess: number) => void;
   submitGuess: () => void;
 }) {
+  const guessingTeam = props.players[props.clueGiver].team;
+  const playerTeam = props.players[props.playerId].team;
   const notMyTurn =
     props.playerId === props.clueGiver ||
-    props.players[props.clueGiver].team !== props.players[props.playerId].team;
+    (props.gameType === GameType.Teams && guessingTeam !== playerTeam);
+
   const clueGiverName = props.players[props.clueGiver].name;
-  const clueGiverTeam =
-    props.players[props.clueGiver].team === "left"
-      ? "LEFT BRAIN"
-      : "RIGHT BRAIN";
+  
+  let guessingTeamString = "the players";
+  if (props.gameType === GameType.Teams) {
+    guessingTeamString = guessingTeam === "left" ? "LEFT BRAIN" : "RIGHT BRAIN";
+  }
 
   if (notMyTurn) {
     return (
@@ -33,7 +38,7 @@ export function MakeGuess(props: {
           <div>
             {clueGiverName}'s clue: <strong>{props.clue}</strong>
           </div>
-          <div>Waiting for {clueGiverTeam} to guess...</div>
+          <div>Waiting for {guessingTeamString} to guess...</div>
         </CenteredColumn>
       </div>
     );
