@@ -12,6 +12,35 @@ export function ViewScore(props: {
 }) {
   const gameState = props.gameState;
   const score = GetScore(gameState.spectrumTarget, gameState.guess);
+  const scoringTeam = gameState.players[gameState.clueGiver].team;
+  const scoringTeamString = scoringTeam === "left" ? "LEFT TEAM" : "RIGHT TEAM";
+  let bonusTurn = false;
+
+  const nextTeam = () => {
+    if (gameState.gameType !== GameType.Teams) {
+      return "none";
+    }
+
+    if (score === 4) {
+      if (
+        gameState.leftScore < gameState.rightScore &&
+        scoringTeam === "left"
+      ) {
+        bonusTurn = true;
+        return "left";
+      }
+      if (
+        gameState.rightScore < gameState.leftScore &&
+        scoringTeam === "right"
+      ) {
+        bonusTurn = true;
+        return "right";
+      }
+    }
+
+    return scoringTeam === "left" ? "right" : "left";
+  };
+
   const eligibleToDraw = () => {
     if (gameState.clueGiver === props.playerId) {
       return false;
@@ -21,12 +50,7 @@ export function ViewScore(props: {
       return true;
     }
 
-    const scoringTeam = gameState.players[gameState.clueGiver].team;
-    if (score === 4) {
-      //TODO: catchup rule
-    }
-
-    return gameState.players[props.playerId].team !== scoringTeam;
+    return gameState.players[props.playerId].team === nextTeam();
   };
 
   return (
@@ -38,10 +62,11 @@ export function ViewScore(props: {
       />
       <CenteredColumn>
         <div>Score: {score} points!</div>
+        {bonusTurn && (
+          <div>Catchup activated: {scoringTeamString} takes a bonus turn!</div>
+        )}
         {eligibleToDraw() && (
-          <div>
-            <Button text="Draw next Spectrum Card" onClick={props.nextRound} />
-          </div>
+          <Button text="Draw next Spectrum Card" onClick={props.nextRound} />
         )}
       </CenteredColumn>
     </div>
