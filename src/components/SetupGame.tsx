@@ -13,10 +13,10 @@ export function SetupGame(props: { startGame: (gameType: GameType) => void }) {
           text="Standard (Teams)"
           onClick={() => props.startGame(GameType.Teams)}
         />
-        <Button
+        {/* <Button
           text="Cooperative"
           onClick={() => props.startGame(GameType.Cooperative)}
-        />
+        /> */}
         <Button
           text="Free Play"
           onClick={() => props.startGame(GameType.Freeplay)}
