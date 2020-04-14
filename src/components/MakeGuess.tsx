@@ -1,42 +1,40 @@
-import React from "react";
-import { PlayersTeams, GameType, Team } from "../state/AppState";
+import React, { useContext } from "react";
+import { GameType, Team, RoundPhase } from "../state/AppState";
 import { Spectrum } from "./Spectrum";
 import { CenteredColumn } from "./LayoutElements";
 import { Button } from "./Button";
-export function MakeGuess(props: {
-  gameType: GameType;
-  players: PlayersTeams;
-  clueGiver: string;
-  spectrumCard: [string, string];
-  clue: string;
-  playerId: string;
-  guess: number;
-  setGuess: (guess: number) => void;
-  submitGuess: () => void;
-}) {
-  const guessingTeam = props.players[props.clueGiver].team;
-  const playerTeam = props.players[props.playerId].team;
-  const notMyTurn =
-    props.playerId === props.clueGiver ||
-    (props.gameType === GameType.Teams && guessingTeam !== playerTeam);
+import { GameModelContext } from "../state/GameModelContext";
 
-  const clueGiverName = props.players[props.clueGiver].name;
-  
+export function MakeGuess() {
+  const { state: gameState, localPlayer, clueGiver, setGameState } = useContext(
+    GameModelContext
+  );
+
+  if (!clueGiver) {
+    return null;
+  }
+
+  const notMyTurn =
+    localPlayer.id === clueGiver.id ||
+    (gameState.gameType === GameType.Teams &&
+      localPlayer.team !== clueGiver.team);
+
   let guessingTeamString = "the players";
-  if (props.gameType === GameType.Teams) {
-    guessingTeamString = guessingTeam === Team.Left ? "LEFT BRAIN" : "RIGHT BRAIN";
+  if (gameState.gameType === GameType.Teams) {
+    guessingTeamString =
+      clueGiver.team === Team.Left ? "LEFT BRAIN" : "RIGHT BRAIN";
   }
 
   if (notMyTurn) {
     return (
       <div>
         <Spectrum
-          spectrumCard={props.spectrumCard}
-          guessingValue={props.guess}
+          spectrumCard={gameState.spectrumCard}
+          guessingValue={gameState.guess}
         />
         <CenteredColumn>
           <div>
-            {clueGiverName}'s clue: <strong>{props.clue}</strong>
+            {clueGiver.name}'s clue: <strong>{gameState.clue}</strong>
           </div>
           <div>Waiting for {guessingTeamString} to guess...</div>
         </CenteredColumn>
@@ -47,19 +45,31 @@ export function MakeGuess(props: {
   return (
     <div>
       <Spectrum
-        spectrumCard={props.spectrumCard}
-        handleValue={props.guess}
-        onChange={props.setGuess}
+        spectrumCard={gameState.spectrumCard}
+        handleValue={gameState.guess}
+        onChange={(guess: number) => {
+          setGameState({
+            guess,
+          });
+        }}
       />
       <CenteredColumn>
         <div>
-          {clueGiverName}'s clue: <strong>{props.clue}</strong>
+          {clueGiver.name}'s clue: <strong>{gameState.clue}</strong>
         </div>
         <div>
           <Button
             text="Submit Guess"
             onClick={() => {
-              props.submitGuess();
+              if (gameState.gameType === GameType.Teams) {
+                setGameState({
+                  roundPhase: RoundPhase.CounterGuess,
+                });
+              } else {
+                setGameState({
+                  roundPhase: RoundPhase.ViewScore,
+                });
+              }
             }}
           />
         </div>

@@ -7,8 +7,6 @@ import { JoinTeam } from "./JoinTeam";
 import { NewRound } from "../state/NewRound";
 import { ScoreRound } from "../state/ScoreForPlayerTeam";
 import { Scoreboard } from "./Scoreboard";
-import { RandomSpectrumCard } from "../state/SpectrumCards";
-import { RandomSpectrumTarget } from "../state/RandomSpectrumTarget";
 import { SetupGame } from "./SetupGame";
 import { CounterGuess } from "./CounterGuess";
 import { useContext } from "react";
@@ -34,28 +32,7 @@ export function ActiveGame() {
   return (
     <>
       {gameState.roundPhase === RoundPhase.GiveClue && <GiveClue />}
-      {gameState.roundPhase === RoundPhase.MakeGuess && (
-        <MakeGuess
-          {...gameState}
-          playerId={localPlayer.id}
-          setGuess={(guess: number) => {
-            setGameState({
-              guess,
-            });
-          }}
-          submitGuess={() => {
-            if (gameState.gameType === GameType.Teams) {
-              setGameState({
-                roundPhase: RoundPhase.CounterGuess,
-              });
-            } else {
-              setGameState({
-                roundPhase: RoundPhase.ViewScore,
-              });
-            }
-          }}
-        />
-      )}
+      {gameState.roundPhase === RoundPhase.MakeGuess && <MakeGuess />}
       {gameState.roundPhase === RoundPhase.CounterGuess && (
         <CounterGuess
           {...gameState}
