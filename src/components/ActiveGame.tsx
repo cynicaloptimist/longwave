@@ -10,7 +10,6 @@ import { Scoreboard } from "./Scoreboard";
 import { RandomSpectrumCard } from "../state/SpectrumCards";
 import { RandomSpectrumTarget } from "../state/RandomSpectrumTarget";
 import { SetupGame } from "./SetupGame";
-import { NewTeamGame } from "../state/NewGame";
 import { CounterGuess } from "./CounterGuess";
 import { useContext } from "react";
 import { GameModelContext } from "../state/GameModelContext";
@@ -29,25 +28,7 @@ export function ActiveGame() {
     (gameState.roundPhase === RoundPhase.PickTeams ||
       localPlayer.team === Team.Unset)
   ) {
-    return (
-      <JoinTeam
-        {...gameState}
-        joinTeam={(team) => {
-          setGameState({
-            players: {
-              ...gameState.players,
-              [localPlayer.id]: {
-                ...localPlayer,
-                team,
-              },
-            },
-          });
-        }}
-        startGame={() => {
-          setGameState(NewTeamGame(gameState.players, localPlayer.id));
-        }}
-      />
-    );
+    return <JoinTeam />;
   }
 
   return (

@@ -1,21 +1,38 @@
 import React from "react";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
-import { PlayersTeams, RoundPhase, Team } from "../state/AppState";
+import { RoundPhase, Team } from "../state/AppState";
 import { Button } from "./Button";
 import { Title } from "./Title";
+import { useContext } from "react";
+import { GameModelContext } from "../state/GameModelContext";
+import { NewTeamGame } from "../state/NewGame";
 
-export function JoinTeam(props: {
-  players: PlayersTeams;
-  roundPhase: RoundPhase;
-  joinTeam: (team: Team) => void;
-  startGame: () => void;
-}) {
-  const leftTeam = Object.keys(props.players).filter(
-    (playerId) => props.players[playerId].team === Team.Left
+export function JoinTeam() {
+  const { state: gameState, localPlayer, setGameState } = useContext(
+    GameModelContext
   );
-  const rightTeam = Object.keys(props.players).filter(
-    (playerId) => props.players[playerId].team === Team.Right
+
+  const leftTeam = Object.keys(gameState.players).filter(
+    (playerId) => gameState.players[playerId].team === Team.Left
   );
+  const rightTeam = Object.keys(gameState.players).filter(
+    (playerId) => gameState.players[playerId].team === Team.Right
+  );
+
+  const joinTeam = (team: Team) => {
+    setGameState({
+      players: {
+        ...gameState.players,
+        [localPlayer.id]: {
+          ...localPlayer,
+          team,
+        },
+      },
+    });
+  };
+
+  const startGame = () =>
+    setGameState(NewTeamGame(gameState.players, localPlayer.id));
 
   return (
     <CenteredColumn>
@@ -30,24 +47,24 @@ export function JoinTeam(props: {
         <CenteredColumn>
           <div>LEFT BRAIN</div>
           {leftTeam.map((playerId) => (
-            <div>{props.players[playerId].name}</div>
+            <div>{gameState.players[playerId].name}</div>
           ))}
           <div>
-            <Button text="Join" onClick={() => props.joinTeam(Team.Left)} />
+            <Button text="Join" onClick={() => joinTeam(Team.Left)} />
           </div>
         </CenteredColumn>
         <CenteredColumn>
           <div>RIGHT BRAIN</div>
           {rightTeam.map((playerId) => (
-            <div>{props.players[playerId].name}</div>
+            <div>{gameState.players[playerId].name}</div>
           ))}
           <div>
-            <Button text="Join" onClick={() => props.joinTeam(Team.Right)} />
+            <Button text="Join" onClick={() => joinTeam(Team.Right)} />
           </div>
         </CenteredColumn>
       </CenteredRow>
-      {props.roundPhase === RoundPhase.PickTeams && (
-        <Button text="Start Game" onClick={props.startGame} />
+      {gameState.roundPhase === RoundPhase.PickTeams && (
+        <Button text="Start Game" onClick={startGame} />
       )}
     </CenteredColumn>
   );
