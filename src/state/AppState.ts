@@ -11,27 +11,27 @@ export enum RoundPhase {
   GiveClue,
   MakeGuess,
   CounterGuess,
-  ViewScore
+  ViewScore,
 }
 
 export enum GameType {
   Teams,
   Cooperative,
-  Freeplay
+  Freeplay,
 }
 
 export enum Team {
   Unset,
   Left,
-  Right
+  Right,
 }
 
 export type PlayersTeams = {
   [playerId: string]: {
-    name: string,
-    team: Team
-  }
-}
+    name: string;
+    team: Team;
+  };
+};
 
 export interface GameState {
   gameType: GameType;
@@ -57,6 +57,19 @@ export function InitialGameState(): GameState {
     players: {},
     clueGiver: "",
     leftScore: 0,
-    rightScore: 0
-  }
+    rightScore: 0,
+  };
+}
+
+type Player = {
+  id: string;
+  name: string;
+  team: Team;
+};
+
+export interface GameModel {
+  state: GameState;
+  localPlayer: Player;
+  clueGiver: Player | null;
+  setGameState: (newState: Partial<GameState>) => void;
 }
