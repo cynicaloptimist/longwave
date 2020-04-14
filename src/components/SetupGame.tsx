@@ -16,12 +16,12 @@ export function SetupGame() {
         roundPhase: RoundPhase.PickTeams,
         gameType,
       });
+    } else {
+      setGameState({
+        ...NewRound(localPlayer.id),
+        gameType,
+      });
     }
-    
-    setGameState({
-      ...NewRound(localPlayer.id),
-      gameType,
-    });
   };
 
   return (
