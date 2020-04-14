@@ -33,13 +33,7 @@ export function ActiveGame() {
       {gameState.roundPhase === RoundPhase.GiveClue && <GiveClue />}
       {gameState.roundPhase === RoundPhase.MakeGuess && <MakeGuess />}
       {gameState.roundPhase === RoundPhase.CounterGuess && <CounterGuess />}
-      {gameState.roundPhase === RoundPhase.ViewScore && (
-        <ViewScore
-          gameState={gameState}
-          playerId={localPlayer.id}
-          nextRound={() => setGameState(NewRound(localPlayer.id))}
-        />
-      )}
+      {gameState.roundPhase === RoundPhase.ViewScore && <ViewScore />}
       <Scoreboard
         {...gameState}
         removePlayer={(playerId) => {
