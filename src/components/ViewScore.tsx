@@ -52,7 +52,7 @@ function NextTurnOrEndGame() {
   if (gameState.leftScore >= 10 && gameState.leftScore > gameState.rightScore) {
     return (
       <>
-        <div>"LEFT BRAIN wins!"</div>
+        <div>LEFT BRAIN wins!</div>
         {resetButton}
       </>
     );
@@ -64,7 +64,7 @@ function NextTurnOrEndGame() {
   ) {
     return (
       <>
-        <div>"RIGHT BRAIN wins!"</div>
+        <div>RIGHT BRAIN wins!</div>
         {resetButton}
       </>
     );
