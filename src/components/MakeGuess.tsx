@@ -6,7 +6,7 @@ import { Button } from "./Button";
 import { GameModelContext } from "../state/GameModelContext";
 
 export function MakeGuess() {
-  const { state: gameState, localPlayer, clueGiver, setGameState } = useContext(
+  const { gameState, localPlayer, clueGiver, setGameState } = useContext(
     GameModelContext
   );
 

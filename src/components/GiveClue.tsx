@@ -12,7 +12,7 @@ import { RandomSpectrumCard } from "../state/SpectrumCards";
 import { RandomSpectrumTarget } from "../state/RandomSpectrumTarget";
 
 export function GiveClue() {
-  const { state: gameState, localPlayer, clueGiver, setGameState } = useContext(
+  const { gameState, localPlayer, clueGiver, setGameState } = useContext(
     GameModelContext
   );
   const inputElement = useRef<HTMLInputElement>(null);

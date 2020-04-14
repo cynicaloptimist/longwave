@@ -68,7 +68,7 @@ type Player = {
 };
 
 export interface GameModel {
-  state: GameState;
+  gameState: GameState;
   localPlayer: Player;
   clueGiver: Player | null;
   setGameState: (newState: Partial<GameState>) => void;
@@ -87,7 +87,7 @@ export function BuildGameModel(
     : null;
 
   return {
-    state: gameState,
+    gameState,
     localPlayer: { ...gameState.players[localPlayerId], id: localPlayerId },
     clueGiver,
     setGameState,

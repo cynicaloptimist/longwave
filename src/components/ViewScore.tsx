@@ -8,7 +8,7 @@ import { GameModelContext } from "../state/GameModelContext";
 import { NewRound } from "../state/NewRound";
 
 export function ViewScore() {
-  const { state: gameState, clueGiver } = useContext(GameModelContext);
+  const { gameState, clueGiver } = useContext(GameModelContext);
 
   if (!clueGiver) {
     return null;
@@ -32,7 +32,7 @@ export function ViewScore() {
 }
 
 function NextTurnOrEndGame() {
-  const { state: gameState, localPlayer, clueGiver, setGameState } = useContext(
+  const { gameState, localPlayer, clueGiver, setGameState } = useContext(
     GameModelContext
   );
 

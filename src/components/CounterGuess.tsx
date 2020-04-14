@@ -7,7 +7,7 @@ import { GameModelContext } from "../state/GameModelContext";
 import { ScoreRound } from "../state/ScoreForPlayerTeam";
 
 export function CounterGuess() {
-  const { state: gameState, localPlayer, clueGiver, setGameState } = useContext(
+  const { gameState, localPlayer, clueGiver, setGameState } = useContext(
     GameModelContext
   );
 

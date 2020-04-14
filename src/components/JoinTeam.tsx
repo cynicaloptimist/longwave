@@ -8,7 +8,7 @@ import { GameModelContext } from "../state/GameModelContext";
 import { NewTeamGame } from "../state/NewGame";
 
 export function JoinTeam() {
-  const { state: gameState, localPlayer, setGameState } = useContext(
+  const { gameState, localPlayer, setGameState } = useContext(
     GameModelContext
   );
 

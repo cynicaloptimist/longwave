@@ -2,7 +2,7 @@ import { Team, GameModel, InitialGameState } from "./AppState";
 import { createContext } from "react";
 
 export const GameModelContext = createContext<GameModel>({
-  state: InitialGameState(),
+  gameState: InitialGameState(),
   localPlayer: {
     id: "localPlayer",
     name: "Player",

@@ -11,7 +11,7 @@ import { useContext } from "react";
 import { GameModelContext } from "../state/GameModelContext";
 
 export function ActiveGame() {
-  const { state: gameState, localPlayer } = useContext(GameModelContext);
+  const { gameState, localPlayer } = useContext(GameModelContext);
 
   if (gameState.roundPhase === RoundPhase.SetupGame) {
     return <SetupGame />;

@@ -4,7 +4,7 @@ import { CenteredRow, CenteredColumn } from "./LayoutElements";
 import { GameModelContext } from "../state/GameModelContext";
 
 export function Scoreboard() {
-  const { state: gameState, setGameState } = useContext(GameModelContext);
+  const { gameState, setGameState } = useContext(GameModelContext);
 
   const leftTeam = Object.keys(gameState.players).filter(
     (playerId) => gameState.players[playerId].team === Team.Left
