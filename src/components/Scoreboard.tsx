@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { PlayersTeams } from "../state/AppState";
+import { PlayersTeams, GameType } from "../state/AppState";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
 
 export function Scoreboard(props: {
+  gameType: GameType;
   leftScore: number;
   rightScore: number;
   players: PlayersTeams;
@@ -22,6 +23,14 @@ export function Scoreboard(props: {
       onRemove={() => props.removePlayer(playerId)}
     />
   );
+
+  if (props.gameType === GameType.Freeplay) {
+    return (
+      <CenteredColumn>
+        {Object.keys(props.players).map(toPlayerRow)}
+      </CenteredColumn>
+    );
+  }
 
   return (
     <CenteredRow
