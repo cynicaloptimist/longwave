@@ -1,37 +1,34 @@
-import React from "react";
-import { GameType, PlayersTeams, Team } from "../state/AppState";
+import React, { useContext } from "react";
+import { Team } from "../state/AppState";
 import { Spectrum } from "./Spectrum";
 import { CenteredColumn, CenteredRow } from "./LayoutElements";
 import { Button } from "./Button";
+import { GameModelContext } from "../state/GameModelContext";
+import { ScoreRound } from "../state/ScoreForPlayerTeam";
 
-export function CounterGuess(props: {
-  gameType: GameType;
-  players: PlayersTeams;
-  clueGiver: string;
-  spectrumCard: [string, string];
-  clue: string;
-  playerId: string;
-  guess: number;
-  guessLeft: () => void;
-  guessRight: () => void;
-}) {
-  const guessingTeam = props.players[props.clueGiver].team;
-  const playerTeam = props.players[props.playerId].team;
-  const notMyTurn = guessingTeam === playerTeam;
-  const clueGiverName = props.players[props.clueGiver].name;
+export function CounterGuess() {
+  const { state: gameState, localPlayer, clueGiver, setGameState } = useContext(
+    GameModelContext
+  );
+
+  if (!clueGiver) {
+    return null;
+  }
+
+  const notMyTurn = clueGiver.team === localPlayer.team;
   const counterGuessTeamString =
-    guessingTeam === Team.Left ? "RIGHT BRAIN" : "LEFT BRAIN";
+    clueGiver.team === Team.Left ? "RIGHT BRAIN" : "LEFT BRAIN";
 
   if (notMyTurn) {
     return (
       <div>
         <Spectrum
-          spectrumCard={props.spectrumCard}
-          guessingValue={props.guess}
+          spectrumCard={gameState.spectrumCard}
+          guessingValue={gameState.guess}
         />
         <CenteredColumn>
           <div>
-            {clueGiverName}'s clue: <strong>{props.clue}</strong>
+            {clueGiver.name}'s clue: <strong>{gameState.clue}</strong>
           </div>
           <div>Waiting for {counterGuessTeamString} to guess left/right...</div>
         </CenteredColumn>
@@ -41,15 +38,28 @@ export function CounterGuess(props: {
 
   return (
     <div>
-      <Spectrum spectrumCard={props.spectrumCard} guessingValue={props.guess} />
+      <Spectrum
+        spectrumCard={gameState.spectrumCard}
+        guessingValue={gameState.guess}
+      />
       <CenteredColumn>
         <div>
-          {clueGiverName}'s clue: <strong>{props.clue}</strong>
+          {clueGiver.name}'s clue: <strong>{gameState.clue}</strong>
         </div>
       </CenteredColumn>
       <CenteredRow>
-        <Button text="Target is to the Left" onClick={props.guessLeft} />
-        <Button text="Target is to the Right" onClick={props.guessRight} />
+        <Button
+          text="Target is to the Left"
+          onClick={() =>
+            setGameState(ScoreRound(gameState, localPlayer.id, "left"))
+          }
+        />
+        <Button
+          text="Target is to the Right"
+          onClick={() =>
+            setGameState(ScoreRound(gameState, localPlayer.id, "right"))
+          }
+        />
       </CenteredRow>
     </div>
   );

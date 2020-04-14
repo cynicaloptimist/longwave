@@ -5,7 +5,6 @@ import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
 import { JoinTeam } from "./JoinTeam";
 import { NewRound } from "../state/NewRound";
-import { ScoreRound } from "../state/ScoreForPlayerTeam";
 import { Scoreboard } from "./Scoreboard";
 import { SetupGame } from "./SetupGame";
 import { CounterGuess } from "./CounterGuess";
@@ -33,18 +32,7 @@ export function ActiveGame() {
     <>
       {gameState.roundPhase === RoundPhase.GiveClue && <GiveClue />}
       {gameState.roundPhase === RoundPhase.MakeGuess && <MakeGuess />}
-      {gameState.roundPhase === RoundPhase.CounterGuess && (
-        <CounterGuess
-          {...gameState}
-          playerId={localPlayer.id}
-          guessLeft={() => {
-            setGameState(ScoreRound(gameState, localPlayer.id, "left"));
-          }}
-          guessRight={() => {
-            setGameState(ScoreRound(gameState, localPlayer.id, "right"));
-          }}
-        />
-      )}
+      {gameState.roundPhase === RoundPhase.CounterGuess && <CounterGuess />}
       {gameState.roundPhase === RoundPhase.ViewScore && (
         <ViewScore
           gameState={gameState}
