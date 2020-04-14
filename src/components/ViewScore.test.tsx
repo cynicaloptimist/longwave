@@ -33,7 +33,7 @@ test("Applies catchup rule", () => {
   );
 
   const bonusTurn = component.getByText(
-    "Catchup activated: LEFT TEAM takes a bonus turn!"
+    "Catchup activated: LEFT BRAIN takes a bonus turn!"
   );
   expect(bonusTurn).toBeInTheDocument();
 });

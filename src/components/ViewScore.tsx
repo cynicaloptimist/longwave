@@ -19,7 +19,7 @@ export function ViewScore() {
   const score = GetScore(gameState.spectrumTarget, gameState.guess);
 
   const scoringTeamString =
-    clueGiver.team === Team.Left ? "LEFT TEAM" : "RIGHT TEAM";
+    clueGiver.team === Team.Left ? "LEFT BRAIN" : "RIGHT BRAIN";
 
   let bonusTurn = false;
 
