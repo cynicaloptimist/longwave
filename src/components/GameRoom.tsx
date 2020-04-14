@@ -6,6 +6,7 @@ import { InputName } from "./InputName";
 import { RandomFourCharacterString } from "../state/RandomFourCharacterString";
 import { GameModelContext } from "../state/GameModelContext";
 import { ActiveGame } from "./ActiveGame";
+import { BuildGameModel } from "../state/AppState";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -41,21 +42,9 @@ export function GameRoom() {
     return null;
   }
 
-  const clueGiver = gameState.players[gameState.clueGiver]
-    ? {
-        ...gameState.players[gameState.clueGiver],
-        id: gameState.clueGiver,
-      }
-    : null;
-
   return (
     <GameModelContext.Provider
-      value={{
-        state: gameState,
-        localPlayer: { ...gameState.players[playerId], id: playerId },
-        clueGiver,
-        setGameState,
-      }}
+      value={BuildGameModel(gameState, setGameState, playerId)}
     >
       <ActiveGame />
     </GameModelContext.Provider>

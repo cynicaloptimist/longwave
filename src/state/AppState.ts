@@ -73,3 +73,23 @@ export interface GameModel {
   clueGiver: Player | null;
   setGameState: (newState: Partial<GameState>) => void;
 }
+
+export function BuildGameModel(
+  gameState: GameState,
+  setGameState: (newState: Partial<GameState>) => void,
+  localPlayerId: string
+) {
+  const clueGiver = gameState.players[gameState.clueGiver]
+    ? {
+        ...gameState.players[gameState.clueGiver],
+        id: gameState.clueGiver,
+      }
+    : null;
+
+  return {
+    state: gameState,
+    localPlayer: { ...gameState.players[localPlayerId], id: localPlayerId },
+    clueGiver,
+    setGameState,
+  };
+}
