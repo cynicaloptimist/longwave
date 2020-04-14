@@ -21,22 +21,7 @@ export function ActiveGame() {
   );
 
   if (gameState.roundPhase === RoundPhase.SetupGame) {
-    return (
-      <SetupGame
-        startGame={(gameType) => {
-          if (gameType === GameType.Teams) {
-            setGameState({
-              roundPhase: RoundPhase.PickTeams,
-              gameType,
-            });
-          }
-          setGameState({
-            ...NewRound(localPlayer.id),
-            gameType,
-          });
-        }}
-      />
-    );
+    return <SetupGame />;
   }
 
   if (

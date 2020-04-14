@@ -1,26 +1,42 @@
 import React from "react";
-import { GameType } from "../state/AppState";
+import { GameType, RoundPhase } from "../state/AppState";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
 import { Button } from "./Button";
 import { Title } from "./Title";
+import { useContext } from "react";
+import { GameModelContext } from "../state/GameModelContext";
+import { NewRound } from "../state/NewRound";
 
-export function SetupGame(props: { startGame: (gameType: GameType) => void }) {
+export function SetupGame() {
+  const { setGameState, localPlayer } = useContext(GameModelContext);
+
+  const startGame = (gameType: GameType) => {
+    if (gameType === GameType.Teams) {
+      setGameState({
+        roundPhase: RoundPhase.PickTeams,
+        gameType,
+      });
+    }
+    
+    setGameState({
+      ...NewRound(localPlayer.id),
+      gameType,
+    });
+  };
+
   return (
     <CenteredColumn>
       <Title />
       <CenteredRow>
         <Button
           text="Standard (Teams)"
-          onClick={() => props.startGame(GameType.Teams)}
+          onClick={() => startGame(GameType.Teams)}
         />
         {/* <Button
           text="Cooperative"
-          onClick={() => props.startGame(GameType.Cooperative)}
+          onClick={() => startGame(GameType.Cooperative)}
         /> */}
-        <Button
-          text="Free Play"
-          onClick={() => props.startGame(GameType.Freeplay)}
-        />
+        <Button text="Free Play" onClick={() => startGame(GameType.Freeplay)} />
       </CenteredRow>
     </CenteredColumn>
   );
