@@ -24,24 +24,24 @@ export function Scoreboard() {
     />
   );
 
+  const style = {
+    alignSelf: "stretch",
+    alignItems: "flex-start",
+    borderTop: "1px solid black",
+    margin: 16,
+    paddingTop: 16,
+  };
+
   if (gameState.gameType === GameType.Freeplay) {
     return (
-      <CenteredColumn>
+      <CenteredRow style={style}>
         {Object.keys(gameState.players).map(toPlayerRow)}
-      </CenteredColumn>
+      </CenteredRow>
     );
   }
 
   return (
-    <CenteredRow
-      style={{
-        alignSelf: "stretch",
-        alignItems: "flex-start",
-        borderTop: "1px solid black",
-        margin: 16,
-        paddingTop: 16,
-      }}
-    >
+    <CenteredRow style={style}>
       <CenteredColumn style={{ alignItems: "flex-start" }}>
         <div>LEFT BRAIN: {gameState.leftScore} POINTS</div>
         {leftTeam.map(toPlayerRow)}
