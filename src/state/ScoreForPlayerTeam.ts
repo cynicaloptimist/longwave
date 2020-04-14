@@ -11,17 +11,21 @@ export function ScoreRound(
     (counterGuess === "left" && gameState.spectrumTarget < gameState.guess) ||
     (counterGuess === "right" && gameState.spectrumTarget > gameState.guess);
 
+  const counterGuessingTeam =
+    gameState.players[counterGuessingPlayer]?.team || Team.Unset;
+
   let finalState: Partial<GameState> = {
     roundPhase: RoundPhase.ViewScore,
   };
 
-  if (gameState.players[counterGuessingPlayer].team === Team.Left) {
+  if (counterGuessingTeam === Team.Left) {
     finalState.leftScore = gameState.leftScore + (correctCounterGuess ? 1 : 0);
     finalState.rightScore = gameState.rightScore + pointsScored;
   }
 
-  if (gameState.players[counterGuessingPlayer].team === Team.Right) {
-    finalState.rightScore = gameState.rightScore + (correctCounterGuess ? 1 : 0);
+  if (counterGuessingTeam === Team.Right) {
+    finalState.rightScore =
+      gameState.rightScore + (correctCounterGuess ? 1 : 0);
     finalState.leftScore = gameState.leftScore + pointsScored;
   }
 
