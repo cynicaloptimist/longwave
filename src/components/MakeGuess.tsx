@@ -1,5 +1,5 @@
 import React from "react";
-import { PlayersTeams, GameType } from "../state/AppState";
+import { PlayersTeams, GameType, Team } from "../state/AppState";
 import { Spectrum } from "./Spectrum";
 import { CenteredColumn } from "./LayoutElements";
 import { Button } from "./Button";
@@ -24,7 +24,7 @@ export function MakeGuess(props: {
   
   let guessingTeamString = "the players";
   if (props.gameType === GameType.Teams) {
-    guessingTeamString = guessingTeam === "left" ? "LEFT BRAIN" : "RIGHT BRAIN";
+    guessingTeamString = guessingTeam === Team.Left ? "LEFT BRAIN" : "RIGHT BRAIN";
   }
 
   if (notMyTurn) {

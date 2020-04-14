@@ -3,7 +3,7 @@ import { GetScore } from "../state/GetScore";
 import { CenteredColumn } from "./LayoutElements";
 import { Spectrum } from "./Spectrum";
 import { Button } from "./Button";
-import { GameState, GameType } from "../state/AppState";
+import { GameState, GameType, Team } from "../state/AppState";
 
 export function ViewScore(props: {
   gameState: GameState;
@@ -13,32 +13,32 @@ export function ViewScore(props: {
   const gameState = props.gameState;
   const score = GetScore(gameState.spectrumTarget, gameState.guess);
   const scoringTeam = gameState.players[gameState.clueGiver].team;
-  const scoringTeamString = scoringTeam === "left" ? "LEFT TEAM" : "RIGHT TEAM";
+  const scoringTeamString = scoringTeam === Team.Left ? "LEFT TEAM" : "RIGHT TEAM";
   let bonusTurn = false;
 
   const nextTeam = (() => {
     if (gameState.gameType !== GameType.Teams) {
-      return "none";
+      return Team.Unset;
     }
 
     if (score === 4) {
       if (
         gameState.leftScore < gameState.rightScore &&
-        scoringTeam === "left"
+        scoringTeam === Team.Left
       ) {
         bonusTurn = true;
-        return "left";
+        return Team.Left;
       }
       if (
         gameState.rightScore < gameState.leftScore &&
-        scoringTeam === "right"
+        scoringTeam === Team.Right
       ) {
         bonusTurn = true;
-        return "right";
+        return Team.Right;
       }
     }
 
-    return scoringTeam === "left" ? "right" : "left";
+    return scoringTeam === Team.Left ? Team.Right : Team.Left;
   })();
 
   const eligibleToDraw = (() => {

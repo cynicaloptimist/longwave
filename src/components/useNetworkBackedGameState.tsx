@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { database } from "firebase";
-import { GameState, InitialGameState } from "../state/AppState";
+import { GameState, InitialGameState, Team } from "../state/AppState";
 
 export function useNetworkBackedGameState(
   roomId: string,
@@ -27,7 +27,7 @@ export function useNetworkBackedGameState(
       if (completeGameState.players[playerId] === undefined) {
         completeGameState.players[playerId] = {
           name: playerName,
-          team: "none",
+          team: Team.Unset,
         };
         dbRef.set(completeGameState);
         return;

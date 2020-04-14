@@ -1,5 +1,5 @@
 import React from "react";
-import { GameType, PlayersTeams } from "../state/AppState";
+import { GameType, PlayersTeams, Team } from "../state/AppState";
 import { Spectrum } from "./Spectrum";
 import { CenteredColumn, CenteredRow } from "./LayoutElements";
 import { Button } from "./Button";
@@ -20,7 +20,7 @@ export function CounterGuess(props: {
   const notMyTurn = guessingTeam === playerTeam;
   const clueGiverName = props.players[props.clueGiver].name;
   const counterGuessTeamString =
-    guessingTeam === "left" ? "RIGHT BRAIN" : "LEFT BRAIN";
+    guessingTeam === Team.Left ? "RIGHT BRAIN" : "LEFT BRAIN";
 
   if (notMyTurn) {
     return (

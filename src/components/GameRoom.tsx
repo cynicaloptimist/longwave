@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-import { RoundPhase, GameType } from "../state/AppState";
+import { RoundPhase, GameType, Team } from "../state/AppState";
 import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
@@ -67,7 +67,7 @@ export function GameRoom() {
 
   if (
     gameState.gameType === GameType.Teams &&
-    (gameState.roundPhase === RoundPhase.PickTeams || playerTeam === "none")
+    (gameState.roundPhase === RoundPhase.PickTeams || playerTeam === Team.Unset)
   ) {
     return (
       <JoinTeam

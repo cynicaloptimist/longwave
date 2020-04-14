@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PlayersTeams, GameType } from "../state/AppState";
+import { PlayersTeams, GameType, Team } from "../state/AppState";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
 
 export function Scoreboard(props: {
@@ -10,10 +10,10 @@ export function Scoreboard(props: {
   removePlayer: (playerId: string) => void;
 }) {
   const leftTeam = Object.keys(props.players).filter(
-    (playerId) => props.players[playerId].team === "left"
+    (playerId) => props.players[playerId].team === Team.Left
   );
   const rightTeam = Object.keys(props.players).filter(
-    (playerId) => props.players[playerId].team === "right"
+    (playerId) => props.players[playerId].team === Team.Right
   );
 
   const toPlayerRow = (playerId: string) => (

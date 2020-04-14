@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { ViewScore } from "./ViewScore";
-import { InitialGameState } from "../state/AppState";
+import { InitialGameState, Team } from "../state/AppState";
 
 test("Applies catchup rule", () => {
   const component = render(
@@ -11,11 +11,11 @@ test("Applies catchup rule", () => {
         players: {
           playerId: {
             name: "Player",
-            team: "left",
+            team: Team.Left,
           },
           teammateId: {
             name: "Teammate",
-            team: "left",
+            team: Team.Left,
           },
         },
         leftScore: 0,

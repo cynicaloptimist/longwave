@@ -20,10 +20,16 @@ export enum GameType {
   Freeplay
 }
 
+export enum Team {
+  Unset,
+  Left,
+  Right
+}
+
 export type PlayersTeams = {
   [playerId: string]: {
     name: string,
-    team: "left" | "right" | "none"
+    team: Team
   }
 }
 

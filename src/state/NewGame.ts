@@ -1,4 +1,4 @@
-import { GameType, PlayersTeams, GameState } from "./AppState";
+import { GameType, PlayersTeams, GameState, Team } from "./AppState";
 import { NewRound } from "./NewRound";
 
 export function NewTeamGame(
@@ -11,7 +11,7 @@ export function NewTeamGame(
   };
 
   const playerTeam = players[startPlayer].team;
-  if (playerTeam === "left") {
+  if (playerTeam === Team.Left) {
     initialScores.rightScore = 1;
   } else {
     initialScores.leftScore = 1;
