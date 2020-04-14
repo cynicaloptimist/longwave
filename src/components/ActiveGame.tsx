@@ -4,7 +4,6 @@ import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
 import { JoinTeam } from "./JoinTeam";
-import { NewRound } from "../state/NewRound";
 import { Scoreboard } from "./Scoreboard";
 import { SetupGame } from "./SetupGame";
 import { CounterGuess } from "./CounterGuess";
@@ -12,9 +11,7 @@ import { useContext } from "react";
 import { GameModelContext } from "../state/GameModelContext";
 
 export function ActiveGame() {
-  const { state: gameState, localPlayer, setGameState } = useContext(
-    GameModelContext
-  );
+  const { state: gameState, localPlayer } = useContext(GameModelContext);
 
   if (gameState.roundPhase === RoundPhase.SetupGame) {
     return <SetupGame />;
@@ -34,13 +31,7 @@ export function ActiveGame() {
       {gameState.roundPhase === RoundPhase.MakeGuess && <MakeGuess />}
       {gameState.roundPhase === RoundPhase.CounterGuess && <CounterGuess />}
       {gameState.roundPhase === RoundPhase.ViewScore && <ViewScore />}
-      <Scoreboard
-        {...gameState}
-        removePlayer={(playerId) => {
-          delete gameState.players[playerId];
-          setGameState(gameState);
-        }}
-      />
+      <Scoreboard />
     </>
   );
 }

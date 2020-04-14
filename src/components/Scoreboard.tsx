@@ -1,33 +1,33 @@
-import React, { useState } from "react";
-import { PlayersTeams, GameType, Team } from "../state/AppState";
+import React, { useState, useContext } from "react";
+import { GameType, Team } from "../state/AppState";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
+import { GameModelContext } from "../state/GameModelContext";
 
-export function Scoreboard(props: {
-  gameType: GameType;
-  leftScore: number;
-  rightScore: number;
-  players: PlayersTeams;
-  removePlayer: (playerId: string) => void;
-}) {
-  const leftTeam = Object.keys(props.players).filter(
-    (playerId) => props.players[playerId].team === Team.Left
+export function Scoreboard() {
+  const { state: gameState, setGameState } = useContext(GameModelContext);
+
+  const leftTeam = Object.keys(gameState.players).filter(
+    (playerId) => gameState.players[playerId].team === Team.Left
   );
-  const rightTeam = Object.keys(props.players).filter(
-    (playerId) => props.players[playerId].team === Team.Right
+  const rightTeam = Object.keys(gameState.players).filter(
+    (playerId) => gameState.players[playerId].team === Team.Right
   );
 
   const toPlayerRow = (playerId: string) => (
     <PlayerRow
       key={playerId}
-      playerName={props.players[playerId].name}
-      onRemove={() => props.removePlayer(playerId)}
+      playerName={gameState.players[playerId].name}
+      onRemove={() => {
+        delete gameState.players[playerId];
+        setGameState(gameState);
+      }}
     />
   );
 
-  if (props.gameType === GameType.Freeplay) {
+  if (gameState.gameType === GameType.Freeplay) {
     return (
       <CenteredColumn>
-        {Object.keys(props.players).map(toPlayerRow)}
+        {Object.keys(gameState.players).map(toPlayerRow)}
       </CenteredColumn>
     );
   }
@@ -43,11 +43,11 @@ export function Scoreboard(props: {
       }}
     >
       <CenteredColumn style={{ alignItems: "flex-start" }}>
-        <div>LEFT BRAIN: {props.leftScore} POINTS</div>
+        <div>LEFT BRAIN: {gameState.leftScore} POINTS</div>
         {leftTeam.map(toPlayerRow)}
       </CenteredColumn>
       <CenteredColumn style={{ alignItems: "flex-start" }}>
-        <div>RIGHT BRAIN: {props.rightScore} POINTS</div>
+        <div>RIGHT BRAIN: {gameState.rightScore} POINTS</div>
         {rightTeam.map(toPlayerRow)}
       </CenteredColumn>
     </CenteredRow>
