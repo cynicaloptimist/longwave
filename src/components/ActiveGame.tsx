@@ -33,30 +33,7 @@ export function ActiveGame() {
 
   return (
     <>
-      {gameState.roundPhase === RoundPhase.GiveClue && (
-        <GiveClue
-          {...gameState}
-          playerId={localPlayer.id}
-          updateClueGiver={(playerId: string) => {
-            setGameState({
-              clueGiver: playerId,
-            });
-          }}
-          redrawCard={() => {
-            setGameState({
-              spectrumCard: RandomSpectrumCard(),
-              spectrumTarget: RandomSpectrumTarget(),
-            });
-          }}
-          submitClue={(clue) => {
-            setGameState({
-              clue,
-              guess: 0,
-              roundPhase: RoundPhase.MakeGuess,
-            });
-          }}
-        />
-      )}
+      {gameState.roundPhase === RoundPhase.GiveClue && <GiveClue />}
       {gameState.roundPhase === RoundPhase.MakeGuess && (
         <MakeGuess
           {...gameState}

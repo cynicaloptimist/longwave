@@ -1,38 +1,37 @@
 import React, { useRef } from "react";
 
-import { PlayersTeams } from "../state/AppState";
+import { RoundPhase } from "../state/AppState";
 import { Spectrum } from "./Spectrum";
 import { CenteredColumn } from "./LayoutElements";
 import { Button } from "./Button";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useContext } from "react";
+import { GameModelContext } from "../state/GameModelContext";
+import { RandomSpectrumCard } from "../state/SpectrumCards";
+import { RandomSpectrumTarget } from "../state/RandomSpectrumTarget";
 
-export function GiveClue(props: {
-  players: PlayersTeams;
-  spectrumCard: [string, string];
-  spectrumTarget: number;
-  clueGiver: string;
-  playerId: string;
-  updateClueGiver: (playerId: string) => void;
-  redrawCard: () => void;
-  submitClue: (clue: string) => void;
-}) {
+export function GiveClue() {
+  const { state: gameState, localPlayer, clueGiver, setGameState } = useContext(
+    GameModelContext
+  );
   const inputElement = useRef<HTMLInputElement>(null);
 
-  if (!props.players[props.clueGiver]) {
-    props.updateClueGiver(props.playerId);
+  if (!clueGiver) {
+    setGameState({
+      clueGiver: localPlayer.id,
+    });
     return null;
   }
 
-  if (props.playerId !== props.clueGiver) {
-    const clueGiverName = props.players[props.clueGiver].name;
+  if (localPlayer.id !== clueGiver.id) {
     return (
       <div>
         <Reveal>
-          <Spectrum spectrumCard={props.spectrumCard} />
+          <Spectrum spectrumCard={gameState.spectrumCard} />
         </Reveal>
         <CenteredColumn>
-          <div>Waiting for {clueGiverName} to provide a clue...</div>
+          <div>Waiting for {clueGiver.name} to provide a clue...</div>
         </CenteredColumn>
       </div>
     );
@@ -42,18 +41,29 @@ export function GiveClue(props: {
     if (!inputElement.current) {
       return false;
     }
-    props.submitClue(inputElement.current.value);
+
+    setGameState({
+      clue: inputElement.current.value,
+      guess: 0,
+      roundPhase: RoundPhase.MakeGuess,
+    });
   };
+
+  const redrawCard = () =>
+    setGameState({
+      spectrumCard: RandomSpectrumCard(),
+      spectrumTarget: RandomSpectrumTarget(),
+    });
 
   return (
     <div>
       <CenteredColumn style={{ alignItems: "flex-end" }}>
-        <Button text="Draw a different card" onClick={props.redrawCard} />
+        <Button text="Draw a different card" onClick={redrawCard} />
       </CenteredColumn>
       <Reveal>
         <Spectrum
-          targetValue={props.spectrumTarget}
-          spectrumCard={props.spectrumCard}
+          targetValue={gameState.spectrumTarget}
+          spectrumCard={gameState.spectrumCard}
         />
       </Reveal>
       <CenteredColumn>
