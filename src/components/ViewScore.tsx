@@ -3,17 +3,71 @@ import { GetScore } from "../state/GetScore";
 import { CenteredColumn } from "./LayoutElements";
 import { Spectrum } from "./Spectrum";
 import { Button } from "./Button";
-import { GameType, Team } from "../state/AppState";
+import { GameType, Team, InitialGameState } from "../state/AppState";
 import { GameModelContext } from "../state/GameModelContext";
 import { NewRound } from "../state/NewRound";
 
 export function ViewScore() {
+  const { state: gameState, clueGiver } = useContext(GameModelContext);
+
+  if (!clueGiver) {
+    return null;
+  }
+
+  const score = GetScore(gameState.spectrumTarget, gameState.guess);
+
+  return (
+    <div>
+      <Spectrum
+        spectrumCard={gameState.spectrumCard}
+        handleValue={gameState.guess}
+        targetValue={gameState.spectrumTarget}
+      />
+      <CenteredColumn>
+        <div>Score: {score} points!</div>
+        <NextTurnOrEndGame />
+      </CenteredColumn>
+    </div>
+  );
+}
+
+function NextTurnOrEndGame() {
   const { state: gameState, localPlayer, clueGiver, setGameState } = useContext(
     GameModelContext
   );
 
   if (!clueGiver) {
     return null;
+  }
+
+  const resetButton = (
+    <Button
+      text="Reset Game"
+      onClick={() => {
+        setGameState(InitialGameState());
+      }}
+    />
+  );
+
+  if (gameState.leftScore >= 10 && gameState.leftScore > gameState.rightScore) {
+    return (
+      <>
+        <div>"LEFT BRAIN wins!"</div>
+        {resetButton}
+      </>
+    );
+  }
+
+  if (
+    gameState.rightScore >= 10 &&
+    gameState.rightScore > gameState.leftScore
+  ) {
+    return (
+      <>
+        <div>"RIGHT BRAIN wins!"</div>
+        {resetButton}
+      </>
+    );
   }
 
   const score = GetScore(gameState.spectrumTarget, gameState.guess);
@@ -61,24 +115,16 @@ export function ViewScore() {
   })();
 
   return (
-    <div>
-      <Spectrum
-        spectrumCard={gameState.spectrumCard}
-        handleValue={gameState.guess}
-        targetValue={gameState.spectrumTarget}
-      />
-      <CenteredColumn>
-        <div>Score: {score} points!</div>
-        {bonusTurn && (
-          <div>Catchup activated: {scoringTeamString} takes a bonus turn!</div>
-        )}
-        {eligibleToDraw && (
-          <Button
-            text="Draw next Spectrum Card"
-            onClick={() => setGameState(NewRound(localPlayer.id))}
-          />
-        )}
-      </CenteredColumn>
-    </div>
+    <>
+      {bonusTurn && (
+        <div>Catchup activated: {scoringTeamString} takes a bonus turn!</div>
+      )}
+      {eligibleToDraw && (
+        <Button
+          text="Draw next Spectrum Card"
+          onClick={() => setGameState(NewRound(localPlayer.id))}
+        />
+      )}
+    </>
   );
 }
