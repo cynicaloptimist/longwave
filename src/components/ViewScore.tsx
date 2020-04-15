@@ -44,7 +44,11 @@ function NextTurnOrEndGame() {
     <Button
       text="Reset Game"
       onClick={() => {
-        setGameState(InitialGameState());
+        setGameState({
+          ...InitialGameState(),
+          deckSeed: gameState.deckSeed,
+          deckIndex: gameState.deckIndex,
+        });
       }}
     />
   );
@@ -122,7 +126,9 @@ function NextTurnOrEndGame() {
       {eligibleToDraw && (
         <Button
           text="Draw next Spectrum Card"
-          onClick={() => setGameState(NewRound(localPlayer.id, gameState.deckIndex))}
+          onClick={() =>
+            setGameState(NewRound(localPlayer.id, gameState.deckIndex))
+          }
         />
       )}
     </>
