@@ -16,6 +16,9 @@ export function GiveClue() {
     GameModelContext
   );
   const inputElement = useRef<HTMLInputElement>(null);
+  const [disableSubmit, setDisableSubmit] = useState(
+    !inputElement.current?.value?.length
+  );
 
   if (!clueGiver) {
     setGameState({
@@ -38,7 +41,7 @@ export function GiveClue() {
   }
 
   const submit = () => {
-    if (!inputElement.current) {
+    if (!inputElement.current?.value?.length) {
       return false;
     }
 
@@ -77,8 +80,11 @@ export function GiveClue() {
             }
             submit();
           }}
+          onChange={() =>
+            setDisableSubmit(!inputElement.current?.value?.length)
+          }
         />
-        <Button text="Submit Clue" onClick={submit} />
+        <Button text="Submit Clue" onClick={submit} disabled={disableSubmit} />
       </CenteredColumn>
     </div>
   );
