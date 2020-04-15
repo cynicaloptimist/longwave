@@ -7,7 +7,7 @@ import { GameModelContext } from "../state/GameModelContext";
 import { ScoreRound } from "../state/ScoreForPlayerTeam";
 
 export function CounterGuess() {
-  const { gameState, localPlayer, clueGiver, setGameState } = useContext(
+  const { gameState, localPlayer, clueGiver, spectrumCard, setGameState } = useContext(
     GameModelContext
   );
 
@@ -23,7 +23,7 @@ export function CounterGuess() {
     return (
       <div>
         <Spectrum
-          spectrumCard={gameState.spectrumCard}
+          spectrumCard={spectrumCard}
           guessingValue={gameState.guess}
         />
         <CenteredColumn>
@@ -39,7 +39,7 @@ export function CounterGuess() {
   return (
     <div>
       <Spectrum
-        spectrumCard={gameState.spectrumCard}
+        spectrumCard={spectrumCard}
         guessingValue={gameState.guess}
       />
       <CenteredColumn>

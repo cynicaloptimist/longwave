@@ -6,9 +6,13 @@ import { Button } from "./Button";
 import { GameModelContext } from "../state/GameModelContext";
 
 export function MakeGuess() {
-  const { gameState, localPlayer, clueGiver, setGameState } = useContext(
-    GameModelContext
-  );
+  const {
+    gameState,
+    localPlayer,
+    clueGiver,
+    spectrumCard,
+    setGameState,
+  } = useContext(GameModelContext);
 
   if (!clueGiver) {
     return null;
@@ -28,10 +32,7 @@ export function MakeGuess() {
   if (notMyTurn) {
     return (
       <div>
-        <Spectrum
-          spectrumCard={gameState.spectrumCard}
-          guessingValue={gameState.guess}
-        />
+        <Spectrum spectrumCard={spectrumCard} guessingValue={gameState.guess} />
         <CenteredColumn>
           <div>
             {clueGiver.name}'s clue: <strong>{gameState.clue}</strong>
@@ -45,7 +46,7 @@ export function MakeGuess() {
   return (
     <div>
       <Spectrum
-        spectrumCard={gameState.spectrumCard}
+        spectrumCard={spectrumCard}
         handleValue={gameState.guess}
         onChange={(guess: number) => {
           setGameState({

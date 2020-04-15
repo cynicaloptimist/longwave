@@ -1,5 +1,5 @@
-import { RandomSpectrumCard } from "./SpectrumCards";
 import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
+import { RandomFourCharacterString } from "./RandomFourCharacterString";
 
 export interface AppState {
   roomId: string;
@@ -36,7 +36,8 @@ export type PlayersTeams = {
 export interface GameState {
   gameType: GameType;
   roundPhase: RoundPhase;
-  spectrumCard: [string, string];
+  deckSeed: string;
+  deckIndex: number;
   spectrumTarget: number;
   clue: string;
   guess: number;
@@ -50,7 +51,8 @@ export function InitialGameState(): GameState {
   return {
     gameType: GameType.Teams,
     roundPhase: RoundPhase.SetupGame,
-    spectrumCard: RandomSpectrumCard(),
+    deckSeed: RandomFourCharacterString(),
+    deckIndex: 0,
     spectrumTarget: RandomSpectrumTarget(),
     clue: "",
     guess: 0,
@@ -60,4 +62,3 @@ export function InitialGameState(): GameState {
     rightScore: 0,
   };
 }
-

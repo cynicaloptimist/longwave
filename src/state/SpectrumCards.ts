@@ -256,8 +256,4 @@ const AdvancedSpectrumCards: [string, string][] = [
   ["Bad dog (breed)", "Good dog (breed)"],
 ];
 
-const AllCards = [...SpectrumCards, ...AdvancedSpectrumCards];
-
-export function RandomSpectrumCard() {
-  return AllCards[Math.floor(Math.random() * AllCards.length)];
-}
+export const AllCards = [...SpectrumCards, ...AdvancedSpectrumCards];

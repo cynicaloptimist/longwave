@@ -8,7 +8,7 @@ import { GameModelContext } from "../state/GameModelContext";
 import { NewRound } from "../state/NewRound";
 
 export function ViewScore() {
-  const { gameState, clueGiver } = useContext(GameModelContext);
+  const { gameState, clueGiver, spectrumCard } = useContext(GameModelContext);
 
   if (!clueGiver) {
     return null;
@@ -19,7 +19,7 @@ export function ViewScore() {
   return (
     <div>
       <Spectrum
-        spectrumCard={gameState.spectrumCard}
+        spectrumCard={spectrumCard}
         handleValue={gameState.guess}
         targetValue={gameState.spectrumTarget}
       />
@@ -122,7 +122,7 @@ function NextTurnOrEndGame() {
       {eligibleToDraw && (
         <Button
           text="Draw next Spectrum Card"
-          onClick={() => setGameState(NewRound(localPlayer.id))}
+          onClick={() => setGameState(NewRound(localPlayer.id, gameState.deckIndex))}
         />
       )}
     </>

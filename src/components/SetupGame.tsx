@@ -8,7 +8,7 @@ import { GameModelContext } from "../state/GameModelContext";
 import { NewRound } from "../state/NewRound";
 
 export function SetupGame() {
-  const { setGameState, localPlayer } = useContext(GameModelContext);
+  const { gameState, setGameState, localPlayer } = useContext(GameModelContext);
 
   const startGame = (gameType: GameType) => {
     if (gameType === GameType.Teams) {
@@ -18,7 +18,7 @@ export function SetupGame() {
       });
     } else {
       setGameState({
-        ...NewRound(localPlayer.id),
+        ...NewRound(localPlayer.id, gameState.deckIndex),
         gameType,
       });
     }

@@ -1,5 +1,6 @@
-import { Team, GameModel, InitialGameState } from "./AppState";
+import { Team, InitialGameState } from "./AppState";
 import { createContext } from "react";
+import { GameModel } from "../components/useGameModel";
 
 export const GameModelContext = createContext<GameModel>({
   gameState: InitialGameState(),
@@ -9,5 +10,6 @@ export const GameModelContext = createContext<GameModel>({
     team: Team.Unset,
   },
   clueGiver: null,
+  spectrumCard: ["left", "right"],
   setGameState: () => {},
 });

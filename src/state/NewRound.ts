@@ -1,12 +1,11 @@
 import { RoundPhase, GameState } from "./AppState";
-import { RandomSpectrumCard } from "./SpectrumCards";
 import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
 
-export function NewRound(playerId: string): Partial<GameState> {
+export function NewRound(playerId: string, deckIndex: number): Partial<GameState> {
   return {
     clueGiver: playerId,
     roundPhase: RoundPhase.GiveClue,
-    spectrumCard: RandomSpectrumCard(),
+    deckIndex: deckIndex + 1,
     spectrumTarget: RandomSpectrumTarget(),
   };
 }

@@ -8,9 +8,7 @@ import { GameModelContext } from "../state/GameModelContext";
 import { NewTeamGame } from "../state/NewGame";
 
 export function JoinTeam() {
-  const { gameState, localPlayer, setGameState } = useContext(
-    GameModelContext
-  );
+  const { gameState, localPlayer, setGameState } = useContext(GameModelContext);
 
   const leftTeam = Object.keys(gameState.players).filter(
     (playerId) => gameState.players[playerId].team === Team.Left
@@ -32,7 +30,9 @@ export function JoinTeam() {
   };
 
   const startGame = () =>
-    setGameState(NewTeamGame(gameState.players, localPlayer.id));
+    setGameState(
+      NewTeamGame(gameState.players, localPlayer.id, gameState.deckIndex)
+    );
 
   return (
     <CenteredColumn>

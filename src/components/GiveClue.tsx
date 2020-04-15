@@ -8,13 +8,16 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import { GameModelContext } from "../state/GameModelContext";
-import { RandomSpectrumCard } from "../state/SpectrumCards";
 import { RandomSpectrumTarget } from "../state/RandomSpectrumTarget";
 
 export function GiveClue() {
-  const { gameState, localPlayer, clueGiver, setGameState } = useContext(
-    GameModelContext
-  );
+  const {
+    gameState,
+    localPlayer,
+    clueGiver,
+    spectrumCard,
+    setGameState,
+  } = useContext(GameModelContext);
   const inputElement = useRef<HTMLInputElement>(null);
   const [disableSubmit, setDisableSubmit] = useState(
     !inputElement.current?.value?.length
@@ -31,7 +34,7 @@ export function GiveClue() {
     return (
       <div>
         <Reveal>
-          <Spectrum spectrumCard={gameState.spectrumCard} />
+          <Spectrum spectrumCard={spectrumCard} />
         </Reveal>
         <CenteredColumn>
           <div>Waiting for {clueGiver.name} to provide a clue...</div>
@@ -54,7 +57,7 @@ export function GiveClue() {
 
   const redrawCard = () =>
     setGameState({
-      spectrumCard: RandomSpectrumCard(),
+      deckIndex: gameState.deckIndex + 1,
       spectrumTarget: RandomSpectrumTarget(),
     });
 
@@ -66,7 +69,7 @@ export function GiveClue() {
       <Reveal>
         <Spectrum
           targetValue={gameState.spectrumTarget}
-          spectrumCard={gameState.spectrumCard}
+          spectrumCard={spectrumCard}
         />
       </Reveal>
       <CenteredColumn>
