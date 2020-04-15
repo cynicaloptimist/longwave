@@ -6,7 +6,7 @@ import { InputName } from "./InputName";
 import { RandomFourCharacterString } from "../state/RandomFourCharacterString";
 import { GameModelContext } from "../state/GameModelContext";
 import { ActiveGame } from "./ActiveGame";
-import { BuildGameModel } from "../state/AppState";
+import { useGameModel } from "./useGameModel";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -26,6 +26,8 @@ export function GameRoom() {
     playerName
   );
 
+  const gameModel = useGameModel(gameState, setGameState, playerId);
+
   if (playerName.length === 0) {
     return (
       <InputName
@@ -43,9 +45,7 @@ export function GameRoom() {
   }
 
   return (
-    <GameModelContext.Provider
-      value={BuildGameModel(gameState, setGameState, playerId)}
-    >
+    <GameModelContext.Provider value={gameModel}>
       <ActiveGame />
     </GameModelContext.Provider>
   );
