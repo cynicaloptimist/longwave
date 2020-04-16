@@ -112,3 +112,22 @@ test("Ends game when one team has 10 points", () => {
   const subject = component.getByText("LEFT BRAIN wins!");
   expect(subject).toBeInTheDocument();
 });
+
+test("Does not end game when both teams have 10 points", () => {
+  const gameState = {
+    ...onePlayerGame,
+    leftScore: 10,
+    rightScore: 10
+  };
+
+  const component = render(
+    <GameModelContext.Provider
+      value={BuildGameModel(gameState, jest.fn(), "playerId")}
+    >
+      <ViewScore />
+    </GameModelContext.Provider>
+  );
+
+  const subject = component.queryByText("LEFT BRAIN wins!");
+  expect(subject).toBeNull();
+});
