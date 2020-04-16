@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import { GameType, Team } from "../state/AppState";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
 import { GameModelContext } from "../state/GameModelContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 export function Scoreboard() {
   const { gameState, setGameState } = useContext(GameModelContext);
@@ -65,7 +67,7 @@ function PlayerRow(props: { playerName: string; onRemove: () => void }) {
       {props.playerName}
       {hovered && (
         <span style={{ marginLeft: 4 }} onClick={props.onRemove}>
-          [X]
+          <FontAwesomeIcon icon={faTimesCircle} />
         </span>
       )}
     </div>
