@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { GetScore } from "../state/GetScore";
-import { CenteredColumn } from "./LayoutElements";
+import { CenteredColumn, CenteredRow } from "./LayoutElements";
 import { Spectrum } from "./Spectrum";
 import { Button } from "./Button";
 import { GameType, Team, InitialGameState } from "../state/AppState";
 import { GameModelContext } from "../state/GameModelContext";
 import { NewRound } from "../state/NewRound";
+import { Info } from "./Info";
 
 export function ViewScore() {
   const { gameState, clueGiver, spectrumCard } = useContext(GameModelContext);
@@ -124,7 +125,13 @@ function NextTurnOrEndGame() {
   return (
     <>
       {bonusTurn && (
-        <div>Catchup activated: {scoringTeamString} takes a bonus turn!</div>
+        <CenteredRow>
+          <div>Catchup activated: {scoringTeamString} takes a bonus turn! </div>
+          <Info>
+            After a team scores a four-point round, they get a bonus turn if
+            they are still behind the other team.
+          </Info>
+        </CenteredRow>
       )}
       {eligibleToDraw && (
         <Button
