@@ -5,6 +5,32 @@ import { InitialGameState, Team } from "../state/AppState";
 import { BuildGameModel } from "../state/BuildGameModel";
 import { GameModelContext } from "../state/GameModelContext";
 
+test("Applies 4 points for a perfect guess", () => {
+  const gameState = {
+    ...InitialGameState(),
+    players: {
+      playerId: {
+        name: "Player",
+        team: Team.Left,
+      },
+    },
+    clueGiver: "playerId",
+    spectrumTarget: 1,
+    guess: 1,
+  };
+
+  const component = render(
+    <GameModelContext.Provider
+      value={BuildGameModel(gameState, jest.fn(), "playerId")}
+    >
+      <ViewScore />
+    </GameModelContext.Provider>
+  );
+
+  const bonusTurn = component.getByText("Score: 4 points!");
+  expect(bonusTurn).toBeInTheDocument();
+});
+
 test("Applies catchup rule", () => {
   const gameState = {
     ...InitialGameState(),
