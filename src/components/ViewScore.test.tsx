@@ -13,14 +13,10 @@ test("Applies catchup rule", () => {
         name: "Player",
         team: Team.Left,
       },
-      teammateId: {
-        name: "Teammate",
-        team: Team.Left,
-      },
     },
     leftScore: 0,
     rightScore: 4,
-    clueGiver: "teammateId",
+    clueGiver: "playerId",
     spectrumTarget: 1,
     guess: 1,
   };
