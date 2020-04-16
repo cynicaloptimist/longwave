@@ -31,8 +31,8 @@ test("Applies 4 points for a perfect guess", () => {
     </GameModelContext.Provider>
   );
 
-  const bonusTurn = component.getByText("Score: 4 points!");
-  expect(bonusTurn).toBeInTheDocument();
+  const subject = component.getByText("Score: 4 points!");
+  expect(subject).toBeInTheDocument();
 });
 
 test("Applies 2 points for off by 2", () => {
@@ -50,8 +50,8 @@ test("Applies 2 points for off by 2", () => {
     </GameModelContext.Provider>
   );
 
-  const bonusTurn = component.getByText("Score: 2 points!");
-  expect(bonusTurn).toBeInTheDocument();
+  const subject = component.getByText("Score: 2 points!");
+  expect(subject).toBeInTheDocument();
 });
 
 test("Applies 0 points for off by 3", () => {
@@ -69,8 +69,8 @@ test("Applies 0 points for off by 3", () => {
     </GameModelContext.Provider>
   );
 
-  const bonusTurn = component.getByText("Score: 0 points!");
-  expect(bonusTurn).toBeInTheDocument();
+  const subject = component.getByText("Score: 0 points!");
+  expect(subject).toBeInTheDocument();
 });
 
 test("Applies catchup rule", () => {
@@ -89,8 +89,26 @@ test("Applies catchup rule", () => {
     </GameModelContext.Provider>
   );
 
-  const bonusTurn = component.getByText(
+  const subject = component.getByText(
     "Catchup activated: LEFT BRAIN takes a bonus turn!"
   );
-  expect(bonusTurn).toBeInTheDocument();
+  expect(subject).toBeInTheDocument();
+});
+
+test("Ends game when one team has 10 points", () => {
+  const gameState = {
+    ...onePlayerGame,
+    leftScore: 10,
+  };
+
+  const component = render(
+    <GameModelContext.Provider
+      value={BuildGameModel(gameState, jest.fn(), "playerId")}
+    >
+      <ViewScore />
+    </GameModelContext.Provider>
+  );
+
+  const subject = component.getByText("LEFT BRAIN wins!");
+  expect(subject).toBeInTheDocument();
 });
