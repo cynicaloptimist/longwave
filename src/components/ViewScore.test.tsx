@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import { ViewScore } from "./ViewScore";
 import { InitialGameState, Team } from "../state/AppState";
-import { useGameModel } from "./useGameModel";
+import { BuildGameModel } from "../state/BuildGameModel";
 import { GameModelContext } from "../state/GameModelContext";
 
 test("Applies catchup rule", () => {
@@ -27,7 +27,7 @@ test("Applies catchup rule", () => {
 
   const component = render(
     <GameModelContext.Provider
-      value={useGameModel(gameState, jest.fn(), "playerId")}
+      value={BuildGameModel(gameState, jest.fn(), "playerId")}
     >
       <ViewScore />
     </GameModelContext.Provider>

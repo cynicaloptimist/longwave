@@ -1,6 +1,6 @@
 import { Team, InitialGameState } from "./AppState";
 import { createContext } from "react";
-import { GameModel } from "../components/useGameModel";
+import { GameModel } from "./BuildGameModel";
 
 export const GameModelContext = createContext<GameModel>({
   gameState: InitialGameState(),

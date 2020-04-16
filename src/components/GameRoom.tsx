@@ -6,7 +6,7 @@ import { InputName } from "./InputName";
 import { RandomFourCharacterString } from "../state/RandomFourCharacterString";
 import { GameModelContext } from "../state/GameModelContext";
 import { ActiveGame } from "./ActiveGame";
-import { useGameModel } from "./useGameModel";
+import { BuildGameModel } from "../state/BuildGameModel";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -26,7 +26,7 @@ export function GameRoom() {
     playerName
   );
 
-  const gameModel = useGameModel(gameState, setGameState, playerId);
+  const gameModel = BuildGameModel(gameState, setGameState, playerId);
 
   if (playerName.length === 0) {
     return (

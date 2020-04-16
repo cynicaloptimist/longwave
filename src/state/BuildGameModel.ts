@@ -1,6 +1,7 @@
-import { GameState, Team } from "../state/AppState";
-import { useMemo } from "react";
-import { AllCards } from "../state/SpectrumCards";
+import { GameState, Team } from "./AppState";
+import memoize from "lodash/memoize";
+import { AllCards } from "./SpectrumCards";
+
 const shuffleSeed: {
   shuffle: <T>(arr: T[], seed: string) => T[];
 } = require("shuffle-seed");
@@ -19,7 +20,11 @@ export interface GameModel {
   setGameState: (newState: Partial<GameState>) => void;
 }
 
-export function useGameModel(
+const getSeededDeck = memoize((seed: string, cards: [string, string][]) =>
+  shuffleSeed.shuffle(cards, seed)
+);
+
+export function BuildGameModel(
   gameState: GameState,
   setGameState: (newState: Partial<GameState>) => void,
   localPlayerId: string
@@ -31,10 +36,7 @@ export function useGameModel(
       }
     : null;
 
-  const spectrumDeck = useMemo(
-    () => shuffleSeed.shuffle(AllCards, gameState.deckSeed),
-    [gameState.deckSeed]
-  );
+  const spectrumDeck = getSeededDeck(gameState.deckSeed, AllCards);
 
   return {
     gameState,
