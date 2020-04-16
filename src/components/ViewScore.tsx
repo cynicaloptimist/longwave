@@ -24,6 +24,9 @@ export function ViewScore() {
         targetValue={gameState.spectrumTarget}
       />
       <CenteredColumn>
+        <div>
+          {clueGiver.name}'s clue: <strong>{gameState.clue}</strong>
+        </div>
         <div>Score: {score} points!</div>
         <NextTurnOrEndGame />
       </CenteredColumn>
