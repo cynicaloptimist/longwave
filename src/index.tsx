@@ -1,5 +1,6 @@
 import "./index.css";
 import "rc-slider/assets/index.css";
+import 'tippy.js/dist/tippy.css';
 
 import React from "react";
 import ReactDOM from "react-dom";

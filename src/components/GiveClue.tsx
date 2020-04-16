@@ -1,14 +1,12 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext, useState, useEffect } from "react";
 
 import { RoundPhase } from "../state/AppState";
 import { Spectrum } from "./Spectrum";
-import { CenteredColumn } from "./LayoutElements";
+import { CenteredColumn, CenteredRow } from "./LayoutElements";
 import { Button } from "./Button";
-import { useEffect } from "react";
-import { useState } from "react";
-import { useContext } from "react";
 import { GameModelContext } from "../state/GameModelContext";
 import { RandomSpectrumTarget } from "../state/RandomSpectrumTarget";
+import { Info } from "./Info";
 
 export function GiveClue() {
   const {
@@ -73,20 +71,23 @@ export function GiveClue() {
         />
       </Reveal>
       <CenteredColumn>
-        <input
-          type="text"
-          placeholder="Clue..."
-          ref={inputElement}
-          onKeyDown={(event) => {
-            if (event.key !== "Enter") {
-              return true;
+        <CenteredRow>
+          <input
+            type="text"
+            placeholder="Clue..."
+            ref={inputElement}
+            onKeyDown={(event) => {
+              if (event.key !== "Enter") {
+                return true;
+              }
+              submit();
+            }}
+            onChange={() =>
+              setDisableSubmit(!inputElement.current?.value?.length)
             }
-            submit();
-          }}
-          onChange={() =>
-            setDisableSubmit(!inputElement.current?.value?.length)
-          }
-        />
+          />
+          <Info>Test</Info>
+        </CenteredRow>
         <Button text="Submit Clue" onClick={submit} disabled={disableSubmit} />
       </CenteredColumn>
     </div>
