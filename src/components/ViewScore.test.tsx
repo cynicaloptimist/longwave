@@ -75,16 +75,8 @@ test("Applies 0 points for off by 3", () => {
 
 test("Applies catchup rule", () => {
   const gameState = {
-    ...InitialGameState(),
-    players: {
-      playerId: {
-        name: "Player",
-        team: Team.Left,
-      },
-    },
-    leftScore: 0,
+    ...onePlayerGame,
     rightScore: 4,
-    clueGiver: "playerId",
     spectrumTarget: 1,
     guess: 1,
   };
