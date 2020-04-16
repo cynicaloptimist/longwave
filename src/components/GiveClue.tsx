@@ -86,7 +86,20 @@ export function GiveClue() {
               setDisableSubmit(!inputElement.current?.value?.length)
             }
           />
-          <Info>Test</Info>
+          <Info>
+            <div>
+              Your clue should be some concept that lies on the provided
+              spectrum, conceptually located where the target is between the two
+              extremes. For example, "coffee" might be a good clue that lies on
+              a spectrum of "hot" to "cold".
+              <ul>
+                <li>Convey a single thought</li>
+                <li>Stay on topic</li>
+                <li>No numbers allowed</li>
+                <li>Be creative!</li>
+              </ul>
+            </div>
+          </Info>
         </CenteredRow>
         <Button text="Submit Clue" onClick={submit} disabled={disableSubmit} />
       </CenteredColumn>
