@@ -3,7 +3,13 @@ import { GetScore } from "../state/GetScore";
 import { CenteredColumn, CenteredRow } from "./LayoutElements";
 import { Spectrum } from "./Spectrum";
 import { Button } from "./Button";
-import { GameType, Team, InitialGameState } from "../state/AppState";
+import {
+  GameType,
+  Team,
+  InitialGameState,
+  TeamName,
+  TeamReverse,
+} from "../state/AppState";
 import { GameModelContext } from "../state/GameModelContext";
 import { NewRound } from "../state/NewRound";
 import { Info } from "./Info";
@@ -16,6 +22,11 @@ export function ViewScore() {
   }
 
   const score = GetScore(gameState.spectrumTarget, gameState.guess);
+  const wasCounterGuessCorrect =
+    (gameState.counterGuess === "left" &&
+      gameState.spectrumTarget < gameState.guess) ||
+    (gameState.counterGuess === "right" &&
+      gameState.spectrumTarget > gameState.guess);
 
   return (
     <div>
@@ -29,6 +40,14 @@ export function ViewScore() {
           {clueGiver.name}'s clue: <strong>{gameState.clue}</strong>
         </div>
         <div>Score: {score} points!</div>
+        {gameState.gameType === GameType.Teams && (
+          <div>
+            {TeamName(TeamReverse(clueGiver.team))} gets
+            {wasCounterGuessCorrect
+              ? " 1 point for their correct counter guess."
+              : " 0 points for their counter guess."}
+          </div>
+        )}
         <NextTurnOrEndGame />
       </CenteredColumn>
     </div>

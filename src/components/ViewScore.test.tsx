@@ -1,11 +1,11 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { ViewScore } from "./ViewScore";
-import { InitialGameState, Team } from "../state/AppState";
+import { InitialGameState, Team, GameState } from "../state/AppState";
 import { BuildGameModel } from "../state/BuildGameModel";
 import { GameModelContext } from "../state/GameModelContext";
 
-const onePlayerGame = {
+const onePlayerGame: GameState = {
   ...InitialGameState(),
   players: {
     playerId: {
@@ -73,6 +73,50 @@ test("Applies 0 points for off by 3", () => {
   expect(subject).toBeInTheDocument();
 });
 
+test("Includes the score for a correct counter guess", () => {
+  const gameState: GameState = {
+    ...onePlayerGame,
+    spectrumTarget: 1,
+    guess: 3,
+    counterGuess: "left",
+  };
+
+  const component = render(
+    <GameModelContext.Provider
+      value={BuildGameModel(gameState, jest.fn(), "playerId")}
+    >
+      <ViewScore />
+    </GameModelContext.Provider>
+  );
+
+  const subject = component.getByText(
+    "RIGHT BRAIN gets 1 point for their correct counter guess."
+  );
+  expect(subject).toBeInTheDocument();
+});
+
+test("Includes the score for a wrong counter guess", () => {
+  const gameState: GameState = {
+    ...onePlayerGame,
+    spectrumTarget: 1,
+    guess: 3,
+    counterGuess: "right",
+  };
+
+  const component = render(
+    <GameModelContext.Provider
+      value={BuildGameModel(gameState, jest.fn(), "playerId")}
+    >
+      <ViewScore />
+    </GameModelContext.Provider>
+  );
+
+  const subject = component.getByText(
+    "RIGHT BRAIN gets 0 points for their counter guess."
+  );
+  expect(subject).toBeInTheDocument();
+});
+
 test("Applies catchup rule", () => {
   const gameState = {
     ...onePlayerGame,
@@ -117,7 +161,7 @@ test("Does not end game when both teams have 10 points", () => {
   const gameState = {
     ...onePlayerGame,
     leftScore: 10,
-    rightScore: 10
+    rightScore: 10,
   };
 
   const component = render(
