@@ -3,30 +3,29 @@ import { GetScore } from "./GetScore";
 
 export function ScoreRound(
   gameState: GameState,
-  counterGuessingPlayer: string,
+  guessingTeam: Team,
   counterGuess: "left" | "right"
 ): Partial<GameState> {
   const pointsScored = GetScore(gameState.spectrumTarget, gameState.guess);
-  const correctCounterGuess =
+  const wasCounterGuessCorrect =
     (counterGuess === "left" && gameState.spectrumTarget < gameState.guess) ||
     (counterGuess === "right" && gameState.spectrumTarget > gameState.guess);
 
-  const counterGuessingTeam =
-    gameState.players[counterGuessingPlayer]?.team || Team.Unset;
-
   let finalState: Partial<GameState> = {
     roundPhase: RoundPhase.ViewScore,
+    counterGuess,
   };
 
-  if (counterGuessingTeam === Team.Left) {
-    finalState.leftScore = gameState.leftScore + (correctCounterGuess ? 1 : 0);
+  if (guessingTeam === Team.Right) {
     finalState.rightScore = gameState.rightScore + pointsScored;
+    finalState.leftScore =
+      gameState.leftScore + (wasCounterGuessCorrect ? 1 : 0);
   }
 
-  if (counterGuessingTeam === Team.Right) {
-    finalState.rightScore =
-      gameState.rightScore + (correctCounterGuess ? 1 : 0);
+  if (guessingTeam === Team.Left) {
     finalState.leftScore = gameState.leftScore + pointsScored;
+    finalState.rightScore =
+      gameState.rightScore + (wasCounterGuessCorrect ? 1 : 0);
   }
 
   return finalState;

@@ -41,6 +41,7 @@ export interface GameState {
   spectrumTarget: number;
   clue: string;
   guess: number;
+  counterGuess: "left" | "right";
   players: PlayersTeams;
   clueGiver: string;
   leftScore: number;
@@ -56,6 +57,7 @@ export function InitialGameState(): GameState {
     spectrumTarget: RandomSpectrumTarget(),
     clue: "",
     guess: 0,
+    counterGuess: "left",
     players: {},
     clueGiver: "",
     leftScore: 0,

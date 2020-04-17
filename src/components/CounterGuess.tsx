@@ -4,7 +4,7 @@ import { Spectrum } from "./Spectrum";
 import { CenteredColumn, CenteredRow } from "./LayoutElements";
 import { Button } from "./Button";
 import { GameModelContext } from "../state/GameModelContext";
-import { ScoreRound } from "../state/ScoreForPlayerTeam";
+import { ScoreRound } from "../state/ScoreRound";
 
 export function CounterGuess() {
   const { gameState, localPlayer, clueGiver, spectrumCard, setGameState } = useContext(
@@ -51,13 +51,13 @@ export function CounterGuess() {
         <Button
           text="Target is to the Left"
           onClick={() =>
-            setGameState(ScoreRound(gameState, localPlayer.id, "left"))
+            setGameState(ScoreRound(gameState, clueGiver.team, "left"))
           }
         />
         <Button
           text="Target is to the Right"
           onClick={() =>
-            setGameState(ScoreRound(gameState, localPlayer.id, "right"))
+            setGameState(ScoreRound(gameState, clueGiver.team, "right"))
           }
         />
       </CenteredRow>
