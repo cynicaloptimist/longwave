@@ -1,6 +1,6 @@
 import React from "react";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
-import { RoundPhase, Team } from "../state/AppState";
+import { RoundPhase, Team, TeamName } from "../state/AppState";
 import { Button } from "./Button";
 import { Title } from "./Title";
 import { useContext } from "react";
@@ -45,7 +45,7 @@ export function JoinTeam() {
         }}
       >
         <CenteredColumn>
-          <div>LEFT BRAIN</div>
+          <div>{TeamName(Team.Left)}</div>
           {leftTeam.map((playerId) => (
             <div>{gameState.players[playerId].name}</div>
           ))}
@@ -54,7 +54,7 @@ export function JoinTeam() {
           </div>
         </CenteredColumn>
         <CenteredColumn>
-          <div>RIGHT BRAIN</div>
+          <div>{TeamName(Team.Right)}</div>
           {rightTeam.map((playerId) => (
             <div>{gameState.players[playerId].name}</div>
           ))}

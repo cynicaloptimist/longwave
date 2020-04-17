@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { GameType, Team } from "../state/AppState";
+import { GameType, Team, TeamName } from "../state/AppState";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
 import { GameModelContext } from "../state/GameModelContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -45,11 +45,11 @@ export function Scoreboard() {
   return (
     <CenteredRow style={style}>
       <CenteredColumn style={{ alignItems: "flex-start" }}>
-        <div>LEFT BRAIN: {gameState.leftScore} POINTS</div>
+        <div>{TeamName(Team.Left)}: {gameState.leftScore} POINTS</div>
         {leftTeam.map(toPlayerRow)}
       </CenteredColumn>
       <CenteredColumn style={{ alignItems: "flex-start" }}>
-        <div>RIGHT BRAIN: {gameState.rightScore} POINTS</div>
+        <div>{TeamName(Team.Right)}: {gameState.rightScore} POINTS</div>
         {rightTeam.map(toPlayerRow)}
       </CenteredColumn>
     </CenteredRow>

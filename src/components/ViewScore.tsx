@@ -79,7 +79,7 @@ function NextTurnOrEndGame() {
   if (gameState.leftScore >= 10 && gameState.leftScore > gameState.rightScore) {
     return (
       <>
-        <div>LEFT BRAIN wins!</div>
+        <div>{TeamName(Team.Left)} wins!</div>
         {resetButton}
       </>
     );
@@ -91,7 +91,7 @@ function NextTurnOrEndGame() {
   ) {
     return (
       <>
-        <div>RIGHT BRAIN wins!</div>
+        <div>{TeamName(Team.Right)} wins!</div>
         {resetButton}
       </>
     );
@@ -99,8 +99,7 @@ function NextTurnOrEndGame() {
 
   const score = GetScore(gameState.spectrumTarget, gameState.guess);
 
-  const scoringTeamString =
-    clueGiver.team === Team.Left ? "LEFT BRAIN" : "RIGHT BRAIN";
+  const scoringTeamString = TeamName(clueGiver.team);
 
   let bonusTurn = false;
 

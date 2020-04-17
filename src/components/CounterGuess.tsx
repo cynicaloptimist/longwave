@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Team } from "../state/AppState";
+import { Team, TeamReverse, TeamName } from "../state/AppState";
 import { Spectrum } from "./Spectrum";
 import { CenteredColumn, CenteredRow } from "./LayoutElements";
 import { Button } from "./Button";
@@ -7,25 +7,25 @@ import { GameModelContext } from "../state/GameModelContext";
 import { ScoreRound } from "../state/ScoreRound";
 
 export function CounterGuess() {
-  const { gameState, localPlayer, clueGiver, spectrumCard, setGameState } = useContext(
-    GameModelContext
-  );
+  const {
+    gameState,
+    localPlayer,
+    clueGiver,
+    spectrumCard,
+    setGameState,
+  } = useContext(GameModelContext);
 
   if (!clueGiver) {
     return null;
   }
 
   const notMyTurn = clueGiver.team === localPlayer.team;
-  const counterGuessTeamString =
-    clueGiver.team === Team.Left ? "RIGHT BRAIN" : "LEFT BRAIN";
+  const counterGuessTeamString = TeamName(TeamReverse(clueGiver.team));
 
   if (notMyTurn) {
     return (
       <div>
-        <Spectrum
-          spectrumCard={spectrumCard}
-          guessingValue={gameState.guess}
-        />
+        <Spectrum spectrumCard={spectrumCard} guessingValue={gameState.guess} />
         <CenteredColumn>
           <div>
             {clueGiver.name}'s clue: <strong>{gameState.clue}</strong>
@@ -38,10 +38,7 @@ export function CounterGuess() {
 
   return (
     <div>
-      <Spectrum
-        spectrumCard={spectrumCard}
-        guessingValue={gameState.guess}
-      />
+      <Spectrum spectrumCard={spectrumCard} guessingValue={gameState.guess} />
       <CenteredColumn>
         <div>
           {clueGiver.name}'s clue: <strong>{gameState.clue}</strong>

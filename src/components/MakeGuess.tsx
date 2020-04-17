@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { GameType, Team, RoundPhase } from "../state/AppState";
+import { GameType, Team, RoundPhase, TeamName } from "../state/AppState";
 import { Spectrum } from "./Spectrum";
 import { CenteredColumn } from "./LayoutElements";
 import { Button } from "./Button";
@@ -23,11 +23,7 @@ export function MakeGuess() {
     (gameState.gameType === GameType.Teams &&
       localPlayer.team !== clueGiver.team);
 
-  let guessingTeamString = "the players";
-  if (gameState.gameType === GameType.Teams) {
-    guessingTeamString =
-      clueGiver.team === Team.Left ? "LEFT BRAIN" : "RIGHT BRAIN";
-  }
+  const guessingTeamString = TeamName(clueGiver.team);
 
   if (notMyTurn) {
     return (
