@@ -125,7 +125,7 @@ function NextTurnOrEndGame() {
       }
     }
 
-    return clueGiver.team === Team.Left ? Team.Right : Team.Left;
+    return TeamReverse(clueGiver.team);
   })();
 
   const eligibleToDraw = (() => {
