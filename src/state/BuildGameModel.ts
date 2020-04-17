@@ -1,4 +1,4 @@
-import { GameState, Team } from "./AppState";
+import { GameState, Team } from "./GameState";
 import memoize from "lodash/memoize";
 import { AllCards } from "./SpectrumCards";
 

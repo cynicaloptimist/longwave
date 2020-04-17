@@ -1,6 +1,6 @@
 import React from "react";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
-import { RoundPhase, Team, TeamName } from "../state/AppState";
+import { RoundPhase, Team, TeamName } from "../state/GameState";
 import { Button } from "./Button";
 import { Title } from "./Title";
 import { useContext } from "react";

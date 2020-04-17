@@ -1,4 +1,4 @@
-import { GameState, RoundPhase, Team } from "./AppState";
+import { GameState, RoundPhase, Team } from "./GameState";
 import { GetScore } from "./GetScore";
 
 export function ScoreRound(

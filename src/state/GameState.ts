@@ -1,10 +1,6 @@
 import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
 import { RandomFourCharacterString } from "./RandomFourCharacterString";
 
-export interface AppState {
-  roomId: string;
-}
-
 export enum RoundPhase {
   SetupGame,
   PickTeams,

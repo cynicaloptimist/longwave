@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { ViewScore } from "./ViewScore";
-import { InitialGameState, Team, GameState } from "../state/AppState";
+import { InitialGameState, Team, GameState } from "../state/GameState";
 import { BuildGameModel } from "../state/BuildGameModel";
 import { GameModelContext } from "../state/GameModelContext";
 

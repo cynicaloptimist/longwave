@@ -9,7 +9,7 @@ import {
   InitialGameState,
   TeamName,
   TeamReverse,
-} from "../state/AppState";
+} from "../state/GameState";
 import { GameModelContext } from "../state/GameModelContext";
 import { NewRound } from "../state/NewRound";
 import { Info } from "./Info";

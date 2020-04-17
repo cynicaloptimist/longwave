@@ -1,4 +1,4 @@
-import { GameType, PlayersTeams, GameState, Team } from "./AppState";
+import { GameType, PlayersTeams, GameState, Team } from "./GameState";
 import { NewRound } from "./NewRound";
 
 export function NewTeamGame(

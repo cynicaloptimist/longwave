@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { GameType, Team, TeamName } from "../state/AppState";
+import { GameType, Team, TeamName } from "../state/GameState";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
 import { GameModelContext } from "../state/GameModelContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

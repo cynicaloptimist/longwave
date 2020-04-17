@@ -1,5 +1,5 @@
 import React from "react";
-import { GameType, RoundPhase } from "../state/AppState";
+import { GameType, RoundPhase } from "../state/GameState";
 import { CenteredRow, CenteredColumn } from "./LayoutElements";
 import { Button } from "./Button";
 import { Title } from "./Title";

@@ -1,5 +1,5 @@
 import React from "react";
-import { RoundPhase, GameType, Team } from "../state/AppState";
+import { RoundPhase, GameType, Team } from "../state/GameState";
 import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";

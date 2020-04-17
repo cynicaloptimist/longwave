@@ -1,6 +1,6 @@
 import React, { useRef, useContext, useState, useEffect } from "react";
 
-import { RoundPhase } from "../state/AppState";
+import { RoundPhase } from "../state/GameState";
 import { Spectrum } from "./Spectrum";
 import { CenteredColumn, CenteredRow } from "./LayoutElements";
 import { Button } from "./Button";

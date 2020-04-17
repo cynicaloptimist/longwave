@@ -1,4 +1,4 @@
-import { RoundPhase, GameState } from "./AppState";
+import { RoundPhase, GameState } from "./GameState";
 import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
 
 export function NewRound(playerId: string, deckIndex: number): Partial<GameState> {

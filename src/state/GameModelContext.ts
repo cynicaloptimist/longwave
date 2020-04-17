@@ -1,4 +1,4 @@
-import { Team, InitialGameState } from "./AppState";
+import { Team, InitialGameState } from "./GameState";
 import { createContext } from "react";
 import { GameModel } from "./BuildGameModel";
 
