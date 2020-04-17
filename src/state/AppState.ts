@@ -26,6 +26,26 @@ export enum Team {
   Right,
 }
 
+export function TeamReverse(team: Team) {
+  if (team === Team.Left) {
+    return Team.Right;
+  }
+  if (team === Team.Right) {
+    return Team.Left;
+  }
+  return Team.Unset;
+}
+
+export function TeamName(team: Team) {
+  if (team === Team.Left) {
+    return "LEFT BRAIN";
+  }
+  if (team === Team.Right) {
+    return "RIGHT BRAIN";
+  }
+  return "the players";
+}
+
 export type PlayersTeams = {
   [playerId: string]: {
     name: string;
