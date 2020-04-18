@@ -15,7 +15,7 @@ export function RoomIdHeader() {
         color: "gray",
       }}
     >
-      <div>Room ID: {roomId}</div>
+      <div style={{ margin: 8 }}>Room ID: {roomId}</div>
       <IconButton icon={faEllipsisV} onClick={() => alert("")} />
     </CenteredRow>
   );

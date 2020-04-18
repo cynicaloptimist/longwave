@@ -8,7 +8,7 @@ export function IconButton(props: {
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const style: CSSProperties = { cursor: "pointer", padding: 8 };
-  
+
   if (isHovered) {
     style.color = "black";
   }
