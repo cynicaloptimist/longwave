@@ -56,7 +56,7 @@ export function MakeGuess() {
         </div>
         <div>
           <Button
-            text="Submit Guess"
+            text={`Submit Guess for ${TeamName(localPlayer.team)}`}
             onClick={() => {
               if (gameState.gameType === GameType.Teams) {
                 setGameState({
