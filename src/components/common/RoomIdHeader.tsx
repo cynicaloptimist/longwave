@@ -21,7 +21,7 @@ export function RoomIdHeader() {
     >
       <div style={{ margin: 4, padding: 4 }}>Room ID: {roomId}</div>
       <Tippy content={<RoomMenu />} interactive placement="bottom-end">
-        <div style={{ padding: 8 }}>
+        <div tabIndex={0} style={{ padding: 8 }}>
           <FontAwesomeIcon icon={faEllipsisV} />
         </div>
       </Tippy>
@@ -32,5 +32,13 @@ export function RoomIdHeader() {
 function RoomMenu() {
   const { setGameState } = useContext(GameModelContext);
 
-  return <div onClick={() => setGameState(InitialGameState())}>Reset Room</div>;
+  return (
+    <div
+      tabIndex={0}
+      style={{ cursor: "pointer" }}
+      onClick={() => setGameState(InitialGameState())}
+    >
+      Reset Room
+    </div>
+  );
 }
