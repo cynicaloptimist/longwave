@@ -7,6 +7,7 @@ import { RandomFourCharacterString } from "../../state/RandomFourCharacterString
 import { GameModelContext } from "../../state/GameModelContext";
 import { ActiveGame } from "./ActiveGame";
 import { BuildGameModel } from "../../state/BuildGameModel";
+import { RoomIdHeader } from "../common/RoomIdHeader";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -46,6 +47,7 @@ export function GameRoom() {
 
   return (
     <GameModelContext.Provider value={gameModel}>
+      <RoomIdHeader />
       <ActiveGame />
     </GameModelContext.Provider>
   );

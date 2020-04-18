@@ -21,7 +21,6 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route path="/:roomId">
-              <RoomIdHeader />
               <GameRoom />
             </Route>
             <Route path="/">
