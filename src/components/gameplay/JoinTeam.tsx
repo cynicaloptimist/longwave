@@ -47,7 +47,7 @@ export function JoinTeam() {
         <CenteredColumn>
           <div>{TeamName(Team.Left)}</div>
           {leftTeam.map((playerId) => (
-            <div>{gameState.players[playerId].name}</div>
+            <div key={playerId}>{gameState.players[playerId].name}</div>
           ))}
           <div>
             <Button text="Join" onClick={() => joinTeam(Team.Left)} />
@@ -56,7 +56,7 @@ export function JoinTeam() {
         <CenteredColumn>
           <div>{TeamName(Team.Right)}</div>
           {rightTeam.map((playerId) => (
-            <div>{gameState.players[playerId].name}</div>
+            <div key={playerId}>{gameState.players[playerId].name}</div>
           ))}
           <div>
             <Button text="Join" onClick={() => joinTeam(Team.Right)} />
