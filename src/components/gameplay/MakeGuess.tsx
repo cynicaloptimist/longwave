@@ -34,6 +34,18 @@ export function MakeGuess() {
             {clueGiver.name}'s clue: <strong>{gameState.clue}</strong>
           </div>
           <div>Waiting for {guessingTeamString} to guess...</div>
+          {Object.keys(gameState.players).length < 2 && (
+            <div
+              style={{
+                margin: 12,
+                padding: "0 1em",
+                border: "1px solid black",
+              }}
+            >
+              <p>Invite other players to join the game.</p>
+              <p>Share this URL with them: {window.location.href}</p>
+            </div>
+          )}
         </CenteredColumn>
       </div>
     );
