@@ -6,5 +6,5 @@ export const firebaseConfig = {
   storageBucket: "wavelength-online.appspot.com",
   messagingSenderId: "811157116454",
   appId: "1:811157116454:web:be3d3e6b17629700c038e7",
-  measurementId: "G-XZ13S15LMC"
+  measurementId: "G-XZ13S15LMC",
 };

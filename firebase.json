@@ -3,6 +3,7 @@
     "rules": "database.rules.json"
   },
   "hosting": {
+    "target": "longwave",
     "public": "build",
     "ignore": [
       "firebase.json",
