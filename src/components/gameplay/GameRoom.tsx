@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-import { useStorageBackedState } from "./useStorageBackedState";
-import { useNetworkBackedGameState } from "./useNetworkBackedGameState";
+import { useStorageBackedState } from "../hooks/useStorageBackedState";
+import { useNetworkBackedGameState } from "../hooks/useNetworkBackedGameState";
 import { InputName } from "./InputName";
-import { RandomFourCharacterString } from "../state/RandomFourCharacterString";
-import { GameModelContext } from "../state/GameModelContext";
+import { RandomFourCharacterString } from "../../state/RandomFourCharacterString";
+import { GameModelContext } from "../../state/GameModelContext";
 import { ActiveGame } from "./ActiveGame";
-import { BuildGameModel } from "../state/BuildGameModel";
+import { BuildGameModel } from "../../state/BuildGameModel";
 
 export function GameRoom() {
   const { roomId } = useParams();

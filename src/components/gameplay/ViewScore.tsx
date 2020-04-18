@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
-import { GetScore } from "../state/GetScore";
-import { CenteredColumn, CenteredRow } from "./LayoutElements";
-import { Spectrum } from "./Spectrum";
-import { Button } from "./Button";
+import { GetScore } from "../../state/GetScore";
+import { CenteredColumn, CenteredRow } from "../common/LayoutElements";
+import { Spectrum } from "../common/Spectrum";
+import { Button } from "../common/Button";
 import {
   GameType,
   Team,
   InitialGameState,
   TeamName,
   TeamReverse,
-} from "../state/GameState";
-import { GameModelContext } from "../state/GameModelContext";
-import { NewRound } from "../state/NewRound";
-import { Info } from "./Info";
+} from "../../state/GameState";
+import { GameModelContext } from "../../state/GameModelContext";
+import { NewRound } from "../../state/NewRound";
+import { Info } from "../common/Info";
 
 export function ViewScore() {
   const { gameState, clueGiver, spectrumCard } = useContext(GameModelContext);
@@ -154,9 +154,7 @@ function NextTurnOrEndGame() {
       {eligibleToDraw && (
         <Button
           text="Draw next Spectrum Card"
-          onClick={() =>
-            setGameState(NewRound(localPlayer.id, gameState))
-          }
+          onClick={() => setGameState(NewRound(localPlayer.id, gameState))}
         />
       )}
     </>

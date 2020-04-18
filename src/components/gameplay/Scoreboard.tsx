@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-import { GameType, Team, TeamName } from "../state/GameState";
-import { CenteredRow, CenteredColumn } from "./LayoutElements";
-import { GameModelContext } from "../state/GameModelContext";
+import { GameType, Team, TeamName } from "../../state/GameState";
+import { CenteredRow, CenteredColumn } from "../common/LayoutElements";
+import { GameModelContext } from "../../state/GameModelContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 

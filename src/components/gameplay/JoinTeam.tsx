@@ -1,11 +1,11 @@
 import React from "react";
-import { CenteredRow, CenteredColumn } from "./LayoutElements";
-import { RoundPhase, Team, TeamName } from "../state/GameState";
-import { Button } from "./Button";
-import { Title } from "./Title";
+import { CenteredRow, CenteredColumn } from "../common/LayoutElements";
+import { RoundPhase, Team, TeamName } from "../../state/GameState";
+import { Button } from "../common/Button";
+import { Title } from "../common/Title";
 import { useContext } from "react";
-import { GameModelContext } from "../state/GameModelContext";
-import { NewTeamGame } from "../state/NewGame";
+import { GameModelContext } from "../../state/GameModelContext";
+import { NewTeamGame } from "../../state/NewGame";
 
 export function JoinTeam() {
   const { gameState, localPlayer, setGameState } = useContext(GameModelContext);

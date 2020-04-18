@@ -3,7 +3,7 @@ import {
   RoundPhase,
   GameType,
   Team,
-} from "../state/GameState";
+} from "../../state/GameState";
 import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
@@ -12,7 +12,7 @@ import { Scoreboard } from "./Scoreboard";
 import { SetupGame } from "./SetupGame";
 import { CounterGuess } from "./CounterGuess";
 import { useContext } from "react";
-import { GameModelContext } from "../state/GameModelContext";
+import { GameModelContext } from "../../state/GameModelContext";
 import { PreviousTurn } from "./PreviousTurn";
 
 export function ActiveGame() {

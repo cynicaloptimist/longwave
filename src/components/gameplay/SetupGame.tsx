@@ -1,11 +1,11 @@
 import React from "react";
-import { GameType, RoundPhase } from "../state/GameState";
-import { CenteredRow, CenteredColumn } from "./LayoutElements";
-import { Button } from "./Button";
-import { Title } from "./Title";
+import { GameType, RoundPhase } from "../../state/GameState";
+import { CenteredRow, CenteredColumn } from "../common/LayoutElements";
+import { Button } from "../common/Button";
+import { Title } from "../common/Title";
 import { useContext } from "react";
-import { GameModelContext } from "../state/GameModelContext";
-import { NewRound } from "../state/NewRound";
+import { GameModelContext } from "../../state/GameModelContext";
+import { NewRound } from "../../state/NewRound";
 
 export function SetupGame() {
   const { gameState, setGameState, localPlayer } = useContext(GameModelContext);

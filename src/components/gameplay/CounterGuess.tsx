@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { TeamReverse, TeamName } from "../state/GameState";
-import { Spectrum } from "./Spectrum";
-import { CenteredColumn, CenteredRow } from "./LayoutElements";
-import { Button } from "./Button";
-import { GameModelContext } from "../state/GameModelContext";
-import { ScoreRound } from "../state/ScoreRound";
+import { TeamReverse, TeamName } from "../../state/GameState";
+import { Spectrum } from "../common/Spectrum";
+import { CenteredColumn, CenteredRow } from "../common/LayoutElements";
+import { Button } from "../common/Button";
+import { GameModelContext } from "../../state/GameModelContext";
+import { ScoreRound } from "../../state/ScoreRound";
 
 export function CounterGuess() {
   const {

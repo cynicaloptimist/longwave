@@ -1,7 +1,7 @@
 import React from "react";
-import { TurnSummaryModel } from "../state/GameState";
-import { CenteredColumn } from "./LayoutElements";
-import { Spectrum } from "./Spectrum";
+import { TurnSummaryModel } from "../../state/GameState";
+import { CenteredColumn } from "../common/LayoutElements";
+import { Spectrum } from "../common/Spectrum";
 
 export function PreviousTurn(props: TurnSummaryModel) {
   const style: React.CSSProperties = {

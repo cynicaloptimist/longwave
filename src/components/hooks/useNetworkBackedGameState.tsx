@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { database } from "firebase";
-import { GameState, InitialGameState, Team } from "../state/GameState";
+import { GameState, InitialGameState, Team } from "../../state/GameState";
 
 export function useNetworkBackedGameState(
   roomId: string,

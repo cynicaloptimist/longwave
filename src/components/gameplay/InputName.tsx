@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef } from "react";
-import { CenteredColumn } from "./LayoutElements";
-import { Title } from "./Title";
+import { CenteredColumn } from "../common/LayoutElements";
+import { Title } from "../common/Title";
 
 export function InputName(props: { setName: (name: string) => void }) {
   const inputRef = useRef<HTMLInputElement>(null);

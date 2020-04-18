@@ -1,12 +1,12 @@
 import React, { useRef, useContext, useState, useEffect } from "react";
 
-import { RoundPhase } from "../state/GameState";
-import { Spectrum } from "./Spectrum";
-import { CenteredColumn, CenteredRow } from "./LayoutElements";
-import { Button } from "./Button";
-import { GameModelContext } from "../state/GameModelContext";
-import { RandomSpectrumTarget } from "../state/RandomSpectrumTarget";
-import { Info } from "./Info";
+import { RoundPhase } from "../../state/GameState";
+import { Spectrum } from "../common/Spectrum";
+import { CenteredColumn, CenteredRow } from "../common/LayoutElements";
+import { Button } from "../common/Button";
+import { GameModelContext } from "../../state/GameModelContext";
+import { RandomSpectrumTarget } from "../../state/RandomSpectrumTarget";
+import { Info } from "../common/Info";
 
 export function GiveClue() {
   const {

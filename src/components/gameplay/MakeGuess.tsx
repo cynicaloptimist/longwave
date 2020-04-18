@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { GameType, RoundPhase, TeamName } from "../state/GameState";
-import { Spectrum } from "./Spectrum";
-import { CenteredColumn } from "./LayoutElements";
-import { Button } from "./Button";
-import { GameModelContext } from "../state/GameModelContext";
+import { GameType, RoundPhase, TeamName } from "../../state/GameState";
+import { Spectrum } from "../common/Spectrum";
+import { CenteredColumn } from "../common/LayoutElements";
+import { Button } from "../common/Button";
+import { GameModelContext } from "../../state/GameModelContext";
 
 export function MakeGuess() {
   const {

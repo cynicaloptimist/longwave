@@ -1,11 +1,11 @@
 import React from "react";
 import "../App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { GameRoom } from "./GameRoom";
-import { CenteredColumn } from "./LayoutElements";
-import { CommonFooter } from "./CommonFooter";
-import { LandingPage } from "./LandingPage";
-import { RoomIdHeader } from "./RoomIdHeader";
+import { GameRoom } from "./gameplay/GameRoom";
+import { CenteredColumn } from "./common/LayoutElements";
+import { CommonFooter } from "./common/CommonFooter";
+import { LandingPage } from "./common/LandingPage";
+import { RoomIdHeader } from "./common/RoomIdHeader";
 
 const style: React.CSSProperties = {
   maxWidth: 500,
