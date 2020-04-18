@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Team, TeamReverse, TeamName } from "../state/GameState";
+import { TeamReverse, TeamName } from "../state/GameState";
 import { Spectrum } from "./Spectrum";
 import { CenteredColumn, CenteredRow } from "./LayoutElements";
 import { Button } from "./Button";

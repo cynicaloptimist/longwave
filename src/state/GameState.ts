@@ -49,6 +49,14 @@ export type PlayersTeams = {
   };
 };
 
+export type TurnSummaryModel = {
+  spectrumCard: [string, string],
+  clueGiverName: string;
+  clue: string;
+  spectrumTarget: number;
+  guess: number;
+}
+
 export interface GameState {
   gameType: GameType;
   roundPhase: RoundPhase;
@@ -62,6 +70,7 @@ export interface GameState {
   clueGiver: string;
   leftScore: number;
   rightScore: number;
+  previousTurn?: TurnSummaryModel;
 }
 
 export function InitialGameState(): GameState {

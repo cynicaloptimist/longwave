@@ -18,7 +18,7 @@ export function SetupGame() {
       });
     } else {
       setGameState({
-        ...NewRound(localPlayer.id, gameState.deckIndex),
+        ...NewRound(localPlayer.id, gameState),
         gameType,
       });
     }

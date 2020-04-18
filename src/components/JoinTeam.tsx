@@ -31,7 +31,7 @@ export function JoinTeam() {
 
   const startGame = () =>
     setGameState(
-      NewTeamGame(gameState.players, localPlayer.id, gameState.deckIndex)
+      NewTeamGame(gameState.players, localPlayer.id, gameState)
     );
 
   return (

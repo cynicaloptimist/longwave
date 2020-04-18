@@ -155,7 +155,7 @@ function NextTurnOrEndGame() {
         <Button
           text="Draw next Spectrum Card"
           onClick={() =>
-            setGameState(NewRound(localPlayer.id, gameState.deckIndex))
+            setGameState(NewRound(localPlayer.id, gameState))
           }
         />
       )}
