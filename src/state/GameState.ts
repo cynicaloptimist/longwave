@@ -50,12 +50,12 @@ export type PlayersTeams = {
 };
 
 export type TurnSummaryModel = {
-  spectrumCard: [string, string],
+  spectrumCard: [string, string];
   clueGiverName: string;
   clue: string;
   spectrumTarget: number;
   guess: number;
-}
+};
 
 export interface GameState {
   gameType: GameType;
@@ -70,7 +70,7 @@ export interface GameState {
   clueGiver: string;
   leftScore: number;
   rightScore: number;
-  previousTurn?: TurnSummaryModel;
+  previousTurn: TurnSummaryModel | null;
 }
 
 export function InitialGameState(): GameState {
@@ -87,5 +87,6 @@ export function InitialGameState(): GameState {
     clueGiver: "",
     leftScore: 0,
     rightScore: 0,
+    previousTurn: null,
   };
 }

@@ -21,7 +21,7 @@ export function NewTeamGame(
   return {
     ...NewRound(startPlayer, gameState),
     ...initialScores,
-    previousTurn: undefined,
+    previousTurn: null,
     gameType: GameType.Teams,
   };
 }

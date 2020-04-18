@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  RoundPhase,
-  GameType,
-  Team,
-} from "../../state/GameState";
+import { RoundPhase, GameType, Team } from "../../state/GameState";
 import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
@@ -37,7 +33,9 @@ export function ActiveGame() {
       {gameState.roundPhase === RoundPhase.CounterGuess && <CounterGuess />}
       {gameState.roundPhase === RoundPhase.ViewScore && <ViewScore />}
       <Scoreboard />
-      {gameState.previousTurn && <PreviousTurnResult {...gameState.previousTurn} />}
+      {gameState.previousTurn && (
+        <PreviousTurnResult {...gameState.previousTurn} />
+      )}
     </>
   );
 }
