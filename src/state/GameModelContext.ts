@@ -11,5 +11,10 @@ export const GameModelContext = createContext<GameModel>({
   },
   clueGiver: null,
   spectrumCard: ["left", "right"],
-  setGameState: () => {},
+  setGameState: (newState) => {
+    console.warn(
+      "GameModelContext not provided. Got setGameState: " +
+        JSON.stringify(newState)
+    );
+  },
 });
