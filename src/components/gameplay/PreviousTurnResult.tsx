@@ -3,7 +3,7 @@ import { TurnSummaryModel } from "../../state/GameState";
 import { CenteredColumn } from "../common/LayoutElements";
 import { Spectrum } from "../common/Spectrum";
 
-export function PreviousTurn(props: TurnSummaryModel) {
+export function PreviousTurnResult(props: TurnSummaryModel) {
   const style: React.CSSProperties = {
     borderTop: "1px solid black",
     margin: 16,
@@ -19,7 +19,7 @@ export function PreviousTurn(props: TurnSummaryModel) {
     bottom: 0,
     backgroundColor: "rgba(255,255,255,0.5)",
   };
-  
+
   return (
     <div style={style}>
       <CenteredColumn>
