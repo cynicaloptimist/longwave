@@ -1,5 +1,9 @@
 import React from "react";
-import { RoundPhase, GameType, Team } from "../state/GameState";
+import {
+  RoundPhase,
+  GameType,
+  Team,
+} from "../state/GameState";
 import { GiveClue } from "./GiveClue";
 import { MakeGuess } from "./MakeGuess";
 import { ViewScore } from "./ViewScore";
@@ -9,6 +13,7 @@ import { SetupGame } from "./SetupGame";
 import { CounterGuess } from "./CounterGuess";
 import { useContext } from "react";
 import { GameModelContext } from "../state/GameModelContext";
+import { PreviousTurn } from "./PreviousTurn";
 
 export function ActiveGame() {
   const { gameState, localPlayer } = useContext(GameModelContext);
@@ -32,6 +37,7 @@ export function ActiveGame() {
       {gameState.roundPhase === RoundPhase.CounterGuess && <CounterGuess />}
       {gameState.roundPhase === RoundPhase.ViewScore && <ViewScore />}
       <Scoreboard />
+      {gameState.previousTurn && <PreviousTurn {...gameState.previousTurn} />}
     </>
   );
 }
