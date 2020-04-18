@@ -5,7 +5,6 @@ import { GameRoom } from "./gameplay/GameRoom";
 import { CenteredColumn } from "./common/LayoutElements";
 import { CommonFooter } from "./common/CommonFooter";
 import { LandingPage } from "./common/LandingPage";
-import { RoomIdHeader } from "./common/RoomIdHeader";
 
 const style: React.CSSProperties = {
   maxWidth: 500,
