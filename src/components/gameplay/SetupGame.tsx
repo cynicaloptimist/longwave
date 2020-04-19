@@ -29,14 +29,14 @@ export function SetupGame() {
       <Title />
       <CenteredRow>
         <Button
-          text="Standard (Teams)"
+          text="Standard (Teams): 4+ Players"
           onClick={() => startGame(GameType.Teams)}
         />
         {/* <Button
           text="Cooperative"
           onClick={() => startGame(GameType.Cooperative)}
         /> */}
-        <Button text="Free Play" onClick={() => startGame(GameType.Freeplay)} />
+        <Button text="Free Play: 2+ Players" onClick={() => startGame(GameType.Freeplay)} />
       </CenteredRow>
     </CenteredColumn>
   );
