@@ -1,13 +1,13 @@
 import React from "react";
 import { useRef } from "react";
 import { CenteredColumn } from "../common/LayoutElements";
-import { Title } from "../common/Title";
+import { LongwaveAppTitle } from "../common/Title";
 
 export function InputName(props: { setName: (name: string) => void }) {
   const inputRef = useRef<HTMLInputElement>(null);
   return (
     <CenteredColumn>
-      <Title />
+      <LongwaveAppTitle />
       <div>Enter your name:</div>
       <input
         type="text"

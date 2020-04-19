@@ -2,7 +2,7 @@ import React from "react";
 import { GameType, RoundPhase } from "../../state/GameState";
 import { CenteredRow, CenteredColumn } from "../common/LayoutElements";
 import { Button } from "../common/Button";
-import { Title } from "../common/Title";
+import { LongwaveAppTitle } from "../common/Title";
 import { useContext } from "react";
 import { GameModelContext } from "../../state/GameModelContext";
 import { NewRound } from "../../state/NewRound";
@@ -26,7 +26,7 @@ export function SetupGame() {
 
   return (
     <CenteredColumn>
-      <Title />
+      <LongwaveAppTitle />
       <CenteredRow>
         <Button
           text="Standard (Teams): 4+ Players"

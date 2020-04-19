@@ -3,7 +3,7 @@ import { GetContrastingColors } from "./GetContrastingColors";
 import { useState } from "react";
 import { useEffect } from "react";
 
-export function Title() {
+export function LongwaveAppTitle() {
   const [hue, setHue] = useState(0);
   const [primary, secondary] = GetContrastingColors(hue);
   useEffect(() => {

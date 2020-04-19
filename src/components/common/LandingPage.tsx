@@ -3,13 +3,13 @@ import { useHistory } from "react-router-dom";
 import { RandomFourCharacterString } from "../../state/RandomFourCharacterString";
 import { CenteredColumn } from "./LayoutElements";
 import { Button } from "./Button";
-import { Title } from "./Title";
+import { LongwaveAppTitle } from "./Title";
 
 export function LandingPage() {
   const history = useHistory();
   return (
     <CenteredColumn>
-      <Title />
+      <LongwaveAppTitle />
       <Button
         text="Create Room"
         onClick={() => {

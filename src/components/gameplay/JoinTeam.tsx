@@ -2,7 +2,7 @@ import React from "react";
 import { CenteredRow, CenteredColumn } from "../common/LayoutElements";
 import { RoundPhase, Team, TeamName } from "../../state/GameState";
 import { Button } from "../common/Button";
-import { Title } from "../common/Title";
+import { LongwaveAppTitle } from "../common/Title";
 import { useContext } from "react";
 import { GameModelContext } from "../../state/GameModelContext";
 import { NewTeamGame } from "../../state/NewGame";
@@ -36,7 +36,7 @@ export function JoinTeam() {
 
   return (
     <CenteredColumn>
-      <Title />
+      <LongwaveAppTitle />
       <div>Join Team:</div>
       <CenteredRow
         style={{
