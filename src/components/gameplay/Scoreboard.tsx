@@ -6,25 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 export function Scoreboard() {
-  const { gameState, setGameState } = useContext(GameModelContext);
-
-  const leftTeam = Object.keys(gameState.players).filter(
-    (playerId) => gameState.players[playerId].team === Team.Left
-  );
-  const rightTeam = Object.keys(gameState.players).filter(
-    (playerId) => gameState.players[playerId].team === Team.Right
-  );
-
-  const toPlayerRow = (playerId: string) => (
-    <PlayerRow
-      key={playerId}
-      playerName={gameState.players[playerId].name}
-      onRemove={() => {
-        delete gameState.players[playerId];
-        setGameState(gameState);
-      }}
-    />
-  );
+  const { gameState } = useContext(GameModelContext);
 
   const style = {
     borderTop: "1px solid black",
@@ -45,24 +27,38 @@ export function Scoreboard() {
 
   return (
     <CenteredRow style={style}>
-      <CenteredColumn style={{ alignItems: "flex-start" }}>
-        <div>
-          {TeamName(Team.Left)}: {gameState.leftScore} POINTS
-        </div>
-        {leftTeam.map(toPlayerRow)}
-      </CenteredColumn>
-      <CenteredColumn style={{ alignItems: "flex-start" }}>
-        <div>
-          {TeamName(Team.Right)}: {gameState.rightScore} POINTS
-        </div>
-        {rightTeam.map(toPlayerRow)}
-      </CenteredColumn>
+      <TeamColumn team={Team.Left} score={gameState.leftScore} />
+      <TeamColumn team={Team.Right} score={gameState.rightScore} />
     </CenteredRow>
   );
 }
 
-function PlayerRow(props: { playerName: string; onRemove: () => void }) {
+function TeamColumn(props: { team: Team; score: number }) {
+  const { gameState } = useContext(GameModelContext);
+
+  const members = Object.keys(gameState.players).filter(
+    (playerId) => gameState.players[playerId].team === props.team
+  );
+
+  return (
+    <CenteredColumn style={{ alignItems: "flex-start" }}>
+      <div>
+        {TeamName(props.team)}: {props.score} POINTS
+      </div>
+      {members.map(toPlayerRow)}
+    </CenteredColumn>
+  );
+}
+
+function toPlayerRow(playerId: string) {
+  return <PlayerRow key={playerId} playerId={playerId} />;
+}
+
+function PlayerRow(props: { playerId: string }) {
+  const { gameState, setGameState } = useContext(GameModelContext);
+  const player = gameState.players[props.playerId];
   const [hovered, setHovered] = useState(false);
+
   const iconContainerStyle = {
     marginLeft: 4,
     width: 20,
@@ -74,14 +70,17 @@ function PlayerRow(props: { playerName: string; onRemove: () => void }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {props.playerName}
+      {player.name}
       {hovered ? (
         <div
           style={{
             ...iconContainerStyle,
             cursor: "pointer",
           }}
-          onClick={props.onRemove}
+          onClick={() => {
+            delete gameState.players[props.playerId];
+            setGameState(gameState);
+          }}
         >
           <FontAwesomeIcon icon={faTimesCircle} />
         </div>
