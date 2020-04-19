@@ -8,6 +8,7 @@ import { GameModelContext } from "../../state/GameModelContext";
 import { ActiveGame } from "./ActiveGame";
 import { BuildGameModel } from "../../state/BuildGameModel";
 import { RoomIdHeader } from "../common/RoomIdHeader";
+import { FakeRooms } from "./FakeRooms";
 
 export function GameRoom() {
   const { roomId } = useParams();
@@ -26,6 +27,10 @@ export function GameRoom() {
     playerId,
     playerName
   );
+
+  if (roomId === "MULTIPLAYER_TEST") {
+    return <FakeRooms />;
+  }
 
   const gameModel = BuildGameModel(gameState, setGameState, playerId);
 

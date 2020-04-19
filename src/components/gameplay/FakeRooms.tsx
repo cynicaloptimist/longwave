@@ -10,7 +10,6 @@ import {
   GameType,
   RoundPhase,
 } from "../../state/GameState";
-import { useStorageBackedState } from "../hooks/useStorageBackedState";
 
 export function FakeRooms() {
   const [gameState, setGameState] = useState<GameState>({
@@ -61,7 +60,9 @@ export function FakeRooms() {
   );
 
   return (
-    <CenteredRow style={{ alignItems: "stretch" }}>
+    <CenteredRow
+      style={{ alignItems: "stretch", position: "absolute", top: 100, left: 0 }}
+    >
       <CenteredColumn
         style={{
           alignItems: "stretch",
