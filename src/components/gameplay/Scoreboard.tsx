@@ -27,8 +27,6 @@ export function Scoreboard() {
   );
 
   const style = {
-    alignSelf: "stretch",
-    alignItems: "flex-start",
     borderTop: "1px solid black",
     margin: 16,
     paddingTop: 16,
@@ -36,20 +34,27 @@ export function Scoreboard() {
 
   if (gameState.gameType === GameType.Freeplay) {
     return (
-      <CenteredRow style={style}>
-        {Object.keys(gameState.players).map(toPlayerRow)}
-      </CenteredRow>
+      <CenteredColumn style={style}>
+        <em>Free Play</em>
+        <CenteredRow>
+          {Object.keys(gameState.players).map(toPlayerRow)}
+        </CenteredRow>
+      </CenteredColumn>
     );
   }
 
   return (
     <CenteredRow style={style}>
       <CenteredColumn style={{ alignItems: "flex-start" }}>
-        <div>{TeamName(Team.Left)}: {gameState.leftScore} POINTS</div>
+        <div>
+          {TeamName(Team.Left)}: {gameState.leftScore} POINTS
+        </div>
         {leftTeam.map(toPlayerRow)}
       </CenteredColumn>
       <CenteredColumn style={{ alignItems: "flex-start" }}>
-        <div>{TeamName(Team.Right)}: {gameState.rightScore} POINTS</div>
+        <div>
+          {TeamName(Team.Right)}: {gameState.rightScore} POINTS
+        </div>
         {rightTeam.map(toPlayerRow)}
       </CenteredColumn>
     </CenteredRow>
@@ -58,17 +63,24 @@ export function Scoreboard() {
 
 function PlayerRow(props: { playerName: string; onRemove: () => void }) {
   const [hovered, setHovered] = useState(false);
+  const iconContainerStyle = {
+    marginLeft: 4,
+    width: 20,
+  };
+
   return (
     <div
-      style={{ marginLeft: 16 }}
+      style={{ marginLeft: 16, display: "flex", flexFlow: "row" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       {props.playerName}
-      {hovered && (
-        <span style={{ marginLeft: 4 }} onClick={props.onRemove}>
+      {hovered ? (
+        <div style={iconContainerStyle} onClick={props.onRemove}>
           <FontAwesomeIcon icon={faTimesCircle} />
-        </span>
+        </div>
+      ) : (
+        <div style={iconContainerStyle} />
       )}
     </div>
   );
