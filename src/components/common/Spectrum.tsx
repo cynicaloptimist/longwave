@@ -71,7 +71,7 @@ export function Spectrum(props: {
             {props.spectrumCard[1]}
           </div>
         </CenteredRow>
-        <div style={{ padding: 16 }}>
+        <div style={{ padding: "16px 32px" }}>
           <Slider
             min={0}
             max={20}
