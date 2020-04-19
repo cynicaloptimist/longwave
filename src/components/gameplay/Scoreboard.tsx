@@ -76,7 +76,13 @@ function PlayerRow(props: { playerName: string; onRemove: () => void }) {
     >
       {props.playerName}
       {hovered ? (
-        <div style={iconContainerStyle} onClick={props.onRemove}>
+        <div
+          style={{
+            ...iconContainerStyle,
+            cursor: "pointer",
+          }}
+          onClick={props.onRemove}
+        >
           <FontAwesomeIcon icon={faTimesCircle} />
         </div>
       ) : (
