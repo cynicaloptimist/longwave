@@ -7,7 +7,7 @@ import { Button } from "../common/Button";
 import { GameModelContext } from "../../state/GameModelContext";
 import { RandomSpectrumTarget } from "../../state/RandomSpectrumTarget";
 import { Info } from "../common/Info";
-import { Animate } from "./Animate";
+import { Animate } from "../common/Animate";
 
 export function GiveClue() {
   const {
