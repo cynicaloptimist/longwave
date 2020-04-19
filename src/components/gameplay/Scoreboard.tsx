@@ -12,6 +12,7 @@ export function Scoreboard() {
     borderTop: "1px solid black",
     margin: 16,
     paddingTop: 16,
+    alignItems: "flex-start",
   };
 
   if (gameState.gameType === GameType.Freeplay) {
