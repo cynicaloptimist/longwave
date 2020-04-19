@@ -1,16 +1,20 @@
 import "./index.css";
 import "rc-slider/assets/index.css";
-import 'tippy.js/dist/tippy.css';
+import "tippy.js/dist/tippy.css";
 
 import React from "react";
 import ReactDOM from "react-dom";
 
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
-import { initializeApp } from "firebase";
+import { initializeApp, analytics } from "firebase";
 import { firebaseConfig } from "./firebaseConfig";
 
 initializeApp(firebaseConfig);
+analytics().logEvent("screen_view", {
+  app_name: "Longwave",
+  screen_name: "index",
+});
 
 ReactDOM.render(
   <React.StrictMode>
