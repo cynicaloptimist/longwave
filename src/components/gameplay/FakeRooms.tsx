@@ -61,10 +61,11 @@ export function FakeRooms() {
   );
 
   return (
-    <CenteredRow>
+    <CenteredRow style={{ alignItems: "stretch" }}>
       <CenteredColumn
         style={{
           alignItems: "stretch",
+          justifyContent: "space-between",
         }}
       >
         {renderGame("ul")}
@@ -73,6 +74,7 @@ export function FakeRooms() {
       <CenteredColumn
         style={{
           alignItems: "stretch",
+          justifyContent: "space-between",
         }}
       >
         {renderGame("ur")}
