@@ -57,3 +57,12 @@
 .wipe-reveal-right.animate::after {
   transform: translateX(100%);
 }
+
+.fade-disappear-up {
+  transition: all 3s ease-in;
+}
+
+.fade-disappear-up.animate {
+  transform: translateY(-100%);
+  opacity: 0;
+}

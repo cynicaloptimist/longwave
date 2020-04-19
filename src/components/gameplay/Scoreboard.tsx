@@ -4,6 +4,9 @@ import { CenteredRow, CenteredColumn } from "../common/LayoutElements";
 import { GameModelContext } from "../../state/GameModelContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { Animate } from "../common/Animate";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 export function Scoreboard() {
   const { gameState } = useContext(GameModelContext);
@@ -44,10 +47,39 @@ function TeamColumn(props: { team: Team; score: number }) {
   return (
     <CenteredColumn style={{ alignItems: "flex-start" }}>
       <div>
-        {TeamName(props.team)}: {props.score} POINTS
+        {TeamName(props.team)}: <AnimatableScore score={props.score} /> POINTS
       </div>
       {members.map(toPlayerRow)}
     </CenteredColumn>
+  );
+}
+
+function AnimatableScore(props: { score: number }) {
+  const lastScore = useRef(props.score);
+
+  useEffect(() => {
+    lastScore.current = props.score;
+  }, [props.score]);
+
+  if (props.score - lastScore.current === 0) {
+    return <span>{props.score}</span>;
+  }
+
+  return (
+    <span style={{ position: "relative" }}>
+      {props.score}
+      <Animate
+        animation="fade-disappear-up"
+        style={{
+          position: "absolute",
+          fontSize: "small",
+          top: -16,
+          right: 0,
+        }}
+      >
+        +{props.score - lastScore.current}
+      </Animate>
+    </span>
   );
 }
 

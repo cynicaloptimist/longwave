@@ -2,13 +2,20 @@ import React, { useState, useEffect } from "react";
 
 export function Animate(props: {
   children: React.ReactNode;
-  animation: "wipe-reveal-right";
+  animation: "wipe-reveal-right" | "fade-disappear-up";
+  style?: React.CSSProperties;
 }) {
   const [className, setClassName] = useState<string>(props.animation);
+
   useEffect(() => {
     setTimeout(() => {
       return setClassName(className + " animate");
     });
   });
-  return <div className={className}>{props.children}</div>;
+
+  return (
+    <div className={className} style={props.style}>
+      {props.children}
+    </div>
+  );
 }
