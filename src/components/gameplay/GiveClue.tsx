@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useState, useEffect } from "react";
+import React, { useRef, useContext, useState } from "react";
 
 import { RoundPhase } from "../../state/GameState";
 import { Spectrum } from "../common/Spectrum";
@@ -7,6 +7,7 @@ import { Button } from "../common/Button";
 import { GameModelContext } from "../../state/GameModelContext";
 import { RandomSpectrumTarget } from "../../state/RandomSpectrumTarget";
 import { Info } from "../common/Info";
+import { Animate } from "./Animate";
 
 export function GiveClue() {
   const {
@@ -105,17 +106,4 @@ export function GiveClue() {
       </CenteredColumn>
     </div>
   );
-}
-
-function Animate(props: {
-  children: React.ReactNode;
-  animation: "wipe-reveal-right";
-}) {
-  const [className, setClassName] = useState<string>(props.animation);
-  useEffect(() => {
-    setTimeout(() => {
-      return setClassName(className + " animate");
-    });
-  });
-  return <div className={className}>{props.children}</div>;
 }
