@@ -31,9 +31,9 @@ export function GiveClue() {
   if (localPlayer.id !== clueGiver.id) {
     return (
       <div>
-        <Reveal>
+        <Animate animation="wipe-reveal-right">
           <Spectrum spectrumCard={spectrumCard} />
-        </Reveal>
+        </Animate>
         <CenteredColumn>
           <div>Waiting for {clueGiver.name} to provide a clue...</div>
         </CenteredColumn>
@@ -64,12 +64,12 @@ export function GiveClue() {
       <CenteredColumn style={{ alignItems: "flex-end" }}>
         <Button text="Draw a different card" onClick={redrawCard} />
       </CenteredColumn>
-      <Reveal>
+      <Animate animation="wipe-reveal-right">
         <Spectrum
           targetValue={gameState.spectrumTarget}
           spectrumCard={spectrumCard}
         />
-      </Reveal>
+      </Animate>
       <CenteredColumn>
         <CenteredRow>
           <input
@@ -107,11 +107,14 @@ export function GiveClue() {
   );
 }
 
-function Reveal(props: { children: React.ReactNode }) {
-  const [className, setClassName] = useState("reveal");
+function Animate(props: {
+  children: React.ReactNode;
+  animation: "wipe-reveal-right";
+}) {
+  const [className, setClassName] = useState<string>(props.animation);
   useEffect(() => {
     setTimeout(() => {
-      return setClassName("reveal show");
+      return setClassName(className + " animate");
     });
   });
   return <div className={className}>{props.children}</div>;

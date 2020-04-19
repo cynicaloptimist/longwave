@@ -37,12 +37,12 @@
   }
 }
 
-.reveal {
+.wipe-reveal-right {
   overflow: hidden;
   position: relative;
 }
 
-.reveal::after {
+.wipe-reveal-right::after {
   content: " ";
   position: absolute;
   top: 0;
@@ -54,6 +54,6 @@
   transition: all 1s linear;
 }
 
-.reveal.show::after {
+.wipe-reveal-right.animate::after {
   transform: translateX(100%);
 }
