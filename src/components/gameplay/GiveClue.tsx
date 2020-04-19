@@ -49,7 +49,7 @@ export function GiveClue() {
 
     setGameState({
       clue: inputElement.current.value,
-      guess: 0,
+      guess: 10,
       roundPhase: RoundPhase.MakeGuess,
     });
   };
