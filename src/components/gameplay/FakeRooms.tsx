@@ -48,34 +48,35 @@ export function FakeRooms() {
     margin: 4,
     padding: 4,
     border: "1px solid black",
-    alignItems: "stretch",
   };
+
+  const renderGame = (playerId: string) => (
+    <div style={style}>
+      <GameModelContext.Provider
+        value={BuildGameModel(gameState, setPartialGameState, playerId)}
+      >
+        <ActiveGame />
+      </GameModelContext.Provider>
+    </div>
+  );
 
   return (
     <CenteredRow>
-      <CenteredColumn style={style}>
-        <GameModelContext.Provider
-          value={BuildGameModel(gameState, setPartialGameState, "ul")}
-        >
-          <ActiveGame />
-        </GameModelContext.Provider>
-        <GameModelContext.Provider
-          value={BuildGameModel(gameState, setPartialGameState, "ll")}
-        >
-          <ActiveGame />
-        </GameModelContext.Provider>
+      <CenteredColumn
+        style={{
+          alignItems: "stretch",
+        }}
+      >
+        {renderGame("ul")}
+        {renderGame("ll")}
       </CenteredColumn>
-      <CenteredColumn style={style}>
-        <GameModelContext.Provider
-          value={BuildGameModel(gameState, setPartialGameState, "ur")}
-        >
-          <ActiveGame />
-        </GameModelContext.Provider>
-        <GameModelContext.Provider
-          value={BuildGameModel(gameState, setPartialGameState, "lr")}
-        >
-          <ActiveGame />
-        </GameModelContext.Provider>
+      <CenteredColumn
+        style={{
+          alignItems: "stretch",
+        }}
+      >
+        {renderGame("ur")}
+        {renderGame("lr")}
       </CenteredColumn>
     </CenteredRow>
   );
