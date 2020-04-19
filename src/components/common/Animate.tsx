@@ -9,7 +9,7 @@ export function Animate(props: {
 
   useEffect(() => {
     setTimeout(() => {
-      return setClassName(className + " animate");
+      return setClassName(props.animation + " animate");
     });
   });
 
