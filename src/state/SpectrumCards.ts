@@ -8,7 +8,7 @@ const SpectrumCards: [string, string][] = [
   ["Round", "Pointy"],
   ["Proof that God exists", "Proof that God doesn't exist"],
   ["Loved", "Hated"],
-  ["Then Light Side of the Force", "The Dark Side of the Force"],
+  ["The Light Side of the Force", "The Dark Side of the Force"],
   ["Stupid", "Brilliant"],
   ["Artisanal", "Mass Produced"],
   ["Nobody does it", "Everybody does it"],
