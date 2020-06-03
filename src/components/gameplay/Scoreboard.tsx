@@ -22,7 +22,7 @@ export function Scoreboard() {
     return (
       <CenteredColumn style={style}>
         <em>Free Play</em>
-        <CenteredRow>
+        <CenteredRow style={{ flexWrap: "wrap" }}>
           {Object.keys(gameState.players).map(toPlayerRow)}
         </CenteredRow>
       </CenteredColumn>
