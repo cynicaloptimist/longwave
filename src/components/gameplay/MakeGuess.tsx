@@ -4,6 +4,7 @@ import { Spectrum } from "../common/Spectrum";
 import { CenteredColumn } from "../common/LayoutElements";
 import { Button } from "../common/Button";
 import { GameModelContext } from "../../state/GameModelContext";
+import { RecordEvent } from "../../TrackEvent";
 
 export function MakeGuess() {
   const {
@@ -70,6 +71,13 @@ export function MakeGuess() {
           <Button
             text={`Submit Guess for ${TeamName(localPlayer.team)}`}
             onClick={() => {
+              RecordEvent("guess_submitted", {
+                spectrum_card: spectrumCard.join("|"),
+                clue: gameState.clue,
+                target: gameState.spectrumTarget.toString(),
+                guess: gameState.guess.toString(),
+              });
+
               if (gameState.gameType === GameType.Teams) {
                 setGameState({
                   roundPhase: RoundPhase.CounterGuess,
