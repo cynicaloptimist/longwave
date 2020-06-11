@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { database } from "firebase";
+import { database } from "firebase/app";
+import "firebase/database";
 import { GameState, InitialGameState, Team } from "../../state/GameState";
 
 export function useNetworkBackedGameState(

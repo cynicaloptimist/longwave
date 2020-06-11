@@ -1,4 +1,5 @@
-import { analytics } from "firebase";
+import { analytics } from "firebase/app";
+import "firebase/analytics";
 
 export function RecordEvent(
   eventName: string,

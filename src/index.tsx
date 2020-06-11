@@ -5,9 +5,11 @@ import "tippy.js/dist/tippy.css";
 import React from "react";
 import ReactDOM from "react-dom";
 
-import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
-import { initializeApp, analytics } from "firebase";
+import { initializeApp, analytics } from "firebase/app";
+import "firebase/analytics";
+
+import App from "./components/App";
 import { firebaseConfig } from "./firebaseConfig";
 
 initializeApp(firebaseConfig);
