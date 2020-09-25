@@ -17,6 +17,7 @@ export function GameRoom() {
   }
 
   const [playerName, setPlayerName] = useStorageBackedState("", "name");
+
   const [playerId] = useStorageBackedState(
     RandomFourCharacterString(),
     "playerId"
@@ -44,6 +45,14 @@ export function GameRoom() {
         }}
       />
     );
+  }
+
+  const searchParams = new URLSearchParams(window.location.search);
+  if (searchParams.get("rocketcrab")) {
+    const rocketcrabPlayerName = searchParams.get("name");
+    if (rocketcrabPlayerName !== null && rocketcrabPlayerName !== playerName) {
+      setPlayerName(rocketcrabPlayerName);
+    }
   }
 
   if (!gameState?.players?.[playerId]) {
