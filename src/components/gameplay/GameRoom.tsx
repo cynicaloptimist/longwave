@@ -11,7 +11,7 @@ import { RoomIdHeader } from "../common/RoomIdHeader";
 import { FakeRooms } from "./FakeRooms";
 
 export function GameRoom() {
-  const { roomId } = useParams();
+  const { roomId } = useParams<{ roomId: string }>();
   if (roomId === undefined) {
     throw new Error("RoomId missing");
   }
