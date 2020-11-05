@@ -27,16 +27,19 @@ export function SetupGame() {
   return (
     <CenteredColumn>
       <LongwaveAppTitle />
-      <CenteredRow>
+      <CenteredRow style={{ flexWrap: "wrap" }}>
         <Button
           text="Standard (Teams): 4+ Players"
           onClick={() => startGame(GameType.Teams)}
         />
-        {/* <Button
-          text="Cooperative"
+        <Button
+          text="Cooperative: 2+ Players"
           onClick={() => startGame(GameType.Cooperative)}
-        /> */}
-        <Button text="Free Play: 2+ Players" onClick={() => startGame(GameType.Freeplay)} />
+        />
+        <Button
+          text="Free Play: 2+ Players"
+          onClick={() => startGame(GameType.Freeplay)}
+        />
       </CenteredRow>
     </CenteredColumn>
   );

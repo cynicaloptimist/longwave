@@ -21,7 +21,13 @@ export function ViewScore() {
     return null;
   }
 
-  const score = GetScore(gameState.spectrumTarget, gameState.guess);
+  let score = GetScore(gameState.spectrumTarget, gameState.guess);
+  let bonusCoopTurn = false;
+  if (gameState.gameType === GameType.Cooperative && score === 4) {
+    score = 3;
+    bonusCoopTurn = true;
+  }
+
   const wasCounterGuessCorrect =
     (gameState.counterGuess === "left" &&
       gameState.spectrumTarget < gameState.guess) ||
@@ -46,6 +52,11 @@ export function ViewScore() {
             {wasCounterGuessCorrect
               ? " 1 point for their correct counter guess."
               : " 0 points for their counter guess."}
+          </div>
+        )}
+        {bonusCoopTurn && (
+          <div>
+            Your team earned a <strong>bonus turn!</strong>
           </div>
         )}
         <NextTurnOrEndGame />
@@ -92,6 +103,22 @@ function NextTurnOrEndGame() {
     return (
       <>
         <div>{TeamName(Team.Right)} wins!</div>
+        {resetButton}
+      </>
+    );
+  }
+
+  if (
+    gameState.gameType === GameType.Cooperative &&
+    gameState.turnsTaken >= 7 + gameState.coopBonusTurns
+  ) {
+    return (
+      <>
+        <div>Game Complete</div>
+        <div>
+          Your team's final cooperative score:{" "}
+          <strong>{gameState.coopScore} POINTS</strong>
+        </div>
         {resetButton}
       </>
     );

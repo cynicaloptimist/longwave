@@ -12,6 +12,7 @@ export function NewRound(
     clueGiver: playerId,
     roundPhase: RoundPhase.GiveClue,
     deckIndex: gameState.deckIndex + 1,
+    turnsTaken: gameState.turnsTaken + 1,
     spectrumTarget: RandomSpectrumTarget(),
   };
 

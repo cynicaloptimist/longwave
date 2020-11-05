@@ -5,6 +5,7 @@ import { CenteredColumn } from "../common/LayoutElements";
 import { Button } from "../common/Button";
 import { GameModelContext } from "../../state/GameModelContext";
 import { RecordEvent } from "../../TrackEvent";
+import { ScoreCoopRound } from "../../state/ScoreRound";
 
 export function MakeGuess() {
   const {
@@ -82,6 +83,8 @@ export function MakeGuess() {
                 setGameState({
                   roundPhase: RoundPhase.CounterGuess,
                 });
+              } else if (gameState.gameType === GameType.Cooperative) {
+                setGameState(ScoreCoopRound(gameState));
               } else {
                 setGameState({
                   roundPhase: RoundPhase.ViewScore,

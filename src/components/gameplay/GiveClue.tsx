@@ -1,6 +1,6 @@
 import React, { useRef, useContext, useState } from "react";
 
-import { RoundPhase } from "../../state/GameState";
+import { GameType, RoundPhase } from "../../state/GameState";
 import { Spectrum } from "../common/Spectrum";
 import { CenteredColumn, CenteredRow } from "../common/LayoutElements";
 import { Button } from "../common/Button";
@@ -62,9 +62,11 @@ export function GiveClue() {
 
   return (
     <div>
-      <CenteredColumn style={{ alignItems: "flex-end" }}>
-        <Button text="Draw a different card" onClick={redrawCard} />
-      </CenteredColumn>
+      {gameState.gameType !== GameType.Cooperative && (
+        <CenteredColumn style={{ alignItems: "flex-end" }}>
+          <Button text="Draw a different card" onClick={redrawCard} />
+        </CenteredColumn>
+      )}
       <Animate animation="wipe-reveal-right">
         <Spectrum
           targetValue={gameState.spectrumTarget}

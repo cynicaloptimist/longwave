@@ -29,6 +29,20 @@ export function Scoreboard() {
     );
   }
 
+  if (gameState.gameType === GameType.Cooperative) {
+    return (
+      <CenteredColumn style={style}>
+        <em>Cooperative Score: {gameState.coopScore} POINTS</em>
+        <div>
+          Cards remaining: {7 + gameState.coopBonusTurns - gameState.turnsTaken}
+        </div>
+        <CenteredRow style={{ flexWrap: "wrap" }}>
+          {Object.keys(gameState.players).map(toPlayerRow)}
+        </CenteredRow>
+      </CenteredColumn>
+    );
+  }
+
   return (
     <CenteredRow style={style}>
       <TeamColumn team={Team.Left} score={gameState.leftScore} />

@@ -60,6 +60,7 @@ export type TurnSummaryModel = {
 export interface GameState {
   gameType: GameType;
   roundPhase: RoundPhase;
+  turnsTaken: number;
   deckSeed: string;
   deckIndex: number;
   spectrumTarget: number;
@@ -70,6 +71,8 @@ export interface GameState {
   clueGiver: string;
   leftScore: number;
   rightScore: number;
+  coopScore: number;
+  coopBonusTurns: number;
   previousTurn: TurnSummaryModel | null;
 }
 
@@ -77,6 +80,7 @@ export function InitialGameState(): GameState {
   return {
     gameType: GameType.Teams,
     roundPhase: RoundPhase.SetupGame,
+    turnsTaken: -1,
     deckSeed: RandomFourCharacterString(),
     deckIndex: 0,
     spectrumTarget: RandomSpectrumTarget(),
@@ -87,6 +91,8 @@ export function InitialGameState(): GameState {
     clueGiver: "",
     leftScore: 0,
     rightScore: 0,
+    coopScore: 0,
+    coopBonusTurns: 0,
     previousTurn: null,
   };
 }
