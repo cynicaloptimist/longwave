@@ -30,11 +30,14 @@ export function Scoreboard() {
   }
 
   if (gameState.gameType === GameType.Cooperative) {
+    const cardsRemaining = 7 + gameState.coopBonusTurns - gameState.turnsTaken;
     return (
       <CenteredColumn style={style}>
         <em>Cooperative Score: {gameState.coopScore} POINTS</em>
         <div>
-          Cards remaining: {7 + gameState.coopBonusTurns - gameState.turnsTaken}
+          {cardsRemaining == 0
+            ? "Last Card!"
+            : "Cards remaining: " + cardsRemaining}
         </div>
         <CenteredRow style={{ flexWrap: "wrap" }}>
           {Object.keys(gameState.players).map(toPlayerRow)}
