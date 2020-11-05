@@ -35,7 +35,7 @@ export function Scoreboard() {
       <CenteredColumn style={style}>
         <em>Cooperative Score: {gameState.coopScore} POINTS</em>
         <div>
-          {cardsRemaining == 0
+          {cardsRemaining === 0
             ? "Last Card!"
             : "Cards remaining: " + cardsRemaining}
         </div>
