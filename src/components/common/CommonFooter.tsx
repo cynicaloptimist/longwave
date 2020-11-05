@@ -11,15 +11,21 @@ export function CommonFooter() {
         fontSize: "small",
       }}
     >
-      <a
-        href="https://www.wavelength.zone/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Wavelength
-      </a>{" "}
-      is designed by Wolfgang Warsch, Alex Hague, and Justin Vickers. Adapted
-      for web by Evan Bailey and Margarethe Schoen.
+      <Link href="https://www.wavelength.zone/" text="Wavelength" /> is designed
+      by Wolfgang Warsch, Alex Hague, and Justin Vickers.{" "}
+      <Link
+        href="https://github.com/cynicaloptimist/longwave"
+        text="Adapted for web"
+      />{" "}
+      by Evan Bailey and Margarethe Schoen.
     </div>
+  );
+}
+
+function Link(props: { href: string; text: string }) {
+  return (
+    <a href={props.href} target="_blank" rel="noopener noreferrer">
+      {props.text}
+    </a>
   );
 }
