@@ -22,6 +22,8 @@ export function CommonFooter() {
         />{" "}
         by Evan Bailey and Margarethe Schoen.
       </p>
+      {/* we want referrer, so: */}
+      {/* eslint-disable-next-line react/jsx-no-target-blank */}
       <a target="_blank" href="https://www.patreon.com/improvedinitiative">
         <img
           alt="Patreon logo"
