@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { database } from "firebase/app";
+import firebase from "firebase/app";
 import "firebase/database";
 import { GameState, InitialGameState, Team } from "../../state/GameState";
 
@@ -11,7 +11,7 @@ export function useNetworkBackedGameState(
   const [gameState, setGameState] = useState<GameState>(InitialGameState());
 
   useEffect(() => {
-    const dbRef = database().ref("rooms/" + roomId);
+    const dbRef = firebase.database().ref("rooms/" + roomId);
 
     dbRef.on("value", (appState) => {
       const networkGameState: GameState = appState.val();
@@ -39,7 +39,7 @@ export function useNetworkBackedGameState(
     return () => dbRef.off();
   }, [playerId, playerName, roomId]);
 
-  const dbRef = database().ref("rooms/" + roomId);
+  const dbRef = firebase.database().ref("rooms/" + roomId);
 
   return [
     gameState,

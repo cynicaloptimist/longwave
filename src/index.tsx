@@ -6,14 +6,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import * as serviceWorker from "./serviceWorker";
-import { initializeApp, analytics } from "firebase/app";
-import "firebase/analytics";
+import firebase from "firebase/app";
 
 import App from "./components/App";
 import { firebaseConfig } from "./firebaseConfig";
 
-initializeApp(firebaseConfig);
-analytics().logEvent("screen_view", {
+firebase.initializeApp(firebaseConfig);
+firebase.analytics().logEvent("screen_view", {
   app_name: "Longwave",
   screen_name: "index",
 });
