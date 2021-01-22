@@ -9,7 +9,7 @@ import { GameModelContext } from "../../state/GameModelContext";
 import { InitialGameState } from "../../state/GameState";
 
 export function RoomIdHeader() {
-  const { roomId } = useParams();
+  const { roomId }: {[k: string]: any} = useParams();
 
   return (
     <CenteredRow
