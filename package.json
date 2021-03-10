@@ -50,5 +50,8 @@
   "devDependencies": {
     "@types/rc-slider": "^8.6.6",
     "@types/react-router-dom": "^5.1.7"
+  },
+  "engines": {
+    "node": "15.11.0"
   }
 }
