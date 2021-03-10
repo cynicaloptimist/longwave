@@ -15,6 +15,7 @@
     "@types/node": "^14.14.22",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/react-router": "^5.1.12",
     "color-scheme": "^1.0.1",
     "firebase": "^8.2.3",
     "lodash": "^4.17.20",
