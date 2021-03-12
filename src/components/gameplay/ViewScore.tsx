@@ -14,7 +14,10 @@ import { GameModelContext } from "../../state/GameModelContext";
 import { NewRound } from "../../state/NewRound";
 import { Info } from "../common/Info";
 
+import {useTranslation} from "react-i18next";
+
 export function ViewScore() {
+  const {t, i18n} = useTranslation ();
   const { gameState, clueGiver, spectrumCard } = useContext(GameModelContext);
 
   if (!clueGiver) {
@@ -43,20 +46,21 @@ export function ViewScore() {
       />
       <CenteredColumn>
         <div>
-          {clueGiver.name}'s clue: <strong>{gameState.clue}</strong>
+        {t("viewscore.player_clue", {givername: clueGiver.name})}: <strong>{gameState.clue}</strong>
         </div>
-        <div>Score: {score} points!</div>
+        <div>{t("viewscore.score")}: {score} {t("viewscore.points")}!</div>
         {gameState.gameType === GameType.Teams && (
           <div>
-            {TeamName(TeamReverse(clueGiver.team))} gets
+            {TeamName(TeamReverse(clueGiver.team))} {t("viewscore.got")}
             {wasCounterGuessCorrect
-              ? " 1 point for their correct counter guess."
-              : " 0 points for their counter guess."}
+              ? t("viewscore.1_point_correct_guess")
+              : t("viewscore.0_point_wrong_guess")
+            }
           </div>
         )}
         {bonusCoopTurn && (
           <div>
-            Your team earned a <strong>bonus turn!</strong>
+            {t("viewscore.bonus_turn")}
           </div>
         )}
         <NextTurnOrEndGame />
@@ -66,6 +70,7 @@ export function ViewScore() {
 }
 
 function NextTurnOrEndGame() {
+  const {t, i18n} = useTranslation ();
   const { gameState, localPlayer, clueGiver, setGameState } = useContext(
     GameModelContext
   );
@@ -76,7 +81,7 @@ function NextTurnOrEndGame() {
 
   const resetButton = (
     <Button
-      text="Reset Game"
+      text='{t("viewscore.reset_game")}'
       onClick={() => {
         setGameState({
           ...InitialGameState(),
@@ -90,7 +95,7 @@ function NextTurnOrEndGame() {
   if (gameState.leftScore >= 10 && gameState.leftScore > gameState.rightScore) {
     return (
       <>
-        <div>{TeamName(Team.Left)} wins!</div>
+        <div>{t("viewscore.winning_team", {winnerteam: TeamName(Team.Left)})}</div>
         {resetButton}
       </>
     );
@@ -102,7 +107,7 @@ function NextTurnOrEndGame() {
   ) {
     return (
       <>
-        <div>{TeamName(Team.Right)} wins!</div>
+        <div>{t("viewscore.winning_team", {winnerteam: TeamName(Team.Right)})}</div>
         {resetButton}
       </>
     );
@@ -114,10 +119,10 @@ function NextTurnOrEndGame() {
   ) {
     return (
       <>
-        <div>Game Complete</div>
+        <div>{t("viewscore.game_finished")}</div>
         <div>
-          Your team's final cooperative score:{" "}
-          <strong>{gameState.coopScore} POINTS</strong>
+        {t("viewscore.final_score_team")}:{" "}
+          <strong>{gameState.coopScore} {test("viewscore.points")}</strong>
         </div>
         {resetButton}
       </>
@@ -171,16 +176,15 @@ function NextTurnOrEndGame() {
     <>
       {bonusTurn && (
         <CenteredRow>
-          <div>Catchup activated: {scoringTeamString} takes a bonus turn! </div>
+          <div>{t("viewscore.catching_up", { scoringteam: scoringTeamString})}</div>
           <Info>
-            After a team scores a four-point round, they get a bonus turn if
-            they are still behind the other team.
+          {t("viewscore.catching_up_info")}
           </Info>
         </CenteredRow>
       )}
       {eligibleToDraw && (
         <Button
-          text="Draw next Spectrum Card"
+          text={t("viewscore.draw_next_card")}
           onClick={() => setGameState(NewRound(localPlayer.id, gameState))}
         />
       )}

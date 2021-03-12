@@ -6,7 +6,11 @@ import { Button } from "../common/Button";
 import { GameModelContext } from "../../state/GameModelContext";
 import { ScoreTeamRound } from "../../state/ScoreRound";
 
+import {useTranslation} from "react-i18next";
+
 export function CounterGuess() {
+  const {t, i18n} = useTranslation ();
+
   const {
     gameState,
     localPlayer,
@@ -28,9 +32,9 @@ export function CounterGuess() {
         <Spectrum spectrumCard={spectrumCard} guessingValue={gameState.guess} />
         <CenteredColumn>
           <div>
-            {clueGiver.name}'s clue: <strong>{gameState.clue}</strong>
+            {clueGiver.name}'s Hinweis: <strong>{gameState.clue}</strong>
           </div>
-          <div>Waiting for {counterGuessTeamString} to guess left/right...</div>
+          <div>Warte auf den Rateversuche links/rechts von Team {counterGuessTeamString}...</div>
         </CenteredColumn>
       </div>
     );
@@ -41,18 +45,18 @@ export function CounterGuess() {
       <Spectrum spectrumCard={spectrumCard} guessingValue={gameState.guess} />
       <CenteredColumn>
         <div>
-          {clueGiver.name}'s clue: <strong>{gameState.clue}</strong>
+          {clueGiver.name}'s Hinweis: <strong>{gameState.clue}</strong>
         </div>
       </CenteredColumn>
       <CenteredRow>
         <Button
-          text="Target is to the Left"
+          text={t("counterguess.left_side")}
           onClick={() =>
             setGameState(ScoreTeamRound(gameState, clueGiver.team, "left"))
           }
         />
         <Button
-          text="Target is to the Right"
+          text={t("counterguess.right_side")}
           onClick={() =>
             setGameState(ScoreTeamRound(gameState, clueGiver.team, "right"))
           }

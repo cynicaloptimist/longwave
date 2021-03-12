@@ -1,6 +1,11 @@
-import React from "react";
+//import React from "react";
+import React from 'react';
+
+import {useTranslation} from "react-i18next";
 
 export function CommonFooter() {
+  const {t, i18n} = useTranslation ();
+    
   return (
     <div
       style={{
@@ -14,20 +19,19 @@ export function CommonFooter() {
       }}
     >
       <p style={{ margin: 8 }}>
-        <Link href="https://www.wavelength.zone/" text="Wavelength" /> is
-        designed by Wolfgang Warsch, Alex Hague, and Justin Vickers.{" "}
+        <Link href='https://www.wavelength.zone' text='Wavelength' /> {t("commonfooter.developed_by")}
         <Link
           href="https://github.com/cynicaloptimist/longwave"
-          text="Adapted for web"
+          text={t("commonfooter.adapted_for_web")}
         />{" "}
-        by Evan Bailey and Margarethe Schoen.
+        {t("commonfooter.adapted_for_web_by")}
       </p>
       {/* we want referrer, so: */}
       {/* eslint-disable-next-line react/jsx-no-target-blank */}
       <a target="_blank" href="https://www.patreon.com/improvedinitiative">
         <img
           alt="Patreon logo"
-          title="Support us on Patreon!"
+          title={t("commonfooter.support_patreon")}
           src="./Digital-Patreon-Wordmark_FieryCoral.png"
           style={{ width: "150px", margin: 8 }}
         />

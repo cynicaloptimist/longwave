@@ -5,13 +5,13 @@ import { MakeGuess } from "./MakeGuess";
 import React from "react";
 import { render } from "@testing-library/react";
 
-const helpText = "Invite other players to join the game.";
+const helpText = "LAde weitere Spieler in das Spiel ein.";
 test("Should show help text when more players are needed", () => {
   const gameState: GameState = {
     ...InitialGameState(),
     players: {
       player1: {
-        name: "Player 1",
+        name: "Spieler 1",
         team: Team.Left,
       },
     },
@@ -35,11 +35,11 @@ test("Should show help text when more players are needed", () => {
     ...InitialGameState(),
     players: {
       player1: {
-        name: "Player 1",
+        name: "Spieler 1",
         team: Team.Left,
       },
       player2: {
-        name: "Player 2",
+        name: "Spieler 2",
         team: Team.Left,
       },
     },
@@ -63,11 +63,11 @@ test("Should show button to submit your team's guess", () => {
     ...InitialGameState(),
     players: {
       player1: {
-        name: "Player 1",
+        name: "Spieler 1",
         team: Team.Left,
       },
       player2: {
-        name: "Player 2",
+        name: "Spieler 2",
         team: Team.Left,
       },
     },
@@ -82,7 +82,7 @@ test("Should show button to submit your team's guess", () => {
     </GameModelContext.Provider>
   );
 
-  const subject = component.getByText("Submit Guess for LEFT BRAIN");
+  const subject = component.getByText("Rateversuch für LINKES GEHIRN");
 
   expect(subject).toBeInTheDocument();
 });

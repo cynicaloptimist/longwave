@@ -5,20 +5,24 @@ import { CenteredColumn } from "./LayoutElements";
 import { Button } from "./Button";
 import { LongwaveAppTitle } from "./Title";
 
+import {useTranslation} from "react-i18next";
+
 export function LandingPage() {
+  const {t, i18n} = useTranslation ();
+
   const history = useHistory();
   return (
     <CenteredColumn>
       <LongwaveAppTitle />
       <Button
-        text="Create Room"
+        text={t('landingpage.create_room')}
         onClick={() => {
           history.push("/" + RandomFourCharacterString());
         }}
       />
       <p style={{ margin: 8 }}>
-        <strong>Longwave</strong> is an online, real-time adaptation of the{" "}
-        <em>Wavelength</em> board game. Best enjoyed with voice chat!
+        <strong>{t("landingpage.longwave")}</strong>{t("landingpage.adaption")}{" "}
+        <em>{t("landingpage.wavelength")}</em>. {t("landingpage.fun")}
       </p>
     </CenteredColumn>
   );

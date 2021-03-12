@@ -8,8 +8,10 @@ import { GameModelContext } from "../../state/GameModelContext";
 import { RandomSpectrumTarget } from "../../state/RandomSpectrumTarget";
 import { Info } from "../common/Info";
 import { Animate } from "../common/Animate";
+import {useTranslation} from "react-i18next";
 
 export function GiveClue() {
+  const {t, i18n} = useTranslation ();
   const {
     gameState,
     localPlayer,
@@ -36,7 +38,7 @@ export function GiveClue() {
           <Spectrum spectrumCard={spectrumCard} />
         </Animate>
         <CenteredColumn>
-          <div>Waiting for {clueGiver.name} to provide a clue...</div>
+          <div>{t("giveclue.waiting_for_clue", {givername: clueGiver.name})}</div>
         </CenteredColumn>
       </div>
     );
@@ -64,7 +66,7 @@ export function GiveClue() {
     <div>
       {gameState.gameType !== GameType.Cooperative && (
         <CenteredColumn style={{ alignItems: "flex-end" }}>
-          <Button text="Draw a different card" onClick={redrawCard} />
+          <Button text={t("giveclue.draw_other_hand")} onClick={redrawCard} />
         </CenteredColumn>
       )}
       <Animate animation="wipe-reveal-right">
@@ -77,7 +79,7 @@ export function GiveClue() {
         <CenteredRow>
           <input
             type="text"
-            placeholder="Clue..."
+            placeholder={t("giveclue.clue")}
             ref={inputElement}
             onKeyDown={(event) => {
               if (event.key !== "Enter") {
@@ -91,20 +93,17 @@ export function GiveClue() {
           />
           <Info>
             <div>
-              Your clue should be some concept that lies on the provided
-              spectrum, conceptually located where the target is between the two
-              extremes. For example, "coffee" might be a good clue that lies on
-              a spectrum of "hot" to "cold".
+                {t("giveclue.instructions")}
               <ul>
-                <li>Convey a single thought</li>
-                <li>Stay on topic</li>
-                <li>No numbers allowed</li>
-                <li>Be creative!</li>
+                <li>{t("giveclue.focus1")}</li>
+                <li>{t("giveclue.focus2")}</li>
+                <li>{t("giveclue.focus3")}</li>
+                <li>{t("giveclue.focus4")}</li>
               </ul>
             </div>
           </Info>
         </CenteredRow>
-        <Button text="Submit Clue" onClick={submit} disabled={disableSubmit} />
+        <Button text={t("giveclue.give_clue")} onClick={submit} disabled={disableSubmit} />
       </CenteredColumn>
     </div>
   );

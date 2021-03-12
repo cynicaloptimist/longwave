@@ -7,12 +7,12 @@ import { JoinTeam } from "./JoinTeam";
 
 jest.useFakeTimers();
 
-test("Assigns player to the selected team", () => {
+test("Weise Spieler zum gewählten Team zu", () => {
   const gameState: GameState = {
     ...InitialGameState(),
     players: {
       playerId: {
-        name: "Player",
+        name: "Spieler",
         team: Team.Unset,
       },
     },
@@ -28,9 +28,9 @@ test("Assigns player to the selected team", () => {
   );
 
   const button = component
-    .getByText("LEFT BRAIN")
+    .getByText("LINKES GEHIRN")
     .parentNode?.querySelector("input")!;
-  expect(button.value).toEqual("Join");
+  expect(button.value).toEqual("Teilnehmen");
   fireEvent.click(button);
 
   expect(setState).toHaveBeenCalledWith({
@@ -44,12 +44,12 @@ test("Assigns player to the selected team", () => {
   });
 });
 
-test("Shows current team members", () => {
+test("Zeigt aktuelle Teammitglieder", () => {
   const gameState: GameState = {
     ...InitialGameState(),
     players: {
       playerId: {
-        name: "Player",
+        name: "Spieler",
         team: Team.Unset,
       },
       leftTeam1: {
@@ -79,11 +79,11 @@ test("Shows current team members", () => {
     </GameModelContext.Provider>
   );
 
-  const leftBrain = within(component.getByText("LEFT BRAIN").parentElement!);
+  const leftBrain = within(component.getByText("LINKES GEHIRN").parentElement!);
   expect(leftBrain.getByText("Left Team 1")).toBeInTheDocument();
   expect(leftBrain.getByText("Left Team 2")).toBeInTheDocument();
 
-  const rightBrain = within(component.getByText("RIGHT BRAIN").parentElement!);
+  const rightBrain = within(component.getByText("RECHTES GEHIRN").parentElement!);
   expect(rightBrain.getByText("Right Team 1")).toBeInTheDocument();
   expect(rightBrain.getByText("Right Team 2")).toBeInTheDocument();
 });

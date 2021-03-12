@@ -3,7 +3,10 @@ import { TurnSummaryModel } from "../../state/GameState";
 import { CenteredColumn } from "../common/LayoutElements";
 import { Spectrum } from "../common/Spectrum";
 
+import {useTranslation} from "react-i18next";
+
 export function PreviousTurnResult(props: TurnSummaryModel) {
+  const {t, i18n} = useTranslation ();
   const style: React.CSSProperties = {
     borderTop: "1px solid black",
     margin: 16,
@@ -23,7 +26,7 @@ export function PreviousTurnResult(props: TurnSummaryModel) {
   return (
     <div style={style}>
       <CenteredColumn>
-        <em>Previous Turn</em>
+        <em>{t("previousturnresult.previous_game")}</em>
       </CenteredColumn>
       <div
         style={{
@@ -38,7 +41,7 @@ export function PreviousTurnResult(props: TurnSummaryModel) {
         />
         <CenteredColumn>
           <div>
-            {props.clueGiverName}'s clue: <strong>{props.clue}</strong>
+          {t("previousturnresult.player_clue", {givername: props.clueGiverName})}: <strong>{props.clue}</strong>
           </div>
         </CenteredColumn>
       </div>

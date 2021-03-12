@@ -8,7 +8,10 @@ import { Animate } from "../common/Animate";
 import { useRef } from "react";
 import { useEffect } from "react";
 
+import {useTranslation} from "react-i18next";
+
 export function Scoreboard() {
+  const {t, i18n} = useTranslation ();
   const { gameState } = useContext(GameModelContext);
 
   const style = {
@@ -21,7 +24,7 @@ export function Scoreboard() {
   if (gameState.gameType === GameType.Freeplay) {
     return (
       <CenteredColumn style={style}>
-        <em>Free Play</em>
+        <em>{t("scoreboard.free_play")}</em>
         <CenteredRow style={{ flexWrap: "wrap" }}>
           {Object.keys(gameState.players).map(toPlayerRow)}
         </CenteredRow>
@@ -33,11 +36,11 @@ export function Scoreboard() {
     const cardsRemaining = 7 + gameState.coopBonusTurns - gameState.turnsTaken;
     return (
       <CenteredColumn style={style}>
-        <em>Cooperative Score: {gameState.coopScore} POINTS</em>
+        <em>{t("scoreboard.coop_score")}: {gameState.coopScore} {t("scoreboard.points")}</em>
         <div>
           {cardsRemaining === 0
-            ? "Last Card!"
-            : "Cards remaining: " + cardsRemaining}
+            ? t("scoreboard.last_card")
+            : t("scoreboard.card_remaining") + ": " + cardsRemaining}
         </div>
         <CenteredRow style={{ flexWrap: "wrap" }}>
           {Object.keys(gameState.players).map(toPlayerRow)}
@@ -55,6 +58,7 @@ export function Scoreboard() {
 }
 
 function TeamColumn(props: { team: Team; score: number }) {
+  const {t, i18n} = useTranslation ();
   const { gameState } = useContext(GameModelContext);
 
   const members = Object.keys(gameState.players).filter(
@@ -64,7 +68,7 @@ function TeamColumn(props: { team: Team; score: number }) {
   return (
     <CenteredColumn style={{ alignItems: "flex-start" }}>
       <div>
-        {TeamName(props.team)}: <AnimatableScore score={props.score} /> POINTS
+        {TeamName(props.team)}: <AnimatableScore score={props.score} /> {t("scoreboard.points")}
       </div>
       {members.map(toPlayerRow)}
     </CenteredColumn>

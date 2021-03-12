@@ -7,7 +7,10 @@ import { useContext } from "react";
 import { GameModelContext } from "../../state/GameModelContext";
 import { NewRound } from "../../state/NewRound";
 
+import {useTranslation} from "react-i18next";
+
 export function SetupGame() {
+  const {t, i18n} = useTranslation ();
   const { gameState, setGameState, localPlayer } = useContext(GameModelContext);
 
   const startGame = (gameType: GameType) => {
@@ -29,15 +32,15 @@ export function SetupGame() {
       <LongwaveAppTitle />
       <CenteredRow style={{ flexWrap: "wrap" }}>
         <Button
-          text="Standard (Teams): 4+ Players"
+          text={t("setupgame.standard_game")}
           onClick={() => startGame(GameType.Teams)}
         />
         <Button
-          text="Cooperative: 2+ Players"
+          text={t("setupgame.coop_game")}
           onClick={() => startGame(GameType.Cooperative)}
         />
         <Button
-          text="Free Play: 2+ Players"
+          text={t("setupgame.free_game")}
           onClick={() => startGame(GameType.Freeplay)}
         />
       </CenteredRow>

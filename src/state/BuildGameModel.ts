@@ -1,6 +1,8 @@
 import { GameState, Team } from "./GameState";
 import memoize from "lodash/memoize";
-import { AllCards } from "./SpectrumCards";
+//import { AllCards } from "./SpectrumCards";  // original line of code
+import { AllCards } from "./SpectrumCards-en";  // new default for english language
+//import { AllCards } from "./SpectrumCards-de";   / german translation
 
 const shuffleSeed: {
   shuffle: <T>(arr: T[], seed: string) => T[];

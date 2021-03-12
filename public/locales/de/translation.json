@@ -1,0 +1,94 @@
+{
+    "commonfooter": {
+        "developed_by": "wurde von Wolfgang Warsch, Alex Hague und Justin Vickers entwickelt.",
+        "adapted_for_web": "Adapted for web",
+        "adapted_for_web_by": "von Evan Bailey und Margarethe Schoen.",
+        "support_patreon": "Support us on Patreon!"
+    },
+    "landingpage": {
+        "create_room":"Erzeuge Raum",
+        "longwave": "Longwave",
+        "adaption": "ist eine Online in Realzeit laufende Adaption des Spiels",
+        "wavelength": "Wavelength",
+        "fun": "Macht per Sprach-Chat am meisten Spass!"
+    },
+    "roomidheader": {
+        "roomid": "Raum ID:",
+        "reset_room": "Setze Raum zurück"
+    },
+    "spectrum": {
+        "guessing": "Raten...",
+        "goal": "Ziel"
+    },
+    "title": {
+        "longwave": "Longwave"
+    },
+    "gamestate": {
+        "left_brain":"LINKES GEHIRN",
+        "right_brain": "RECHTES GEHIRN",
+        "the_player": "DIE SPIELER"
+    },
+    "counterguess": {
+        "more_left": "Ziel ist weiter links",
+        "more_right": "Ziel ist weiter rechts"
+    },
+    "giveclue": {
+        "waiting_for_clue": "Warte auf den Hinweis von {{givername}}",
+        "draw_other_hand": "Ziehe andere Karten",
+        "clue": "Hinweis...",
+        "instructions": "Dein Hinweis sollte sich im Spektrum zwischen den beiden Begriffe befinden und ungefähr die Position des vorgegeben Ziels zwischen diesen beiden Extremen liegen. Zum Beispiel kann 'Kaffee' ein guter Hinweis für ein warmes oder hei0es Getränk auf dem Spektrum 'heiß' und 'kalt' sein.",
+        "focus1": "Beschreibe einen einzelnen Gedanken",
+        "focus2": "Fokussiere Dich auf das Thema",
+        "focus3": "Keine Zahlen erlaubt",
+        "focus4": "Sei kreativ!",
+        "give_clue": "Gebe Hinweis"
+    },
+    "inputname": {
+        "your_name": "Dein Name:"
+    },
+    "jointeam": {
+        "join_team": "Team beitreten",
+        "join_left": "Beitreten",
+        "join_right": "Beitreten",
+        "start_game": "Starte Spiel"
+    },
+    "makeguess": {
+        "players_clue": "{{givername}}'s Hinweis",
+        "waiting_guessing_team": "Warte auf den Rateversuch von Team {{guessingteam}}...",
+        "invite_other_players": "Lade weitere Spieler zu diesem Spiel ein.",
+        "share_game_url": "Teile diese Adresse mit ihnen: {{game_url}}",
+        "guess_for_team": "Rate für das Team {{teamname}}"
+    },
+    "previousturnresult": {
+        "previous_game": "Vorheriges Spiel",
+        "player_clue": "{{givername}}'s Hinweis"
+    },
+    "scoreboard": {
+        "free_play":"Freies Spiel",
+        "last_card": "Letzte Karte!",
+        "card_remaining": "Karten verbleiben",
+        "coop_score": "Koop Punktestand",
+        "points": "PUNKTE"
+    },
+    "setupgame": {
+        "standard_game": "Standard (Teams): 4+ Spieler",
+        "coop_game": "Koop Modus: 2+ Spieler",
+        "free_game": "Freies Spiel: 2+ Spieler"
+    },
+    "viewscore": {
+        "player_clue": "{{givername}}'s Hinweis",
+        "winning_team": "{{winnerteam}} gewinnt!",
+        "1_point_correct_guess": "1 Punkt für ihren richtigen Richtungstipp.",
+        "0_point_wrong_guess": "0 Punkt für ihren Richtungstipp.",
+        "bonus_turn": " Dein Team hat einen <strong>Bonuszug</strong> erhalten",
+        "reset_game": "Spiel zurücksetzen",
+        "game_finished": "Spiel beendet",
+        "final_score_team": "Der finale Punktestand Deines Teams",
+        "points": "PUNKTE",
+        "catching_up": "Aufholjagd aktiviert: {{scoringteam}} erhielt einen Bonuszug!",
+        "catching_up_info": "Nachdem Dein team einen 4-Punkte Zug erreicht hat, erhält das Team einen weiteren Zug, sollte es weiterhin hinter dem anderem Team liegen.",
+        "draw_next_card": "Ziehe nächste Spektrum Karte",
+        "score": "Punktestand",
+        "got": "erhielt"
+    }
+}

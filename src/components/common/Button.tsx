@@ -1,4 +1,5 @@
 import React from "react";
+
 export function Button(props: { text: string; onClick: () => void; disabled?: boolean }) {
   return (
     <input
