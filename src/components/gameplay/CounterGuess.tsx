@@ -32,9 +32,9 @@ export function CounterGuess() {
         <Spectrum spectrumCard={spectrumCard} guessingValue={gameState.guess} />
         <CenteredColumn>
           <div>
-            {clueGiver.name}'s Hinweis: <strong>{gameState.clue}</strong>
+          {t("counterguess.players_clue", {givername: clueGiver.name})}: <strong>{gameState.clue}</strong>
           </div>
-          <div>Warte auf den Rateversuche links/rechts von Team {counterGuessTeamString}...</div>
+          <div>{t("counterguess.waiting_guess_team", {guessteam: counterGuessTeamString})}</div>
         </CenteredColumn>
       </div>
     );
@@ -45,7 +45,7 @@ export function CounterGuess() {
       <Spectrum spectrumCard={spectrumCard} guessingValue={gameState.guess} />
       <CenteredColumn>
         <div>
-          {clueGiver.name}'s Hinweis: <strong>{gameState.clue}</strong>
+        {t("counterguess.players_clue", {givername: clueGiver.name})}: <strong>{gameState.clue}</strong>
         </div>
       </CenteredColumn>
       <CenteredRow>

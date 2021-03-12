@@ -21,8 +21,8 @@ export function LandingPage() {
         }}
       />
       <p style={{ margin: 8 }}>
-        <strong>{t("landingpage.longwave")}</strong>{t("landingpage.adaption")}{" "}
-        <em>{t("landingpage.wavelength")}</em>. {t("landingpage.fun")}
+        <strong>{t("landingpage.longwave")}</strong>{t("landingpage.adaptation")}{" "}
+        <em>{t("landingpage.wavelength")}</em>. {t("landingpage.best_enjoyewd")}
       </p>
     </CenteredColumn>
   );
