@@ -7,7 +7,7 @@ export function IconButton(props: {
   icon: IconDefinition;
   onClick: () => void;
 }) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
   const style: CSSProperties = { cursor: "pointer", margin: 4, padding: 4 };
 

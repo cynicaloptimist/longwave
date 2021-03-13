@@ -11,7 +11,7 @@ import { Animate } from "../common/Animate";
 import { useTranslation } from "react-i18next";
 
 export function GiveClue() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const {
     gameState,
     localPlayer,

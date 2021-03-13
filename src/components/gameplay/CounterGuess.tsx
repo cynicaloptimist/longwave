@@ -9,7 +9,7 @@ import { ScoreTeamRound } from "../../state/ScoreRound";
 import { useTranslation } from "react-i18next";
 
 export function CounterGuess() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const {
     gameState,

@@ -10,7 +10,7 @@ import { NewTeamGame } from "../../state/NewGame";
 import { useTranslation } from "react-i18next";
 
 export function JoinTeam() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { gameState, localPlayer, setGameState } = useContext(GameModelContext);
 
   const leftTeam = Object.keys(gameState.players).filter(

@@ -9,8 +9,6 @@ import { LandingPage } from "./common/LandingPage";
 
 import { useTranslation } from "react-i18next";
 
-import ReactFlagsSelect from "react-flags-select";
-
 const style: React.CSSProperties = {
   maxWidth: 500,
   margin: 4,
@@ -19,7 +17,7 @@ const style: React.CSSProperties = {
 };
 
 function App() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const changeLanguage = (language: string | undefined) => {
     i18n.changeLanguage(language);

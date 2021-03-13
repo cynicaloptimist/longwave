@@ -11,7 +11,7 @@ import { InitialGameState } from "../../state/GameState";
 import { useTranslation } from "react-i18next";
 
 export function RoomIdHeader() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { roomId }: { [k: string]: any } = useParams();
 
   return (
@@ -35,7 +35,7 @@ export function RoomIdHeader() {
 }
 
 function RoomMenu() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { setGameState } = useContext(GameModelContext);
 
   return (

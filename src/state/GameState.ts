@@ -34,7 +34,7 @@ export function TeamReverse(team: Team) {
 }
 
 export function TeamName(team: Team) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   if (team === Team.Left) {
     return t("gamestate.left_brain");

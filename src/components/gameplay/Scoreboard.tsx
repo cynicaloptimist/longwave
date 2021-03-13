@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 export function Scoreboard() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { gameState } = useContext(GameModelContext);
 
   const style = {
@@ -61,7 +61,7 @@ export function Scoreboard() {
 }
 
 function TeamColumn(props: { team: Team; score: number }) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { gameState } = useContext(GameModelContext);
 
   const members = Object.keys(gameState.players).filter(

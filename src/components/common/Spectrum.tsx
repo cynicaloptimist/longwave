@@ -12,7 +12,7 @@ export function Spectrum(props: {
   guessingValue?: number;
   onChange?: (newValue: number) => void;
 }) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [primary, secondary] = GetContrastingColors(
     getStringHash(props.spectrumCard[0])

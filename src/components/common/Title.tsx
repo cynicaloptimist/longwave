@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 export function LongwaveAppTitle() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [hue, setHue] = useState(0);
   const [primary, secondary] = GetContrastingColors(hue);
   useEffect(() => {

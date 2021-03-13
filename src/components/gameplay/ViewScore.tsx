@@ -17,7 +17,7 @@ import { Info } from "../common/Info";
 import { useTranslation } from "react-i18next";
 
 export function ViewScore() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { gameState, clueGiver, spectrumCard } = useContext(GameModelContext);
 
   if (!clueGiver) {
@@ -68,7 +68,7 @@ export function ViewScore() {
 }
 
 function NextTurnOrEndGame() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { gameState, localPlayer, clueGiver, setGameState } = useContext(
     GameModelContext
   );

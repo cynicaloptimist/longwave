@@ -6,7 +6,7 @@ import { Spectrum } from "../common/Spectrum";
 import { useTranslation } from "react-i18next";
 
 export function PreviousTurnResult(props: TurnSummaryModel) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const style: React.CSSProperties = {
     borderTop: "1px solid black",
     margin: 16,

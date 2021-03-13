@@ -10,7 +10,7 @@ import { ScoreCoopRound } from "../../state/ScoreRound";
 import { useTranslation } from "react-i18next";
 
 export function MakeGuess() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const {
     gameState,
     localPlayer,
