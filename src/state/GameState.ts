@@ -1,6 +1,6 @@
 import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
 import { RandomFourCharacterString } from "./RandomFourCharacterString";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export enum RoundPhase {
   SetupGame,
@@ -34,7 +34,7 @@ export function TeamReverse(team: Team) {
 }
 
 export function TeamName(team: Team) {
-  const {t, i18n} = useTranslation ();
+  const { t, i18n } = useTranslation();
 
   if (team === Team.Left) {
     return t("gamestate.left_brain");

@@ -1,11 +1,11 @@
 //import React from "react";
-import React from 'react';
+import React from "react";
 
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export function CommonFooter() {
-  const {t, i18n} = useTranslation ();
-    
+  const { t, i18n } = useTranslation();
+
   return (
     <div
       style={{
@@ -19,7 +19,8 @@ export function CommonFooter() {
       }}
     >
       <p style={{ margin: 8 }}>
-        <Link href='https://www.wavelength.zone' text='Wavelength' /> {t("commonfooter.developed_by")}
+        <Link href="https://www.wavelength.zone" text="Wavelength" />{" "}
+        {t("commonfooter.developed_by")}
         <Link
           href="https://github.com/cynicaloptimist/longwave"
           text={t("commonfooter.adapted_for_web")}

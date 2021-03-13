@@ -2,10 +2,10 @@ import React from "react";
 import { GetContrastingColors } from "./GetContrastingColors";
 import { useState } from "react";
 import { useEffect } from "react";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export function LongwaveAppTitle() {
-  const {t, i18n} = useTranslation ();
+  const { t, i18n } = useTranslation();
   const [hue, setHue] = useState(0);
   const [primary, secondary] = GetContrastingColors(hue);
   useEffect(() => {

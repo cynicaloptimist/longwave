@@ -7,10 +7,10 @@ import { useContext } from "react";
 import { GameModelContext } from "../../state/GameModelContext";
 import { NewTeamGame } from "../../state/NewGame";
 
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export function JoinTeam() {
-  const {t, i18n} = useTranslation ();
+  const { t, i18n } = useTranslation();
   const { gameState, localPlayer, setGameState } = useContext(GameModelContext);
 
   const leftTeam = Object.keys(gameState.players).filter(
@@ -33,9 +33,7 @@ export function JoinTeam() {
   };
 
   const startGame = () =>
-    setGameState(
-      NewTeamGame(gameState.players, localPlayer.id, gameState)
-    );
+    setGameState(NewTeamGame(gameState.players, localPlayer.id, gameState));
 
   return (
     <CenteredColumn>
@@ -53,7 +51,10 @@ export function JoinTeam() {
             <div key={playerId}>{gameState.players[playerId].name}</div>
           ))}
           <div>
-            <Button text={t("jointeam.join_left")} onClick={() => joinTeam(Team.Left)} />
+            <Button
+              text={t("jointeam.join_left")}
+              onClick={() => joinTeam(Team.Left)}
+            />
           </div>
         </CenteredColumn>
         <CenteredColumn>
@@ -62,7 +63,10 @@ export function JoinTeam() {
             <div key={playerId}>{gameState.players[playerId].name}</div>
           ))}
           <div>
-            <Button text={t("jointeam.join_right")} onClick={() => joinTeam(Team.Right)} />
+            <Button
+              text={t("jointeam.join_right")}
+              onClick={() => joinTeam(Team.Right)}
+            />
           </div>
         </CenteredColumn>
       </CenteredRow>

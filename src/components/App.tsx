@@ -1,5 +1,5 @@
 //import React, {Suspense} from 'react';
-import '../App.css';
+import "../App.css";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { GameRoom } from "./gameplay/GameRoom";
@@ -7,9 +7,9 @@ import { CenteredColumn } from "./common/LayoutElements";
 import { CommonFooter } from "./common/CommonFooter";
 import { LandingPage } from "./common/LandingPage";
 
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
-import ReactFlagsSelect from 'react-flags-select';
+import ReactFlagsSelect from "react-flags-select";
 
 const style: React.CSSProperties = {
   maxWidth: 500,
@@ -19,12 +19,12 @@ const style: React.CSSProperties = {
 };
 
 function App() {
-  const {t, i18n} = useTranslation ();
+  const { t, i18n } = useTranslation();
 
   const changeLanguage = (language: string | undefined) => {
     i18n.changeLanguage(language);
   };
-  
+
   return (
     <CenteredColumn>
       <div style={style}>
@@ -41,11 +41,20 @@ function App() {
         </BrowserRouter>
       </div>
       <div>
-      <br />
-      <button className="lngbtn lngbtnblue" onClick={() => changeLanguage("en")}>EN</button>
-      <button className="lngbtn lngbtnblue" onClick={() => changeLanguage("de")}>DE</button>
+        <br />
+        <button
+          className="lngbtn lngbtnblue"
+          onClick={() => changeLanguage("en")}
+        >
+          EN
+        </button>
+        <button
+          className="lngbtn lngbtnblue"
+          onClick={() => changeLanguage("de")}
+        >
+          DE
+        </button>
       </div>
-      
     </CenteredColumn>
   );
 }

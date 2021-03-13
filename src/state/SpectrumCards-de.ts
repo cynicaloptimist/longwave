@@ -117,7 +117,10 @@ const SpectrumCards: [string, string][] = [
   ["Schlechter Film", "Guter Film"],
   ["Hässlich", "Schön"],
   ["Reife Person", "Unreife Person"],
-  ["Unterschätzte Sache, die man besitzt", "Überschätzte Sache, die man besitzt"],
+  [
+    "Unterschätzte Sache, die man besitzt",
+    "Überschätzte Sache, die man besitzt",
+  ],
   ["Gewöhnlich", "Außergewöhnlich"],
   ["Schwer auszusprechen", "Leicht auszusprechen"],
   ["Schlecht gemacht", "Gut gemacht"],
@@ -125,7 +128,10 @@ const SpectrumCards: [string, string][] = [
   ["Gefährlich", "Sicher"],
   ["Kulturell bedeutsam", "Kulturell unbedeutend"],
   ["Optional", "Obligatorisch"],
-  ["Unterschätzter Buchstabe des Alphabets", "Überschätzter Buchstabe des Alphabets"],
+  [
+    "Unterschätzter Buchstabe des Alphabets",
+    "Überschätzter Buchstabe des Alphabets",
+  ],
   ["Niedrige Qualität", "Hohe Qualität"],
   ["Unsexy Tier", "Sexy Tier"],
   ["Ruhiger Ort", "Lauter Ort"],
@@ -257,7 +263,6 @@ const AdvancedSpectrumCards: [string, string][] = [
   ["Böser Hund (Rasse)", "Guter Hund (Rasse)"],
 ];
 
-
 const AdditionalSpectrumCards: [string, string][] = [
   ["Geizig", "Spendabel"],
   ["Gewinner", "Verlierer"],
@@ -307,8 +312,11 @@ const AdditionalSpectrumCards: [string, string][] = [
   ["See", "Ozean"],
 ];
 
-const AgileSpectrumCards: [string, string][] = [
-  ["Agil", "Wasserfall"],
-];
+const AgileSpectrumCards: [string, string][] = [["Agil", "Wasserfall"]];
 
-export const AllCards = [...SpectrumCards, ...AdvancedSpectrumCards, ...AdditionalSpectrumCards, ...AgileSpectrumCards];
+export const AllCards = [
+  ...SpectrumCards,
+  ...AdvancedSpectrumCards,
+  ...AdditionalSpectrumCards,
+  ...AgileSpectrumCards,
+];

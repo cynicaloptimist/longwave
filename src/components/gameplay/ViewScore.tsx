@@ -14,10 +14,10 @@ import { GameModelContext } from "../../state/GameModelContext";
 import { NewRound } from "../../state/NewRound";
 import { Info } from "../common/Info";
 
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export function ViewScore() {
-  const {t, i18n} = useTranslation ();
+  const { t, i18n } = useTranslation();
   const { gameState, clueGiver, spectrumCard } = useContext(GameModelContext);
 
   if (!clueGiver) {
@@ -46,23 +46,21 @@ export function ViewScore() {
       />
       <CenteredColumn>
         <div>
-        {t("viewscore.player_clue", {givername: clueGiver.name})}: <strong>{gameState.clue}</strong>
+          {t("viewscore.player_clue", { givername: clueGiver.name })}:{" "}
+          <strong>{gameState.clue}</strong>
         </div>
-        <div>{t("viewscore.score")}: {score} {t("viewscore.points")}!</div>
+        <div>
+          {t("viewscore.score")}: {score} {t("viewscore.points")}!
+        </div>
         {gameState.gameType === GameType.Teams && (
           <div>
             {TeamName(TeamReverse(clueGiver.team))} {t("viewscore.got")}
             {wasCounterGuessCorrect
               ? t("viewscore.1_point_correct_guess")
-              : t("viewscore.0_point_wrong_guess")
-            }
+              : t("viewscore.0_point_wrong_guess")}
           </div>
         )}
-        {bonusCoopTurn && (
-          <div>
-            {t("viewscore.bonus_turn")}
-          </div>
-        )}
+        {bonusCoopTurn && <div>{t("viewscore.bonus_turn")}</div>}
         <NextTurnOrEndGame />
       </CenteredColumn>
     </div>
@@ -70,7 +68,7 @@ export function ViewScore() {
 }
 
 function NextTurnOrEndGame() {
-  const {t, i18n} = useTranslation ();
+  const { t, i18n } = useTranslation();
   const { gameState, localPlayer, clueGiver, setGameState } = useContext(
     GameModelContext
   );
@@ -95,7 +93,9 @@ function NextTurnOrEndGame() {
   if (gameState.leftScore >= 10 && gameState.leftScore > gameState.rightScore) {
     return (
       <>
-        <div>{t("viewscore.winning_team", {winnerteam: TeamName(Team.Left)})}</div>
+        <div>
+          {t("viewscore.winning_team", { winnerteam: TeamName(Team.Left) })}
+        </div>
         {resetButton}
       </>
     );
@@ -107,7 +107,9 @@ function NextTurnOrEndGame() {
   ) {
     return (
       <>
-        <div>{t("viewscore.winning_team", {winnerteam: TeamName(Team.Right)})}</div>
+        <div>
+          {t("viewscore.winning_team", { winnerteam: TeamName(Team.Right) })}
+        </div>
         {resetButton}
       </>
     );
@@ -121,8 +123,10 @@ function NextTurnOrEndGame() {
       <>
         <div>{t("viewscore.game_finished")}</div>
         <div>
-        {t("viewscore.final_score_team")}:{" "}
-          <strong>{gameState.coopScore} {test("viewscore.points")}</strong>
+          {t("viewscore.final_score_team")}:{" "}
+          <strong>
+            {gameState.coopScore} {test("viewscore.points")}
+          </strong>
         </div>
         {resetButton}
       </>
@@ -176,10 +180,10 @@ function NextTurnOrEndGame() {
     <>
       {bonusTurn && (
         <CenteredRow>
-          <div>{t("viewscore.catching_up", { scoringteam: scoringTeamString})}</div>
-          <Info>
-          {t("viewscore.catching_up_info")}
-          </Info>
+          <div>
+            {t("viewscore.catching_up", { scoringteam: scoringTeamString })}
+          </div>
+          <Info>{t("viewscore.catching_up_info")}</Info>
         </CenteredRow>
       )}
       {eligibleToDraw && (

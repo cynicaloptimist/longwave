@@ -6,10 +6,10 @@ import { Button } from "../common/Button";
 import { GameModelContext } from "../../state/GameModelContext";
 import { ScoreTeamRound } from "../../state/ScoreRound";
 
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export function CounterGuess() {
-  const {t, i18n} = useTranslation ();
+  const { t, i18n } = useTranslation();
 
   const {
     gameState,
@@ -32,9 +32,14 @@ export function CounterGuess() {
         <Spectrum spectrumCard={spectrumCard} guessingValue={gameState.guess} />
         <CenteredColumn>
           <div>
-          {t("counterguess.players_clue", {givername: clueGiver.name})}: <strong>{gameState.clue}</strong>
+            {t("counterguess.players_clue", { givername: clueGiver.name })}:{" "}
+            <strong>{gameState.clue}</strong>
           </div>
-          <div>{t("counterguess.waiting_guess_team", {guessteam: counterGuessTeamString})}</div>
+          <div>
+            {t("counterguess.waiting_guess_team", {
+              guessteam: counterGuessTeamString,
+            })}
+          </div>
         </CenteredColumn>
       </div>
     );
@@ -45,7 +50,8 @@ export function CounterGuess() {
       <Spectrum spectrumCard={spectrumCard} guessingValue={gameState.guess} />
       <CenteredColumn>
         <div>
-        {t("counterguess.players_clue", {givername: clueGiver.name})}: <strong>{gameState.clue}</strong>
+          {t("counterguess.players_clue", { givername: clueGiver.name })}:{" "}
+          <strong>{gameState.clue}</strong>
         </div>
       </CenteredColumn>
       <CenteredRow>

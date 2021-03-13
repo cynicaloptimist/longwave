@@ -11,9 +11,8 @@ import firebase from "firebase/app";
 import App from "./components/App";
 import { firebaseConfig } from "./firebaseConfig";
 
-// import i18n (needs to be bundled ;)) 
-import './i18n';
-
+// import i18n (needs to be bundled ;))
+import "./i18n";
 
 firebase.initializeApp(firebaseConfig);
 firebase.analytics().logEvent("screen_view", {
@@ -23,9 +22,9 @@ firebase.analytics().logEvent("screen_view", {
 
 ReactDOM.render(
   <React.StrictMode>
-     <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Loading...</div>}>
       <App />
-      </Suspense>
+    </Suspense>
   </React.StrictMode>,
   document.getElementById("root")
 );

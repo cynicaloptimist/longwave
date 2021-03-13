@@ -7,10 +7,10 @@ import { useContext } from "react";
 import { GameModelContext } from "../../state/GameModelContext";
 import { NewRound } from "../../state/NewRound";
 
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export function SetupGame() {
-  const {t, i18n} = useTranslation ();
+  const { t, i18n } = useTranslation();
   const { gameState, setGameState, localPlayer } = useContext(GameModelContext);
 
   const startGame = (gameType: GameType) => {

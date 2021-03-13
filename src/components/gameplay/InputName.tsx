@@ -2,10 +2,10 @@ import React from "react";
 import { useRef } from "react";
 import { CenteredColumn } from "../common/LayoutElements";
 import { LongwaveAppTitle } from "../common/Title";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export function InputName(props: { setName: (name: string) => void }) {
-  const {t, i18n} = useTranslation ();
+  const { t, i18n } = useTranslation();
   const inputRef = useRef<HTMLInputElement>(null);
   return (
     <CenteredColumn>

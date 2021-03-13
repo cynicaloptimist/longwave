@@ -8,10 +8,10 @@ import { GameModelContext } from "../../state/GameModelContext";
 import { RandomSpectrumTarget } from "../../state/RandomSpectrumTarget";
 import { Info } from "../common/Info";
 import { Animate } from "../common/Animate";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export function GiveClue() {
-  const {t, i18n} = useTranslation ();
+  const { t, i18n } = useTranslation();
   const {
     gameState,
     localPlayer,
@@ -38,7 +38,9 @@ export function GiveClue() {
           <Spectrum spectrumCard={spectrumCard} />
         </Animate>
         <CenteredColumn>
-          <div>{t("giveclue.waiting_for_clue", {givername: clueGiver.name})}</div>
+          <div>
+            {t("giveclue.waiting_for_clue", { givername: clueGiver.name })}
+          </div>
         </CenteredColumn>
       </div>
     );
@@ -93,7 +95,7 @@ export function GiveClue() {
           />
           <Info>
             <div>
-                {t("giveclue.instructions")}
+              {t("giveclue.instructions")}
               <ul>
                 <li>{t("giveclue.focus1")}</li>
                 <li>{t("giveclue.focus2")}</li>
@@ -103,7 +105,11 @@ export function GiveClue() {
             </div>
           </Info>
         </CenteredRow>
-        <Button text={t("giveclue.give_clue")} onClick={submit} disabled={disableSubmit} />
+        <Button
+          text={t("giveclue.give_clue")}
+          onClick={submit}
+          disabled={disableSubmit}
+        />
       </CenteredColumn>
     </div>
   );

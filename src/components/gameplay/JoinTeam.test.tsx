@@ -83,7 +83,9 @@ test("Zeigt aktuelle Teammitglieder", () => {
   expect(leftBrain.getByText("Left Team 1")).toBeInTheDocument();
   expect(leftBrain.getByText("Left Team 2")).toBeInTheDocument();
 
-  const rightBrain = within(component.getByText("RECHTES GEHIRN").parentElement!);
+  const rightBrain = within(
+    component.getByText("RECHTES GEHIRN").parentElement!
+  );
   expect(rightBrain.getByText("Right Team 1")).toBeInTheDocument();
   expect(rightBrain.getByText("Right Team 2")).toBeInTheDocument();
 });

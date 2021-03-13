@@ -8,10 +8,10 @@ import { Animate } from "../common/Animate";
 import { useRef } from "react";
 import { useEffect } from "react";
 
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export function Scoreboard() {
-  const {t, i18n} = useTranslation ();
+  const { t, i18n } = useTranslation();
   const { gameState } = useContext(GameModelContext);
 
   const style = {
@@ -36,7 +36,10 @@ export function Scoreboard() {
     const cardsRemaining = 7 + gameState.coopBonusTurns - gameState.turnsTaken;
     return (
       <CenteredColumn style={style}>
-        <em>{t("scoreboard.coop_score")}: {gameState.coopScore} {t("scoreboard.points")}</em>
+        <em>
+          {t("scoreboard.coop_score")}: {gameState.coopScore}{" "}
+          {t("scoreboard.points")}
+        </em>
         <div>
           {cardsRemaining === 0
             ? t("scoreboard.last_card")
@@ -58,7 +61,7 @@ export function Scoreboard() {
 }
 
 function TeamColumn(props: { team: Team; score: number }) {
-  const {t, i18n} = useTranslation ();
+  const { t, i18n } = useTranslation();
   const { gameState } = useContext(GameModelContext);
 
   const members = Object.keys(gameState.players).filter(
@@ -68,7 +71,8 @@ function TeamColumn(props: { team: Team; score: number }) {
   return (
     <CenteredColumn style={{ alignItems: "flex-start" }}>
       <div>
-        {TeamName(props.team)}: <AnimatableScore score={props.score} /> {t("scoreboard.points")}
+        {TeamName(props.team)}: <AnimatableScore score={props.score} />{" "}
+        {t("scoreboard.points")}
       </div>
       {members.map(toPlayerRow)}
     </CenteredColumn>

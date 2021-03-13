@@ -8,11 +8,11 @@ export function ScoreCoopRound(gameState: GameState): Partial<GameState> {
   );
   let finalState: Partial<GameState> = {
     roundPhase: RoundPhase.ViewScore,
-  }
-  
+  };
+
   if (effectivePointsScored === 4) {
     finalState.coopScore = gameState.coopScore + 3;
-    finalState.coopBonusTurns = gameState.coopBonusTurns + 1
+    finalState.coopBonusTurns = gameState.coopBonusTurns + 1;
   } else {
     finalState.coopScore = gameState.coopScore + effectivePointsScored;
   }

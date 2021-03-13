@@ -3,7 +3,7 @@ import Slider from "rc-slider";
 import { CenteredColumn, CenteredRow } from "./LayoutElements";
 import { GetContrastingColors } from "./GetContrastingColors";
 
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export function Spectrum(props: {
   spectrumCard: [string, string];
@@ -12,7 +12,7 @@ export function Spectrum(props: {
   guessingValue?: number;
   onChange?: (newValue: number) => void;
 }) {
-  const {t, i18n} = useTranslation ();
+  const { t, i18n } = useTranslation();
 
   const [primary, secondary] = GetContrastingColors(
     getStringHash(props.spectrumCard[0])
@@ -53,14 +53,14 @@ export function Spectrum(props: {
   if (props.targetValue !== undefined) {
     marks[props.targetValue] = {
       style: { fontWeight: "bold", color: "black", cursor: "auto" },
-      label: t('spectrum.goal'),
+      label: t("spectrum.goal"),
     };
   }
 
   if (props.guessingValue !== undefined) {
     marks[props.guessingValue] = {
       style: { fontWeight: "bold", color: "black", cursor: "auto" },
-      label: t('spectrum.guessing'),
+      label: t("spectrum.guessing"),
     };
   }
 

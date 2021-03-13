@@ -7,10 +7,10 @@ import { GameModelContext } from "../../state/GameModelContext";
 import { RecordEvent } from "../../TrackEvent";
 import { ScoreCoopRound } from "../../state/ScoreRound";
 
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export function MakeGuess() {
-  const {t, i18n} = useTranslation ();
+  const { t, i18n } = useTranslation();
   const {
     gameState,
     localPlayer,
@@ -36,9 +36,14 @@ export function MakeGuess() {
         <Spectrum spectrumCard={spectrumCard} guessingValue={gameState.guess} />
         <CenteredColumn>
           <div>
-          {t("makeguess.players_clue", {givername: clueGiver.name})}: <strong>{gameState.clue}</strong>
+            {t("makeguess.players_clue", { givername: clueGiver.name })}:{" "}
+            <strong>{gameState.clue}</strong>
           </div>
-          <div>{t("makeguess.waiting_guessing_team", {guessingteam: guessingTeamString})}</div>
+          <div>
+            {t("makeguess.waiting_guessing_team", {
+              guessingteam: guessingTeamString,
+            })}
+          </div>
           {Object.keys(gameState.players).length < 2 && (
             <div
               style={{
@@ -48,7 +53,11 @@ export function MakeGuess() {
               }}
             >
               <p>{t("makeguess.invite_other_players")}</p>
-              <p>{t("makeguess.share_game_url", { game_url: window.location.href})}</p>
+              <p>
+                {t("makeguess.share_game_url", {
+                  game_url: window.location.href,
+                })}
+              </p>
             </div>
           )}
         </CenteredColumn>
@@ -69,11 +78,14 @@ export function MakeGuess() {
       />
       <CenteredColumn>
         <div>
-        {t("makeguess.players_clue", {givername: clueGiver.name})}: <strong>{gameState.clue}</strong>
+          {t("makeguess.players_clue", { givername: clueGiver.name })}:{" "}
+          <strong>{gameState.clue}</strong>
         </div>
         <div>
           <Button
-            text={t("makeguess.guess_for_team", {teamname: TeamName(localPlayer.team)})}
+            text={t("makeguess.guess_for_team", {
+              teamname: TeamName(localPlayer.team),
+            })}
             onClick={() => {
               RecordEvent("guess_submitted", {
                 spectrum_card: spectrumCard.join("|"),

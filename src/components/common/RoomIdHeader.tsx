@@ -8,11 +8,11 @@ import { useContext } from "react";
 import { GameModelContext } from "../../state/GameModelContext";
 import { InitialGameState } from "../../state/GameState";
 
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export function RoomIdHeader() {
-  const {t, i18n} = useTranslation ();
-  const { roomId }: {[k: string]: any} = useParams();
+  const { t, i18n } = useTranslation();
+  const { roomId }: { [k: string]: any } = useParams();
 
   return (
     <CenteredRow
@@ -22,7 +22,9 @@ export function RoomIdHeader() {
         color: "gray",
       }}
     >
-      <div style={{ margin: 4, padding: 4 }}>{t("roomidheader.roomid")} {roomId}</div>
+      <div style={{ margin: 4, padding: 4 }}>
+        {t("roomidheader.roomid")} {roomId}
+      </div>
       <Tippy content={<RoomMenu />} interactive placement="bottom-end">
         <div tabIndex={0} style={{ padding: 8 }}>
           <FontAwesomeIcon icon={faEllipsisV} />
@@ -33,7 +35,7 @@ export function RoomIdHeader() {
 }
 
 function RoomMenu() {
-  const {t, i18n} = useTranslation ();
+  const { t, i18n } = useTranslation();
   const { setGameState } = useContext(GameModelContext);
 
   return (
@@ -42,7 +44,7 @@ function RoomMenu() {
       style={{ cursor: "pointer" }}
       onClick={() => setGameState(InitialGameState())}
     >
-    {t("roomidheader.reset_room")}
+      {t("roomidheader.reset_room")}
     </div>
   );
 }
