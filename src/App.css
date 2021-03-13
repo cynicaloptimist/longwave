@@ -66,30 +66,3 @@
   transform: translateY(-100%);
   opacity: 0;
 }
-
-#language_button {
-  display: inline-block;
-  /* additional code */
-}
-
-.lngbtn {
-  background-color: #67649b; /* Green */
-  border-style: solid;
-  border-color: 2px #67649b;
-  color: white;
-  padding: 8px 16px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-
-.lngbtnblue:hover {
-  background-color: #a19fbd;
-  border-style: solid;
-  border-width: 2px #67649b;
-  color: #67649b;
-}
