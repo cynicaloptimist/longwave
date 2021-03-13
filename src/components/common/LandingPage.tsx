@@ -27,7 +27,7 @@ export function LandingPage() {
       <p style={{ margin: 8 }}>
         <strong>{t("landingpage.longwave")}</strong>
         {t("landingpage.adaptation")} <em>{t("landingpage.wavelength")}</em>.{" "}
-        {t("landingpage.best_enjoyewd")}
+        {t("landingpage.best_enjoyed")}
       </p>
       <CenteredRow style={{ alignSelf: "flex-end" }}>
         <Button onClick={() => changeLanguage("en")} text="EN" />
