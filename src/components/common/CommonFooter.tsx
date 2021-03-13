@@ -1,21 +1,17 @@
 //import React from "react";
-import React from "react";
-
 import { useTranslation } from "react-i18next";
+import { CenteredRow } from "./LayoutElements";
 
 export function CommonFooter() {
   const { t } = useTranslation();
 
   return (
-    <div
+    <CenteredRow
       style={{
         paddingTop: 8,
         borderTop: "1px solid black",
         color: "gray",
         fontSize: "small",
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
       }}
     >
       <p style={{ margin: 8 }}>
@@ -37,7 +33,7 @@ export function CommonFooter() {
           style={{ width: "150px", margin: 8 }}
         />
       </a>
-    </div>
+    </CenteredRow>
   );
 }
 
