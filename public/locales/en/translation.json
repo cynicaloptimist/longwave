@@ -8,7 +8,7 @@
   "landingpage": {
     "create_room": "Create Room",
     "longwave": "Longwave",
-    "adaptation": "is a online, real-time adaptation of the board game",
+    "adaptation": "is an online, real-time adaptation of the board game",
     "wavelength": "Wavelength",
     "best_enjoyed": "Best enjoyed with voice chat!"
   },
@@ -31,14 +31,14 @@
   "counterguess": {
     "more_left": "Target is to the left",
     "more_right": "Target is to the right",
-    "players_clue": "{{givername}'s clue",
+    "players_clue": "{{givername}}'s clue",
     "waiting_guess_team": "Waiting for {{guessteam}} to guess left/right..."
   },
   "giveclue": {
     "waiting_for_clue": "Waiting for {{givername}} to provide a clue...",
     "draw_other_hand": "Draw a different card",
     "clue": "Clue...",
-    "instructions": "Your clue should be some concept that lies on the provided spectrum, conceptionally wehre the target is between the two extremes. For example, 'coffe' might be a good clue that lies on a spectrum of 'hot' and 'cold'.",
+    "instructions": "Your clue should be some concept that lies on the provided spectrum, conceptually located where the target is between the two extremes. For example, \"coffee\" might be a good clue that lies on a spectrum of \"hot\" to \"cold\".",
     "focus1": "Convey a single thought",
     "focus2": "Stay on topic",
     "focus3": "No numbers allowed",
@@ -80,12 +80,12 @@
   "viewscore": {
     "player_clue": "{{givername}}'s clue",
     "winning_team": "{{winnerteam}} wins!",
-    "1_point_correct_guess": "1 point for theeir correct counter guess.",
+    "1_point_correct_guess": "1 point for their correct counter guess.",
     "0_point_wrong_guess": "0 points for their counter guess.",
     "bonus_turn": "Your team earned a <strong>bonus turn!</strong>",
     "reset_game": "Reset game",
     "game_finished": "Game complete",
-    "final_score_team": "Your team's foínal cooperative score",
+    "final_score_team": "Your team's final cooperative score",
     "points": "POINTS",
     "catching_up": "Catchup activated: {{scoringteam}} takes a bonus turn!",
     "catching_up_info": "After a team scores a four-point round, they get a bonus turn if they are still behind the other team",
