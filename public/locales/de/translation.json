@@ -18,7 +18,7 @@
     },
     "spectrum": {
         "guessing": "Raten...",
-        "goal": "Ziel"
+        "target": "Ziel"
     },
     "title": {
         "longwave": "Longwave"

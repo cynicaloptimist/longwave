@@ -53,7 +53,7 @@ export function Spectrum(props: {
   if (props.targetValue !== undefined) {
     marks[props.targetValue] = {
       style: { fontWeight: "bold", color: "black", cursor: "auto" },
-      label: t("spectrum.goal"),
+      label: t("spectrum.target"),
     };
   }
 
