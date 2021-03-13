@@ -15,7 +15,7 @@ export function CommonFooter() {
     >
       <p style={{ margin: 8 }}>
         <Link href="https://www.wavelength.zone" text="Wavelength" />{" "}
-        {t("commonfooter.developed_by")}
+        {t("commonfooter.developed_by")}{" "}
         <Link
           href="https://github.com/cynicaloptimist/longwave"
           text={t("commonfooter.adapted_for_web")}
