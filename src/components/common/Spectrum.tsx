@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "rc-slider";
 import { CenteredColumn, CenteredRow } from "./LayoutElements";
 import { GetContrastingColors } from "./GetContrastingColors";
+import { GetContrastingText } from "./GetContrastingText";
 
 import { useTranslation } from "react-i18next";
 
@@ -21,6 +22,8 @@ export function Spectrum(props: {
     padding: 8,
     fontWeight: "bold",
   };
+  const primaryText = GetContrastingText(primary);
+  const secondaryText = GetContrastingText(secondary);
 
   let handleStyle: React.CSSProperties = {
     height: 18,
@@ -68,10 +71,10 @@ export function Spectrum(props: {
     <div style={{ padding: 8 }}>
       <CenteredColumn style={{ alignItems: "stretch" }}>
         <CenteredRow style={{ justifyContent: "space-between" }}>
-          <div style={{ ...cardBackStyle, backgroundColor: primary }}>
+          <div style={{ ...cardBackStyle, backgroundColor: primary, color: primaryText }}>
             {props.spectrumCard[0]}
           </div>
-          <div style={{ ...cardBackStyle, backgroundColor: secondary }}>
+          <div style={{ ...cardBackStyle, backgroundColor: secondary, color: secondaryText }}>
             {props.spectrumCard[1]}
           </div>
         </CenteredRow>
