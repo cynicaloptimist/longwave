@@ -10,7 +10,6 @@ import { GameModelContext } from "../../state/GameModelContext";
 import { InitialGameState } from "../../state/GameState";
 
 import { useTranslation } from "react-i18next";
-import DOMPurify from "dompurify";
 
 export function RoomIdHeader() {
   const { t } = useTranslation();
@@ -66,14 +65,15 @@ function RoomMenu() {
         style={{ cursor: "pointer" }}
         onClick={() => changeLanguage("en")}
       >
-        <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(t('roomidheader.language_en_flag') + "&nbsp;" + t("roomidheader.language_en"))}} />
+        &#127468;&#127463;{" "}{t("roomidheader.language_en")}
       </div>
       <div
         tabIndex={2}
         style={{ cursor: "pointer" }}
         onClick={() => changeLanguage("de")}
       >
-        <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(t('roomidheader.language_de_flag') + "&nbsp;" + t("roomidheader.language_de"))}} />      </div>
+        &#127465;&#127466;{" "}{t("roomidheader.language_de")}
+      </div>
     </div>
   );
 }
