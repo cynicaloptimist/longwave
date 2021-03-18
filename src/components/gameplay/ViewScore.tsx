@@ -125,7 +125,7 @@ function NextTurnOrEndGame() {
         <div>
           {t("viewscore.final_score_team")}:{" "}
           <strong>
-            {gameState.coopScore} {test("viewscore.points")}
+            {gameState.coopScore} {t("viewscore.points")}
           </strong>
         </div>
         {resetButton}
