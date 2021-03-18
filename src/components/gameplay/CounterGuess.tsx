@@ -56,13 +56,13 @@ export function CounterGuess() {
       </CenteredColumn>
       <CenteredRow>
         <Button
-          text={t("counterguess.left_side")}
+          text={t("counterguess.more_left")}
           onClick={() =>
             setGameState(ScoreTeamRound(gameState, clueGiver.team, "left"))
           }
         />
         <Button
-          text={t("counterguess.right_side")}
+          text={t("counterguess.more_right")}
           onClick={() =>
             setGameState(ScoreTeamRound(gameState, clueGiver.team, "right"))
           }
