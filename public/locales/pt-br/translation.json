@@ -1,0 +1,96 @@
+{
+  "commonfooter": {
+    "developed_by": "foi desenvolvido por Wolfgang Warsch, Alex Hague and Justin Vickers.",
+    "adapted_for_web": "Adaptado para web",
+    "adapted_for_web_by": "por Evan Bailey e Margarethe Schoen.",
+    "support_patreon": "Suporte-nos no Patreon!"
+  },
+  "landingpage": {
+    "create_room": "Criar Sala",
+    "longwave": "Longwave",
+    "adaptation": "é uma adaptação online em tempo real do jogo de tabuleiro",
+    "wavelength": "Wavelength",
+    "best_enjoyed": "Melhor aproveitado com chat de voz!"
+  },
+  "roomidheader": {
+    "roomid": "ID da Sala:",
+    "reset_room": "Resetar Sala"
+  },
+  "spectrum": {
+    "guessing": "Adivinhando...",
+    "target": "Alvo"
+  },
+  "title": {
+    "longwave": "Longwave"
+  },
+  "gamestate": {
+    "left_brain": "LADO ESQUERDO DO CÉREBRO",
+    "right_brain": "LADO DIREITO DO CÉREBRO",
+    "the_player": "O JOGADOR"
+  },
+  "counterguess": {
+    "more_left": "O alvo está a esquerda",
+    "more_right": "O alvo está a direita",
+    "players_clue": "dica de {{givername}}",
+    "waiting_guess_team": "Esperando por {{guessteam}} para responder esquerda/direita..."
+  },
+  "giveclue": {
+    "waiting_for_clue": "Esperando {{givername}} dar uma dica...",
+    "draw_other_hand": "Comprar uma carta diferente",
+    "clue": "Dica...",
+    "instructions": "Sua dica deve ser algum conceito dentro do espectro, localizado onde o alvo está entre os dois extremos. Por exemplo, \"café\" pode ser uma boa dica dentro do espectro de \"quente\" e \"frio\".",
+    "focus1": "Use uma só ideia",
+    "focus2": "Mantenha-se no tópico",
+    "focus3": "Números não são permitidos",
+    "focus4": "Seja criativo!",
+    "give_clue": "Enviar dica"
+  },
+  "inputname": {
+    "your_name": "Digite seu nome"
+  },
+  "jointeam": {
+    "join_team": "Entrar para o time",
+    "join_left": "Entrar",
+    "join_right": "Entrar",
+    "start_game": "Começar partida"
+  },
+  "makeguess": {
+    "players_clue": "Dica de {{givername}}",
+    "waiting_guessing_team": "Esperando {{guessingteam}} responder...",
+    "invite_other_players": "Convidar outros jogadores para a partida.",
+    "share_game_url": "Compartilhe esse endereço: {{game_url}}",
+    "guess_for_team": "Enviar resposta por {{teamname}}"
+  },
+  "previousturnresult": {
+    "previous_game": "Turno Anterior",
+    "player_clue": "Dica de {{givername}}"
+  },
+  "scoreboard": {
+    "free_play": "Free Play",
+    "last_card": "Última carta!",
+    "card_remaining": "Cartas restantes",
+    "coop_score": "Pontuação cooperativa",
+    "points": "PONTOS"
+  },
+  "setupgame": {
+    "standard_game": "Padrão (Times): 4+ Jogadores",
+    "coop_game": "Cooperativo: 2+ Jogadores",
+    "free_game": "Jogo livre: 2+ Jogadores"
+  },
+  "viewscore": {
+    "player_clue": "Dica de {{givername}}",
+    "winning_team": "{{winnerteam}} ganhou!",
+    "1_point_correct_guess": "1 ponto pelo contra palpite.",
+    "0_point_wrong_guess": "0 ponto pelo contra palpite.",
+    "bonus_turn": "Seu time ganhou um <strong>turno bônus!</strong>",
+    "reset_game": "Resetar partida",
+    "game_finished": "Partida encerrada",
+    "final_score_team": "A pontuação final cooperativa do seu time",
+    "points": "PONTOS",
+    "catching_up": "Fôlego extra ativado: {{scoringteam}} ganha um turno bônus!",
+    "catching_up_info": "After a team scores a four-point round, they get a bonus turn if they are still behind the other team",
+    "draw_next_card": "Comprar a próxima Carta de Frequência",
+    "score": "Pontuação",
+    "got": "obtém"
+  }
+}
