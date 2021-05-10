@@ -3,6 +3,7 @@ import memoize from "lodash/memoize";
 //import { AllCards } from "./SpectrumCards";  // original line of code
 import { AllCards } from "./SpectrumCards-en"; // new default for english language
 //import { AllCards } from "./SpectrumCards-de";   // german translation
+//import { AllCards } from "./SpectrumCards-fr";   // French translation
 //import { AllCards } from "./SpectrumCards-pt-br";   // pt-br translation
 
 const shuffleSeed: {
