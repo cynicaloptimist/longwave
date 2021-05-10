@@ -1,0 +1,96 @@
+{
+  "commonfooter": {
+    "developed_by": "est conçu par Wolfgang Warsch, Alex Hague et Justin Vickers.",
+    "adapted_for_web": "Adapté pour le web",
+    "adapted_for_web_by": "par Evan Bailey et Margarethe Schoen.",
+    "support_patreon": "Soutenez-nous sur Patreon !"
+  },
+  "landingpage": {
+    "create_room": "Créer un Salon",
+    "longwave": "Grandes ondes",
+    "adaptation": "est une adaptation en ligne en temps réel du jeu de société",
+    "wavelength": "Longueur d'onde",
+    "best_enjoyed": "De préférence à jouer avec une messagerie vocale !"
+  },
+  "roomidheader": {
+    "roomid": "Identifiant de salon :",
+    "reset_room": "Réinitialiser le Salon"
+  },
+  "spectrum": {
+    "guessing": "En cours de déduction...",
+    "target": "Cible"
+  },
+  "title": {
+    "longwave": "Grandes ondes"
+  },
+  "gamestate": {
+    "left_brain": "CERVEAU DE GAUCHE",
+    "right_brain": "CERVEAU DE DROITE",
+    "the_player": "LE JOUEUR"
+  },
+  "counterguess": {
+    "more_left": "La cible est sur la gauche",
+    "more_right": "La cible est sur la droite",
+    "players_clue": "Indice fourni par {{givername}}",
+    "waiting_guess_team": "En attente d'une déduction de positionnement à fournir par {{guessteam}}..."
+  },
+  "giveclue": {
+    "waiting_for_clue": "En attente d'un indice à fournir par {{givername}}...",
+    "draw_other_hand": "Dessiner une autre carte",
+    "clue": "Indice...",
+    "instructions": "Votre indice doit être un concept en rapport avec l'éventail de valeur donnée, situé conceptuellement là où se trouve la cible entre les deux extrêmes. Par exemple, \"café\" pourrait être un bon indice reposant sur un éventail de valeur entre \"chaud\" et \"froid\".",
+    "focus1": "Formulez une seule idée",
+    "focus2": "Restez sur le thème",
+    "focus3": "Pas de chiffre autorisé",
+    "focus4": "Soyez créatif !",
+    "give_clue": "Envoyer un indice"
+  },
+  "inputname": {
+    "your_name": "Taper votre nom"
+  },
+  "jointeam": {
+    "join_team": "Rejoindre une Équipe",
+    "join_left": "Rejoindre",
+    "join_right": "Rejoindre",
+    "start_game": "Démarrer la partie"
+  },
+  "makeguess": {
+    "players_clue": "Indice fourni par {{givername}}",
+    "waiting_guessing_team": "En attente d'une déduction par {{guessingteam}}...",
+    "invite_other_players": "Inviter d'autres joueurs à rejoindre la partie.",
+    "share_game_url": "Partager cette URL avec eux : {{game_url}}",
+    "guess_for_team": "Envoyer votre déduction pour {{teamname}}"
+  },
+  "previousturnresult": {
+    "previous_game": "Tour précédent",
+    "player_clue": "Indice fourni par {{givername}}"
+  },
+  "scoreboard": {
+    "free_play": "Partie Libre",
+    "last_card": "Dernière carte !",
+    "card_remaining": "Cartes restantes",
+    "coop_score": "Score Coopératif",
+    "points": "POINTS"
+  },
+  "setupgame": {
+    "standard_game": "Standard (Équipe) : 4+ Joueurs",
+    "coop_game": "Coopératif : 2+ Joueurs",
+    "free_game": "Partie Libre : 2+ Joueurs"
+  },
+  "viewscore": {
+    "player_clue": "Indice fourni par {{givername}}",
+    "winning_team": "{{winnerteam}} a gagné !",
+    "1_point_correct_guess": "1 point pour leur bonne déduction de compte.",
+    "0_point_wrong_guess": "0 points pour leur déduction de compte.",
+    "bonus_turn": "Votre équipe a obtenu un <strong>tour bonus !</strong>",
+    "reset_game": "Réinitialiser la partie",
+    "game_finished": "Partie finie",
+    "final_score_team": "Score coopératif final de votre équipe",
+    "points": "POINTS",
+    "catching_up": "Rattrapage activaté : {{scoringteam}} obtient un tour bonus !",
+    "catching_up_info": "Après qu'une équipe a marqué quatre points d'un coup, elle obtient un tour bonus si elle est toujours derrière l'autre équipe",
+    "draw_next_card": "Dessiner la carte de plage de valeur suivante",
+    "score": "Score",
+    "got": "obtient"
+  }
+}
