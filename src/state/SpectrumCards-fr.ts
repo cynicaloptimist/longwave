@@ -94,7 +94,7 @@ const SpectrumCards: [string, string][] = [
   ["Bien", "Mal"],
   ["Pire jour de l'année", "Meilleur jour de l'année"],
   ["Mauvaise habitude", "Bonne habitude"],
-  ["Personne chat", "Personne chien"],
+  ["Personne qui aime les chats", "Personne qui aime les chiens"],
   ["Sage", "Intelligent"],
   ["Difficile à faire", "Facile à faire"],
   ["Activité mentale", "Activité physique"],
