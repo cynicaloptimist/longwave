@@ -14,7 +14,10 @@
   },
   "roomidheader": {
     "roomid": "Room ID:",
-    "reset_room": "Reset Room"
+    "reset_room": "Reset Room",
+    "switch_language_header": "Language setting",
+    "language_en": "English",
+    "language_de": "Deutsch"
   },
   "spectrum": {
     "guessing": "Guessing...",
