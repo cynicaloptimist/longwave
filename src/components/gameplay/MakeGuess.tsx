@@ -11,13 +11,8 @@ import { useTranslation } from "react-i18next";
 
 export function MakeGuess() {
   const { t } = useTranslation();
-  const {
-    gameState,
-    localPlayer,
-    clueGiver,
-    spectrumCard,
-    setGameState,
-  } = useContext(GameModelContext);
+  const { gameState, localPlayer, clueGiver, spectrumCard, setGameState } =
+    useContext(GameModelContext);
 
   if (!clueGiver) {
     return null;
