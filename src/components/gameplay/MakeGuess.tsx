@@ -28,7 +28,7 @@ export function MakeGuess() {
     (gameState.gameType === GameType.Teams &&
       localPlayer.team !== clueGiver.team);
 
-  const guessingTeamString = TeamName(clueGiver.team);
+  const guessingTeamString = TeamName(clueGiver.team, t);
 
   if (notMyTurn) {
     return (
@@ -84,7 +84,7 @@ export function MakeGuess() {
         <div>
           <Button
             text={t("makeguess.guess_for_team", {
-              teamname: TeamName(localPlayer.team),
+              teamname: TeamName(localPlayer.team, t),
             })}
             onClick={() => {
               RecordEvent("guess_submitted", {

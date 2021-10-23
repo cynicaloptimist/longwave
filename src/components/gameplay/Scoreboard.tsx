@@ -71,7 +71,7 @@ function TeamColumn(props: { team: Team; score: number }) {
   return (
     <CenteredColumn style={{ alignItems: "flex-start" }}>
       <div>
-        {TeamName(props.team)}: <AnimatableScore score={props.score} />{" "}
+        {TeamName(props.team, t)}: <AnimatableScore score={props.score} />{" "}
         {t("scoreboard.points")}
       </div>
       {members.map(toPlayerRow)}

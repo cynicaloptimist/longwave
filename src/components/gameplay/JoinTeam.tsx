@@ -46,7 +46,7 @@ export function JoinTeam() {
         }}
       >
         <CenteredColumn>
-          <div>{TeamName(Team.Left)}</div>
+          <div>{TeamName(Team.Left, t)}</div>
           {leftTeam.map((playerId) => (
             <div key={playerId}>{gameState.players[playerId].name}</div>
           ))}
@@ -58,7 +58,7 @@ export function JoinTeam() {
           </div>
         </CenteredColumn>
         <CenteredColumn>
-          <div>{TeamName(Team.Right)}</div>
+          <div>{TeamName(Team.Right, t)}</div>
           {rightTeam.map((playerId) => (
             <div key={playerId}>{gameState.players[playerId].name}</div>
           ))}
