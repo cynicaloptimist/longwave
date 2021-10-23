@@ -2,10 +2,10 @@ import { GameState, InitialGameState, Team } from "../../state/GameState";
 import { GameModelContext } from "../../state/GameModelContext";
 import { BuildGameModel } from "../../state/BuildGameModel";
 import { MakeGuess } from "./MakeGuess";
-import React from "react";
 import { render } from "@testing-library/react";
 
-const helpText = "Invite other players to join the game.";
+const tSingleCardDeck = () => [["left", "right"]];
+
 test("Should show help text when more players are needed", () => {
   const gameState: GameState = {
     ...InitialGameState(),
@@ -20,13 +20,13 @@ test("Should show help text when more players are needed", () => {
 
   const component = render(
     <GameModelContext.Provider
-      value={BuildGameModel(gameState, jest.fn(), "player1")}
+      value={BuildGameModel(gameState, jest.fn(), "player1", tSingleCardDeck)}
     >
       <MakeGuess />
     </GameModelContext.Provider>
   );
 
-  const subject = component.queryByText(helpText);
+  const subject = component.queryByText("makeguess.invite_other_players");
   expect(subject).toBeInTheDocument();
 });
 
@@ -48,13 +48,13 @@ test("Should show help text when more players are needed", () => {
 
   const component = render(
     <GameModelContext.Provider
-      value={BuildGameModel(gameState, jest.fn(), "player1")}
+      value={BuildGameModel(gameState, jest.fn(), "player1", tSingleCardDeck)}
     >
       <MakeGuess />
     </GameModelContext.Provider>
   );
 
-  const subject = component.queryByText(helpText);
+  const subject = component.queryByText("invite_other_players");
   expect(subject).not.toBeInTheDocument();
 });
 
@@ -76,13 +76,13 @@ test("Should show button to submit your team's guess", () => {
 
   const component = render(
     <GameModelContext.Provider
-      value={BuildGameModel(gameState, jest.fn(), "player1")}
+      value={BuildGameModel(gameState, jest.fn(), "player1", tSingleCardDeck)}
     >
       <MakeGuess />
     </GameModelContext.Provider>
   );
 
-  const subject = component.getByText("Submit Guess for LEFT BRAIN");
+  const subject = component.getByText("makeguess.guess_for_team");
 
   expect(subject).toBeInTheDocument();
 });
