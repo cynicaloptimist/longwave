@@ -9,6 +9,7 @@ import { ActiveGame } from "./ActiveGame";
 import { BuildGameModel } from "../../state/BuildGameModel";
 import { RoomIdHeader } from "../common/RoomIdHeader";
 import { FakeRooms } from "./FakeRooms";
+import { useTranslation } from "react-i18next";
 
 export function GameRoom() {
   const { roomId } = useParams<{ roomId: string }>();
@@ -29,11 +30,18 @@ export function GameRoom() {
     playerName
   );
 
+  const cardsTranslation = useTranslation("spectrum-cards");
+
   if (roomId === "MULTIPLAYER_TEST") {
     return <FakeRooms />;
   }
 
-  const gameModel = BuildGameModel(gameState, setGameState, playerId);
+  const gameModel = BuildGameModel(
+    gameState,
+    setGameState,
+    playerId,
+    cardsTranslation.t
+  );
 
   if (playerName.length === 0) {
     return (

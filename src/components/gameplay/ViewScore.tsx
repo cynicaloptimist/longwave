@@ -69,6 +69,7 @@ export function ViewScore() {
 
 function NextTurnOrEndGame() {
   const { t } = useTranslation();
+  const cardsTranslation = useTranslation("spectrum-cards");
   const { gameState, localPlayer, clueGiver, setGameState } =
     useContext(GameModelContext);
 
@@ -188,7 +189,11 @@ function NextTurnOrEndGame() {
       {eligibleToDraw && (
         <Button
           text={t("viewscore.draw_next_card")}
-          onClick={() => setGameState(NewRound(localPlayer.id, gameState))}
+          onClick={() =>
+            setGameState(
+              NewRound(localPlayer.id, gameState, cardsTranslation.t)
+            )
+          }
         />
       )}
     </>

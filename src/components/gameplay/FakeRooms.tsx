@@ -10,6 +10,7 @@ import {
   GameType,
   RoundPhase,
 } from "../../state/GameState";
+import { useTranslation } from "react-i18next";
 
 export function FakeRooms() {
   const [gameState, setGameState] = useState<GameState>({
@@ -36,6 +37,8 @@ export function FakeRooms() {
     },
   });
 
+  const cardsTranslation = useTranslation("spectrum-cards");
+
   const setPartialGameState = (newState: Partial<GameState>) =>
     setGameState({
       ...gameState,
@@ -52,7 +55,12 @@ export function FakeRooms() {
   const renderGame = (playerId: string) => (
     <div style={style}>
       <GameModelContext.Provider
-        value={BuildGameModel(gameState, setPartialGameState, playerId)}
+        value={BuildGameModel(
+          gameState,
+          setPartialGameState,
+          playerId,
+          cardsTranslation.t
+        )}
       >
         <ActiveGame />
       </GameModelContext.Provider>

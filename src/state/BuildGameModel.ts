@@ -1,7 +1,8 @@
 import { GameState, Team } from "./GameState";
 import memoize from "lodash/memoize";
 //import { AllCards } from "./SpectrumCards";  // original line of code
-import { AllCards } from "./SpectrumCards-en"; // new default for english language
+//import { AllCards } from "./SpectrumCards-en"; // new default for english language
+import { TFunction } from "react-i18next";
 //import { AllCards } from "./SpectrumCards-de";   // german translation
 //import { AllCards } from "./SpectrumCards-fr";   // French translation
 //import { AllCards } from "./SpectrumCards-pt-br";   // pt-br translation
@@ -31,7 +32,8 @@ const getSeededDeck = memoize((seed: string, cards: [string, string][]) =>
 export function BuildGameModel(
   gameState: GameState,
   setGameState: (newState: Partial<GameState>) => void,
-  localPlayerId: string
+  localPlayerId: string,
+  tSpectrumCards: TFunction<"spectrum-cards">
 ): GameModel {
   const clueGiver = gameState.players[gameState.clueGiver]
     ? {
@@ -40,6 +42,14 @@ export function BuildGameModel(
       }
     : null;
 
+  type SpectrumCard = [string, string];
+  const basicCards = tSpectrumCards("basic", {
+    returnObjects: true,
+  }) as SpectrumCard[];
+  const advancedCards = tSpectrumCards("advanced", {
+    returnObjects: true,
+  }) as SpectrumCard[];
+  const AllCards = [...basicCards, ...advancedCards];
   const spectrumDeck = getSeededDeck(gameState.deckSeed, AllCards);
 
   return {

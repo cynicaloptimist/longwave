@@ -1,12 +1,19 @@
 import { RoundPhase, GameState } from "./GameState";
 import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
 import { BuildGameModel } from "./BuildGameModel";
+import { TFunction } from "react-i18next";
 
 export function NewRound(
   playerId: string,
-  gameState: GameState
+  gameState: GameState,
+  tSpectrumCards: TFunction<"spectrum-cards">
 ): Partial<GameState> {
-  const gameModel = BuildGameModel(gameState, () => {}, playerId);
+  const gameModel = BuildGameModel(
+    gameState,
+    () => {},
+    playerId,
+    tSpectrumCards
+  );
 
   const newState: Partial<GameState> = {
     clueGiver: playerId,

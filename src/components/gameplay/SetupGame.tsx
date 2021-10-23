@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 
 export function SetupGame() {
   const { t } = useTranslation();
+  const cardsTranslation = useTranslation("spectrum-cards");
   const { gameState, setGameState, localPlayer } = useContext(GameModelContext);
 
   const startGame = (gameType: GameType) => {
@@ -21,7 +22,7 @@ export function SetupGame() {
       });
     } else {
       setGameState({
-        ...NewRound(localPlayer.id, gameState),
+        ...NewRound(localPlayer.id, gameState, cardsTranslation.t),
         gameType,
       });
     }

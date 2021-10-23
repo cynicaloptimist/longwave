@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 
 export function JoinTeam() {
   const { t } = useTranslation();
+  const cardsTranslation = useTranslation("spectrum-cards");
   const { gameState, localPlayer, setGameState } = useContext(GameModelContext);
 
   const leftTeam = Object.keys(gameState.players).filter(
@@ -33,7 +34,14 @@ export function JoinTeam() {
   };
 
   const startGame = () =>
-    setGameState(NewTeamGame(gameState.players, localPlayer.id, gameState));
+    setGameState(
+      NewTeamGame(
+        gameState.players,
+        localPlayer.id,
+        gameState,
+        cardsTranslation.t
+      )
+    );
 
   return (
     <CenteredColumn>
