@@ -1,9 +1,7 @@
-import React from "react";
 import { render } from "@testing-library/react";
 import { ViewScore } from "./ViewScore";
 import { InitialGameState, Team, GameState } from "../../state/GameState";
-import { BuildGameModel } from "../../state/BuildGameModel";
-import { GameModelContext } from "../../state/GameModelContext";
+import { TestContext } from "./TestContext";
 
 const onePlayerGame: GameState = {
   ...InitialGameState(),
@@ -24,11 +22,9 @@ test("Applies 4 points for a perfect guess", () => {
   };
 
   const component = render(
-    <GameModelContext.Provider
-      value={BuildGameModel(gameState, jest.fn(), "playerId")}
-    >
+    <TestContext gameState={gameState} playerId="playerId">
       <ViewScore />
-    </GameModelContext.Provider>
+    </TestContext>
   );
 
   const subject = component.getByText("Score: 4 points!");
@@ -43,11 +39,9 @@ test("Applies 2 points for off by 2", () => {
   };
 
   const component = render(
-    <GameModelContext.Provider
-      value={BuildGameModel(gameState, jest.fn(), "playerId")}
-    >
+    <TestContext gameState={gameState} playerId="playerId">
       <ViewScore />
-    </GameModelContext.Provider>
+    </TestContext>
   );
 
   const subject = component.getByText("Score: 2 points!");
@@ -62,11 +56,9 @@ test("Applies 0 points for off by 3", () => {
   };
 
   const component = render(
-    <GameModelContext.Provider
-      value={BuildGameModel(gameState, jest.fn(), "playerId")}
-    >
+    <TestContext gameState={gameState} playerId="playerId">
       <ViewScore />
-    </GameModelContext.Provider>
+    </TestContext>
   );
 
   const subject = component.getByText("Score: 0 points!");
@@ -82,11 +74,9 @@ test("Includes the score for a correct counter guess", () => {
   };
 
   const component = render(
-    <GameModelContext.Provider
-      value={BuildGameModel(gameState, jest.fn(), "playerId")}
-    >
+    <TestContext gameState={gameState} playerId="playerId">
       <ViewScore />
-    </GameModelContext.Provider>
+    </TestContext>
   );
 
   const subject = component.getByText(
@@ -104,11 +94,9 @@ test("Includes the score for a wrong counter guess", () => {
   };
 
   const component = render(
-    <GameModelContext.Provider
-      value={BuildGameModel(gameState, jest.fn(), "playerId")}
-    >
+    <TestContext gameState={gameState} playerId="playerId">
       <ViewScore />
-    </GameModelContext.Provider>
+    </TestContext>
   );
 
   const subject = component.getByText(
@@ -126,11 +114,9 @@ test("Applies catchup rule", () => {
   };
 
   const component = render(
-    <GameModelContext.Provider
-      value={BuildGameModel(gameState, jest.fn(), "playerId")}
-    >
+    <TestContext gameState={gameState} playerId="playerId">
       <ViewScore />
-    </GameModelContext.Provider>
+    </TestContext>
   );
 
   const subject = component.getByText(
@@ -146,11 +132,9 @@ test("Ends game when one team has 10 points", () => {
   };
 
   const component = render(
-    <GameModelContext.Provider
-      value={BuildGameModel(gameState, jest.fn(), "playerId")}
-    >
+    <TestContext gameState={gameState} playerId="playerId">
       <ViewScore />
-    </GameModelContext.Provider>
+    </TestContext>
   );
 
   const subject = component.getByText("LEFT BRAIN wins!");
@@ -165,11 +149,9 @@ test("Does not end game when both teams have 10 points", () => {
   };
 
   const component = render(
-    <GameModelContext.Provider
-      value={BuildGameModel(gameState, jest.fn(), "playerId")}
-    >
+    <TestContext gameState={gameState} playerId="playerId">
       <ViewScore />
-    </GameModelContext.Provider>
+    </TestContext>
   );
 
   const subject = component.queryByText("LEFT BRAIN wins!");
