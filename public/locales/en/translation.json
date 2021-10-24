@@ -89,7 +89,7 @@
     "reset_game": "Reset game",
     "game_finished": "Game complete",
     "final_score_team": "Your team's final cooperative score",
-    "points": "POINTS",
+    "points": "points",
     "catching_up": "Catchup activated: {{scoringteam}} takes a bonus turn!",
     "catching_up_info": "After a team scores a four-point round, they get a bonus turn if they are still behind the other team",
     "draw_next_card": "Draw next Spectrum Card",
