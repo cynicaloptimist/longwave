@@ -1,8 +1,7 @@
 import { GameState, InitialGameState, Team } from "../../state/GameState";
-import { GameModelContext } from "../../state/GameModelContext";
-import { BuildGameModel } from "../../state/BuildGameModel";
 import { MakeGuess } from "./MakeGuess";
 import { render } from "@testing-library/react";
+import { TestContext } from "./TestContext";
 
 const tSingleCardDeck = () => [["left", "right"]];
 
@@ -19,11 +18,9 @@ test("Should show help text when more players are needed", () => {
   };
 
   const component = render(
-    <GameModelContext.Provider
-      value={BuildGameModel(gameState, jest.fn(), "player1", tSingleCardDeck)}
-    >
+    <TestContext gameState={gameState} playerId="player1">
       <MakeGuess />
-    </GameModelContext.Provider>
+    </TestContext>
   );
 
   const subject = component.queryByText("makeguess.invite_other_players");
@@ -47,11 +44,9 @@ test("Should show help text when more players are needed", () => {
   };
 
   const component = render(
-    <GameModelContext.Provider
-      value={BuildGameModel(gameState, jest.fn(), "player1", tSingleCardDeck)}
-    >
+    <TestContext gameState={gameState} playerId="player1">
       <MakeGuess />
-    </GameModelContext.Provider>
+    </TestContext>
   );
 
   const subject = component.queryByText("invite_other_players");
@@ -75,11 +70,9 @@ test("Should show button to submit your team's guess", () => {
   };
 
   const component = render(
-    <GameModelContext.Provider
-      value={BuildGameModel(gameState, jest.fn(), "player1", tSingleCardDeck)}
-    >
+    <TestContext gameState={gameState} playerId="player1">
       <MakeGuess />
-    </GameModelContext.Provider>
+    </TestContext>
   );
 
   const subject = component.getByText("makeguess.guess_for_team");

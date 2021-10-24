@@ -1,9 +1,7 @@
-import React from "react";
 import { render, fireEvent, within } from "@testing-library/react";
-import { GameModelContext } from "../../state/GameModelContext";
-import { BuildGameModel } from "../../state/BuildGameModel";
 import { InitialGameState, GameState, Team } from "../../state/GameState";
 import { JoinTeam } from "./JoinTeam";
+import { TestContext } from "./TestContext";
 
 jest.useFakeTimers();
 
@@ -20,11 +18,9 @@ test("Assigns player to the selected team", () => {
 
   const setState = jest.fn();
   const component = render(
-    <GameModelContext.Provider
-      value={BuildGameModel(gameState, setState, "playerId")}
-    >
+    <TestContext gameState={gameState} playerId="player1">
       <JoinTeam />
-    </GameModelContext.Provider>
+    </TestContext>
   );
 
   const button = component
@@ -72,11 +68,9 @@ test("Shows current team members", () => {
   };
 
   const component = render(
-    <GameModelContext.Provider
-      value={BuildGameModel(gameState, jest.fn(), "playerId")}
-    >
+    <TestContext gameState={gameState} playerId="player1">
       <JoinTeam />
-    </GameModelContext.Provider>
+    </TestContext>
   );
 
   const leftBrain = within(component.getByText("LEFT BRAIN").parentElement!);
