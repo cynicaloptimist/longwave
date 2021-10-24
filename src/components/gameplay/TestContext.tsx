@@ -9,13 +9,16 @@ export function TestContext(props: {
   gameState: GameState;
   playerId: string;
   children: ReactChild;
+  setState?: (newState: Partial<GameState>) => void;
 }) {
   return (
     <GameModelContext.Provider
-      value={BuildGameModel(props.gameState, jest.fn(), props.playerId, () => [
-        "left",
-        "right",
-      ])}
+      value={BuildGameModel(
+        props.gameState,
+        props.setState || jest.fn(),
+        props.playerId,
+        () => ["left", "right"]
+      )}
     >
       <Suspense fallback={<div>Loading...</div>}>
         <I18nextProvider i18n={i18n}>{props.children}</I18nextProvider>
