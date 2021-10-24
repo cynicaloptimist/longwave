@@ -54,7 +54,7 @@ export function ViewScore() {
         </div>
         {gameState.gameType === GameType.Teams && (
           <div>
-            {TeamName(TeamReverse(clueGiver.team), t)} {t("viewscore.got")}
+            {TeamName(TeamReverse(clueGiver.team), t)} {t("viewscore.got")}{" "}
             {wasCounterGuessCorrect
               ? t("viewscore.1_point_correct_guess")
               : t("viewscore.0_point_wrong_guess")}

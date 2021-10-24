@@ -3,8 +3,6 @@ import { MakeGuess } from "./MakeGuess";
 import { render } from "@testing-library/react";
 import { TestContext } from "./TestContext";
 
-const tSingleCardDeck = () => [["left", "right"]];
-
 test("Should show help text when more players are needed", () => {
   const gameState: GameState = {
     ...InitialGameState(),
@@ -23,7 +21,9 @@ test("Should show help text when more players are needed", () => {
     </TestContext>
   );
 
-  const subject = component.queryByText("makeguess.invite_other_players");
+  const subject = component.queryByText(
+    "Invite other players to join the game."
+  );
   expect(subject).toBeInTheDocument();
 });
 
@@ -49,7 +49,9 @@ test("Should show help text when more players are needed", () => {
     </TestContext>
   );
 
-  const subject = component.queryByText("invite_other_players");
+  const subject = component.queryByText(
+    "Invite other players to join the game."
+  );
   expect(subject).not.toBeInTheDocument();
 });
 
@@ -75,7 +77,7 @@ test("Should show button to submit your team's guess", () => {
     </TestContext>
   );
 
-  const subject = component.getByText("makeguess.guess_for_team");
+  const subject = component.getByText("Submit Guess for LEFT BRAIN");
 
   expect(subject).toBeInTheDocument();
 });
