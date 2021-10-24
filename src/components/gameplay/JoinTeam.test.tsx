@@ -1,15 +1,15 @@
-import { render, fireEvent, within } from "@testing-library/react";
+import { render, fireEvent, within, waitFor } from "@testing-library/react";
 import { InitialGameState, GameState, Team } from "../../state/GameState";
 import { JoinTeam } from "./JoinTeam";
 import { TestContext } from "./TestContext";
 
 jest.useFakeTimers();
 
-test("Assigns player to the selected team", () => {
+test("Assigns player to the selected team", async () => {
   const gameState: GameState = {
     ...InitialGameState(),
     players: {
-      playerId: {
+      player1: {
         name: "Player",
         team: Team.Unset,
       },
@@ -17,22 +17,31 @@ test("Assigns player to the selected team", () => {
   };
 
   const setState = jest.fn();
-  const component = render(
-    <TestContext gameState={gameState} playerId="player1">
+  const component = await render(
+    <TestContext gameState={gameState} playerId="player1" setState={setState}>
       <JoinTeam />
     </TestContext>
   );
 
-  const button = component
-    .getByText("LEFT BRAIN")
-    .parentNode?.querySelector("input")!;
+  let leftBrain: HTMLElement | null = null;
+
+  await waitFor(() => {
+    leftBrain = component.getByText("LEFT BRAIN");
+    return leftBrain;
+  });
+
+  expect(leftBrain).toBeInTheDocument();
+
+  const button = leftBrain!.parentNode?.querySelector("input")!;
+
   expect(button.value).toEqual("Join");
-  fireEvent.click(button);
+
+  await fireEvent.click(button);
 
   expect(setState).toHaveBeenCalledWith({
     players: {
-      playerId: {
-        id: "playerId",
+      player1: {
+        id: "player1",
         name: "Player",
         team: Team.Left,
       },
