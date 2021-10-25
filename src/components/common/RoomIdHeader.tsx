@@ -36,15 +36,9 @@ export function RoomIdHeader() {
 }
 
 function RoomMenu() {
-  const { t, i18n } = useTranslation();
-
-  const changeLanguage = (language: string | undefined) => {
-    i18n.changeLanguage(language);
-  };
-
+  const { t } = useTranslation();
   const { setGameState } = useContext(GameModelContext);
 
-  // Information about HTML flag symbols: https://emojiguide.org/flags
   return (
     <div>
       <div
@@ -52,27 +46,7 @@ function RoomMenu() {
         style={{ cursor: "pointer" }}
         onClick={() => setGameState(InitialGameState())}
       >
-        <FontAwesomeIcon icon={faUndo} />{" "}{t("roomidheader.reset_room")}
-      </div>
-
-      <div
-        tabIndex={1}
-      >
-        {t("roomidheader.switch_language_header")}:
-      </div>
-      <div
-        tabIndex={2}
-        style={{ cursor: "pointer" }}
-        onClick={() => changeLanguage("en")}
-      >
-        &#127468;&#127463;{" "}{t("roomidheader.language_en")}
-      </div>
-      <div
-        tabIndex={2}
-        style={{ cursor: "pointer" }}
-        onClick={() => changeLanguage("de")}
-      >
-        &#127465;&#127466;{" "}{t("roomidheader.language_de")}
+        <FontAwesomeIcon icon={faUndo} /> {t("roomidheader.reset_room")}
       </div>
     </div>
   );
