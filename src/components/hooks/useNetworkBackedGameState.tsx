@@ -2,13 +2,17 @@ import { useState, useEffect } from "react";
 import firebase from "firebase/app";
 import "firebase/database";
 import { GameState, InitialGameState, Team } from "../../state/GameState";
+import { useTranslation } from "react-i18next";
 
 export function useNetworkBackedGameState(
   roomId: string,
   playerId: string,
   playerName: string
 ): [GameState, (newState: Partial<GameState>) => void] {
-  const [gameState, setGameState] = useState<GameState>(InitialGameState());
+  const { i18n } = useTranslation("spectrum-cards");
+  const [gameState, setGameState] = useState<GameState>(
+    InitialGameState(i18n.language)
+  );
 
   useEffect(() => {
     const dbRef = firebase.database().ref("rooms/" + roomId);
@@ -16,7 +20,7 @@ export function useNetworkBackedGameState(
     dbRef.on("value", (appState) => {
       const networkGameState: GameState = appState.val();
       const completeGameState = {
-        ...InitialGameState(),
+        ...InitialGameState(i18n.language),
         ...networkGameState,
       };
 
@@ -37,7 +41,7 @@ export function useNetworkBackedGameState(
       setGameState(completeGameState);
     });
     return () => dbRef.off();
-  }, [playerId, playerName, roomId]);
+  }, [playerId, playerName, roomId, i18n]);
 
   const dbRef = firebase.database().ref("rooms/" + roomId);
 

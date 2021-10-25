@@ -36,7 +36,7 @@ export function RoomIdHeader() {
 }
 
 function RoomMenu() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { setGameState } = useContext(GameModelContext);
 
   return (
@@ -44,7 +44,7 @@ function RoomMenu() {
       <div
         tabIndex={0}
         style={{ cursor: "pointer" }}
-        onClick={() => setGameState(InitialGameState())}
+        onClick={() => setGameState(InitialGameState(i18n.language))}
       >
         <FontAwesomeIcon icon={faUndo} /> {t("roomidheader.reset_room")}
       </div>

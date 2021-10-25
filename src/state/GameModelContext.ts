@@ -3,7 +3,7 @@ import { createContext } from "react";
 import { GameModel } from "./BuildGameModel";
 
 export const GameModelContext = createContext<GameModel>({
-  gameState: InitialGameState(),
+  gameState: InitialGameState("en"),
   localPlayer: {
     id: "localPlayer",
     name: "Player",

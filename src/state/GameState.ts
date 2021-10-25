@@ -75,9 +75,10 @@ export interface GameState {
   coopScore: number;
   coopBonusTurns: number;
   previousTurn: TurnSummaryModel | null;
+  deckLanguage: string | null;
 }
 
-export function InitialGameState(): GameState {
+export function InitialGameState(deckLanguage: string): GameState {
   return {
     gameType: GameType.Teams,
     roundPhase: RoundPhase.SetupGame,
@@ -95,5 +96,6 @@ export function InitialGameState(): GameState {
     coopScore: 0,
     coopBonusTurns: 0,
     previousTurn: null,
+    deckLanguage: deckLanguage,
   };
 }

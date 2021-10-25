@@ -32,6 +32,14 @@ export function GameRoom() {
 
   const cardsTranslation = useTranslation("spectrum-cards");
 
+  if (
+    gameState.deckLanguage !== null &&
+    cardsTranslation.i18n.language !== gameState.deckLanguage
+  ) {
+    cardsTranslation.i18n.changeLanguage(gameState.deckLanguage);
+    return null;
+  }
+
   if (roomId === "MULTIPLAYER_TEST") {
     return <FakeRooms />;
   }

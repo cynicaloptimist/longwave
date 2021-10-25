@@ -68,7 +68,7 @@ export function ViewScore() {
 }
 
 function NextTurnOrEndGame() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const cardsTranslation = useTranslation("spectrum-cards");
   const { gameState, localPlayer, clueGiver, setGameState } =
     useContext(GameModelContext);
@@ -82,7 +82,7 @@ function NextTurnOrEndGame() {
       text={t("viewscore.reset_game")}
       onClick={() => {
         setGameState({
-          ...InitialGameState(),
+          ...InitialGameState(i18n.language),
           deckSeed: gameState.deckSeed,
           deckIndex: gameState.deckIndex,
         });

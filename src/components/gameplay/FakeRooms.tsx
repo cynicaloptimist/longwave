@@ -13,8 +13,10 @@ import {
 import { useTranslation } from "react-i18next";
 
 export function FakeRooms() {
+  const cardsTranslation = useTranslation("spectrum-cards");
+
   const [gameState, setGameState] = useState<GameState>({
-    ...InitialGameState(),
+    ...InitialGameState(cardsTranslation.i18n.language),
     gameType: GameType.Teams,
     roundPhase: RoundPhase.PickTeams,
     players: {
@@ -36,8 +38,6 @@ export function FakeRooms() {
       },
     },
   });
-
-  const cardsTranslation = useTranslation("spectrum-cards");
 
   const setPartialGameState = (newState: Partial<GameState>) =>
     setGameState({
