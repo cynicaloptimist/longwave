@@ -17,4 +17,5 @@ export const GameModelContext = createContext<GameModel>({
         JSON.stringify(newState)
     );
   },
+  setPlayerName: () => {},
 });

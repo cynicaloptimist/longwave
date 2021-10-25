@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { CenteredRow } from "./LayoutElements";
-import { faCogs } from "@fortawesome/free-solid-svg-icons";
+import { faCogs, faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import Tippy from "@tippyjs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -37,16 +37,23 @@ export function RoomIdHeader() {
 
 function RoomMenu() {
   const { t, i18n } = useTranslation();
-  const { setGameState } = useContext(GameModelContext);
+  const { setGameState, setPlayerName } = useContext(GameModelContext);
+
+  const menuItemProps = {
+    style: { margin: 8, cursor: "pointer" },
+    tabIndex: 0,
+  };
 
   return (
     <div>
       <div
-        tabIndex={0}
-        style={{ cursor: "pointer" }}
+        {...menuItemProps}
         onClick={() => setGameState(InitialGameState(i18n.language))}
       >
         <FontAwesomeIcon icon={faUndo} /> {t("roomidheader.reset_room")}
+      </div>
+      <div {...menuItemProps} onClick={() => setPlayerName("")}>
+        <FontAwesomeIcon icon={faUserEdit} /> {t("roomidheader.change_name")}
       </div>
     </div>
   );

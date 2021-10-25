@@ -18,6 +18,7 @@ export interface GameModel {
   clueGiver: Player | null;
   spectrumCard: [string, string];
   setGameState: (newState: Partial<GameState>) => void;
+  setPlayerName: (newName: string) => void;
 }
 
 const getSeededDeck = memoize((seed: string, cards: [string, string][]) =>
@@ -28,7 +29,8 @@ export function BuildGameModel(
   gameState: GameState,
   setGameState: (newState: Partial<GameState>) => void,
   localPlayerId: string,
-  tSpectrumCards: TFunction<"spectrum-cards">
+  tSpectrumCards: TFunction<"spectrum-cards">,
+  setPlayerName: (newName: string) => void
 ): GameModel {
   const clueGiver = gameState.players[gameState.clueGiver]
     ? {
@@ -49,9 +51,13 @@ export function BuildGameModel(
 
   return {
     gameState,
-    localPlayer: { ...gameState.players[localPlayerId], id: localPlayerId },
+    localPlayer: {
+      ...gameState.players[localPlayerId],
+      id: localPlayerId,
+    },
     clueGiver,
     spectrumCard: spectrumDeck[gameState.deckIndex % spectrumDeck.length],
     setGameState,
+    setPlayerName,
   };
 }

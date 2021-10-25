@@ -17,7 +17,8 @@ export function TestContext(props: {
         props.gameState,
         props.setState || jest.fn(),
         props.playerId,
-        () => ["left", "right"]
+        () => ["left", "right"],
+        () => {}
       )}
     >
       <Suspense fallback={<div>Loading...</div>}>

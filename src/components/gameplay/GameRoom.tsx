@@ -48,7 +48,8 @@ export function GameRoom() {
     gameState,
     setGameState,
     playerId,
-    cardsTranslation.t
+    cardsTranslation.t,
+    setPlayerName
   );
 
   if (playerName.length === 0) {

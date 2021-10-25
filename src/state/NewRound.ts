@@ -12,7 +12,8 @@ export function NewRound(
     gameState,
     () => {},
     playerId,
-    tSpectrumCards
+    tSpectrumCards,
+    () => {}
   );
 
   const newState: Partial<GameState> = {

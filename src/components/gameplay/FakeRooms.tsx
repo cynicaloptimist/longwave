@@ -59,7 +59,8 @@ export function FakeRooms() {
           gameState,
           setPartialGameState,
           playerId,
-          cardsTranslation.t
+          cardsTranslation.t,
+          () => {}
         )}
       >
         <ActiveGame />
