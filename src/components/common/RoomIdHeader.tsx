@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import { CenteredRow } from "./LayoutElements";
 import { faCogs, faUserEdit } from "@fortawesome/free-solid-svg-icons";
