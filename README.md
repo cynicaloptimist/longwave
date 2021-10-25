@@ -19,16 +19,15 @@ The first team to score 10 points wins.
 
 ## Translations
 
-For a translation, the following steps are (currently) still necessary. 1:
+To add a new translation, follow these steps:
 
-1. Add the language you want in the `src/app.tsx` in the app scaffold
-2. Add a `src/state/SpectrumCards-xx.ts`, where `xx` corresponds to the language code in `app.tsx
-3. Add a file `public/locales/xx/translation.json` where `xx` corresponds to the language code from the `app.tsx`. Use the default `en` file as a template and copy it to the location of the new language you want to add.
-4. Modify the file `src/state/BuildGameModel.ts` so that the command line `import { AllCards } from "./SpectrumCards";` is commented out and the new command `import { AllCards } from "./SpectrumCards-xx";` is included. `xx` describes the country code that was previously selected.
-5. Translate the files `translation.json` and `SpectrumCards-xx.ts` into the prefered language
-6. Test the adapted language by starting the local server, selecting the new language and testing the correct display.
+1. Determine the ISO language code for your target language. See https://www.andiamo.co.uk/resources/iso-language-codes/
+2. Add the new language code to `src/i18n.tsx` in the "allLanguages" array
+3. Copy the contents of `public/locales/en` into a new folder `public/locales\XX` for your language code
+4. Translate the files `translation.json` and `spectrum-cards` into the target language
+5. Test the adapted language by starting the local server, selecting the new language and testing the correct display.
 
-If the language is correct, make the customised files `src/app.tsx`, `src/state/SpectrumCards-xx.ts`, `src/state/BuildGameModel.ts` and `public/locales/xx/translation.json` available to the upstream as PR.
+If everything is correct, make the updated files available to the upstream as PR.
 
 ### Structure of the translation.json
 The file is in JSON format. The entries are stored in two hierarchies.
