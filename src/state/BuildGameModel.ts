@@ -1,11 +1,6 @@
 import { GameState, Team } from "./GameState";
 import memoize from "lodash/memoize";
-//import { AllCards } from "./SpectrumCards";  // original line of code
-//import { AllCards } from "./SpectrumCards-en"; // new default for english language
 import { TFunction } from "react-i18next";
-//import { AllCards } from "./SpectrumCards-de";   // german translation
-//import { AllCards } from "./SpectrumCards-fr";   // French translation
-//import { AllCards } from "./SpectrumCards-pt-br";   // pt-br translation
 
 const shuffleSeed: {
   shuffle: <T>(arr: T[], seed: string) => T[];
