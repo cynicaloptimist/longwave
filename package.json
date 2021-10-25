@@ -5,11 +5,11 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
-    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@fortawesome/react-fontawesome": "^0.1.16",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
-    "@tippyjs/react": "^4.2.0",
+    "@tippyjs/react": "^4.2.5",
     "@types/i18next-fs-backend": "^1.1.2",
     "@types/jest": "^26.0.20",
     "@types/lodash": "^4.14.168",
