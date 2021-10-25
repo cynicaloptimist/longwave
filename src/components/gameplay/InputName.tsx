@@ -13,6 +13,7 @@ export function InputName(props: { setName: (name: string) => void }) {
       <div>{t("inputname.your_name")}:</div>
       <input
         type="text"
+        style={{ margin: 16 }}
         ref={inputRef}
         onKeyDown={(event) => {
           if (!inputRef.current) {
