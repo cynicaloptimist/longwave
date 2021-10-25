@@ -1,4 +1,3 @@
-import React from "react";
 import { useHistory } from "react-router-dom";
 import { RandomFourCharacterString } from "../../state/RandomFourCharacterString";
 import { CenteredColumn, CenteredRow } from "./LayoutElements";
@@ -6,6 +5,7 @@ import { Button } from "./Button";
 import { LongwaveAppTitle } from "./Title";
 
 import { useTranslation } from "react-i18next";
+import { allLanguages } from "../../i18n";
 
 export function LandingPage() {
   const { t, i18n } = useTranslation();
@@ -30,9 +30,17 @@ export function LandingPage() {
         {t("landingpage.best_enjoyed")}
       </p>
       <CenteredRow style={{ alignSelf: "flex-end" }}>
-        <Button onClick={() => changeLanguage("en")} text="EN" />
-        <Button onClick={() => changeLanguage("de")} text="DE" />
-        <Button onClick={() => changeLanguage("pt-br")} text="PT-BR" />
+        {allLanguages.map((language) => {
+          return (
+            <Button
+              key={language}
+              onClick={() => {
+                changeLanguage(language);
+              }}
+              text={language}
+            />
+          );
+        })}
       </CenteredRow>
     </CenteredColumn>
   );

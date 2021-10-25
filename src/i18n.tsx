@@ -3,6 +3,8 @@ import Backend from "i18next-http-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 
+export const allLanguages = ["en", "de", "fr", "pt-BR"];
+
 i18n
   // Enables the i18next backend
   .use(Backend)
@@ -13,7 +15,7 @@ i18n
   .init({
     // Standard language used
     fallbackLng: "en",
-    debug: true,
+    //debug: true,
     //Detects and caches a cookie from the language provided
     detection: {
       order: ["queryString", "cookie"],
