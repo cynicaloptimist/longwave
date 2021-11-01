@@ -15,6 +15,7 @@
     "roomidheader": {
         "roomid": "Raum ID:",
         "reset_room": "Setze Raum zurück",
+        "change_name": "Ändere Spielername",
         "switch_language_header": "Spracheinstellung",
         "language_en": "English",
         "language_de": "Deutsch"
