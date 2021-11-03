@@ -14,7 +14,7 @@ import { GameModelContext } from "../../state/GameModelContext";
 import { NewRound } from "../../state/NewRound";
 import { Info } from "../common/Info";
 
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 export function ViewScore() {
   const { t } = useTranslation();
@@ -60,7 +60,12 @@ export function ViewScore() {
               : t("viewscore.0_point_wrong_guess")}
           </div>
         )}
-        {bonusCoopTurn && <div>{t("viewscore.bonus_turn")}</div>}
+        {bonusCoopTurn && <Trans
+          i18nKey={t('viewscore.bonus_turn')}
+          components={{
+            strong: <strong />,
+          }}
+        />}
         <NextTurnOrEndGame />
       </CenteredColumn>
     </div>
