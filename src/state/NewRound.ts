@@ -1,7 +1,7 @@
 import { RoundPhase, GameState } from "./GameState";
 import { RandomSpectrumTarget } from "./RandomSpectrumTarget";
 import { BuildGameModel } from "./BuildGameModel";
-import { TFunction } from "react-i18next";
+import { TFunction } from "i18next";
 
 export function NewRound(
   playerId: string,

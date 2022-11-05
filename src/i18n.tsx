@@ -19,7 +19,7 @@ i18n
     //Detects and caches a cookie from the language provided
     detection: {
       order: ["queryString", "cookie"],
-      cache: ["cookie"],
+      caches: ["cookie"],
     },
     interpolation: {
       escapeValue: false,

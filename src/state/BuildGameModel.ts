@@ -1,6 +1,6 @@
 import { GameState, Team } from "./GameState";
 import memoize from "lodash/memoize";
-import { TFunction } from "react-i18next";
+import { TFunction } from "i18next";
 
 const shuffleSeed: {
   shuffle: <T>(arr: T[], seed: string) => T[];
