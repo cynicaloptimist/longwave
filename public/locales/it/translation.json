@@ -1,0 +1,100 @@
+{
+  "commonfooter": {
+    "developed_by": "è stato ideato da Wolfgang Warsch, Alex Hague e Justin Vickers.",
+    "adapted_for_web": "Riadattato per il web",
+    "adapted_for_web_by": "da Evan Bailey e Margarethe Schoen.",
+    "support_patreon": "Supportaci su Patreon!"
+  },
+  "landingpage": {
+    "create_room": "Crea stanza",
+    "longwave": "Longwave",
+    "adaptation": "è una version online, riadattata per l'interazione real-time, del gioco da tavolo",
+    "wavelength": "Wavelength",
+    "best_enjoyed": "Ideale con una chat vocale!"
+  },
+  "roomidheader": {
+    "roomid": "ID Stanza:",
+    "reset_room": "Resetta Stanza",
+    "change_name": "Cambia Nome",
+    "switch_language_header": "Impostazioni lingua",
+    "language_en": "Inglese",
+    "language_de": "Tedesco"
+  },
+  "spectrum": {
+    "guessing": "Indovinando...",
+    "target": "Target"
+  },
+  "title": {
+    "longwave": "Longwave"
+  },
+  "gamestate": {
+    "left_brain": "CERVELLO SINISTRO",
+    "right_brain": "CERVELLO DESTRO",
+    "the_player": "IL GIOCATORE"
+  },
+  "counterguess": {
+    "more_left": "Il target si trova sulla sinistra",
+    "more_right": "Il target si trova sulla destra",
+    "players_clue": "L'indizio di {{givername}}",
+    "waiting_guess_team": "In attesa che il team {{guessteam}} indovini destra/sinistra..."
+  },
+  "giveclue": {
+    "waiting_for_clue": "Waiting for {{givername}} to provide a clue...",
+    "draw_other_hand": "Draw a different card",
+    "clue": "Clue...",
+    "instructions": "Your clue should be some concept that lies on the provided spectrum, conceptually located where the target is between the two extremes. For example, \"coffee\" might be a good clue that lies on a spectrum of \"hot\" to \"cold\".",
+    "focus1": "Convey a single thought",
+    "focus2": "Stay on topic",
+    "focus3": "No numbers allowed",
+    "focus4": "Be creative!",
+    "give_clue": "Submit clue"
+  },
+  "inputname": {
+    "your_name": "Enter your name"
+  },
+  "jointeam": {
+    "join_team": "Join Team",
+    "join_left": "Join",
+    "join_right": "Join",
+    "start_game": "Start game"
+  },
+  "makeguess": {
+    "players_clue": "{{givername}}'s clue",
+    "waiting_guessing_team": "Waiting for {{guessingteam}} to guess...",
+    "invite_other_players": "Invite other players to join the game.",
+    "share_game_url": "Share this URL with them: {{game_url}}",
+    "guess_for_team": "Submit Guess for {{teamname}}"
+  },
+  "previousturnresult": {
+    "previous_game": "Previous Turn",
+    "player_clue": "{{givername}}'s clue"
+  },
+  "scoreboard": {
+    "free_play": "Free Play",
+    "last_card": "Last Card!",
+    "card_remaining": "Cards remaining",
+    "coop_score": "Cooperative Score",
+    "points": "POINTS"
+  },
+  "setupgame": {
+    "standard_game": "Standard (Teams): 4+ Players",
+    "coop_game": "Cooperative: 2+ Players",
+    "free_game": "Free Play: 2+ Players"
+  },
+  "viewscore": {
+    "player_clue": "{{givername}}'s clue",
+    "winning_team": "{{winnerteam}} wins!",
+    "1_point_correct_guess": "1 point for their correct counter guess.",
+    "0_point_wrong_guess": "0 points for their counter guess.",
+    "bonus_turn": "Your team earned a <strong>bonus turn!</strong>",
+    "reset_game": "Reset game",
+    "game_finished": "Game complete",
+    "final_score_team": "Your team's final cooperative score",
+    "points": "points",
+    "catching_up": "Catchup activated: {{scoringteam}} takes a bonus turn!",
+    "catching_up_info": "After a team scores a four-point round, they get a bonus turn if they are still behind the other team",
+    "draw_next_card": "Draw next Spectrum Card",
+    "score": "Score",
+    "got": "gets"
+  }
+}
