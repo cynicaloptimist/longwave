@@ -1,4 +1,4 @@
-{
+  {
   "commonfooter": {
     "developed_by": "è stato ideato da Wolfgang Warsch, Alex Hague e Justin Vickers.",
     "adapted_for_web": "Riadattato per il web",
@@ -39,62 +39,62 @@
     "waiting_guess_team": "In attesa che il team {{guessteam}} indovini destra/sinistra..."
   },
   "giveclue": {
-    "waiting_for_clue": "Waiting for {{givername}} to provide a clue...",
-    "draw_other_hand": "Draw a different card",
-    "clue": "Clue...",
-    "instructions": "Your clue should be some concept that lies on the provided spectrum, conceptually located where the target is between the two extremes. For example, \"coffee\" might be a good clue that lies on a spectrum of \"hot\" to \"cold\".",
-    "focus1": "Convey a single thought",
-    "focus2": "Stay on topic",
-    "focus3": "No numbers allowed",
-    "focus4": "Be creative!",
-    "give_clue": "Submit clue"
+    "waiting_for_clue": "In attesa che {{givername}} fornisca un indizio...",
+    "draw_other_hand": "Estrai una carta diversa",
+    "clue": "Indizio...",
+    "instructions": "Il tuo indizio dovrebbe essere un concetto che si trova nello spettro fornito, concettualmente situato tra i due estremi, dove si trova il target. Ad esempio, \"caffè\" potrebbe essere un buon indizio che si trova nello spettro da \"caldo\" a \"freddo\".",
+    "focus1": "Esprimi un pensiero singolo",
+    "focus2": "Resta sull'argomento",
+    "focus3": "I numeri non sono ammessi",
+    "focus4": "Sii creativo!",
+    "give_clue": "Conferma indizio"
   },
   "inputname": {
-    "your_name": "Enter your name"
+    "your_name": "Inserisci il tuo nome"
   },
   "jointeam": {
-    "join_team": "Join Team",
-    "join_left": "Join",
-    "join_right": "Join",
-    "start_game": "Start game"
+    "join_team": "Unisciti alla squadr",
+    "join_left": "Unisci",
+    "join_right": "Unisciti",
+    "start_game": "Avvia gioco"
   },
   "makeguess": {
-    "players_clue": "{{givername}}'s clue",
-    "waiting_guessing_team": "Waiting for {{guessingteam}} to guess...",
-    "invite_other_players": "Invite other players to join the game.",
-    "share_game_url": "Share this URL with them: {{game_url}}",
-    "guess_for_team": "Submit Guess for {{teamname}}"
+    "players_clue": "L'indizio di {{givername}}",
+    "waiting_guessing_team": "In attesa che la squadra {{guessingteam}} indovini...",
+    "invite_other_players": "Invita altri giocatori ad unirsi alla partita.",
+    "share_game_url": "Condividi questo URL con loro: {{game_url}}",
+    "guess_for_team": "Conferma ipotesi per la squadra {{teamname}}"
   },
   "previousturnresult": {
-    "previous_game": "Previous Turn",
-    "player_clue": "{{givername}}'s clue"
+    "previous_game": "Turno precedente",
+    "player_clue": "L'indizio di {{givername}}"
   },
   "scoreboard": {
     "free_play": "Free Play",
-    "last_card": "Last Card!",
-    "card_remaining": "Cards remaining",
-    "coop_score": "Cooperative Score",
-    "points": "POINTS"
+    "last_card": "Ultima carta!",
+    "card_remaining": "Carte rimanenti",
+    "coop_score": "Punteggio Cooperative",
+    "points": "PUNTI"
   },
   "setupgame": {
-    "standard_game": "Standard (Teams): 4+ Players",
-    "coop_game": "Cooperative: 2+ Players",
-    "free_game": "Free Play: 2+ Players"
+    "standard_game": "Standard (S): 4+ Giocatori",
+    "coop_game": "Cooperative: 2+ Giocatori",
+    "free_game": "Free Play: 2+ Giocatori"
   },
   "viewscore": {
-    "player_clue": "{{givername}}'s clue",
-    "winning_team": "{{winnerteam}} wins!",
-    "1_point_correct_guess": "1 point for their correct counter guess.",
-    "0_point_wrong_guess": "0 points for their counter guess.",
-    "bonus_turn": "Your team earned a <strong>bonus turn!</strong>",
-    "reset_game": "Reset game",
-    "game_finished": "Game complete",
-    "final_score_team": "Your team's final cooperative score",
-    "points": "points",
-    "catching_up": "Catchup activated: {{scoringteam}} takes a bonus turn!",
-    "catching_up_info": "After a team scores a four-point round, they get a bonus turn if they are still behind the other team",
-    "draw_next_card": "Draw next Spectrum Card",
-    "score": "Score",
-    "got": "gets"
+    "player_clue": "L'indizio di {{givername}}",
+    "winning_team": "{{winnerteam}} vince!",
+    "1_point_correct_guess": "1 punto per aver indovinato con la loro contro ipotesi.",
+    "0_point_wrong_guess": "0 punti per la loro contro ipotesi.",
+    "bonus_turn": "Il tuo ha guadagnato un <strong>turno bonus!</strong>",
+    "reset_game": "Riavvia partita",
+    "game_finished": "Partita terminata",
+    "final_score_team": "Il punteggio cooperativo finale della tua squadra",
+    "points": "punti",
+    "catching_up": "Recupero attivato: {{scoringteam}} ottiene un turno bonus!",
+    "catching_up_info": "Dopo che una squadra ha vinto un round da quattro punti, ottiene un turno bonus se è ancora dietro all'altra squadra",
+    "draw_next_card": "Estrai la carta Spectrum successiva",
+    "score": "Punteggio",
+    "got": "riceve"
   }
 }
