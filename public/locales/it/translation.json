@@ -53,8 +53,8 @@
     "your_name": "Inserisci il tuo nome"
   },
   "jointeam": {
-    "join_team": "Unisciti alla squadr",
-    "join_left": "Unisci",
+    "join_team": "Unisciti alla squadra",
+    "join_left": "Unisciti",
     "join_right": "Unisciti",
     "start_game": "Avvia gioco"
   },
@@ -70,16 +70,16 @@
     "player_clue": "L'indizio di {{givername}}"
   },
   "scoreboard": {
-    "free_play": "Free Play",
+    "free_play": "Partita Libera",
     "last_card": "Ultima carta!",
     "card_remaining": "Carte rimanenti",
     "coop_score": "Punteggio Cooperative",
     "points": "PUNTI"
   },
   "setupgame": {
-    "standard_game": "Standard (S): 4+ Giocatori",
-    "coop_game": "Cooperative: 2+ Giocatori",
-    "free_game": "Free Play: 2+ Giocatori"
+    "standard_game": "Classica (S): 4+ Giocatori",
+    "coop_game": "Cooperativa: 2+ Giocatori",
+    "free_game": "Partita Libera: 2+ Giocatori"
   },
   "viewscore": {
     "player_clue": "L'indizio di {{givername}}",
