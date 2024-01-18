@@ -1,4 +1,4 @@
-import { TFunction } from "react-i18next";
+import { TFunction } from "i18next";
 import { GameType, PlayersTeams, GameState, Team } from "./GameState";
 import { NewRound } from "./NewRound";
 

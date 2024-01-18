@@ -60,12 +60,14 @@ export function ViewScore() {
               : t("viewscore.0_point_wrong_guess")}
           </div>
         )}
-        {bonusCoopTurn && <Trans
-          i18nKey={t('viewscore.bonus_turn')}
-          components={{
-            strong: <strong />,
-          }}
-        />}
+        {bonusCoopTurn && (
+          <Trans
+            i18nKey={t("viewscore.bonus_turn") as string}
+            components={{
+              strong: <strong />,
+            }}
+          />
+        )}
         <NextTurnOrEndGame />
       </CenteredColumn>
     </div>
@@ -188,7 +190,7 @@ function NextTurnOrEndGame() {
           <div>
             {t("viewscore.catching_up", { scoringteam: scoringTeamString })}
           </div>
-          <Info>{t("viewscore.catching_up_info")}</Info>
+          <Info>{t("viewscore.catching_up_info") as string}</Info>
         </CenteredRow>
       )}
       {eligibleToDraw && (

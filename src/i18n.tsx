@@ -3,7 +3,7 @@ import Backend from "i18next-http-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 
-export const allLanguages = ["en", "de", "fr", "pt-BR"];
+export const allLanguages = ["en", "de", "fr", "pt-BR", "it"];
 
 i18n
   // Enables the i18next backend
@@ -19,7 +19,7 @@ i18n
     //Detects and caches a cookie from the language provided
     detection: {
       order: ["queryString", "cookie"],
-      cache: ["cookie"],
+      caches: ["cookie"],
     },
     interpolation: {
       escapeValue: false,

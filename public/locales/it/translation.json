@@ -1,0 +1,100 @@
+  {
+  "commonfooter": {
+    "developed_by": "è stato ideato da Wolfgang Warsch, Alex Hague e Justin Vickers.",
+    "adapted_for_web": "Riadattato per il web",
+    "adapted_for_web_by": "da Evan Bailey e Margarethe Schoen.",
+    "support_patreon": "Supportaci su Patreon!"
+  },
+  "landingpage": {
+    "create_room": "Crea stanza",
+    "longwave": "Longwave",
+    "adaptation": "è una version online, riadattata per l'interazione real-time, del gioco da tavolo",
+    "wavelength": "Wavelength",
+    "best_enjoyed": "Ideale con una chat vocale!"
+  },
+  "roomidheader": {
+    "roomid": "ID Stanza:",
+    "reset_room": "Resetta Stanza",
+    "change_name": "Cambia Nome",
+    "switch_language_header": "Impostazioni lingua",
+    "language_en": "Inglese",
+    "language_de": "Tedesco"
+  },
+  "spectrum": {
+    "guessing": "Indovinando...",
+    "target": "Target"
+  },
+  "title": {
+    "longwave": "Longwave"
+  },
+  "gamestate": {
+    "left_brain": "CERVELLO SINISTRO",
+    "right_brain": "CERVELLO DESTRO",
+    "the_player": "IL GIOCATORE"
+  },
+  "counterguess": {
+    "more_left": "Il target si trova sulla sinistra",
+    "more_right": "Il target si trova sulla destra",
+    "players_clue": "L'indizio di {{givername}}",
+    "waiting_guess_team": "In attesa che il team {{guessteam}} indovini destra/sinistra..."
+  },
+  "giveclue": {
+    "waiting_for_clue": "In attesa che {{givername}} fornisca un indizio...",
+    "draw_other_hand": "Estrai una carta diversa",
+    "clue": "Indizio...",
+    "instructions": "Il tuo indizio dovrebbe essere un concetto che si trova nello spettro fornito, concettualmente situato tra i due estremi, dove si trova il target. Ad esempio, \"caffè\" potrebbe essere un buon indizio che si trova nello spettro da \"caldo\" a \"freddo\".",
+    "focus1": "Esprimi un pensiero singolo",
+    "focus2": "Resta sull'argomento",
+    "focus3": "I numeri non sono ammessi",
+    "focus4": "Sii creativo!",
+    "give_clue": "Conferma indizio"
+  },
+  "inputname": {
+    "your_name": "Inserisci il tuo nome"
+  },
+  "jointeam": {
+    "join_team": "Unisciti alla squadra",
+    "join_left": "Unisciti",
+    "join_right": "Unisciti",
+    "start_game": "Avvia gioco"
+  },
+  "makeguess": {
+    "players_clue": "L'indizio di {{givername}}",
+    "waiting_guessing_team": "In attesa che la squadra {{guessingteam}} indovini...",
+    "invite_other_players": "Invita altri giocatori ad unirsi alla partita.",
+    "share_game_url": "Condividi questo URL con loro: {{game_url}}",
+    "guess_for_team": "Conferma ipotesi per la squadra {{teamname}}"
+  },
+  "previousturnresult": {
+    "previous_game": "Turno precedente",
+    "player_clue": "L'indizio di {{givername}}"
+  },
+  "scoreboard": {
+    "free_play": "Partita Libera",
+    "last_card": "Ultima carta!",
+    "card_remaining": "Carte rimanenti",
+    "coop_score": "Punteggio Cooperative",
+    "points": "PUNTI"
+  },
+  "setupgame": {
+    "standard_game": "Classica (S): 4+ Giocatori",
+    "coop_game": "Cooperativa: 2+ Giocatori",
+    "free_game": "Partita Libera: 2+ Giocatori"
+  },
+  "viewscore": {
+    "player_clue": "L'indizio di {{givername}}",
+    "winning_team": "{{winnerteam}} vince!",
+    "1_point_correct_guess": "1 punto per aver indovinato con la loro contro ipotesi.",
+    "0_point_wrong_guess": "0 punti per la loro contro ipotesi.",
+    "bonus_turn": "Il tuo ha guadagnato un <strong>turno bonus!</strong>",
+    "reset_game": "Riavvia partita",
+    "game_finished": "Partita terminata",
+    "final_score_team": "Il punteggio cooperativo finale della tua squadra",
+    "points": "punti",
+    "catching_up": "Recupero attivato: {{scoringteam}} ottiene un turno bonus!",
+    "catching_up_info": "Dopo che una squadra ha vinto un round da quattro punti, ottiene un turno bonus se è ancora dietro all'altra squadra",
+    "draw_next_card": "Estrai la carta Spectrum successiva",
+    "score": "Punteggio",
+    "got": "riceve"
+  }
+}
