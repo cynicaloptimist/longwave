@@ -17,7 +17,7 @@ const Link: React.FC<LinkProps> = ({ href, text }) => {
 };
 
 // Main footer component
-const CommonFooter: React.FC = () => {
+export const CommonFooter: React.FC = () => {
   const { t } = useTranslation();
 
   return (
@@ -47,5 +47,3 @@ const CommonFooter: React.FC = () => {
     </div>
   );
 };
-
-export default CommonFooter;
