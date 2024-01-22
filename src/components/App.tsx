@@ -1,3 +1,4 @@
+import React from 'react';
 import "../App.css";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -5,31 +6,22 @@ import { GameRoom } from "./gameplay/GameRoom";
 import { CenteredColumn } from "./common/LayoutElements";
 import { CommonFooter } from "./common/CommonFooter";
 import { LandingPage } from "./common/LandingPage";
-
-const style: React.CSSProperties = {
-  maxWidth: 500,
-  margin: 4,
-  padding: 4,
-  border: "1px solid black",
-};
+import { NotFoundPage } from "./common/NotFoundPage";
 
 function App() {
   return (
-    <CenteredColumn>
-      <div style={style}>
-        <BrowserRouter>
+    <BrowserRouter>
+      <CenteredColumn>
+        <div className="app-container">
           <Switch>
-            <Route path="/:roomId">
-              <GameRoom />
-            </Route>
-            <Route path="/">
-              <LandingPage />
-            </Route>
+            <Route exact path="/" component={LandingPage} />
+            <Route path="/:roomId" component={GameRoom} />
+            <Route path="*" component={NotFoundPage} />
           </Switch>
-          <CommonFooter />
-        </BrowserRouter>
-      </div>
-    </CenteredColumn>
+        </div>
+        <CommonFooter />
+      </CenteredColumn>
+    </BrowserRouter>
   );
 }
 
