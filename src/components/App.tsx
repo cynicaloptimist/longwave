@@ -18,8 +18,9 @@ function App() {
             <Route path="/:roomId" component={GameRoom} />
             <Route path="*" component={NotFoundPage} />
           </Switch>
+          <CommonFooter />
         </div>
-        <CommonFooter />
+        
       </CenteredColumn>
     </BrowserRouter>
   );

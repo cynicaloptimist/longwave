@@ -3,7 +3,7 @@
   --text-color: #f7fafc;
   --primary-color: #2b6cb0;
   --link-color: #63b3ed;
-  --font-base: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Inter", "Aptos", "Arial", "Segoe UI", "Roboto", "Oxygen",
+  --font-base: "Helvetica Neue", "Inter", "Aptos", "Arial", "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif;
 }
 
