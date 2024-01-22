@@ -22,7 +22,7 @@
   },
   "spectrum": {
     "guessing": "Raden...",
-    "target": "Doelwit"
+    "target": "Doel"
   },
   "title": {
     "longwave": "Longwave"
@@ -33,8 +33,8 @@
     "the_player": "DE SPELER"
   },
   "counterguess": {
-    "more_left": "Doelwit is naar links",
-    "more_right": "Doelwit is naar rechts",
+    "more_left": "Doel is naar links",
+    "more_right": "Doel is naar rechts",
     "players_clue": "Aanwijzing van {{givername}}",
     "waiting_guess_team": "Wachten op {{guessteam}} om links/rechts te raden..."
   },
@@ -93,7 +93,7 @@
     "points": "punten",
     "catching_up": "Inhaalactie geactiveerd: {{scoringteam}} neemt een bonus beurt!",
     "catching_up_info": "Nadat een team een vierpunts ronde scoort, krijgen ze een bonusbeurt als ze nog steeds achter het andere team staan",
-    "draw_next_card": "Trek de volgende Spectrum Kaart",
+    "draw_next_card": "Trek de volgende spectrum kaart",
     "score": "Score",
     "got": "krijgt"
   }
