@@ -116,3 +116,23 @@
 .home-link:hover {
   background-color: var(--link-color); /* Lighter or darker version of primary color */
 }
+
+
+/* FOOTER */
+.footer-container {
+  padding-top: 8px;
+  border-top: 1px solid black;
+  color: gray;
+  font-size: small;
+  text-align: center;
+}
+
+.footer-content {
+  margin: 8px;
+}
+
+.patreon-logo {
+  width: 150px;
+  margin: 8px;
+}
+
