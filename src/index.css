@@ -3,7 +3,7 @@
   --text-color: #333;
   --primary-color: #5a67d8; /* A general modern primary color */
   --link-color: #4fd1c5; /* A modern complementary color for links */
-  --font-base: "Helvetica Neue", "Inter", "Aptos", "Arial", "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Oxygen",
+  --font-base: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Inter", "Aptos", "Arial", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif;
 
   --border-radius: 4px;
