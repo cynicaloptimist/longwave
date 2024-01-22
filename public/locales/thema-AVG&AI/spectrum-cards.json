@@ -16,7 +16,7 @@
               ["Nooit profileren", "Onbeperkt profileren"],
               ["Uitgebreide rechten voor betrokkenen", "Geen rechten voor betrokkenen"],
               ["Opt-out", "Opt-in"],
-              ["Verantwoordelijkheid bij de verwerkingsverantwoordelijke", "Verantwoordelijkheid bij individu"],
+              ["Verantwoordelijkheid bij verwerkingsverantwoordelijke", "Verantwoordelijkheid bij individu"],
               ["Stevige boetes bij AVG schendingen", "Geen sancties bij overtredingen"],
               ["Recht op data portabiliteit", "Geen recht data portabiliteit"],
               ["Extra bescherming van kindergegevens", "Onbeperkte verwerking van kindergegevens"],
@@ -29,10 +29,10 @@
               ["Verantwoordelijkheden voor dataverwerkers", "Geen verantwoordelijkheid voor dataverwerkers"],
               ["Afstemming van bedrijfspraktijken aan privacyregels", "Volledige bedrijfsvrijheid"],
               ["Beperkte toegang tot eigen persoonsgegevens", "Volledige toegang tot eigen persoonsgegevens"],
-              ["Gebruik van gegevens voor niet gespecificeerde doeleinden", "Gebruik van gegevens alleen voor gespecificeerde doeleinden"],
+              ["Niet-gespecificeerde doeleinden", "Gespecificeerde doeleinden"],
               ["Geen meldplicht bij datalek", "Verplichte melding van datalek"],
               ["Verzamelen van excessieve persoonsgegevens", "Verzamelen van alleen noodzakelijke persoonsgegevens"],
-              ["Ontbreken van verantwoording door data verwerkers", "Verantwoordingsplicht voor data verwerkers"]
+              ["Ontbreken van verantwoording door verwerkers", "Goede verantwoording door verwerkers"]
               ["Risicobeheerste AI-implementatie", "Ongecontroleerde AI-uitrol"],
               ["Transparante AI-systemen", "Black-box AI-systemen"],
               ["AI met menselijke supervisie", "Autonome AI zonder human-in-the-loop"],
