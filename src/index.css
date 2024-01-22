@@ -1,12 +1,15 @@
 :root {
-  --bg-color: #fff; /* Airbnb uses a lot of white */
-  --text-color: #222222; /* Dark gray for text */
-  --primary-color: #FF5A5F; /* Airbnb's iconic coral as the primary color */
-  --link-color: #008489; /* Airbnb blue as link color */
-  --font-base: 'Circular', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif; /* Airbnb uses Circular but fallbacks are similar sans-serifs */
+  --bg-color: #f8f8f9;
+  --text-color: #333;
+  --primary-color: #5a67d8; /* A general modern primary color */
+  --link-color: #4fd1c5; /* A modern complementary color for links */
+  --font-base: "Helvetica Neue", "Inter", "Aptos", "Arial", "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif;
 
-  --border-radius: 4px; /* Airbnb tends to use rounded borders */
-  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadows for depth */
+  --border-radius: 4px;
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  
+  --max-container-width: 500px; /* Set maximum width */
 }
 
 body {

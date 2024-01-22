@@ -1,53 +1,53 @@
 .App {
   text-align: center;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  padding-bottom: 2rem; /* Give some space at the bottom */
 }
 
 .App-logo {
-  /* Assuming the logo should have a fixed size, can update size to fit the brand */
   height: 80px;
   pointer-events: none;
+  animation: App-logo-spin infinite 20s linear;
 }
 
-/* Modernize the animation while respecting reduced motion users */
-@media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: reduce) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .App-logo {
+    height: 60px;
   }
 }
 
 .App-header {
+  padding: 2rem;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem;
-  min-height: 100vh;
-  box-shadow: var(--box-shadow);
 }
 
 .App-link {
   color: var(--link-color);
   text-decoration: none;
   padding: 8px 0;
-  display: inline-block;
-  border-radius: var(--border-radius);
-  transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+  transition: color 200ms ease-in-out;
 }
 
 .App-link:hover,
 .App-link:focus {
-  background-color: var(--primary-color);
-  color: white;
+  color: var(--primary-color);
 }
 
 .app-container {
-  max-width: 960px; /* A wider max-width for modern screens */
-  margin: 1rem auto; /* Center the container with automatic margins */
-  padding: 2rem;
-  background-color: var(--bg-color);
+  max-width: var(--max-container-width);
+  margin: 0 auto; /* Centering the container */
+  padding: 1rem;
   border-radius: var(--border-radius);
+  background-color: #fff;
   box-shadow: var(--box-shadow);
 }
 
@@ -60,46 +60,33 @@
   }
 }
 
-/* Simplify the animations */
-/* You may decide to tone down or remove these to fit the cleaner aesthetic */
-
-/* ... animations css ... */
-
-/* NOT FOUND PAGE */
-
-.not-found-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 80vh;
-  padding: 2rem;
+/* Adjust animated items for subtlety */
+.wipe-reveal-right {
+  overflow: hidden;
+  position: relative;
+}
+.wipe-reveal-right::after {
+  transform: translateX(-100%);
+}
+.wipe-reveal-right.animate::after {
+  transform: translateX(0);
 }
 
-.not-found-container h1,
-.not-found-container p {
-  margin: 1rem 0;
+.fade-disappear-up {
+  opacity: 1;
+  transition: opacity 500ms ease-in, transform 500ms ease-in;
 }
 
-.home-link {
-  color: var(--primary-color);
-  text-decoration: none;
-  padding: 10px 20px;
-  border: 1px solid var(--primary-color);
-  border-radius: var(--border-radius);
-  transition: background-color 0.3s, color 0.3s;
+.fade-disappear-up.animate {
+  transform: translateY(-10%);
+  opacity: 0;
 }
 
-.home-link:hover {
-  background-color: var(--primary-color);
-  color: white;
-}
+/* ... other styles ... */
 
-/* FOOTER */
 .footer-container {
-  padding: 1rem;
-  border-top: 1px solid #eeeeee; /* Lighter border */
-  font-size: 0.875rem; /* Smaller font size */
+  padding: 1rem 0;
+  border-top: 1px solid #eaeaea;
   text-align: center;
 }
 
@@ -108,8 +95,15 @@
 }
 
 .patreon-logo {
-  width: 120px; /* Smaller logo size */
-  margin-top: 1rem;
+  width: 100px; /* Smaller for subtlety */
+  margin: 1rem 0;
 }
 
-/* Remove animations for a cleaner look, if desired */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 1rem;
+  }
+  .not-found-container,
+  .footer-container,
+  /* Rest of the responsive design */
+}
