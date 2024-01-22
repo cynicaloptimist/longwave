@@ -5,7 +5,7 @@
               ["Transparantie", "Misleiding"],
               ["Gegevens zijn al gewist", "Bewaartermijn is onbeperkt"],
               ["Vrijwillige, geïnformeerde toestemming", "Verplichte toestemming zonder keuze"],
-              ["Recht op inzage", "Gebruiker onbekend met gegevensgebruik"],
+              ["Volledige inzage", "Gebruiker onbekend met gegevensgebruik"],
               ["Geen doorgifte", "Delen van persoonsgegevens zonder grenzen"],
               ["Doelbinding", "Willekeurige verwerking"],
               ["Strenge eisen aan gegevensbeveiliging", "Afwezigheid van beveiligingsmaatregelen"],
@@ -18,7 +18,7 @@
               ["Opt-out", "Opt-in"],
               ["Verantwoordelijkheid bij de verwerkingsverantwoordelijke", "Verantwoordelijkheid bij individu"],
               ["Stevige boetes bij AVG schendingen", "Geen sancties bij overtredingen"],
-              ["Recht op data portabiliteit", "Geen data portabiliteit"],
+              ["Recht op data portabiliteit", "Geen recht data portabiliteit"],
               ["Extra bescherming van kindergegevens", "Onbeperkte verwerking van kindergegevens"],
               ["Strenge profileringseisen", "Ongecontroleerde profilering"],
               ["Gecontroleerde toegang en overdracht", "Vrije toegang door derden"],
@@ -30,12 +30,9 @@
               ["Afstemming van bedrijfspraktijken aan privacyregels", "Volledige bedrijfsvrijheid"],
               ["Beperkte toegang tot eigen persoonsgegevens", "Volledige toegang tot eigen persoonsgegevens"],
               ["Gebruik van gegevens voor niet gespecificeerde doeleinden", "Gebruik van gegevens alleen voor gespecificeerde doeleinden"],
-              ["Geen meldplicht bij datalekken", "Verplichte melding van datalekken"],
-              ["Geautomatiseerde besluitvorming zonder bezwaar", "Recht op menselijke tussenkomst bij geautomatiseerde besluitvorming"],
+              ["Geen meldplicht bij datalek", "Verplichte melding van datalek"],
               ["Verzamelen van excessieve persoonsgegevens", "Verzamelen van alleen noodzakelijke persoonsgegevens"],
-              ["Ontbreken van verantwoording door data verwerkers", "Verantwoordingsplicht voor data verwerkers"] 
-            ],
-"advanced": [
+              ["Ontbreken van verantwoording door data verwerkers", "Verantwoordingsplicht voor data verwerkers"]
               ["Risicobeheerste AI-implementatie", "Ongecontroleerde AI-uitrol"],
               ["Transparante AI-systemen", "Black-box AI-systemen"],
               ["AI met menselijke supervisie", "Autonome AI zonder human-in-the-loop"],
@@ -46,6 +43,9 @@
               ["AI met effectieve mens-machine samenwerking", "AI die menselijke inbreng limiteert"],
               ["AI toegepast met respect voor mensenrechten", "AI toegepast met minachting voor mensenrechten"],
               ["AI die duidelijke gebruiksgrenzen heeft", "AI met vage of onbestaande grenzen"],
-              ["Regulerende AI-wetgeving", "Deregulering of gebrek aan wetgeving voor AI"]
+              ["Regulerende AI-wetgeving", "Deregulering of gebrek aan wetgeving voor AI"] 
+            ],
+"advanced": [
+
   ]
 }
