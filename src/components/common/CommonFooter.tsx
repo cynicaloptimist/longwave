@@ -14,7 +14,7 @@ export function CommonFooter() {
           href="https://github.com/cynicaloptimist/longwave"
           text={t('commonfooter.adapted_for_web')}
         />
-        {t('commonfooter.adapted_for_web_by')}
+        {t('commonfooter.adapted_for_web_by') + ' '}}
       </div>
       {/* we want referrer noopener and noreferrer, so: */}
       {/* eslint-disable-next-line react/jsx-no-target-blank */}
