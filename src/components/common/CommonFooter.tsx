@@ -29,6 +29,7 @@ export const CommonFooter: React.FC = () => {
           href="https://github.com/cynicaloptimist/longwave"
           text={t('commonfooter.adapted_for_web')}
         />
+        {' '} 
         {t('commonfooter.adapted_for_web_by')}
       </div>
       {/* Use proper alt text passing */}
