@@ -55,9 +55,9 @@ function Languages() {
   return (
     <CenteredColumn
       style={{
-          padding= "1rem 0";
-          border-top= "1px solid #eaeaea";
-          text-align= "center";
+          padding= "1rem 0"
+          border-top= "1px solid #eaeaea"
+          text-align= "center"
       }}
     >
       {allLanguages.map((language) => {
