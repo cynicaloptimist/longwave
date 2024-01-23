@@ -102,18 +102,8 @@
 @media (max-width: 600px) {
   .app-container {
     padding: 1rem;
-    width: calc(100% - 2rem); /* make sure it does not exceed the screen width */
-    box-sizing: border-box; /* Include padding in width calculation */
   }
   
-  .App-header,
-  .not-found-container,
-  .footer-container {
-    /* Extend to full-width on mobile and center their content */
-    width: 100%; /* Ensure these containers are full width */
-    box-sizing: border-box; /* Include padding in width calculation */
-  }
-
   .not-found-container,
   .footer-container {
     /* Assuming the not-found and footer containers need to be full-width on mobile */
