@@ -93,7 +93,8 @@
 
 .footer-content {
   margin: 1rem 0;
-  font-size: 1rem;
+  font-size: 0.5rem;
+  color: var(--bg-color);
 }
 
 .patreon-logo {
