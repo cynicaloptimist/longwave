@@ -1,4 +1,3 @@
-import React from 'react';
 import { useHistory } from "react-router-dom";
 import { RandomFourCharacterString } from "../../state/RandomFourCharacterString";
 import { CenteredColumn, CenteredRow } from "./LayoutElements";
@@ -55,7 +54,11 @@ function Languages() {
 
   return (
     <CenteredColumn
-      className="landing-container"
+      style={{
+        backgroundColor: "white",
+        border: "1px solid #eaeaea",
+        padding: "1rem 0",
+      }}
     >
       {allLanguages.map((language) => {
         return (
