@@ -103,7 +103,45 @@
   .app-container {
     padding: 1rem;
   }
+
   .not-found-container,
-  .footer-container,
-  /* Rest of the responsive design */
+  .footer-container, {
+ /* Assuming the not-found and footer containers need to be full-width on mobile */
+    padding: 1rem;
+    text-align: center; /* Center text if it's not already centered */
+  }
+
+  .not-found-container h1 {
+    /* Reduce the size of the heading in the not-found-container for small screens */
+    font-size: 3rem; /* Smaller value from initially 5rem */
+  }
+
+  .footer-content,
+  .patreon-logo {
+    /* Stack footer content and smaller Patreon logo for mobile */
+    display: block; /* if necessary */
+    width: 100%; /* Full width for smaller screen */
+    margin-top: 0.5rem; /* Give some top margin if needed */
+    margin-bottom: 0.5rem;
+  }
+
+  .patreon-logo {
+    max-width: 80px; /* Smaller logo for mobile */
+    height: auto; /* Maintain aspect ratio of image */
+  }
+
+  .App-link {
+    /* Possibly increase the tap target size for links */
+    padding: 0.75rem; /* Larger padding for easier interaction on touch devices */
+  }
+
+  .App-header {
+    /* Adjust header padding on mobile */
+    padding: 1rem;
+  }
+
+  .App-logo {
+    /* Adjust logo size on mobile, if necessary */
+    height: 50px; /* Smaller logo for mobile */
+  }
 }
