@@ -54,7 +54,11 @@ function Languages() {
 
   return (
     <CenteredColumn
-      className="landing-container"
+      style={{
+          padding= "1rem 0";
+          border-top= "1px solid #eaeaea";
+          text-align= "center";
+      }}
     >
       {allLanguages.map((language) => {
         return (
