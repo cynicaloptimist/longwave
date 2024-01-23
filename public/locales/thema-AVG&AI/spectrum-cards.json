@@ -16,6 +16,24 @@
               ["Nooit profileren", "Onbeperkt profileren"],
               ["Uitgebreide rechten voor betrokkenen", "Geen rechten voor betrokkenen"],
               ["Opt-out", "Opt-in"],
+              ["Privé", "Openbaar"],
+              ["Onversleuteld", "Versleuteld"],
+              ["Geïdentificeerd", "Geanonimiseerd"],
+              ["Kwetsbaar", "Beveiligd"],
+              ["Beperkte toegang", "Toegankelijk"],
+              ["Ondoorzichtig beleid", "Helder beleid"],
+              ["Strijdig", "Compliant"],
+              ["Gegevenscorruptie", "Gegevensintegriteit"],
+              ["Ongeautoriseerde toegang", "Geautoriseerde toegang"],
+              ["In de Cloud Opgeslagen", "Lokaal Opgeslagen"],
+              ["Gegevensverwijdering", "Gegevensverzameling"],
+              ["Geen buzzword", "Buzzword"],
+              ["Gebruiksonvriendelijk", "Gebruiksvriendelijk"],
+              ["Verouderde Software", "Regelmatige Updates"],
+              ["Intellectueel eigendom", "Open Source"],
+              ["Enkelvoudige Authenticatie", "Twee-Factor Authenticatie"],
+              ["Individuele Gegevens", "Geaggregeerde Gegevens"],
+              ["Zelf gehost", "SaaS"],
               ["Verantwoordelijkheid bij verwerkingsverantwoordelijke", "Verantwoordelijkheid bij individu"],
               ["Stevige boetes bij AVG schendingen", "Geen sancties bij overtredingen"],
               ["Recht op data portabiliteit", "Geen recht data portabiliteit"],
@@ -40,12 +58,12 @@
               ["Beveiligde AI-systemen", "Onveilige AI-infrastructuren"],
               ["Ethisch verantwoorde AI", "Onethisch gebruik van AI"],
               ["Mensgerichte AI", "Technologisch deterministische AI"],
+              
+            ],
+"advanced": [
               ["AI met effectieve mens-machine samenwerking", "AI die menselijke inbreng limiteert"],
               ["AI toegepast met respect voor mensenrechten", "AI toegepast met minachting voor mensenrechten"],
               ["AI die duidelijke gebruiksgrenzen heeft", "AI met vage of onbestaande grenzen"],
               ["Regulerende AI-wetgeving", "Deregulering of gebrek aan wetgeving voor AI"] 
-            ],
-"advanced": [
-
   ]
 }
