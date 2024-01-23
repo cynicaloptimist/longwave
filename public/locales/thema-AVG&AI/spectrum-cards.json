@@ -57,7 +57,8 @@
               ["Discriminatievoorkomende AI", "Discriminerende AI"],
               ["Beveiligde AI-systemen", "Onveilige AI-infrastructuren"],
               ["Ethisch verantwoorde AI", "Onethisch gebruik van AI"],
-              ["Mensgerichte AI", "Technologisch deterministische AI"]
+              ["Mensgerichte AI", "Technologisch deterministische AI"],
+              
             ],
 "advanced": [
               ["AI met effectieve mens-machine samenwerking", "AI die menselijke inbreng limiteert"],
