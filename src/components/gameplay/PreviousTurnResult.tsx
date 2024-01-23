@@ -8,8 +8,8 @@ import { useTranslation } from "react-i18next";
 export function PreviousTurnResult(props: TurnSummaryModel) {
   const { t } = useTranslation();
   const style: React.CSSProperties = {
-    borderTop: "1px solid black",
-    margin: 16,
+    borderTop: "1px solid #eaeaea",
+    margin: "1rem",
     paddingTop: 16,
   };
 
