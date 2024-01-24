@@ -2,22 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../App.css';
 
-type LinkProps = {
-  href: string;
-  text: string;
-};
-
-// Convert to an arrow function for consistency
-const Link: React.FC<LinkProps> = ({ href, text }) => {
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer">
-      {text}
-    </a>
-  );
-};
-
-// Main footer component
-export const CommonFooter: React.FC = () => {
+export function CommonFooter() {
   const { t } = useTranslation();
 
   return (
