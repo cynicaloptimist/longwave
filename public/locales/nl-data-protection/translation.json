@@ -1,0 +1,100 @@
+{
+  "commonfooter": {
+    "developed_by": "is ontworpen door Wolfgang Warsch, Alex Hague en Justin Vickers.",
+    "adapted_for_web": "Aangepast voor web",
+    "adapted_for_web_by": "door Evan Bailey en Margarethe Schoen.",
+    "support_patreon": "Steun ons op Patreon!"
+  },
+  "landingpage": {
+    "create_room": "Creëer een kamer",
+    "longwave": "Longwave",
+    "adaptation": "is een online, realtime adaptatie van het bordspel",
+    "wavelength": "Wavelength",
+    "best_enjoyed": "Eigenlijk het leukst samen (met voice chat)!"
+  },
+  "roomidheader": {
+    "roomid": "Kamer ID:",
+    "reset_room": "Reset Kamer",
+    "change_name": "Verander Naam",
+    "switch_language_header": "Taal instelling",
+    "language_en": "Engels",
+    "language_de": "Duits"
+  },
+  "spectrum": {
+    "guessing": "Raden...",
+    "target": "Doel"
+  },
+  "title": {
+    "longwave": "Longwave"
+  },
+  "gamestate": {
+    "left_brain": "LINKER HERSENHELFT",
+    "right_brain": "RECHTER HERSENHELFT",
+    "the_player": "DE SPELER"
+  },
+  "counterguess": {
+    "more_left": "Doel is naar links",
+    "more_right": "Doel is naar rechts",
+    "players_clue": "Aanwijzing van {{givername}}",
+    "waiting_guess_team": "Wachten op {{guessteam}} om links/rechts te raden..."
+  },
+  "giveclue": {
+    "waiting_for_clue": "Wachten op {{givername}} om een aanwijzing te geven...",
+    "draw_other_hand": "Trek een andere kaart",
+    "clue": "Aanwijzing...",
+    "instructions": "Je aanwijzing moet een concept zijn dat op het gegeven spectrum ligt, conceptueel gelegen waar het doelwit zich tussen de twee extremen bevindt. Bijvoorbeeld, \"koffie\" zou een goede aanwijzing kunnen zijn die op een spectrum van \"heet\" naar \"koud\" ligt.",
+    "focus1": "Breng één gedachte over",
+    "focus2": "Blijf op onderwerp",
+    "focus3": "Geen getallen toegestaan",
+    "focus4": "Wees creatief!",
+    "give_clue": "Stuur aanwijzing"
+  },
+  "inputname": {
+    "your_name": "Voer je naam in"
+  },
+  "jointeam": {
+    "join_team": "Voeg toe aan Team",
+    "join_left": "Voeg toe",
+    "join_right": "Voeg toe",
+    "start_game": "Start spel"
+  },
+  "makeguess": {
+    "players_clue": "Aanwijzing van {{givername}}",
+    "waiting_guessing_team": "Wachten op {{guessingteam}} om te raden...",
+    "invite_other_players": "Nodig andere spelers uit om het spel te joinen.",
+    "share_game_url": "Deel deze URL met hen: {{game_url}}",
+    "guess_for_team": "Stuur gok voor {{teamname}}"
+  },
+  "previousturnresult": {
+    "previous_game": "Vorige Beurt",
+    "player_clue": "Aanwijzing van {{givername}}"
+  },
+  "scoreboard": {
+    "free_play": "Vrij Spel",
+    "last_card": "Laatste Kaart!",
+    "card_remaining": "Kaarten over",
+    "coop_score": "Coöperatieve Score",
+    "points": "PUNTEN"
+  },
+  "setupgame": {
+    "standard_game": "Standaard (Teams): 4+ Spelers",
+    "coop_game": "Coöperatief: 2+ Spelers",
+    "free_game": "Vrij Spel: 2+ Spelers"
+  },
+  "viewscore": {
+    "player_clue": "Aanwijzing van {{givername}}",
+    "winning_team": "{{winnerteam}} wint!",
+    "1_point_correct_guess": "1 punt voor hun correcte counter gok.",
+    "0_point_wrong_guess": "0 punten voor hun counter gok.",
+    "bonus_turn": "Jouw team heeft een bonus beurt verdiend!",
+    "reset_game": "Reset spel",
+    "game_finished": "Spel afgerond",
+    "final_score_team": "Jouw team's finale coöperatieve score",
+    "points": "punten",
+    "catching_up": "Inhaalactie geactiveerd: {{scoringteam}} neemt een bonus beurt!",
+    "catching_up_info": "Nadat een team een vierpunts ronde scoort, krijgen ze een bonusbeurt als ze nog steeds achter het andere team staan",
+    "draw_next_card": "Trek de volgende spectrum kaart",
+    "score": "Score",
+    "got": "krijgt"
+  }
+}
