@@ -1,6 +1,20 @@
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { CenteredColumn, CenteredRow } from "./LayoutElements";
 import '../../App.css';
+
+type LinkProps = {
+  href: string;
+  text: string;
+};
+
+// Convert to an arrow function for consistency
+const Link: React.FC<LinkProps> = ({ href, text }) => {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {text}
+    </a>
+  );
+};
 
 export function CommonFooter() {
   const { t } = useTranslation();
