@@ -49,8 +49,11 @@
               ["Geen meldplicht bij datalek", "Verplichte melding van datalek"],
               ["Verzamelen van excessieve persoonsgegevens", "Verzamelen van alleen noodzakelijke persoonsgegevens"],
               ["Ontbreken van verantwoording door verwerkers", "Goede verantwoording door verwerkers"]
-            ],
-"advanced": [
+              ["Beperkte toegang tot eigen persoonsgegevens", "Volledige toegang tot eigen persoonsgegevens"],
+              ["Niet-gespecificeerde doeleinden", "Gespecificeerde doeleinden"],
+              ["Geen meldplicht bij datalek", "Verplichte melding van datalek"],
+              ["Verzamelen van excessieve persoonsgegevens", "Verzamelen van alleen noodzakelijke persoonsgegevens"],
+              ["Ontbreken van verantwoording door verwerkers", "Goede verantwoording door verwerkers"],
               ["Risicobeheerste AI-implementatie", "Ongecontroleerde AI-uitrol"],
               ["Transparante AI-systemen", "Black-box AI-systemen"],
               ["AI met menselijke supervisie", "Autonome AI zonder human-in-the-loop"],
@@ -58,9 +61,11 @@
               ["Beveiligde AI-systemen", "Onveilige AI-infrastructuren"],
               ["Ethisch verantwoorde AI", "Onethisch gebruik van AI"],
               ["Mensgerichte AI", "Technologisch deterministische AI"],
+            ],
+"advanced": [
               ["AI met effectieve mens-machine samenwerking", "AI die menselijke inbreng limiteert"],
               ["AI toegepast met respect voor mensenrechten", "AI toegepast met minachting voor mensenrechten"],
               ["AI die duidelijke gebruiksgrenzen heeft", "AI met vage of onbestaande grenzen"],
-              ["Regulerende AI-wetgeving", "Deregulering of gebrek aan wetgeving voor AI"]
+              ["Regulerende AI-wetgeving", "Deregulering of gebrek aan wetgeving voor AI"] 
   ]
 }

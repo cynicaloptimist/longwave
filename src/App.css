@@ -132,18 +132,13 @@
     height: auto; /* Maintain aspect ratio of image */
   }
 
-  .App-link {
-    /* Possibly increase the tap target size for links */
-    padding: 0.75rem; /* Larger padding for easier interaction on touch devices */
-  }
-
   .App-header {
     /* Adjust header padding on mobile */
     padding: 1rem;
   }
-
   .App-logo {
     /* Adjust logo size on mobile, if necessary */
     height: 50px; /* Smaller logo for mobile */
   }
 }
+
