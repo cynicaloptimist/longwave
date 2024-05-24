@@ -50,13 +50,11 @@ function Link(props: { href: string; text: string }) {
 function AffiliateLink() {
   return (
     /* eslint-disable-next-line react/jsx-no-target-blank */
-    <a
-      target="_blank"
-      href="https://www.amazon.com/gp/product/B07T446163/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B07T446163&linkCode=as2&tag=cynicalopti09-20&linkId=0bb4d74ae01b9f1846ae6c8797ef1a47"
-    >
+    <a target="_blank" href="https://amzn.to/44WVTuT">
       <img
-        alt="Longwave board game on Amazon"
-        src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B07T446163&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL110_&tag=cynicalopti09-20"
+        width="100px"
+        alt="Wavelength board game on Amazon"
+        src="./wavelength_box_small.jpg"
       />
     </a>
   );
