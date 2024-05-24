@@ -1,0 +1,100 @@
+{
+  "commonfooter": {
+    "developed_by": "ha sido diseñado por Wolfgang Warsch, Alex Hague y Justin Vickers.",
+    "adapted_for_web": "Adaptado para la web",
+    "adapted_for_web_by": "por Evan Bailey y Margarethe Schoen.",
+    "support_patreon": "¡Apóyanos en Patreon!"
+  },
+  "landingpage": {
+    "create_room": "Crear sala",
+    "longwave": "Longwave",
+    "adaptation": "es una adaptación online en tiempo real del juego de mesa",
+    "wavelength": "Wavelength",
+    "best_enjoyed": "¡Es mejor jugar en llamada!"
+  },
+  "roomidheader": {
+    "roomid": " ID de la sala:",
+    "reset_room": "Resetear sala",
+    "change_name": "Cambiar nombre",
+    "switch_language_header": "Opciones de idioma",
+    "language_en": "English",
+    "language_de": "Deutsch"
+  },
+  "spectrum": {
+    "guessing": "Decidiendo...",
+    "target": "Objetivo"
+  },
+  "title": {
+    "longwave": "Longwave"
+  },
+  "gamestate": {
+    "left_brain": "HEMISFERIO IZQUIERDO",
+    "right_brain": "HEMISFERIO DERECHO",
+    "the_player": "EL JUGADOR"
+  },
+  "counterguess": {
+    "more_left": "El objetivo está a la izquierda",
+    "more_right": "El objetivo está a la derecha",
+    "players_clue": "Pista de {{givername}}",
+    "waiting_guess_team": "Esperando a que el {{guessteam}} decida si derecha o izquierda..."
+  },
+  "giveclue": {
+    "waiting_for_clue": "Esperando a que {{givername}} dé una pista...",
+    "draw_other_hand": "Robar una carta distinta",
+    "clue": "Pista...",
+    "instructions": "Tu pista debería ser un concepto que encaje en el espectro dado y que se sitúe en el punto entre ambos extremos en el que está el objetivo. Por ejemplo, \"café\" podría ser una buena pista para el espectro de \"caliente\" a \"frío\".",
+    "focus1": "Transmite una sola idea",
+    "focus2": "No te salgas del tema",
+    "focus3": "No uses números",
+    "focus4": "¡Usa tu creatividad!",
+    "give_clue": "Enviar pista"
+  },
+  "inputname": {
+    "your_name": "Introduce tu nombre"
+  },
+  "jointeam": {
+    "join_team": "Únete a un equipo",
+    "join_left": "Unirse",
+    "join_right": "Unirse",
+    "start_game": "Empezar partida"
+  },
+  "makeguess": {
+    "players_clue": "Pista de {{givername}}",
+    "waiting_guessing_team": "Esperando a que el {{guessingteam}} decida...",
+    "invite_other_players": "Invita a otros jugadores a unirse a la partida.",
+    "share_game_url": "Comparte esta URL con ellos: {{game_url}}",
+    "guess_for_team": "Enviar la respuesta del {{teamname}}"
+  },
+  "previousturnresult": {
+    "previous_game": "Turno anterior",
+    "player_clue": "Pista de {{givername}}"
+  },
+  "scoreboard": {
+    "free_play": "Partida libre",
+    "last_card": "¡Última tarjeta!",
+    "card_remaining": "Tarjetas restantes",
+    "coop_score": "Puntuación cooperativa",
+    "points": "PUNTOS"
+  },
+  "setupgame": {
+    "standard_game": "Estándar (por equipos): 4+ jugadores",
+    "coop_game": "Cooperativo: 2+ jugadores",
+    "free_game": "Partida libre: 2+ jugadores"
+  },
+  "viewscore": {
+    "player_clue": "Pista de {{givername}}",
+    "winning_team": "¡Gana el {{winnerteam}}!",
+    "1_point_correct_guess": "1 punto por su buen criterio.",
+    "0_point_wrong_guess": "0 puntos por su mal criterio.",
+    "bonus_turn": "¡Tu equipo gana un <strong>turno extra</strong>!",
+    "reset_game": "Resetear partida",
+    "game_finished": "Partida completada",
+    "final_score_team": "Puntuación cooperativa final de tu equipo:",
+    "points": "puntos",
+    "catching_up": "Sprint activado: ¡el {{scoringteam}} tiene un turno extra!",
+    "catching_up_info": "Cuando un equipo gana 4 puntos en una ronda, consigue un turno extra si sigue estando por detrás del otro equipo",
+    "draw_next_card": "Roba la siguiente carta de espectro",
+    "score": "Puntuación",
+    "got": "obtiene"
+  }
+}
