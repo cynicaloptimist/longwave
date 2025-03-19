@@ -1,0 +1,178 @@
+name: Deploy master to Cloudzilla
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+env:
+  IMAGE_PREFIX: registry.cloudzilla.ai/prod-project-38d80cf3e9/master/
+
+jobs:
+  cz-build-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: https://registry.cloudzilla.ai/
+          username: 'robot$prod-project-38d80cf3e9+imageuser'
+          password: '${{ secrets.CZ_BRANCH_MASTER_DOCKER_PASSWORD }}'
+
+      - name: downcase REPO
+        run: |
+          image="${GITHUB_REPOSITORY#*/}"
+          echo "IMAGE_NAME=${image,,}" >>${GITHUB_ENV}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_PREFIX }}${{ env.IMAGE_NAME }}
+
+      - name: Validate existing .env file
+        run: |
+          # Path to your .env file
+          ENV_FILE=".env"
+          # Check if the .env file exists
+          if [ ! -f "$ENV_FILE" ]; then
+              # If the .env file doesn't exist, exit the script
+              exit 0
+          fi
+
+          # Read the .env file line by line
+          while IFS= read -r line || [ -n "$line" ]; do
+              # Remove leading and trailing whitespace
+              line="$(echo "$line" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+
+              # Skip empty lines
+              if [ -z "$line" ]; then
+                  continue
+              fi
+
+              # Skip comment lines starting with #
+              if [[ "$line" == \#* ]]; then
+                  continue
+              fi
+
+              # Check if the line matches KEY=VALUE format
+              if ! [[ "$line" =~ ^[A-Za-z_][A-Za-z0-9_]*=.*$ ]]; then
+                  echo "Your existing .env file is not valid. Environment variable names (keys) must consist solely of letters, digits, and the underscore ( _ ) and must not begin with a digit according to the .env file specification"
+                  exit 1
+              fi
+          done < "$ENV_FILE"
+
+      - name: Put down .env file
+        run: |
+          echo "writing .env file..."
+          echo "# This file is generated or updated by the cloudzilla deploy workflow" >> .env
+          # get the appropriate branch scoped env vars and stript the scoping prefix
+          # remove duplicates keeping the items at the bottom of the file
+          tac .env | awk -F'=' '!seen[$1]++' | tac > .env.tmp2 && mv .env.tmp2 .env
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          file: .github/workflows/cloudzilla/master/Dockerfile
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+      - name: Deploy on Section
+        env:
+          SECTION_K8S_API_URL: '${{ secrets.CZ_BRANCH_MASTER_SECTION_K8S_API_URL }}'
+          SECTION_API_TOKEN: '${{ secrets.CZ_BRANCH_MASTER_SECTION_API_TOKEN }}'
+          DOCKER_SERVER: 'registry.cloudzilla.ai'
+          DOCKER_USERNAME: 'robot$prod-project-38d80cf3e9+imageuser'
+          DOCKER_PASSWORD: '${{ secrets.CZ_BRANCH_MASTER_DOCKER_PASSWORD }}'
+          FULL_IMAGE_WITH_TAG: '${{ env.DOCKER_METADATA_OUTPUT_TAGS }}'
+          POD_NAME: '${{ env.IMAGE_NAME }}'
+          DEBUG: 1
+        run: |
+          #!/bin/bash
+          test -z "${DEBUG}" || set -o xtrace
+          set +e  # revert the default `set -e` which github actions enable automatically
+          cd "$(dirname "$0")"
+
+          cert=/etc/ssl/certs/ca-certificates.crt
+
+          # Reusable backoffretry function
+          backoffretry() {
+              local max_retries=$1     # Maximum number of retries
+              local delay=$2           # Initial delay in seconds
+              shift 2
+              local command="$@"       # Command to execute (e.g., main function)
+              local attempt=1          # Current attempt counter
+
+              while [ $attempt -le $max_retries ]; do
+                  echo "Attempt $attempt of $max_retries"
+
+                  # Execute the command
+                  $command
+                  local exit_code=$?
+
+                  if [ $exit_code -eq 0 ]; then
+                      echo "Success on attempt $attempt"
+                      return 0
+                  else
+                      echo "Failure on attempt $attempt with exit code $exit_code"
+                  fi
+
+                  if [ $attempt -lt $max_retries ]; then
+                      echo "Waiting for $delay seconds before retry..."
+                      sleep $delay
+                      delay=$((delay * 2)) # Exponential backoff
+                      attempt=$((attempt + 1))
+                  else
+                      echo "Exceeded maximum retries. Exiting with failure."
+                      return $exit_code
+                  fi
+              done
+          }
+
+          main() {
+            setCluster || return 1
+
+            kubectl create secret generic console-project-env-secret --from-env-file=${GITHUB_WORKSPACE}/.env --dry-run=client -o yaml | kubectl apply -f - || return 1
+            kubectl create secret docker-registry regcred --docker-server="${DOCKER_SERVER}" --docker-username="${DOCKER_USERNAME}" --docker-password="${DOCKER_PASSWORD}" --dry-run=client -o yaml | kubectl apply -f - || return 1
+            kubectl apply -f ${GITHUB_WORKSPACE}/.github/workflows/cloudzilla/master/k8s/ingress-upstream.yaml || return 1
+            envsubst '$FULL_IMAGE_WITH_TAG $POD_NAME' < ${GITHUB_WORKSPACE}/.github/workflows/cloudzilla/master/k8s/deploy.yaml | kubectl apply -f - || return 1
+            kubectl rollout restart deployment "section-project-deployment" || return 1
+           
+          }
+
+          setCluster() {
+            # Configure kubectl to talk to Section
+            
+            # change the cert path depending on OS.
+            if [[ "$OSTYPE" == "darwin"* ]]; then
+              cert=/usr/local/etc/ca-certificates/cert.pem
+            fi
+
+            kubectl config set-cluster section \
+            --server=$SECTION_K8S_API_URL \
+            --certificate-authority=$cert || return 1
+
+            kubectl config set-credentials section-user --token=$SECTION_API_TOKEN || return 1
+
+            kubectl config set-context my-section-application --cluster=section --user=section-user --namespace=default || return 1
+
+            kubectl config use-context my-section-application || return 1
+
+            kubectl version || return 1
+          }
+
+          # Parameters for backoffretry
+          max_retries=4        # Maximum number of retries
+          initial_delay=10     # Initial delay before retrying in seconds
+
+          # Call backoffretry with the main function
+          backoffretry $max_retries $initial_delay main
+          exit_code=$?
+          exit $exit_code

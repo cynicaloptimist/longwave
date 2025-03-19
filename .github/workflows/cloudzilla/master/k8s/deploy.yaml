@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: section-project-deployment
+  labels:
+    app: console-project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: console-project
+  template:
+    metadata:
+      labels:
+        app: console-project
+    spec:
+      containers:
+        - name: console-project
+          image: $FULL_IMAGE_WITH_TAG
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: console-project-env-secret
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 2147483648
+            requests:
+              cpu: 50m
+              memory: 50Mi
+          ports:
+            - containerPort: 80
+          startupProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 30
+          readinessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+      imagePullSecrets:
+        - name: regcred

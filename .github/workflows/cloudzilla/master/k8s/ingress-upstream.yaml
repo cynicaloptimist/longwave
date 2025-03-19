@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ingress-upstream
+  name: ingress-upstream
+spec:
+  ports:
+    - name: 80-3000
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: console-project
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
